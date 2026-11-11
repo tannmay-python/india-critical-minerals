@@ -1,0 +1,78 @@
+/* Design tokens. Light only. Takshashila house style as used on indiacriticalminerals.com and
+   Inside the Motor: Llama plum and marigold on cream paper; Newsreader for headings, Hanken
+   Grotesk for text and figures, Space Mono for small labels. Structure is drawn with hairlines,
+   not shadows. */
+:root {
+  color-scheme: light;
+
+  /* brand */
+  --plum: #620d3c;
+  --plum-2: #6e1545;
+  --plum-deep: #4a0a2e;
+  --plum-wash: rgba(98, 13, 60, 0.06);
+  --plum-line: rgba(98, 13, 60, 0.16);
+  --marigold: #f1a222;
+  --marigold-ink: #9a6400; /* marigold dark enough for text */
+  --marigold-wash: rgba(241, 162, 34, 0.16);
+
+  /* paper and ink */
+  --page: #fffbe2;
+  --surface: #ffffff;
+  --surface-2: #fdf6d6;
+  --surface-3: #f6ecc2;
+  --ink: #1a0804;
+  --ink-2: #5d3a1e;
+  --muted: #856034;
+  --rule: #ece0b4;
+  --rule-strong: #d8c585;
+  --focus: #f1a222;
+
+  /* the six groups. Group 1 and 2 are the brand colours unchanged; 3 to 6 are stepped slightly
+     from the dashboard's originals (#8a5a44 #3d6b7d #7d6b9e #2e8b57) so that every pair passes the
+     colour-vision checks on this surface (worst pair dE 8.0 protan/deutan, 15.5 normal). */
+  --g1: #620d3c;
+  --g2: #f1a222;
+  --g3: #865634;
+  --g4: #1d677f;
+  --g5: #8874ae;
+  --g6: #318f5a;
+  --g0: #9a938a;
+
+  /* value-chain stage bands: the project map's validated set (src/lib/bands.ts in the map repo) */
+  --band-upstream: #b8860b;
+  --band-process: #c8362b;
+  --band-make: #3366cc;
+  --band-recycle: #0f9b6e;
+  --band-research: #9c3d9c;
+  --band-demand: #4a3f38;
+
+  /* status, reserved */
+  --good: #1e7a2e;
+  --warn: #9a6400;
+  --bad: #c42b1e;
+
+  /* type */
+  --font-sans: "Hanken Grotesk Variable", "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Newsreader Variable", "Newsreader", Georgia, "Times New Roman", serif;
+  --font-mono: "Space Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.25rem;
+  --text-display: clamp(2.4rem, 4.6vw, 3.9rem);
+
+  /* space */
+  --gutter: clamp(16px, 3vw, 40px);
+  --measure: 62ch;
+  --page-max: 1320px;
+  --header-h: 60px;
+  --radius: 6px;
+  --radius-sm: 3px;
+
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --shadow-pop: 0 2px 6px rgba(98, 13, 60, 0.08), 0 18px 48px rgba(98, 13, 60, 0.16);
+}

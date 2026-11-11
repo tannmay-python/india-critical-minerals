@@ -1,0 +1,44 @@
+.pt { position: relative; width: 100%; transition: height 520ms var(--ease); }
+
+.pt-cell {
+  position: absolute; left: 0; top: 0;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition:
+    transform 620ms var(--ease), opacity 380ms var(--ease),
+    background-color 380ms var(--ease), color 380ms var(--ease), box-shadow 160ms var(--ease);
+  will-change: transform;
+}
+.pt-cell.outline { box-shadow: inset 0 0 0 1px var(--rule-strong); }
+.pt-cell.is-mineral:hover, .pt-cell.is-mineral:focus-visible { box-shadow: 0 0 0 2px var(--page), 0 0 0 4px var(--ink); z-index: 2; outline: none; }
+
+.pt-sym { font-weight: 680; font-size: clamp(0.62rem, calc(var(--cell) * 0.3), 1.15rem); letter-spacing: -0.01em; line-height: 1; }
+.pt-z { position: absolute; left: 5px; top: 4px; font-size: clamp(0.5rem, calc(var(--cell) * 0.15), 0.66rem); opacity: 0.62; line-height: 1; }
+
+/* India's projects: five slots along the chain, filled where India has a project */
+.pt-chain { position: absolute; left: 50%; bottom: 12%; transform: translateX(-50%); display: grid; grid-template-columns: repeat(5, var(--slot)); gap: 2px; --slot: clamp(4px, calc(var(--cell) * 0.135), 10px); height: var(--slot); }
+.pt-chain i { border-radius: 1.5px; }
+.pt-chain i.empty { box-shadow: inset 0 0 0 1px var(--rule-strong); }
+.pt-projects .pt-sym { transform: translateY(-18%); }
+
+/* the six groups, named beside their tiles */
+.pt-group {
+  position: absolute; left: 0; top: 0;
+  display: flex; flex-direction: column; justify-content: center; gap: 2px;
+  text-decoration: none; color: var(--ink);
+  animation: pt-fade 520ms var(--ease) both;
+}
+.pt-group-name { display: flex; align-items: baseline; gap: 9px; font-family: var(--font-display); font-size: var(--text-xl); font-weight: 500; letter-spacing: -0.01em; line-height: 1.15; }
+.pt-group-name .swatch { transform: translateY(-1px); }
+.pt-group-tag { padding-left: 19px; font-size: var(--text-sm); color: var(--ink-2); line-height: 1.35; }
+.pt-group:hover .pt-group-name { color: var(--plum); }
+@keyframes pt-fade { from { opacity: 0; } to { opacity: 1; } }
+
+.tip-group { display: flex; align-items: center; gap: 7px; margin: 2px 0 6px; }
+.tip-note { display: block; margin-top: 6px; color: var(--ink); max-width: 30ch; }
+
+@media (max-width: 720px) {
+  .pt-z { display: none; }
+  .pt-group-name { font-size: var(--text-base); }
+}
