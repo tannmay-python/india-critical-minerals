@@ -14,11 +14,11 @@ export interface SubDef { key: string; name: string; max: number; note?: string 
 
 export interface VectorDef {
   key: VectorKey; name: string; max: number; family: string; what: string;
-  bands?: ScoreBand[]; sub?: SubDef[]; detail?: ScoreBand[] | Record<string, unknown> | null;
+  bands?: ScoreBand[]; sub?: SubDef[];
   [extra: string]: unknown;
 }
 
-export interface SubscoreDef { i: number; vector: VectorKey; sub: string | null; name: string; max: number; family: string }
+export interface SubscoreDef { i: number; vector: VectorKey; sub: string | null; name: string; max: number; family: string; note: string | null; bands: ScoreBand[] | null }
 
 export interface Group {
   id: number; name: string; sourceColor: string;

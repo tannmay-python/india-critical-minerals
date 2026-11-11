@@ -1,0 +1,29 @@
+.groups-page { padding-top: clamp(36px, 5vw, 64px); padding-bottom: 96px; }
+.groups-page h1 { max-width: 18ch; padding-left: 22px; border-left: 3px solid var(--marigold); }
+.gp-intro { margin-top: 20px; max-width: 62ch; font-size: var(--text-lg); color: var(--ink-2); }
+.gp-nav { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0 clamp(20px, 3vw, 44px); margin-top: 32px; border-top: 2px solid var(--ink); }
+.gp-nav a { display: flex; align-items: center; gap: 10px; padding: 11px 0; border-bottom: 1px solid var(--rule); color: var(--ink); text-decoration: none; font-weight: 560; }
+.gp-nav a:hover { color: var(--plum); }
+.gp-nav .num { margin-left: auto; color: var(--muted); font-weight: 420; }
+
+.gp-group { margin-top: clamp(48px, 6vw, 88px); scroll-margin-top: calc(var(--header-h) + 20px); }
+.gp-head { padding-bottom: 16px; border-bottom: 2px solid var(--ink); }
+.gp-head h2 { display: flex; align-items: baseline; gap: 14px; font-size: clamp(1.7rem, 3.2vw, 2.4rem); }
+.gp-head .swatch { width: 14px; height: 14px; }
+.gp-tagline { margin-top: 6px; padding-left: 28px; font-size: var(--text-lg); color: var(--ink-2); }
+.gp-body { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); padding-top: 24px; align-items: start; }
+.gp-body h3 { margin: 26px 0 10px; }
+.gp-policy li { position: relative; padding: 9px 0 9px 22px; border-top: 1px solid var(--rule); }
+.gp-policy li::before { content: ""; position: absolute; left: 2px; top: 19px; width: 8px; height: 2px; background: var(--marigold); }
+.gp-side { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+.gp-side .radar { width: 100%; height: auto; max-width: 420px; }
+.gp-members { display: grid; grid-template-columns: repeat(auto-fill, 52px); gap: 4px; width: 100%; }
+.gp-members a { display: flex; align-items: center; justify-content: center; height: 52px; border-radius: var(--radius-sm); font-weight: 700; text-decoration: none; }
+.gp-members a:hover { box-shadow: 0 0 0 2px var(--page), 0 0 0 4px var(--ink); }
+
+.gp-section { margin-top: clamp(56px, 7vw, 96px); }
+.gp-section > h2 { margin-bottom: 14px; }
+.gp-text { max-width: 76ch; color: var(--ink-2); margin-bottom: 22px; }
+.gp-more { margin-top: 18px; font-weight: 600; }
+
+@media (max-width: 860px) { .gp-body { grid-template-columns: 1fr; } .gp-tagline { padding-left: 0; } }

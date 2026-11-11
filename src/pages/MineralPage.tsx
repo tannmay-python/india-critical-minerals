@@ -34,7 +34,7 @@ export function MineralPage({ name }: { name: string }) {
   const cap = detail?.capability ?? null;
 
   return (
-    <main className="mineral">
+    <main className="mineral-page">
       <header className="wrap mp-head">
         <span className="mp-tile" style={{ background: color, color: inkOn(color) }}><small className="num">{mineral.z}</small>{mineral.symbol}</span>
         <div>

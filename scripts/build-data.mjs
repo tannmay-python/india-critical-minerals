@@ -219,11 +219,13 @@ async function main() {
     members: minerals.filter((m) => m.group === g.id).map((m) => m.name),
   }));
 
-  const vectors = criteria.vectors.map((vdef) => ({ ...vdef, detail: completeBands[vdef.key] ?? null }));
+  const vectors = criteria.vectors;
+  // band tables per score: keyed by sub-score where a vector has two parts (the two supplier scores share one table)
+  const bandKey = (vec, sub) => (vec === 'supplier_concentration' ? 'supplier_sub' : sub ?? vec);
   const subscores = SUBSCORES.map(([vec, sub], i) => {
     const vdef = criteria.vectors.find((x) => x.key === vec);
     const sdef = sub ? vdef.sub.find((x) => x.key === sub) : null;
-    return { i, vector: vec, sub, name: sdef ? sdef.name : vdef.name, max: sdef ? sdef.max : vdef.max, family: vdef.family };
+    return { i, vector: vec, sub, name: sdef ? sdef.name : vdef.name, max: sdef ? sdef.max : vdef.max, family: vdef.family, note: sdef?.note ?? null, bands: completeBands[bandKey(vec, sub)] ?? null };
   });
 
   const core = {
@@ -287,6 +289,11 @@ async function main() {
     sizes[f] = await writeJSON(f, await readJSON(path.join(mapData, f)));
   }
   await copyFile(path.join(mapData, 'blocks-polygons.geojson'), path.join(OUT, 'blocks-polygons.geojson'));
+  const dl = path.join(MAP, 'public/downloads');
+  if (existsSync(dl)) {
+    await mkdir(path.join(OUT, 'downloads'), { recursive: true });
+    for (const f of await readdir(dl)) await copyFile(path.join(dl, f), path.join(OUT, 'downloads', f));
+  }
   await mkdir(path.join(OUT, 'geo'), { recursive: true });
   for (const f of await readdir(path.join(mapData, 'geo'))) await copyFile(path.join(mapData, 'geo', f), path.join(OUT, 'geo', f));
 

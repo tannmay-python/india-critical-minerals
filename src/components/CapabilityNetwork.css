@@ -1,0 +1,20 @@
+.capnet { position: relative; margin-top: 44px; }
+.capnet svg { position: absolute; left: 0; top: 0; overflow: visible; }
+.cn-link { fill: none; stroke: var(--rule-strong); stroke-width: 1.5; opacity: 0.9; transition: opacity 160ms var(--ease), stroke-width 160ms var(--ease); }
+.cn-link.sm { opacity: 0.55; }
+.cn-link.off { opacity: 0.07; }
+.cn-link.on { opacity: 1; stroke-width: 2.2; }
+.cn-link.ks.on { stroke: var(--ink); }
+
+.cn-node { position: absolute; transform: translateY(-50%); text-decoration: none; color: var(--ink); font-size: 0.9rem; line-height: 1.22; transition: opacity 160ms var(--ease); }
+.cn-node.cn-chem { text-align: right; font-weight: 560; }
+.cn-node.cn-strategy { font-weight: 560; }
+.cn-node.cn-mineral { white-space: nowrap; color: var(--ink-2); }
+.cn-node.cn-mineral b { display: inline-block; min-width: 1.9em; color: var(--ink); font-weight: 680; }
+.cn-node.off { opacity: 0.25; }
+.cn-node:hover, .cn-node.hot { color: var(--plum); }
+.cn-node.cn-strategy { background: linear-gradient(90deg, var(--page) 0, var(--page) 100%); padding: 1px 4px 1px 0; width: auto !important; max-width: 280px; }
+
+.cn-heads span { position: absolute; top: -40px; font-family: var(--font-display); font-size: var(--text-lg); font-weight: 500; letter-spacing: -0.01em; white-space: nowrap; color: var(--ink); }
+.cn-key { position: absolute; left: 0; bottom: 0; display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: var(--text-sm); color: var(--ink-2); }
+.cn-key li { display: flex; align-items: center; gap: 7px; }

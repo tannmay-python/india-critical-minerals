@@ -1,4 +1,4 @@
-.mineral { padding-bottom: 96px; }
+.mineral-page { padding-bottom: 96px; }
 .not-found { padding-top: 80px; }
 
 .mp-head { display: flex; align-items: center; gap: 22px; padding-top: clamp(32px, 5vw, 60px); padding-bottom: clamp(24px, 3vw, 40px); }
