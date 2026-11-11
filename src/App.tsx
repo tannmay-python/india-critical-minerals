@@ -4,6 +4,9 @@ import { TipProvider } from "./components/Tip";
 import { Header } from "./components/Header";
 import { useRoute } from "./lib/router";
 import { Home } from "./pages/Home";
+import { MineralPage } from "./pages/MineralPage";
+import { ProjectsPage } from "./pages/ProjectsPage";
+import { ProjectPage } from "./pages/ProjectPage";
 import "./App.css";
 
 export function App() {
@@ -24,6 +27,9 @@ function Routes() {
   // a new page starts at its top; changes of query within a page keep their place
   useEffect(() => { window.scrollTo(0, 0); }, [page]);
   switch (section) {
+    case "mineral": return <MineralPage name={route.path[1] ?? ""} />;
+    case "projects": return <ProjectsPage />;
+    case "project": return <ProjectPage id={route.path[1] ?? ""} />;
     default: return <Home />;
   }
 }

@@ -98,7 +98,8 @@ export interface Project {
   year: number | null; confidence: "high" | "medium" | "low";
   schemes: string[]; geometry: boolean;
   promise: { state: "delivered" | "revised" | "overdue" | "pending"; months: number } | null;
-  tranches: { t: string; o: string }[]; route: string | null; lastOutcome: string | null;
+  /** each time the block was offered: tranche id, outcome, and the notice (or outcome) date */
+  tranches: { t: string; o: string; d: string | null }[]; route: string | null; lastOutcome: string | null;
   investment: { amount: number | string; currency: string | null } | null;
   link: [number, number] | null;
   does: string | null;

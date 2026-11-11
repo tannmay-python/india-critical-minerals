@@ -1,0 +1,47 @@
+.board { padding: 28px clamp(20px, 3vw, 40px) 64px; }
+.board h3 { display: flex; align-items: baseline; gap: 10px; font-family: var(--font-display); font-size: var(--text-xl); font-weight: 500; letter-spacing: -0.01em; padding-bottom: 10px; border-bottom: 2px solid var(--ink); }
+.board h3 .num, .board h4 .num { font-family: var(--font-sans); font-size: var(--text-sm); font-weight: 560; color: var(--muted); }
+.board h4 { display: flex; align-items: baseline; gap: 8px; font-size: var(--text-sm); font-weight: 620; color: var(--ink-2); margin: 14px 0 8px; }
+.board-note { padding: 16px clamp(20px, 3vw, 40px); color: var(--muted); font-size: var(--text-sm); }
+
+.unit { display: block; line-height: 0; padding: 1px; margin: -1px; border-radius: 2px; }
+.unit:hover .mark, .unit:focus-visible .mark, .unit.selected .mark { outline: 2px solid var(--ink); outline-offset: 1px; border-radius: 2px; }
+.unit:focus-visible { outline: none; }
+.unit.dim { opacity: 0.25; }
+.unit.same .mark { outline: 2px solid var(--plum); outline-offset: 1px; border-radius: 2px; }
+.tens { display: grid; grid-template-columns: repeat(10, 13px); grid-auto-rows: 13px; gap: 4px; }
+
+/* along the chain */
+.chain-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 28px clamp(20px, 2.4vw, 40px); align-items: start; }
+.chain-board .board-group:first-of-type h4 { margin-top: 14px; }
+.chain-board .board-group > .tens:first-child { margin-top: 14px; }
+
+/* through time: equal-width columns from 2015 so heights compare; earlier decades are half-width */
+.time-board { overflow-x: auto; }
+.time-plot { display: flex; align-items: flex-end; gap: 8px; width: max-content; min-height: 300px; padding-bottom: 0; }
+.time-col { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 6px; flex: none; min-width: 36px; }
+.time-stack { display: grid; grid-template-columns: repeat(2, 11px); grid-auto-rows: 11px; gap: 3px; direction: rtl; transform: scaleY(-1); }
+.time-col.wide .time-stack { grid-template-columns: repeat(4, 11px); }
+.time-stack .unit { transform: scaleY(-1); }
+.time-stack .mark { width: 11px; height: 11px; }
+.time-n { font-size: var(--text-sm); font-weight: 650; color: var(--ink); min-height: 1.2em; }
+.time-label { width: 100%; text-align: center; padding: 8px 0 0; border-top: 2px solid var(--ink); font-family: var(--font-mono); font-size: 11px; color: var(--muted); white-space: nowrap; }
+.time-col + .time-col .time-label { box-shadow: -8px 0 0 var(--ink) inset, -8px -2px 0 var(--ink); }
+.time-col + .time-col .time-label { box-shadow: none; position: relative; }
+.time-col + .time-col .time-label::before { content: ""; position: absolute; left: -8px; top: -2px; width: 8px; height: 2px; background: var(--ink); }
+
+/* auctions */
+.auction-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 36px clamp(28px, 4vw, 64px); align-items: start; }
+.auction-board section:first-child { grid-column: 1 / -1; }
+.auction-board li { display: grid; grid-template-columns: minmax(96px, 150px) 78px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--rule); }
+.a-name { font-weight: 600; line-height: 1.25; }
+.a-date { font-size: var(--text-sm); }
+.a-units { display: flex; flex-wrap: wrap; gap: 4px; }
+.a-count { font-size: var(--text-sm); color: var(--ink-2); white-space: nowrap; }
+.a-count b { font-size: var(--text-base); color: var(--ink); font-weight: 680; }
+
+@media (max-width: 760px) {
+  .auction-board li { grid-template-columns: 1fr auto; }
+  .a-date { display: none; }
+  .a-units { grid-column: 1 / -1; order: 3; }
+}

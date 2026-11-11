@@ -173,7 +173,7 @@ async function main() {
       schemes: (e.scheme_links ?? []).map((s) => s.id),
       geometry: Boolean(e.has_geometry),
       promise: e.promise ? { state: e.promise.state, months: e.promise.months } : null,
-      tranches: (e.auction?.history ?? []).map((h) => ({ t: h.tranche, o: h.outcome })),
+      tranches: (e.auction?.history ?? []).map((h) => ({ t: h.tranche, o: h.outcome, d: h.nit_date ?? h.outcome_date ?? null })),
       route: e.block?.auction_route ?? null,
       lastOutcome: last ? last.outcome : null,
       investment: e.investment?.amount != null ? { amount: e.investment.amount, currency: e.investment.currency } : null,
