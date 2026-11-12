@@ -1,0 +1,131 @@
+{
+  "mineral": "Tungsten",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Ore",
+        "label": "under 1% tungsten trioxide",
+        "content": 0.5
+      },
+      "text": "Tungsten has two ore minerals, scheelite and wolframite, found in veins and in altered limestone around granite. More than half of the world's reserves and nearly four-fifths of its mining are in China.",
+      "shares": {
+        "caption": "World reserves, of the quantified total",
+        "rows": [
+          [
+            "China",
+            53
+          ],
+          [
+            "Australia",
+            12
+          ],
+          [
+            "Russia",
+            9
+          ],
+          [
+            "Vietnam",
+            4
+          ]
+        ]
+      },
+      "india": "Hindustan Zinc won a block in Andhra Pradesh in November 2025; the old Degana deposit in Rajasthan has been tendered."
+    },
+    {
+      "id": "mine",
+      "band": "upstream",
+      "title": "Mine and concentrate",
+      "form": {
+        "name": "Concentrate",
+        "label": "65% tungsten trioxide",
+        "content": 65
+      },
+      "text": "Most mines are underground. Both minerals are heavy, so the crushed ore is concentrated on shaking tables; scheelite is also floated. The standard concentrate holds 65% tungsten trioxide.",
+      "shares": {
+        "caption": "Mine output, 2025",
+        "rows": [
+          [
+            "China",
+            79
+          ],
+          [
+            "Vietnam",
+            4
+          ],
+          [
+            "Kazakhstan",
+            3
+          ],
+          [
+            "Russia",
+            2
+          ],
+          [
+            "North Korea",
+            2
+          ]
+        ]
+      },
+      "india": "No production."
+    },
+    {
+      "id": "convert",
+      "band": "process",
+      "title": "Convert",
+      "form": {
+        "name": "APT",
+        "label": "88.5% tungsten trioxide",
+        "content": 88.5
+      },
+      "text": "The concentrate is dissolved in hot soda or caustic under pressure. The solution is purified by solvent extraction and evaporated until white crystals of ammonium paratungstate (APT) form. APT is the traded intermediate.",
+      "india": "None. China dominates; Austria, Vietnam and Germany convert outside it."
+    },
+    {
+      "id": "powder",
+      "band": "process",
+      "title": "Reduce",
+      "form": {
+        "name": "Tungsten powder",
+        "label": "99.9% tungsten",
+        "content": 99.9
+      },
+      "text": "APT is heated to drive off ammonia, leaving tungsten oxide, which is reduced in hydrogen to grey metal powder. Tungsten melts at 3,422°C, the highest of any metal, so it is never melted in production: everything is made from powder.",
+      "chem": "WO₃ + 3H₂ → W + 3H₂O"
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "The powder is heated with carbon to make tungsten carbide, one of the hardest materials made. Carbide grains are mixed with cobalt, pressed to shape and sintered: the cobalt melts and cements the grains together.",
+      "in": [
+        "Cobalt, as the binder"
+      ],
+      "india": "Sandvik's plant at Chiplun recycles carbide into powder."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Cemented carbide takes about 60% of tungsten in the United States: the cutting edges of machine tools, drill bits for mining and oil wells. The rest goes into tool steels, armour-piercing ammunition, heating elements and the contacts in chips.",
+      "india": "Tool makers and defence; India exports tungsten scrap."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Worn carbide tools are valuable scrap. They are broken down with molten zinc or dissolved chemically and made back into powder. Recycled tungsten is a large part of supply."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Tungsten",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-tungsten.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

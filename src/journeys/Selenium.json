@@ -1,0 +1,95 @@
+{
+  "mineral": "Selenium",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Copper ore",
+        "label": "grams of selenium a tonne",
+        "content": 0.001
+      },
+      "text": "Selenium sits just below sulphur in the periodic table and replaces a little of the sulphur in copper sulphide ores. It has no mines of its own. It occurs as traces in copper sulphide ores, tens of grams a tonne at most, and travels with the copper all the way through the smelter.",
+      "in": [
+        "Hidden in copper ores"
+      ]
+    },
+    {
+      "id": "host",
+      "band": "upstream",
+      "title": "Ride with copper",
+      "text": "Copper ore is mined, floated and smelted. Selenium stays with the copper until electrorefining, where copper plates onto the cathode and selenium falls to the cell floor in the anode slime.",
+      "india": "Hindalco at Dahej and Kutch Copper at Mundra produce the slime."
+    },
+    {
+      "id": "extract",
+      "band": "process",
+      "title": "Roast",
+      "form": {
+        "name": "Commercial selenium",
+        "label": "99.5% pure",
+        "content": 99.5
+      },
+      "text": "The slime is roasted with sulphuric acid or soda ash. Selenium leaves as a gas, selenium dioxide, which is caught in water as selenious acid. Bubbling sulphur dioxide through the acid throws the selenium down as a red powder.",
+      "chem": "H₂SeO₃ + 2SO₂ + H₂O → Se + 2H₂SO₄",
+      "out": [
+        "Tellurium, gold, silver and platinum-group metals, from the same slime"
+      ],
+      "shares": {
+        "caption": "Refinery output, 2025",
+        "rows": [
+          [
+            "China",
+            53
+          ],
+          [
+            "Japan",
+            17
+          ],
+          [
+            "Russia",
+            8
+          ],
+          [
+            "Belgium",
+            5
+          ],
+          [
+            "India",
+            2
+          ]
+        ]
+      },
+      "india": "About 90 tonnes refined in 2025. Kutch Copper has 150 t/yr of capacity."
+    },
+    {
+      "id": "refine",
+      "band": "process",
+      "title": "Refine",
+      "text": "For electronics and solar cells the powder is melted and distilled under vacuum to 99.99% or better. Most selenium is sold at commercial grade."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Selenium takes the green tint out of glass and makes red pigments. It raises the yield when manganese is plated from solution, improves how steel and copper machine, and is added to animal feed and fertiliser as an essential nutrient. Some goes into thin-film solar cells.",
+      "india": "Glass, pigment, feed and chemical makers; most supply is imported."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Almost none. Selenium is used in small doses that are spread through glass, metal and soil and cannot be collected."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Selenium",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-selenium.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "mineral": "Niobium",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Ore at Araxá",
+        "label": "about 2.5% niobium oxide",
+        "content": 2.5
+      },
+      "text": "Nearly all niobium comes from one mineral, pyrochlore, in rare volcanic rocks called carbonatites. One deposit, at Araxá in Brazil, supplies most of the world. Deep weathering there has left ore rich enough to dig without blasting.",
+      "shares": {
+        "caption": "World reserves, of the quantified total",
+        "rows": [
+          [
+            "Brazil",
+            66
+          ],
+          [
+            "China",
+            30
+          ],
+          [
+            "Canada",
+            3
+          ]
+        ]
+      },
+      "india": "Niobium, rare-earth and zirconium blocks in Rajasthan were tendered in 2025."
+    },
+    {
+      "id": "mine",
+      "band": "upstream",
+      "title": "Mine",
+      "text": "The Brazilian ore is soft and is dug from open pits. Canada's one mine, in Quebec, is underground.",
+      "shares": {
+        "caption": "Mine output, 2025",
+        "rows": [
+          [
+            "Brazil",
+            93
+          ],
+          [
+            "Canada",
+            5
+          ],
+          [
+            "DR Congo",
+            1
+          ]
+        ]
+      },
+      "india": "No production."
+    },
+    {
+      "id": "concentrate",
+      "band": "upstream",
+      "title": "Concentrate",
+      "form": {
+        "name": "Pyrochlore concentrate",
+        "label": "55 to 60% niobium oxide",
+        "content": 58
+      },
+      "text": "The ore is ground and the iron removed with magnets. Fine clay is washed away and the pyrochlore floated. Leaching then strips out phosphorus, lead and sulphur, which steelmakers do not want."
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Reduce",
+      "form": {
+        "name": "Ferroniobium",
+        "label": "about 65% niobium",
+        "content": 65
+      },
+      "text": "The concentrate is mixed with aluminium powder and iron and ignited. The aluminium takes the oxygen, and the reaction's own heat melts the product into ferroniobium. About nine-tenths of all niobium is sold in this form, made beside the mine.",
+      "chem": "3Nb₂O₅ + 10Al → 6Nb + 5Al₂O₃",
+      "alt": "A small share is purified to oxide and metal, for superalloys and for the niobium-titanium wire in superconducting magnets."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "A few hundred grams of niobium in a tonne of steel make it markedly stronger and tougher, so pipelines, car bodies and bridges can use less steel. Steel takes about 77% of niobium in the United States and jet-engine superalloys 23%. Superconducting niobium wire is the heart of MRI scanners.",
+      "shares": {
+        "caption": "Use in the United States, 2025",
+        "rows": [
+          [
+            "Steels",
+            77
+          ],
+          [
+            "Superalloys",
+            23
+          ]
+        ]
+      },
+      "india": "Steel and superalloy makers; all niobium is imported."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Niobium is not recovered on its own. It returns inside steel scrap, where it is diluted, and inside superalloy scrap, which is remelted."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Niobium (Columbium)",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-niobium.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

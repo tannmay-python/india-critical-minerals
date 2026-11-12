@@ -1,0 +1,126 @@
+{
+  "mineral": "Phosphorus",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "text": "Phosphorus is mined as phosphate rock: beds of the mineral apatite laid down on ancient sea floors. Morocco and Western Sahara hold about two-thirds of the world's reserves. A smaller share is igneous apatite, as in Russia's Kola Peninsula.",
+      "shares": {
+        "caption": "World reserves",
+        "rows": [
+          [
+            "Morocco",
+            68
+          ],
+          [
+            "China",
+            5
+          ],
+          [
+            "Egypt",
+            4
+          ],
+          [
+            "Tunisia",
+            3
+          ],
+          [
+            "Russia",
+            3
+          ]
+        ]
+      },
+      "india": "31 Mt of reserves, under 0.1% of the world."
+    },
+    {
+      "id": "mine",
+      "band": "upstream",
+      "title": "Mine",
+      "form": {
+        "name": "Phosphate rock",
+        "label": "about 30% P₂O₅",
+        "content": 30
+      },
+      "text": "The beds are shallow and are strip-mined with draglines and excavators. The rock is washed, screened and floated to remove sand and clay, giving marketable rock.",
+      "shares": {
+        "caption": "Mine output, 2025",
+        "rows": [
+          [
+            "China",
+            44
+          ],
+          [
+            "Morocco",
+            14
+          ],
+          [
+            "United States",
+            8
+          ],
+          [
+            "Russia",
+            6
+          ],
+          [
+            "Jordan",
+            5
+          ]
+        ]
+      },
+      "india": "1.5 Mt of rock in 2025, 0.6% of the world."
+    },
+    {
+      "id": "acid",
+      "band": "process",
+      "title": "Make acid",
+      "form": {
+        "name": "Phosphoric acid",
+        "label": "about 54% P₂O₅",
+        "content": 54
+      },
+      "text": "Rock is dissolved in sulphuric acid. Phosphoric acid stays in solution and gypsum settles out, about five tonnes of it for every tonne of phosphate. The acid is concentrated by evaporation.",
+      "chem": "Ca₅(PO₄)₃F + 5H₂SO₄ → 3H₃PO₄ + 5CaSO₄ + HF",
+      "out": [
+        "Phosphogypsum, stacked as waste"
+      ],
+      "india": "About 2.2 Mt/yr of acid against needs of 4.3 to 4.5 Mt. Indian firms co-own acid plants in Morocco and Jordan."
+    },
+    {
+      "id": "purify",
+      "band": "process",
+      "title": "Purify",
+      "text": "Fertiliser acid carries iron, cadmium and fluorine. For food, chemicals and batteries it is cleaned by solvent extraction into purified acid. China makes about 75% of the world's purified acid.",
+      "alt": "A second road smelts rock with coke in an electric furnace into elemental phosphorus, for chemicals that need it pure."
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "Acid reacted with ammonia gives the fertilisers DAP and MAP. Purified acid reacted with iron gives iron phosphate, which is fired with lithium into LFP battery cathode. China makes more than 95% of LFP.",
+      "india": "Sudeep is building 25,000 t of iron phosphate at Dahej; Himadri and GFCL are building LFP plants."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Most phosphorus feeds crops: there is no substitute for it in agriculture. LFP batteries are a small but fast-growing use. Food, detergents and animal feed take the rest.",
+      "india": "Imports about 60% of its phosphorus as rock, acid and fertiliser. DAP imports were 5.6 Mt in 2023-24."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Phosphorus spread on fields is not recovered. Some is reclaimed from sewage and manure as struvite, and LFP cathode can be recycled, but both are small."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Phosphate Rock",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-phosphate.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

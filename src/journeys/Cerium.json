@@ -1,0 +1,118 @@
+{
+  "mineral": "Cerium",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Cerium in bastnäsite",
+        "label": "about half of the rare earths",
+        "content": 49
+      },
+      "text": "The seventeen rare earths always occur together, never alone. The light ones, cerium among them, come mainly from bastnäsite, mined in hard rock at Bayan Obo in China and Mountain Pass in California, and from monazite, a heavy grain in beach sands. Cerium is the most plentiful of all, so every rare-earth mine produces more of it than the market wants.",
+      "shares": {
+        "caption": "World reserves, all rare earths",
+        "rows": [
+          [
+            "China",
+            59
+          ],
+          [
+            "Brazil",
+            15
+          ],
+          [
+            "Australia",
+            8
+          ],
+          [
+            "Russia",
+            5
+          ],
+          [
+            "Vietnam",
+            5
+          ]
+        ]
+      },
+      "india": "Monazite in the beach sands of Kerala, Tamil Nadu, Odisha and Andhra Pradesh. It is rich in the light rare earths and poor in the heavy ones."
+    },
+    {
+      "id": "mine",
+      "band": "upstream",
+      "title": "Mine",
+      "text": "Bastnäsite is mined from open pits, crushed and floated to a concentrate of about 60% rare-earth oxide. Monazite is sorted out of dredged beach sand with magnets and electrostatic plates, alongside ilmenite and zircon.",
+      "shares": {
+        "caption": "Mine output, all rare earths, 2025",
+        "rows": [
+          [
+            "China",
+            69
+          ],
+          [
+            "United States",
+            13
+          ],
+          [
+            "Australia",
+            7
+          ],
+          [
+            "Myanmar",
+            6
+          ]
+        ]
+      },
+      "india": "2,900 tonnes of rare-earth oxide in 2025, 0.7% of the world, all from monazite in beach sands worked by IREL."
+    },
+    {
+      "id": "crack",
+      "band": "process",
+      "title": "Crack",
+      "text": "The concentrate is broken down with hot acid or caustic soda so the rare earths dissolve. Monazite also releases thorium and a little uranium, which are radioactive and must be removed and stored. What is left is a mixed rare-earth chloride or carbonate: all the elements still together.",
+      "out": [
+        "Thorium and uranium, from monazite"
+      ]
+    },
+    {
+      "id": "separate",
+      "band": "process",
+      "title": "Separate",
+      "form": {
+        "name": "Cerium oxide",
+        "label": "99.9% pure",
+        "content": 99.9
+      },
+      "text": "This is the hard part. Neighbouring rare earths behave almost identically, so the solution is run through hundreds of solvent-extraction stages, each shifting the balance slightly, until cerium comes out on its own as an oxide. China does about 91% of the world's separation.",
+      "india": "IREL makes commercial-grade cerium oxide from monazite at Aluva and at OSCOM in Odisha, a small volume against demand."
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "Cerium oxide is used largely as it comes: milled into polishing powder, or blended into catalyst washcoats. Some is reduced with other light rare earths into mischmetal, the alloy in lighter flints and steel treatment."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Ceria polishes glass, lenses and silicon wafers. It stores and releases oxygen in catalytic converters and oil-refinery catalysts, and it takes the colour out of glass."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Very little is recovered from old products: each one holds grams, spread thin and hard to collect. Scrap from the factories that make these materials is the main source."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Rare Earths",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-rare-earths.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

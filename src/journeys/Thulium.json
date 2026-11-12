@@ -1,0 +1,117 @@
+{
+  "mineral": "Thulium",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Thulium in ion-adsorption clay",
+        "label": "under 1% of the rare earths in clays",
+        "content": 0.7
+      },
+      "text": "The seventeen rare earths always occur together, never alone. The heavy ones, thulium among them, are scarce in the hard-rock ores. Their main source is ion-adsorption clay in southern China and Myanmar, where they cling loosely to weathered granite. It is the scarcest of the naturally occurring rare earths.",
+      "shares": {
+        "caption": "World reserves, all rare earths",
+        "rows": [
+          [
+            "China",
+            59
+          ],
+          [
+            "Brazil",
+            15
+          ],
+          [
+            "Australia",
+            8
+          ],
+          [
+            "Russia",
+            5
+          ],
+          [
+            "Vietnam",
+            5
+          ]
+        ]
+      },
+      "india": "Traces."
+    },
+    {
+      "id": "mine",
+      "band": "upstream",
+      "title": "Mine",
+      "text": "No digging is needed for the clays. A salt solution, usually ammonium sulphate, is pumped into the hillside; it washes the rare earths off the clay and drains out at the bottom, where they are precipitated as a mixed carbonate. The method is cheap and can foul soil and water.",
+      "shares": {
+        "caption": "Mine output, all rare earths, 2025",
+        "rows": [
+          [
+            "China",
+            69
+          ],
+          [
+            "United States",
+            13
+          ],
+          [
+            "Australia",
+            7
+          ],
+          [
+            "Myanmar",
+            6
+          ]
+        ]
+      },
+      "india": "2,900 tonnes of rare-earth oxide in 2025, 0.7% of the world, all from monazite in beach sands worked by IREL."
+    },
+    {
+      "id": "crack",
+      "band": "process",
+      "title": "Dissolve",
+      "text": "The mixed carbonate from the clays is dissolved in hydrochloric acid and filtered. There is no hard mineral to break down, and little of the thorium that comes with monazite. What is left is a mixed rare-earth chloride: all the elements still together."
+    },
+    {
+      "id": "separate",
+      "band": "process",
+      "title": "Separate",
+      "form": {
+        "name": "Thulium oxide",
+        "label": "99.9% pure",
+        "content": 99.9
+      },
+      "text": "This is the hard part. Neighbouring rare earths behave almost identically, so the solution is run through hundreds of solvent-extraction stages, each shifting the balance slightly, until thulium comes out on its own as an oxide. China does about 91% of the world's separation.",
+      "india": "None."
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "Thulium oxide is doped into laser fibre and crystals. For radiography, thulium metal is irradiated in a reactor to make thulium-170, which gives off soft X-rays.",
+      "india": "None."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Thulium fibre lasers work at a wavelength water absorbs strongly, which suits surgery and kidney-stone treatment. Thulium-170 sources power portable X-ray units that need no electricity.",
+      "india": "IREL seeks 0.14 tonnes of thulium oxide."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Very little is recovered from old products: each one holds grams, spread thin and hard to collect. Scrap from the factories that make these materials is the main source."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Rare Earths",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-rare-earths.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "mineral": "Titanium",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Ilmenite",
+        "label": "about half titanium dioxide",
+        "content": 50
+      },
+      "text": "Titanium is mined as two dark, heavy minerals: ilmenite (iron titanium oxide) and the richer but rarer rutile. Rivers and waves have sorted them into beach and dune sands in Australia, Mozambique, South Africa and India. Hard-rock ilmenite is mined in China, Canada and Norway.",
+      "shares": {
+        "caption": "World ilmenite reserves",
+        "rows": [
+          [
+            "Australia",
+            35
+          ],
+          [
+            "China",
+            22
+          ],
+          [
+            "Canada",
+            10
+          ],
+          [
+            "India",
+            3
+          ]
+        ]
+      },
+      "india": "15 Mt of ilmenite reserves, about 3% of the world."
+    },
+    {
+      "id": "mine",
+      "band": "upstream",
+      "title": "Mine and sort",
+      "text": "Sands are dredged or scraped up and run down spirals, where the heavy grains separate from quartz. Magnets and electrostatic plates then split the heavy fraction into ilmenite, rutile, zircon and monazite.",
+      "out": [
+        "Zircon, the source of zirconium and hafnium",
+        "Monazite, the source of rare earths such as neodymium and cerium"
+      ],
+      "shares": {
+        "caption": "Ilmenite output, 2025",
+        "rows": [
+          [
+            "China",
+            34
+          ],
+          [
+            "Mozambique",
+            20
+          ],
+          [
+            "South Africa",
+            14
+          ],
+          [
+            "Australia",
+            8
+          ]
+        ]
+      },
+      "india": "240,000 tonnes of ilmenite in 2025, 2.6% of the world."
+    },
+    {
+      "id": "upgrade",
+      "band": "process",
+      "title": "Upgrade",
+      "form": {
+        "name": "Slag or synthetic rutile",
+        "label": "85 to 95% titanium dioxide",
+        "content": 90
+      },
+      "text": "Ilmenite is too iron-rich to use directly. It is smelted in an electric furnace into titania slag, or leached into synthetic rutile.",
+      "out": [
+        "Pig iron, from the slag furnace"
+      ]
+    },
+    {
+      "id": "chlorinate",
+      "band": "process",
+      "title": "Chlorinate",
+      "text": "The upgraded feed is reacted with chlorine and coke at about 1,000°C. Titanium leaves as a vapour, titanium tetrachloride, which is condensed and distilled to a clear, pure liquid. Everything after this starts from that liquid.",
+      "chem": "TiO₂ + 2Cl₂ + C → TiCl₄ + CO₂",
+      "india": "KMML runs the chloride route at Chavara, Kerala."
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "form": {
+        "name": "Titanium sponge",
+        "label": "99.7% titanium",
+        "content": 99.7
+      },
+      "text": "Two roads. Burn the tetrachloride in oxygen and it becomes titanium dioxide, the white pigment. React it with molten magnesium (the Kroll process) and it becomes porous titanium sponge, which is melted under vacuum into ingots.",
+      "chem": "TiCl₄ + 2Mg → Ti + 2MgCl₂",
+      "shares": {
+        "caption": "Sponge output, 2025",
+        "rows": [
+          [
+            "China",
+            70
+          ],
+          [
+            "Japan",
+            14
+          ],
+          [
+            "Russia",
+            7
+          ],
+          [
+            "Kazakhstan",
+            4
+          ],
+          [
+            "Saudi Arabia",
+            3
+          ]
+        ]
+      },
+      "india": "KMML made 300 tonnes of sponge in 2025 from a 500 t/yr plant."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Most titanium never becomes metal: it is the white in paint, plastic and paper. The metal, as strong as steel at little more than half the weight and immune to sea water, goes into airframes, jet engines, armour, implants and chemical plant.",
+      "india": "Pigment, and alloys for defence and space."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Machining an aircraft part can turn most of the ingot into chips. That scrap is cleaned and remelted, and is a large part of the metal supply. Pigment is not recovered."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Titanium Mineral Concentrates",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-titanium-minerals.pdf"
+    },
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Titanium and Titanium Dioxide",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-titanium.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

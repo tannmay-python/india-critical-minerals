@@ -8,10 +8,13 @@
 .jr-form b { font-weight: 650; color: var(--ink); }
 .jr-text { font-size: 0.92rem; line-height: 1.5; color: var(--ink); }
 .jr-chem { font-size: var(--text-sm); font-weight: 620; letter-spacing: 0.01em; color: var(--ink); background: var(--surface-2); border-radius: var(--radius-sm); padding: 6px 9px; align-self: flex-start; }
-.jr-alt, .jr-out { position: relative; padding-left: 20px; font-size: var(--text-sm); line-height: 1.45; color: var(--ink-2); }
+.jr-alt, .jr-out, .jr-in { position: relative; padding-left: 20px; font-size: var(--text-sm); line-height: 1.45; color: var(--ink-2); }
 .jr-alt::before, .jr-out::before { content: ""; position: absolute; left: 2px; top: 0.3em; width: 9px; height: 7px; border-left: 1.5px solid var(--band); border-bottom: 1.5px solid var(--band); border-bottom-left-radius: 3px; }
 .jr-alt::after, .jr-out::after { content: ""; position: absolute; left: 9px; top: calc(0.3em + 4px); width: 5px; height: 5px; border-top: 1.5px solid var(--band); border-right: 1.5px solid var(--band); transform: rotate(45deg); }
-.jr-out a { font-weight: 600; }
+.jr-out a, .jr-in a { font-weight: 600; }
+/* what joins the chain: an arrow coming in */
+.jr-in::before { content: ""; position: absolute; left: 1px; top: calc(0.72em - 0.75px); width: 11px; height: 1.5px; background: var(--band); }
+.jr-in::after { content: ""; position: absolute; left: 7px; top: calc(0.72em - 3.25px); width: 5px; height: 5px; border-top: 1.5px solid var(--band); border-right: 1.5px solid var(--band); transform: rotate(45deg); }
 
 /* a hundred cells: of a hundred parts, this many are the element */
 .jr-waffle { flex: none; display: grid; grid-template-columns: repeat(10, 5px); gap: 1px; }

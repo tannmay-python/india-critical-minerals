@@ -1,0 +1,121 @@
+{
+  "mineral": "Yttrium",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Yttrium in ion-adsorption clay",
+        "label": "up to two-thirds of the rare earths in the richest clays",
+        "content": 65
+      },
+      "text": "The seventeen rare earths always occur together, never alone. The heavy ones, yttrium among them, are scarce in the hard-rock ores. Their main source is ion-adsorption clay in southern China and Myanmar, where they cling loosely to weathered granite. It is only about 0.12% of the rare earths in Mountain Pass bastnäsite. China and Myanmar mined most of the 10,000 to 15,000 tonnes produced in 2025.",
+      "shares": {
+        "caption": "World reserves, all rare earths",
+        "rows": [
+          [
+            "China",
+            59
+          ],
+          [
+            "Brazil",
+            15
+          ],
+          [
+            "Australia",
+            8
+          ],
+          [
+            "Russia",
+            5
+          ],
+          [
+            "Vietnam",
+            5
+          ]
+        ]
+      },
+      "india": "Xenotime in beach sands. Lignite ash at Neyveli holds about 300 mg/kg of yttrium."
+    },
+    {
+      "id": "mine",
+      "band": "upstream",
+      "title": "Mine",
+      "text": "No digging is needed for the clays. A salt solution, usually ammonium sulphate, is pumped into the hillside; it washes the rare earths off the clay and drains out at the bottom, where they are precipitated as a mixed carbonate. The method is cheap and can foul soil and water.",
+      "shares": {
+        "caption": "Mine output, all rare earths, 2025",
+        "rows": [
+          [
+            "China",
+            69
+          ],
+          [
+            "United States",
+            13
+          ],
+          [
+            "Australia",
+            7
+          ],
+          [
+            "Myanmar",
+            6
+          ]
+        ]
+      },
+      "india": "2,900 tonnes of rare-earth oxide in 2025, 0.7% of the world, all from monazite in beach sands worked by IREL."
+    },
+    {
+      "id": "crack",
+      "band": "process",
+      "title": "Dissolve",
+      "text": "The mixed carbonate from the clays is dissolved in hydrochloric acid and filtered. There is no hard mineral to break down, and little of the thorium that comes with monazite. What is left is a mixed rare-earth chloride: all the elements still together."
+    },
+    {
+      "id": "separate",
+      "band": "process",
+      "title": "Separate",
+      "form": {
+        "name": "Yttrium oxide",
+        "label": "99.9% pure",
+        "content": 99.9
+      },
+      "text": "This is the hard part. Neighbouring rare earths behave almost identically, so the solution is run through hundreds of solvent-extraction stages, each shifting the balance slightly, until yttrium comes out on its own as an oxide. China does about 91% of the world's separation.",
+      "india": "IREL makes yttrium oxide in small quantity. China has kept yttrium under export control since April 2025."
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "Yttrium oxide is blended with zirconia to make yttria-stabilised zirconia, grown with alumina into YAG laser crystals, or fired with europium and cerium into phosphors.",
+      "india": "Small; mostly imported."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Yttria-stabilised zirconia coats jet-engine turbine blades against heat and is the electrolyte in solid-oxide fuel cells and oxygen sensors. YAG is the workhorse laser crystal and the phosphor that turns blue LEDs white.",
+      "india": "IREL seeks 6 tonnes of yttrium oxide."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Very little is recovered from old products: each one holds grams, spread thin and hard to collect. Scrap from the factories that make these materials is the main source."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Yttrium",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-yttrium.pdf"
+    },
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Rare Earths",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-rare-earths.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

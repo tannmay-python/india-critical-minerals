@@ -1,0 +1,101 @@
+{
+  "mineral": "Tellurium",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Copper ore",
+        "label": "a few grams of tellurium a tonne",
+        "content": 0.0005
+      },
+      "text": "Tellurium is one of the rarest elements in the Earth's crust. It has no mines of its own. It occurs as traces in copper sulphide ores, a few grams a tonne, and travels with the copper all the way through the smelter.",
+      "in": [
+        "Hidden in copper ores"
+      ]
+    },
+    {
+      "id": "host",
+      "band": "upstream",
+      "title": "Ride with copper",
+      "text": "Copper ore is mined, floated and smelted. Tellurium stays dissolved in the copper until the last step, electrorefining, where the copper plates onto the cathode and tellurium falls to the cell floor in the anode slime.",
+      "india": "Hindalco at Dahej and Kutch Copper at Mundra produce the slime."
+    },
+    {
+      "id": "extract",
+      "band": "process",
+      "title": "Extract",
+      "text": "The slime is first leached to remove copper. Tellurium is then dissolved with caustic soda or precipitated as copper telluride, and separated from the selenium, gold and silver in the same slime.",
+      "out": [
+        "Selenium, gold, silver and platinum-group metals, from the same slime"
+      ],
+      "india": "Hindalco lists CSIR-IMMT's slime-recovery process as implemented, but publishes no volumes."
+    },
+    {
+      "id": "refine",
+      "band": "process",
+      "title": "Refine",
+      "form": {
+        "name": "Refined tellurium",
+        "label": "99.99% pure",
+        "content": 99.99
+      },
+      "text": "The tellurium solution is purified and the metal plated out by electrolysis. For solar cells it is refined further, by vacuum distillation and zone refining, to 99.999% or better.",
+      "shares": {
+        "caption": "Refinery output, 2025",
+        "rows": [
+          [
+            "China",
+            80
+          ],
+          [
+            "Russia",
+            7
+          ],
+          [
+            "Japan",
+            6
+          ],
+          [
+            "Sweden",
+            5
+          ],
+          [
+            "Canada",
+            3
+          ]
+        ]
+      }
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "High-purity tellurium is reacted with cadmium to make cadmium telluride powder, which is evaporated onto glass as the light-absorbing layer of a thin-film solar panel. With bismuth it makes bismuth telluride for thermoelectric coolers.",
+      "india": "None."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Cadmium telluride solar panels are the main use. Thermoelectric devices that cool or generate power with no moving parts come next. Small additions make steel and copper easier to machine.",
+      "india": "First Solar's 3.3 GW cadmium telluride plant in Tamil Nadu is a buyer."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Solar-panel makers take back old panels and recover the tellurium and cadmium from the film. Other uses scatter it too thinly to collect."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Tellurium",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-tellurium.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

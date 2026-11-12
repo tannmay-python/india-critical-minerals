@@ -1,0 +1,91 @@
+{
+  "mineral": "Cadmium",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Zinc concentrate",
+        "label": "a few tenths of 1% cadmium",
+        "content": 0.3
+      },
+      "text": "Cadmium has no mines of its own. It replaces a little of the zinc in sphalerite, the main zinc ore: a few kilograms in every tonne of zinc concentrate.",
+      "in": [
+        "Hidden in zinc ores"
+      ]
+    },
+    {
+      "id": "host",
+      "band": "upstream",
+      "title": "Ride with zinc",
+      "text": "Zinc ore is mined, floated and sent to a smelter, where the concentrate is roasted and dissolved in sulphuric acid. Cadmium dissolves along with the zinc.",
+      "india": "Hindustan Zinc's smelting carries cadmium, but the Indian Bureau of Mines recorded no domestic production in 2020-21 or 2021-22."
+    },
+    {
+      "id": "extract",
+      "band": "process",
+      "title": "Extract",
+      "text": "Before zinc can be plated out, the solution must be cleaned. Zinc dust is stirred in, and cadmium, being the less reactive metal, drops out as a sponge. Smelters must remove it either way: cadmium is toxic and would spoil the zinc.",
+      "chem": "Cd²⁺ + Zn → Cd + Zn²⁺"
+    },
+    {
+      "id": "refine",
+      "band": "process",
+      "title": "Refine",
+      "form": {
+        "name": "Refined cadmium",
+        "label": "99.99% pure",
+        "content": 99.99
+      },
+      "text": "The sponge is dissolved again and plated by electrolysis, or distilled, since cadmium boils at only 767°C. It is cast into sticks and balls.",
+      "shares": {
+        "caption": "Refinery output, 2025",
+        "rows": [
+          [
+            "China",
+            41
+          ],
+          [
+            "South Korea",
+            19
+          ],
+          [
+            "Japan",
+            6
+          ],
+          [
+            "Canada",
+            6
+          ],
+          [
+            "Kazakhstan",
+            5
+          ]
+        ]
+      }
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Nickel-cadmium batteries take the most: rugged cells for aircraft, railways and backup power. Cadmium telluride is the absorber in thin-film solar panels. Pigments, coatings and alloys take the rest, though many of these uses are restricted because cadmium is toxic.",
+      "india": "Imported 6,374 tonnes in 2021-22, mainly from South Korea, Japan and Russia."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Nickel-cadmium batteries are collected and the cadmium distilled out for reuse; rules in many countries require it. Old cadmium telluride panels are taken back by their makers."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Cadmium",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-cadmium.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

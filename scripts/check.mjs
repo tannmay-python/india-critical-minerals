@@ -103,6 +103,33 @@ async function proseParity() {
 
 // ---------------------------------------------------------------------------------------- copy
 const BANNED = ['pivotal', 'landmark', 'game-changer', 'robust', 'cutting-edge', 'poised to', 'testament to', 'it is worth noting', 'essentially', 'simply put', 'in other words', 'delve', 'leverage the power', 'seamless', 'unlock'];
+// 2b. Journeys: one per mineral, well formed.
+{
+  const core = await json(path.join(ROOT, 'public/data/core.json'));
+  const names = new Set(core.minerals.map((m) => m.name));
+  const dir = path.join(ROOT, 'src/journeys');
+  const files = (await readdir(dir)).filter((f) => f.endsWith('.json'));
+  const bands = new Set(['upstream', 'process', 'make', 'recycle', 'research', 'demand']);
+  const bad = [];
+  for (const f of files) {
+    const j = await json(path.join(dir, f));
+    if (j.mineral + '.json' !== f || !names.has(j.mineral)) bad.push(`${f}: not a mineral on the site`);
+    if (!j.sources?.length) bad.push(`${f}: no sources`);
+    const ids = new Set();
+    for (const s of j.steps ?? []) {
+      if (!s.id || ids.has(s.id) || !s.title || !s.text || !bands.has(s.band)) bad.push(`${f}: step ${s.id} is incomplete`);
+      ids.add(s.id);
+      if (s.form && !(s.form.content >= 0 && s.form.content <= 100)) bad.push(`${f}: ${s.id} content out of range`);
+      if (s.shares && s.shares.rows.reduce((t, r) => t + r[1], 0) > 101) bad.push(`${f}: ${s.id} shares add up to more than 100`);
+      if (/\u2014/.test(JSON.stringify(s))) bad.push(`${f}: ${s.id} has an em dash`);
+      if (s.text.split(/\s+/).length > 75) bad.push(`${f}: ${s.id} text is over 75 words`);
+    }
+    if ((j.steps ?? []).length < 4) bad.push(`${f}: fewer than four steps`);
+  }
+  const missing = [...names].filter((n) => !files.includes(n + '.json'));
+  check(`journeys: ${files.length} files, every mineral has one, all well formed`, bad.length === 0 && missing.length === 0, [...bad, ...missing.map((n) => `no journey for ${n}`)].join(' | '));
+}
+
 async function walk(dir) {
   const out = [];
   for (const e of await readdir(dir, { withFileTypes: true })) {

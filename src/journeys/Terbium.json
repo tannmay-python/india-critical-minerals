@@ -1,0 +1,117 @@
+{
+  "mineral": "Terbium",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Terbium in ion-adsorption clay",
+        "label": "about 1% of the rare earths in clays",
+        "content": 1
+      },
+      "text": "The seventeen rare earths always occur together, never alone. The heavy ones, terbium among them, are scarce in the hard-rock ores. Their main source is ion-adsorption clay in southern China and Myanmar, where they cling loosely to weathered granite. It is among the scarcest of the rare earths in every ore.",
+      "shares": {
+        "caption": "World reserves, all rare earths",
+        "rows": [
+          [
+            "China",
+            59
+          ],
+          [
+            "Brazil",
+            15
+          ],
+          [
+            "Australia",
+            8
+          ],
+          [
+            "Russia",
+            5
+          ],
+          [
+            "Vietnam",
+            5
+          ]
+        ]
+      },
+      "india": "Minute traces in monazite."
+    },
+    {
+      "id": "mine",
+      "band": "upstream",
+      "title": "Mine",
+      "text": "No digging is needed for the clays. A salt solution, usually ammonium sulphate, is pumped into the hillside; it washes the rare earths off the clay and drains out at the bottom, where they are precipitated as a mixed carbonate. The method is cheap and can foul soil and water.",
+      "shares": {
+        "caption": "Mine output, all rare earths, 2025",
+        "rows": [
+          [
+            "China",
+            69
+          ],
+          [
+            "United States",
+            13
+          ],
+          [
+            "Australia",
+            7
+          ],
+          [
+            "Myanmar",
+            6
+          ]
+        ]
+      },
+      "india": "2,900 tonnes of rare-earth oxide in 2025, 0.7% of the world, all from monazite in beach sands worked by IREL."
+    },
+    {
+      "id": "crack",
+      "band": "process",
+      "title": "Dissolve",
+      "text": "The mixed carbonate from the clays is dissolved in hydrochloric acid and filtered. There is no hard mineral to break down, and little of the thorium that comes with monazite. What is left is a mixed rare-earth chloride: all the elements still together."
+    },
+    {
+      "id": "separate",
+      "band": "process",
+      "title": "Separate",
+      "form": {
+        "name": "Terbium oxide",
+        "label": "99.9% pure",
+        "content": 99.9
+      },
+      "text": "This is the hard part. Neighbouring rare earths behave almost identically, so the solution is run through hundreds of solvent-extraction stages, each shifting the balance slightly, until terbium comes out on its own as an oxide. China does about 91% of the world's separation.",
+      "india": "An IREL pilot with token output."
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "Terbium oxide is reduced to metal or terbium-iron alloy for magnets, where it does the same job as dysprosium with about half the quantity. It is also fired into green phosphor powders.",
+      "india": "None."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "High-temperature NdFeB magnets take most of it. Terbium gives the green in fluorescent lamps and screens, and with dysprosium and iron forms Terfenol-D, an alloy that changes length in a magnetic field, used in sonar.",
+      "india": "IREL wants to buy 200 tonnes of terbium oxide."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Grinding dust and offcuts from magnet factories are reprocessed. Magnets in old motors, drives and turbines are rarely recovered yet: they are small, glued in and scattered across many products."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Rare Earths",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-rare-earths.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

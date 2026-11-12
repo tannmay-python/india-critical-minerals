@@ -1,0 +1,96 @@
+{
+  "mineral": "Hafnium",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Zircon",
+        "label": "about 1% hafnium",
+        "content": 1.2
+      },
+      "text": "Hafnium has no ore of its own. It is zirconium's chemical twin and hides inside every grain of zircon, at about one part hafnium to fifty of zirconium. Zircon comes from heavy-mineral beach sands.",
+      "in": [
+        "Hidden in zircon, the zirconium mineral"
+      ]
+    },
+    {
+      "id": "host",
+      "band": "upstream",
+      "title": "Ride with zircon",
+      "text": "Zircon is dredged with the titanium minerals and sorted out by gravity, magnets and electrostatic plates. Most of it is used as a mineral in ceramics, and the hafnium inside is never separated.",
+      "shares": {
+        "caption": "Zircon output, 2025",
+        "rows": [
+          [
+            "Australia",
+            33
+          ],
+          [
+            "South Africa",
+            23
+          ],
+          [
+            "Mozambique",
+            13
+          ],
+          [
+            "United States",
+            8
+          ],
+          [
+            "China",
+            8
+          ]
+        ]
+      }
+    },
+    {
+      "id": "separate",
+      "band": "process",
+      "title": "Separate",
+      "form": {
+        "name": "Hafnium oxide",
+        "label": "99% pure",
+        "content": 99
+      },
+      "text": "Hafnium is made only where nuclear-grade zirconium is made. Reactor fuel tubes need zirconium that lets neutrons pass, and hafnium absorbs them, so it is stripped out by solvent extraction. That happens in a handful of plants in France, the United States, Russia and China.",
+      "india": "IREL has a process that makes 99% pure hafnium oxide from the Nuclear Fuel Complex's zirconium waste stream."
+    },
+    {
+      "id": "reduce",
+      "band": "process",
+      "title": "Reduce and refine",
+      "form": {
+        "name": "Hafnium crystal bar",
+        "label": "99.9% pure",
+        "content": 99.9
+      },
+      "text": "The oxide is chlorinated and reduced with molten magnesium to a porous sponge, as titanium and zirconium are. For the purest metal the sponge is reacted with iodine and decomposed on a hot wire, which grows a bar of hafnium crystals.",
+      "india": "C-MET and VSSC run a 320 kg/yr hafnium sponge pilot for the space programme."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Superalloys take the most: a per cent or so of hafnium keeps turbine blades from cracking at the grain boundaries. Because it absorbs neutrons, it makes reactor control rods. A layer of hafnium oxide a few atoms thick insulates the gate of every advanced transistor.",
+      "india": "Space, defence and nuclear programmes; commercial supply is imported."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Hafnium comes back only inside superalloy scrap, which is remelted. The supply cannot grow faster than demand for nuclear-grade zirconium."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Zirconium and Hafnium",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-zirconium-hafnium.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

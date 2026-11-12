@@ -15,6 +15,8 @@ export interface JourneyStep {
   text: string;
   /** one line of chemistry, where a reaction is the heart of the step */
   chem?: string;
+  /** what joins the chain here, such as the host metal of a by-product; names of minerals on this site become links */
+  in?: string[];
   /** another road that some of the material takes from here */
   alt?: string;
   /** who holds this step: a caption and rows of [name, per cent] */

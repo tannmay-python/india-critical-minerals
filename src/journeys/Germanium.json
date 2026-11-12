@@ -1,0 +1,78 @@
+{
+  "mineral": "Germanium",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Zinc concentrate",
+        "label": "a few hundred grams of germanium a tonne at best",
+        "content": 0.03
+      },
+      "text": "Germanium has no ore of its own. It hides in sphalerite, the main zinc mineral, at a few hundred grams a tonne in the richer deposits, and in some coals. It is recovered only as a by-product.",
+      "in": [
+        "Hidden in zinc ores and some coals"
+      ]
+    },
+    {
+      "id": "host",
+      "band": "upstream",
+      "title": "Ride with zinc",
+      "text": "Zinc ore is mined and floated to a concentrate, which goes to a zinc smelter. Germanium ends up in the residues left when the zinc is leached out. In China, germanium-rich lignite is burnt and the germanium collected from the fly ash.",
+      "india": "No Indian zinc smelter runs a germanium recovery circuit."
+    },
+    {
+      "id": "extract",
+      "band": "process",
+      "title": "Extract",
+      "form": {
+        "name": "Germanium tetrachloride",
+        "label": "a liquid, 34% germanium by weight",
+        "content": 34
+      },
+      "text": "The residue is leached and the germanium precipitated as a crude concentrate. This is reacted with hydrochloric acid to make germanium tetrachloride, a liquid that boils at 84°C, so it can be distilled away from everything else."
+    },
+    {
+      "id": "refine",
+      "band": "process",
+      "title": "Refine",
+      "form": {
+        "name": "Zone-refined germanium",
+        "label": "99.999% pure or better",
+        "content": 99.999
+      },
+      "text": "The tetrachloride is reacted with water to give germanium dioxide, a white powder, which is reduced with hydrogen to metal. Bars of metal are zone-refined: a molten band is swept along the bar, carrying impurities to one end. China refines 70 to 80% of the world's germanium.",
+      "chem": "GeO₂ + 2H₂ → Ge + 2H₂O"
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "The tetrachloride itself goes to fibre makers, who add it to the glass core of optical fibre. The dioxide becomes a catalyst for PET plastic. The metal is grown into crystals and cut into lenses, windows and wafers.",
+      "india": "None."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Germanium keeps light inside optical fibre, and germanium lenses are transparent to heat, so they are the eyes of thermal cameras and night-vision sights. Germanium wafers carry the solar cells on most satellites.",
+      "india": "Defence optics, fibre and space demand, all imported."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Fibre and lens making waste much of the germanium they start with, and that scrap is routinely recovered. Decommissioned thermal optics are also reclaimed."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Germanium",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-germanium.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

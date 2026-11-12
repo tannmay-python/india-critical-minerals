@@ -1,0 +1,108 @@
+{
+  "mineral": "Potash",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Sylvinite ore",
+        "label": "20 to 30% K₂O",
+        "content": 25
+      },
+      "text": "Potash is potassium salt left when ancient seas evaporated. The beds, mostly sylvinite, a mix of potassium and sodium chloride, lie hundreds of metres to a kilometre down under Saskatchewan, Russia and Belarus. Some potash is in the brine of salt lakes such as the Dead Sea.",
+      "shares": {
+        "caption": "World reserves, of the quantified total",
+        "rows": [
+          [
+            "Russia",
+            34
+          ],
+          [
+            "Canada",
+            19
+          ],
+          [
+            "Laos",
+            17
+          ],
+          [
+            "Belarus",
+            13
+          ]
+        ]
+      },
+      "india": "About 236 Mt of potash resources in Rajasthan, not mined."
+    },
+    {
+      "id": "mine",
+      "band": "upstream",
+      "title": "Mine",
+      "text": "Boring machines cut the salt bed underground and conveyors carry it to the shaft. Where the bed is too deep, hot water is pumped down to dissolve the salt and bring it up as brine. Lake brines are evaporated in solar ponds.",
+      "shares": {
+        "caption": "Mine output, 2025",
+        "rows": [
+          [
+            "Canada",
+            31
+          ],
+          [
+            "Russia",
+            20
+          ],
+          [
+            "China",
+            13
+          ],
+          [
+            "Belarus",
+            12
+          ],
+          [
+            "Germany",
+            6
+          ]
+        ]
+      },
+      "india": "No mining."
+    },
+    {
+      "id": "process",
+      "band": "process",
+      "title": "Separate",
+      "form": {
+        "name": "Muriate of potash",
+        "label": "60% K₂O",
+        "content": 60
+      },
+      "text": "The ore is crushed and floated in saturated brine: potassium chloride lifts with the froth and common salt sinks. Solution-mined brine is cooled so that potassium chloride crystallises first. The product is muriate of potash (MOP).",
+      "out": [
+        "Common salt, returned underground or stacked"
+      ],
+      "india": "Archean makes sulphate of potash from Rann of Kutch brine."
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "MOP is compacted into granules for spreading. Some is reacted with sulphuric acid into sulphate of potash (SOP) for crops that cannot take chloride. Blenders mix potash with nitrogen and phosphate into NPK fertiliser.",
+      "india": "Imported 2.9 Mt of MOP in 2023-24; NPK is blended at home."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Almost all potash is fertiliser. Potassium is one of the three nutrients every crop needs, and nothing replaces it. A small share makes potassium chemicals for glass, soap and batteries.",
+      "india": "The annual import contract ($383 a tonne in 2026) is a price reference for the region."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Potash",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-potash.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

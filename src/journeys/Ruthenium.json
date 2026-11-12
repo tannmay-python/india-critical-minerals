@@ -1,0 +1,108 @@
+{
+  "mineral": "Ruthenium",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Ore",
+        "label": "a few grams in every tonne",
+        "content": 0.0005
+      },
+      "text": "The six platinum-group metals occur together. Most lie in a few thin layers of the Bushveld Complex in South Africa, an ancient body of once-molten rock, with more in Zimbabwe's Great Dyke. In Russia and Canada they come as a by-product of nickel and copper sulphide ore. Ruthenium is a minor part of the mix, richest in South Africa's UG2 reef.",
+      "shares": {
+        "caption": "World reserves, all six metals",
+        "rows": [
+          [
+            "South Africa",
+            83
+          ],
+          [
+            "Russia",
+            14
+          ],
+          [
+            "Zimbabwe",
+            2
+          ],
+          [
+            "United States",
+            1
+          ]
+        ]
+      },
+      "india": "No mine production."
+    },
+    {
+      "id": "mine",
+      "band": "upstream",
+      "title": "Mine",
+      "text": "The South African reefs are about a metre thick and are followed more than a kilometre underground. Miners drill and blast the narrow seam and haul the rock to the shaft. It is deep, hot and labour-intensive work.",
+      "shares": {
+        "caption": "Mine output",
+        "rows": [
+          [
+            "South Africa (more than)",
+            85
+          ]
+        ]
+      }
+    },
+    {
+      "id": "concentrate",
+      "band": "upstream",
+      "title": "Concentrate",
+      "text": "The ore is milled to powder and floated. The platinum-group metals follow the nickel and copper sulphide grains into a concentrate that is a small fraction of the rock mined."
+    },
+    {
+      "id": "smelt",
+      "band": "process",
+      "title": "Smelt",
+      "text": "An electric furnace melts the concentrate. Silicates leave as slag and the metals collect in a matte of nickel, copper and iron sulphide. A converter burns off the iron. The nickel and copper are then leached away for sale, leaving a residue rich in precious metals.",
+      "out": [
+        "Nickel, copper and cobalt"
+      ]
+    },
+    {
+      "id": "refine",
+      "band": "process",
+      "title": "Refine",
+      "form": {
+        "name": "Ruthenium powder",
+        "label": "99.9% pure or better",
+        "content": 99.9
+      },
+      "text": "The residue is dissolved in hydrochloric acid and chlorine. One by one the metals are pulled out by solvent extraction, precipitation and distillation, in a refinery where material can spend weeks or months. Ruthenium is one of the minor metals. It is distilled off as a volatile oxide and captured."
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "Ruthenium powder is pressed into sputtering targets, made into pastes for chip resistors, or loaded onto supports as a catalyst."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "A layer of ruthenium a few atoms thick sits in every hard-disk platter. Ruthenium oxide paste makes the resistors on circuit boards, and ruthenium-coated anodes make chlorine. It is a candidate for wiring in the most advanced chips.",
+      "india": "All imported, for electronics and chemicals."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Spent sputtering targets and catalysts go back to the refiner. Ruthenium in consumer electronics is too thinly spread to recover.",
+      "india": "Hindustan Platinum and other refiners recover platinum-group metals from spent catalysts. A Rs 1,500 crore recycling scheme (2025) covers catalytic converters."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Platinum-Group Metals",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-platinum-group.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

@@ -34,6 +34,7 @@ export function Journey({ journey, color }: { journey: JourneyData; color: strin
               </header>
               <p className="jr-text">{s.text}</p>
               {s.chem && <p className="jr-chem">{s.chem}</p>}
+              {s.in?.map((o) => <p className="jr-in" key={o}>{linked(o)}</p>)}
               {s.alt && <p className="jr-alt">{s.alt}</p>}
               {s.out?.map((o) => <p className="jr-out" key={o}>{linked(o)}</p>)}
               {s.shares && <Shares step={s} />}
@@ -53,7 +54,8 @@ export function Journey({ journey, color }: { journey: JourneyData; color: strin
 
 /** A hundred cells, filled from the bottom: of a hundred parts, this many are the element. */
 function Waffle({ value, label }: { value: number; label: string }) {
-  const filled = value <= 0 ? 0 : Math.max(1, Math.min(100, Math.round(value)));
+  // under a tenth of one per cent, not even one cell is filled: the grid stays empty on purpose
+  const filled = value < 0.1 ? 0 : Math.max(1, Math.min(100, Math.round(value)));
   return (
     <span className="jr-waffle" role="img" aria-label={label}>
       {Array.from({ length: 100 }, (_, k) => {

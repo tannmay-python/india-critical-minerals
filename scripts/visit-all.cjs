@@ -4,7 +4,7 @@
 //   NODE_PATH=../_work/tools/node_modules node scripts/visit-all.cjs
 const { chromium } = require("playwright");
 const BASE = process.env.BASE || "http://127.0.0.1:5190/";
-const ROUTES = ["#/", "#/?lens=groups", "#/?lens=score", "#/?lens=projects", "#/?lens=capability", "#/?lens=lists", "#/explorer", "#/explorer?group=2&sort=demand", "#explorer", "#/mineral/Copper", "#/mineral/Lithium", "#/mineral/Beryllium", "#/mineral/Promethium",
+const ROUTES = ["#/", "#/?lens=groups", "#/?lens=score", "#/?lens=projects", "#/?lens=capability", "#/?lens=lists", "#/explorer", "#/explorer?group=2&sort=demand", "#explorer", "#/mineral/Copper", "#/mineral/Tellurium", "#/mineral/Neodymium", "#/mineral/Platinum", "#/mineral/Potash", "#/mineral/Lithium", "#/mineral/Beryllium", "#/mineral/Promethium",
   "#/projects", "#/projects?show=chain", "#/projects?show=time", "#/projects?show=auctions", "#/projects?view=abroad", "#/projects?id=irel-repm-vizag",
   "#/project/kmml-chavara", "#/project/blk-off-sewell-rise-01", "#/capabilities", "#/capability/rare-earth-separation", "#/technology/ion-exchange-resins",
   "#/groups", "#/groups/2", "#/method", "#/compare?m=Copper,Germanium,Cerium", "#mineral/Gallium", "#/e/irel-repm-vizag", "#/strategy/potash-mining", "#/nope"];

@@ -1,0 +1,114 @@
+{
+  "mineral": "Antimony",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "text": "Antimony occurs as stibnite, a soft, lead-grey sulphide that forms in veins, often alongside gold. China, Russia and Tajikistan hold most of the mines.",
+      "shares": {
+        "caption": "World reserves, of the quantified total",
+        "rows": [
+          [
+            "China",
+            35
+          ],
+          [
+            "Russia",
+            15
+          ],
+          [
+            "Bolivia",
+            13
+          ],
+          [
+            "Kyrgyzstan",
+            11
+          ],
+          [
+            "Myanmar",
+            6
+          ]
+        ]
+      },
+      "india": "No mine output."
+    },
+    {
+      "id": "mine",
+      "band": "upstream",
+      "title": "Mine and float",
+      "form": {
+        "name": "Stibnite concentrate",
+        "label": "50 to 65% antimony",
+        "content": 60
+      },
+      "text": "Veins are narrow and are mined underground. The ore is crushed and floated to a stibnite concentrate; where gold is present the two are recovered together.",
+      "shares": {
+        "caption": "Mine output, 2025",
+        "rows": [
+          [
+            "China",
+            36
+          ],
+          [
+            "Russia",
+            29
+          ],
+          [
+            "Tajikistan",
+            20
+          ],
+          [
+            "Bolivia",
+            5
+          ],
+          [
+            "Myanmar",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "id": "smelt",
+      "band": "process",
+      "title": "Smelt",
+      "form": {
+        "name": "Antimony metal",
+        "label": "99.65% antimony",
+        "content": 99.65
+      },
+      "text": "The concentrate is roasted so that antimony leaves as a white oxide fume, which is caught in filter bags. The oxide is then melted with carbon to give metal. China accounts for 70 to 80% of refined antimony.",
+      "chem": "2Sb₂S₃ + 9O₂ → 2Sb₂O₃ + 6SO₂",
+      "india": "Indian smelters run on imported concentrate and export metal: India supplied 22% of US imports of unwrought antimony in 2021-24."
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "Most metal is burnt again in air to make pure antimony trioxide, a fine white powder. Some is alloyed with lead to harden it. Sodium antimonate is made for glass."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Antimony trioxide, mixed into plastics, cables and textiles, makes them slow to burn. Antimony hardens the lead in car batteries and bullets, and clears bubbles from the glass of solar panels.",
+      "india": "Flame-retardant, battery and glass makers."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Old lead-acid batteries are smelted and their antimony comes back in the recovered lead. Antimony in plastics and glass is not recovered."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Antimony",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-antimony.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "mineral": "Tantalum",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "text": "Tantalum's main ore is columbite-tantalite, known in Central Africa as coltan, found in pegmatites and in the gravels weathered from them. It is also a by-product of lithium mining in Australia and of tin smelting.",
+      "india": "No known workable deposits."
+    },
+    {
+      "id": "mine",
+      "band": "upstream",
+      "title": "Mine",
+      "text": "In DR Congo, Rwanda and Nigeria most tantalum is dug by hand from pits and stream beds by small-scale miners. Tracing where it came from, and keeping it out of armed groups' hands, shapes the whole trade. Brazil and Australia mine it mechanically.",
+      "shares": {
+        "caption": "Mine output, 2025",
+        "rows": [
+          [
+            "DR Congo",
+            52
+          ],
+          [
+            "Rwanda",
+            16
+          ],
+          [
+            "Nigeria",
+            16
+          ],
+          [
+            "Brazil",
+            8
+          ],
+          [
+            "China",
+            3
+          ]
+        ]
+      }
+    },
+    {
+      "id": "concentrate",
+      "band": "upstream",
+      "title": "Concentrate",
+      "form": {
+        "name": "Tantalite concentrate",
+        "label": "about 30% tantalum oxide",
+        "content": 30
+      },
+      "text": "The mineral is heavy, so it is washed and tabled by gravity, then cleaned with magnets."
+    },
+    {
+      "id": "refine",
+      "band": "process",
+      "title": "Dissolve and separate",
+      "text": "The concentrate is dissolved in hydrofluoric and sulphuric acid. Tantalum and niobium, chemical twins that always occur together, are pulled apart by solvent extraction. Tantalum is crystallised as a potassium fluoride salt. China is the largest processor, with about 43%.",
+      "out": [
+        "Niobium, from the same solution"
+      ]
+    },
+    {
+      "id": "reduce",
+      "band": "process",
+      "title": "Reduce",
+      "form": {
+        "name": "Tantalum powder",
+        "label": "99.9% tantalum",
+        "content": 99.9
+      },
+      "text": "The salt is reacted with molten sodium, which leaves a fine tantalum powder. For wire and sheet the powder is melted in an electron beam under vacuum.",
+      "chem": "K₂TaF₇ + 5Na → Ta + 5NaF + 2KF"
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "Powder is pressed around a tantalum wire and sintered into a porous pellet with a huge surface area: the anode of a capacitor. Tantalum is also made into sputtering targets, sheet and tube.",
+      "india": "None."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Tantalum capacitors pack more charge into less space than any other kind and are very reliable, so they are in phones, cars, pacemakers and satellites. In chips, a tantalum layer stops copper wiring from leaking into the silicon. The metal resists acid and is used in chemical plant and implants.",
+      "india": "Electronics and semiconductor demand, all imported."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Scrap from capacitor and target making is recovered, as is superalloy scrap. Tantalum in discarded electronics is mostly lost."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Tantalum",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-tantalum.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

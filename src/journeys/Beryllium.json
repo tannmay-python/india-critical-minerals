@@ -1,0 +1,114 @@
+{
+  "mineral": "Beryllium",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Bertrandite ore",
+        "label": "about 0.25% beryllium",
+        "content": 0.25
+      },
+      "text": "Beryllium has two ores. Bertrandite, in volcanic ash beds at Spor Mountain in Utah, supplies most of the world. Beryl, the mineral whose clear forms are emerald and aquamarine, is picked out of pegmatites in Brazil, China and Africa.",
+      "india": "Beryl deposits exist; exports have been banned since independence."
+    },
+    {
+      "id": "mine",
+      "band": "upstream",
+      "title": "Mine",
+      "text": "The Utah deposit is mined from open pits. Beryl occurs as scattered crystals and is mostly sorted by hand.",
+      "shares": {
+        "caption": "Mine output, 2025",
+        "rows": [
+          [
+            "United States",
+            53
+          ],
+          [
+            "Brazil",
+            19
+          ],
+          [
+            "China",
+            18
+          ],
+          [
+            "Nigeria",
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "extract",
+      "band": "process",
+      "title": "Extract",
+      "form": {
+        "name": "Beryllium hydroxide",
+        "label": "about 21% beryllium",
+        "content": 21
+      },
+      "text": "Bertrandite is leached with sulphuric acid. Beryl is tougher: it must first be melted, quenched and baked before acid will attack it. Solvent extraction then pulls beryllium from the solution, and it is precipitated as beryllium hydroxide. One American company handles 50 to 70% of the world's processing."
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "Most hydroxide is smelted with copper into a master alloy, later diluted to make beryllium-copper with about 2% beryllium. For pure metal the hydroxide is turned into fluoride and reduced with magnesium. Beryllium dust is toxic to breathe, so every step is enclosed.",
+      "chem": "BeF₂ + Mg → Be + MgF₂",
+      "india": "BARC's plant at Vashi has made beryllium metal and components since 1982; there is no commercial production."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Beryllium-copper is as strong as steel, springs back without tiring and conducts electricity: the contacts in phones, cars and aircraft connectors. Pure beryllium is lighter than aluminium and stiffer than steel, and goes into satellite structures, space-telescope mirrors and reactor parts.",
+      "shares": {
+        "caption": "Use in the United States, 2025",
+        "rows": [
+          [
+            "Consumer electronics",
+            29
+          ],
+          [
+            "Aerospace and defence",
+            24
+          ],
+          [
+            "Industrial components",
+            17
+          ],
+          [
+            "Automotive electronics",
+            9
+          ],
+          [
+            "Energy",
+            8
+          ],
+          [
+            "Other",
+            13
+          ]
+        ]
+      },
+      "india": "Space, defence and atomic-energy programmes."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Machining scrap from alloy and metal parts is collected and remelted, and makes up a good part of supply. Beryllium in small electronic contacts is not recovered."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Beryllium",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-beryllium.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

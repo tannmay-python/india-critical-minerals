@@ -1,0 +1,87 @@
+{
+  "mineral": "Bismuth",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "text": "Bismuth is seldom mined for itself. It occurs in small amounts in lead, tungsten, tin and copper ores, and nearly all of it is recovered when those metals are refined.",
+      "in": [
+        "Hidden in lead and tungsten ores"
+      ]
+    },
+    {
+      "id": "host",
+      "band": "upstream",
+      "title": "Ride with lead",
+      "text": "Lead ore is mined, floated and smelted to crude lead bullion. The bismuth dissolves in the molten lead and stays there. At tungsten mines in China it is floated off as a separate concentrate.",
+      "india": "No extraction or refining."
+    },
+    {
+      "id": "extract",
+      "band": "process",
+      "title": "Extract",
+      "text": "Calcium and magnesium are stirred into the molten lead. They bind the bismuth into a crust that floats and is skimmed off. In electrolytic lead refining the bismuth is left behind in the anode slime instead."
+    },
+    {
+      "id": "refine",
+      "band": "process",
+      "title": "Refine",
+      "form": {
+        "name": "Refined bismuth",
+        "label": "99.99% pure",
+        "content": 99.99
+      },
+      "text": "The crust is melted and treated with chlorine to remove the calcium, magnesium and lead, then refined with caustic soda. The result is a brittle, silvery-pink metal.",
+      "shares": {
+        "caption": "Refinery output, 2025",
+        "rows": [
+          [
+            "China",
+            88
+          ],
+          [
+            "South Korea",
+            6
+          ],
+          [
+            "Japan",
+            3
+          ],
+          [
+            "Laos",
+            3
+          ]
+        ]
+      }
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "Much of the metal is dissolved in nitric acid and made into bismuth chemicals: salts for medicines, pearly pigments for cosmetics, yellow pigments for paint. The rest is cast into low-melting alloys."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Bismuth is the heavy metal that is not poisonous. It is the active ingredient in stomach remedies, gives pearl effect to cosmetics, and replaces lead in solder, plumbing brass and shot. Its alloys melt at low temperatures and are the plugs in fire sprinklers.",
+      "india": "The pharmaceutical industry is the main user; all bismuth is imported."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Little is recovered. Medicines and cosmetics are consumed, and the bismuth in solder and alloys is too thinly spread. Some alloy scrap is remelted."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Bismuth",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-bismuth.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "mineral": "Promethium",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "Not in the ground",
+      "text": "Promethium is the one rare earth that cannot be mined. Every form of it is radioactive and decays within years, so whatever the Earth started with is long gone. At any moment the whole crust holds well under a kilogram, made fleetingly by uranium decay."
+    },
+    {
+      "id": "make",
+      "band": "process",
+      "title": "Make in a reactor",
+      "text": "Promethium has to be manufactured. It forms when uranium splits in a nuclear reactor, and it can also be made by bombarding neodymium with neutrons. The useful form is promethium-147, with a half-life of 2.6 years.",
+      "in": [
+        "Made from uranium or from neodymium targets"
+      ]
+    },
+    {
+      "id": "separate",
+      "band": "process",
+      "title": "Separate",
+      "text": "The irradiated material is intensely radioactive and is handled by remote arms behind thick shielding. Promethium is separated from its rare-earth neighbours by chromatography and recovered as oxide or chloride. The US Department of Energy's isotope programme is the only commercial supplier.",
+      "shares": {
+        "caption": "Commercial supply",
+        "rows": [
+          [
+            "United States (more than)",
+            85
+          ]
+        ]
+      },
+      "india": "No production."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Promethium-147 gives off beta particles and almost no penetrating radiation. That makes it a safe power source for small nuclear batteries that run for years, a source for gauges that measure the thickness of film and paper, and the energy behind some luminous paint.",
+      "india": "Not tracked in India's critical-minerals policy; any use would be imported."
+    },
+    {
+      "id": "decay",
+      "band": "recycle",
+      "title": "Decay",
+      "text": "Promethium cannot be recycled or stockpiled. Half of any quantity turns into samarium every 2.6 years, so supply has to be made continuously.",
+      "out": [
+        "Samarium, as the decay product"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "mineral": "Indium",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Zinc concentrate",
+        "label": "tens to hundreds of grams of indium a tonne",
+        "content": 0.01
+      },
+      "text": "Indium has no ore of its own. It occurs in sphalerite, the main zinc mineral, at tens to a few hundred grams a tonne, and in some tin and copper ores. It is recovered only as a by-product.",
+      "in": [
+        "Hidden in zinc ores"
+      ]
+    },
+    {
+      "id": "host",
+      "band": "upstream",
+      "title": "Ride with zinc",
+      "text": "Zinc ore is mined and floated, and the concentrate goes to a smelter. As the zinc is roasted and leached, indium collects in the dusts and residues. Only smelters with an indium circuit catch it; the rest lose it to waste.",
+      "india": "Indian zinc smelters report no indium recovery."
+    },
+    {
+      "id": "extract",
+      "band": "process",
+      "title": "Extract",
+      "form": {
+        "name": "Indium sponge",
+        "label": "about 99% indium",
+        "content": 99
+      },
+      "text": "The residue is leached with acid, and solvent extraction pulls out the indium. It is then precipitated onto zinc or aluminium plates as a spongy metal, a step called cementation."
+    },
+    {
+      "id": "refine",
+      "band": "process",
+      "title": "Refine",
+      "form": {
+        "name": "Refined indium",
+        "label": "99.99% pure",
+        "content": 99.99
+      },
+      "text": "The sponge is melted, cast into anodes and electrorefined. Vacuum distillation and zone refining take it further for semiconductors.",
+      "shares": {
+        "caption": "Refinery output, 2025",
+        "rows": [
+          [
+            "China",
+            69
+          ],
+          [
+            "South Korea",
+            16
+          ],
+          [
+            "Japan",
+            6
+          ],
+          [
+            "Canada",
+            4
+          ]
+        ]
+      }
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "Most indium is oxidised, mixed with one part in ten of tin oxide, and pressed and fired into ceramic tiles of indium tin oxide (ITO). These are the targets from which a thin film is sputtered onto glass.",
+      "india": "None."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "ITO is the rare material that is both transparent and electrically conductive, so it forms the invisible electrodes of every flat screen and touch panel. Indium also goes into solders, into thin-film solar cells and into indium phosphide chips for fibre networks.",
+      "india": "Display and electronics demand, all imported."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Sputtering puts only about a third of a target onto the glass. The rest, the spent target and the coating on the chamber walls, is collected and refined again, mostly in Japan, South Korea and China. Indium in old screens is rarely recovered."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Indium",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-indium.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "mineral": "Nickel",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Ore",
+        "label": "1 to 2% nickel",
+        "content": 1.5
+      },
+      "text": "Nickel comes in two kinds of deposit. Laterite is red tropical soil where weathering has concentrated nickel near the surface: Indonesia, the Philippines, New Caledonia. Sulphide ore lies deep in old igneous rock: Russia, Canada, Australia. Laterites hold 54% of known resources, sulphides 35%.",
+      "shares": {
+        "caption": "World reserves",
+        "rows": [
+          [
+            "Indonesia",
+            44
+          ],
+          [
+            "Australia",
+            18
+          ],
+          [
+            "Brazil",
+            11
+          ],
+          [
+            "Russia",
+            6
+          ]
+        ]
+      },
+      "india": "Most of India's 189 Mt nickel resource sits in the overburden of the Sukinda chromite mines in Odisha."
+    },
+    {
+      "id": "mine",
+      "band": "upstream",
+      "title": "Mine",
+      "text": "Laterite is stripped from the surface with excavators, a few metres at a time, and trucked or barged to the plant. Sulphide ore is mined underground, crushed and floated into a concentrate.",
+      "shares": {
+        "caption": "Mine output, 2025",
+        "rows": [
+          [
+            "Indonesia",
+            67
+          ],
+          [
+            "Philippines",
+            7
+          ],
+          [
+            "Russia",
+            5
+          ],
+          [
+            "Canada",
+            4
+          ],
+          [
+            "New Caledonia",
+            4
+          ]
+        ]
+      },
+      "india": "None."
+    },
+    {
+      "id": "smelt",
+      "band": "process",
+      "title": "Smelt or leach",
+      "form": {
+        "name": "Nickel pig iron",
+        "label": "8 to 15% nickel",
+        "content": 12
+      },
+      "text": "Three routes. Rich laterite is melted in an electric furnace into nickel pig iron for stainless steel. Lean laterite is leached with acid under pressure, giving a mixed hydroxide for batteries. Sulphide concentrate is smelted to matte, as copper is.",
+      "out": [
+        "Cobalt, from laterite leaching and sulphide refining"
+      ],
+      "india": "Indonesia leads the growth in all three routes."
+    },
+    {
+      "id": "refine",
+      "band": "process",
+      "title": "Refine",
+      "form": {
+        "name": "Refined nickel",
+        "label": "99.8% nickel",
+        "content": 99.8
+      },
+      "text": "Matte and mixed hydroxide are dissolved and purified by solvent extraction. The solution is plated as pure nickel metal or crystallised as nickel sulphate, the battery chemical.",
+      "india": "Nicomet refines about 6,000 t/yr of imported feed."
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "Most nickel is melted with iron and chromium into stainless steel. Sulphate is co-precipitated with cobalt and manganese into battery precursor, where China has more than 95% of capacity. Metal goes into superalloys and plating.",
+      "india": "Stainless steel makers run on imported nickel."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Stainless steel takes most of the world's nickel: kitchens, chemical plants, buildings, rail coaches. Batteries are the fastest-growing use. Jet engines and gas turbines need nickel superalloys.",
+      "india": "Stainless steel is the main use."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Stainless steel scrap goes straight back into the furnace with its nickel, which makes nickel one of the most recycled metals. Battery black mass is a newer source."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Nickel",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-nickel.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

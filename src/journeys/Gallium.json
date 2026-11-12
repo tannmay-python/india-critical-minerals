@@ -1,0 +1,101 @@
+{
+  "mineral": "Gallium",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Bauxite",
+        "label": "about 50 grams of gallium a tonne",
+        "content": 0.005
+      },
+      "text": "Gallium has no ore of its own. It is spread thinly through bauxite, the ore of aluminium, at about 50 grams a tonne, and through zinc ores. It is only ever recovered as a by-product.",
+      "in": [
+        "Hidden in aluminium and zinc ores"
+      ]
+    },
+    {
+      "id": "host",
+      "band": "upstream",
+      "title": "Ride with alumina",
+      "text": "Bauxite is mined for aluminium and dissolved in hot caustic soda (the Bayer process). The alumina is taken out and the liquor is used again and again, and with each cycle gallium builds up in it.",
+      "india": "India made 8.2 Mt of alumina in 2025, and its liquor carries gallium that is not yet recovered."
+    },
+    {
+      "id": "extract",
+      "band": "process",
+      "title": "Extract",
+      "form": {
+        "name": "Primary gallium",
+        "label": "99.99% pure",
+        "content": 99.99
+      },
+      "text": "A side stream of the liquor is passed through ion-exchange resin or a solvent that grabs gallium and lets aluminium pass. The gallium is washed off and plated out by electrolysis as crude metal. Few alumina refineries bother, which is why supply is so concentrated.",
+      "shares": {
+        "caption": "Primary gallium output",
+        "rows": [
+          [
+            "China",
+            99
+          ]
+        ]
+      },
+      "india": "NALCO and the Heavy Water Board broke ground on an ion-exchange demonstration plant at Damanjodi in November 2025."
+    },
+    {
+      "id": "purify",
+      "band": "process",
+      "title": "Purify",
+      "form": {
+        "name": "High-purity gallium",
+        "label": "99.9999% pure or better",
+        "content": 99.9999
+      },
+      "text": "Chips need far purer metal. Gallium melts at 30°C, so it is purified by slowly freezing it again and again: impurities stay in the liquid and are poured off.",
+      "india": "C-MET purifies gallium to 99.9999%."
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "Gallium is combined with arsenic and grown into gallium arsenide crystals, which are sliced into wafers. For gallium nitride it is first made into a gas, trimethylgallium, and deposited atom by atom onto a wafer.",
+      "india": "No commercial wafer production."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Gallium arsenide and gallium nitride handle high frequencies and high power that silicon cannot: the radio chips in every phone, radar, fast chargers, and every LED. In the United States, integrated circuits take 73% and optoelectronics 26%.",
+      "shares": {
+        "caption": "Use in the United States, 2025",
+        "rows": [
+          [
+            "Integrated circuits",
+            73
+          ],
+          [
+            "LEDs, lasers, solar cells",
+            26
+          ]
+        ]
+      },
+      "india": "Semiconductor and defence demand, all imported."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Most of the gallium in a crystal is lost as sawdust and offcuts when wafers are cut and polished. That factory scrap is collected and refined again and is a large part of supply. Gallium in old devices is not recovered."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Gallium",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-gallium.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

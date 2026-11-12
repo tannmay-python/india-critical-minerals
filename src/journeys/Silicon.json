@@ -1,0 +1,93 @@
+{
+  "mineral": "Silicon",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Quartz",
+        "label": "47% silicon",
+        "content": 47
+      },
+      "text": "Silicon is the second most plentiful element in the Earth's crust, and its ore is quartz. Scarcity is not the issue. What matters is very pure lump quartz, cheap electricity to smelt it, and the know-how to purify it.",
+      "india": "Quartz is available."
+    },
+    {
+      "id": "smelt",
+      "band": "process",
+      "title": "Smelt",
+      "form": {
+        "name": "Silicon metal",
+        "label": "about 99% silicon",
+        "content": 99
+      },
+      "text": "Quartz is loaded with coal, coke and wood chips into an electric arc furnace at about 2,000°C. The carbon strips the oxygen and molten silicon is tapped off. Each tonne takes about 12 megawatt-hours of electricity.",
+      "chem": "SiO₂ + 2C → Si + 2CO",
+      "shares": {
+        "caption": "Silicon metal output, 2025",
+        "rows": [
+          [
+            "China",
+            87
+          ],
+          [
+            "Brazil",
+            4
+          ],
+          [
+            "Norway",
+            3
+          ],
+          [
+            "France",
+            1
+          ]
+        ]
+      },
+      "india": "Ferrosilicon only, 59,000 tonnes of silicon content in 2025. No silicon metal is made."
+    },
+    {
+      "id": "purify",
+      "band": "process",
+      "title": "Purify",
+      "form": {
+        "name": "Polysilicon",
+        "label": "99.9999% pure or better",
+        "content": 99.9999
+      },
+      "text": "For solar cells and chips, silicon metal is reacted with hydrogen chloride into trichlorosilane, a liquid that can be distilled until almost nothing else is left. The vapour is then decomposed on heated rods, where pure silicon grows as grey polysilicon.",
+      "chem": "SiHCl₃ + H₂ → Si + 3HCl",
+      "india": "None yet. China dominates polysilicon."
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Grow and slice",
+      "text": "Polysilicon is melted in a quartz crucible and a single crystal is pulled slowly from the melt as a cylinder two metres long. Diamond wire slices it into wafers thinner than a fingernail.",
+      "india": "A solar scheme has awarded 15.4 GW of integrated capacity, from polysilicon or wafer onward."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Wafers become solar cells and computer chips. Most silicon metal never gets that far: it is alloyed into aluminium for engine blocks and wheels, or made into silicones for sealants, rubber and oils.",
+      "india": "213 GW of solar module capacity and 32 GW of cell capacity run on imported polysilicon and wafers."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Sawdust from wafer slicing and off-grade crystal are remelted. Old solar panels are recycled mainly for their glass and aluminium; getting the silicon back at useful purity is still at pilot scale."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Silicon",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-silicon.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

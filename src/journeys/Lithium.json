@@ -1,0 +1,147 @@
+{
+  "mineral": "Lithium",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Spodumene ore",
+        "label": "about 1% lithium oxide",
+        "content": 1
+      },
+      "text": "Lithium has two homes. Hard rock: the mineral spodumene, in coarse granite veins called pegmatites, mostly in Australia. Brine: salty groundwater under the salt flats of Chile and Argentina, where lithium has collected over millions of years. Clays hold more, not yet mined at scale.",
+      "shares": {
+        "caption": "World reserves",
+        "rows": [
+          [
+            "Chile",
+            25
+          ],
+          [
+            "Australia",
+            23
+          ],
+          [
+            "China",
+            12
+          ],
+          [
+            "Argentina",
+            12
+          ],
+          [
+            "United States",
+            12
+          ]
+        ]
+      }
+    },
+    {
+      "id": "mine",
+      "band": "upstream",
+      "title": "Mine",
+      "form": {
+        "name": "Spodumene concentrate",
+        "label": "6% lithium oxide",
+        "content": 6
+      },
+      "text": "Pegmatite is mined from open pits, crushed, and the spodumene floated or sunk away from the waste. Brine is pumped into shallow ponds and left in the sun for a year or more, until the lithium is strong enough to process.",
+      "shares": {
+        "caption": "Mine output, 2025",
+        "rows": [
+          [
+            "Australia",
+            32
+          ],
+          [
+            "China",
+            21
+          ],
+          [
+            "Chile",
+            19
+          ],
+          [
+            "Zimbabwe",
+            10
+          ],
+          [
+            "Argentina",
+            8
+          ]
+        ]
+      },
+      "india": "No production. Lohum began mining spodumene in Zimbabwe in September 2026."
+    },
+    {
+      "id": "refine",
+      "band": "process",
+      "title": "Convert",
+      "form": {
+        "name": "Lithium carbonate or hydroxide",
+        "label": "99.5% pure, battery grade",
+        "content": 99.5
+      },
+      "text": "Spodumene is roasted at about 1,050°C so its crystals open up, baked with sulphuric acid and leached with water. The solution is cleaned of iron, calcium and magnesium, then lithium is thrown down as carbonate with soda ash, or made into hydroxide.",
+      "chem": "Li₂SO₄ + Na₂CO₃ → Li₂CO₃ + Na₂SO₄",
+      "out": [
+        "Sodium sulphate and leached rock residue"
+      ],
+      "india": "Lohum runs a 1,000 t/yr refinery on battery scrap and spodumene. China refines most of the world's lithium chemicals."
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "The salts go into two battery parts. Cathode powder: lithium baked with iron phosphate (LFP) or with nickel, manganese and cobalt (NMC). Electrolyte: the salt LiPF₆ dissolved in solvents. China makes about 85% of cathode materials.",
+      "india": "GFCL makes the electrolyte salt LiPF₆. Cathode plants are being built."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Nearly nine-tenths of lithium now goes into rechargeable batteries for electric vehicles, grid storage and electronics. The older uses remain: heat-proof glass and ceramics, and lubricating grease.",
+      "shares": {
+        "caption": "End use, 2025",
+        "rows": [
+          [
+            "Batteries",
+            88
+          ],
+          [
+            "Ceramics and glass",
+            4
+          ],
+          [
+            "Greases",
+            2
+          ],
+          [
+            "Other",
+            6
+          ]
+        ]
+      },
+      "india": "Cell manufacturing is at an early stage."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Spent cells are shredded into black mass, a powder of cathode and anode. Acid leaching then recovers lithium along with nickel and cobalt. Volumes are small today because most electric-vehicle batteries are still on the road.",
+      "out": [
+        "Black mass also yields cobalt, nickel and graphite"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Lithium",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-lithium.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

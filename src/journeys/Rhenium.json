@@ -1,0 +1,117 @@
+{
+  "mineral": "Rhenium",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Molybdenite",
+        "label": "a few hundred grams of rhenium a tonne",
+        "content": 0.03
+      },
+      "text": "Rhenium is one of the rarest elements in the Earth's crust. It has no ore of its own: it sits inside molybdenite, the molybdenum mineral, in porphyry copper deposits, at a few hundred grams a tonne of molybdenite.",
+      "in": [
+        "Hidden in molybdenum, which is itself a by-product of copper"
+      ]
+    },
+    {
+      "id": "host",
+      "band": "upstream",
+      "title": "Ride with copper and molybdenum",
+      "text": "Copper ore is mined and floated, and the molybdenite is floated off from the copper concentrate. Rhenium is a by-product of a by-product: it comes only from copper mines that recover molybdenum.",
+      "shares": {
+        "caption": "Mine output, 2025",
+        "rows": [
+          [
+            "Chile",
+            37
+          ],
+          [
+            "China",
+            25
+          ],
+          [
+            "Poland",
+            12
+          ],
+          [
+            "United States",
+            12
+          ],
+          [
+            "Uzbekistan",
+            9
+          ]
+        ]
+      },
+      "india": "No copper-molybdenum mine with rhenium recovery."
+    },
+    {
+      "id": "roast",
+      "band": "process",
+      "title": "Roast and catch",
+      "text": "When molybdenite is roasted, rhenium turns into an oxide that boils off with the furnace gas. Only roasters fitted with gas scrubbers catch it: the gas is washed with water, and the rhenium is pulled from the wash by ion exchange.",
+      "out": [
+        "Molybdenum oxide, the roaster's main product"
+      ]
+    },
+    {
+      "id": "refine",
+      "band": "process",
+      "title": "Crystallise",
+      "form": {
+        "name": "Ammonium perrhenate",
+        "label": "69% rhenium",
+        "content": 69
+      },
+      "text": "The rhenium is crystallised as ammonium perrhenate, a white salt and the form in which rhenium is traded. Heating the salt in hydrogen gives rhenium metal powder.",
+      "chem": "2NH₄ReO₄ + 7H₂ → 2Re + 2NH₃ + 8H₂O"
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "Metal powder is pressed into pellets and melted into nickel superalloys, at 3 to 6% of the alloy, which are cast as single crystals into turbine blades. The salt is loaded with platinum onto alumina pellets as a catalyst."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Rhenium lets turbine blades run hotter without creeping, and hotter engines burn less fuel. Superalloys take about 80% and the platinum-rhenium catalysts that make high-octane petrol about 15%.",
+      "shares": {
+        "caption": "End use",
+        "rows": [
+          [
+            "Jet-engine superalloys",
+            80
+          ],
+          [
+            "Refinery catalysts",
+            15
+          ],
+          [
+            "Other",
+            5
+          ]
+        ]
+      },
+      "india": "Aero-engine programmes need it; all of it is imported."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Rhenium is expensive enough that little is wasted. Worn turbine blades and foundry scrap are remelted or chemically stripped, and spent catalysts are returned to the refiner."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Rhenium",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-rhenium.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

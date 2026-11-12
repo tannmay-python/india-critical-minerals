@@ -1,0 +1,67 @@
+{
+  "mineral": "Scandium",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Host ore or residue",
+        "label": "tens of grams of scandium a tonne",
+        "content": 0.005
+      },
+      "text": "Scandium is not rare, but it almost never concentrates. It is spread at tens of grams a tonne through nickel laterites, titanium and zirconium ores, bauxite residue and coal ash. No mine is worked for scandium alone.",
+      "in": [
+        "Hidden in nickel, titanium and aluminium ores"
+      ],
+      "india": "Present in the red mud from 8.2 Mt a year of alumina and in coal fly ash."
+    },
+    {
+      "id": "host",
+      "band": "upstream",
+      "title": "Ride with another metal",
+      "text": "Scandium is recovered from the waste streams of other industries: the acid liquor of nickel laterite plants in the Philippines, the waste acid of titanium pigment plants in China and Canada, old tailings.",
+      "india": "NALCO has a fly-ash pilot (50 kg a day, August 2026) and plans a red-mud pilot."
+    },
+    {
+      "id": "extract",
+      "band": "process",
+      "title": "Extract",
+      "form": {
+        "name": "Scandium oxide",
+        "label": "99.9% pure",
+        "content": 99.9
+      },
+      "text": "Solvent extraction or ion-exchange resin pulls scandium out of a large volume of dilute acid. It is stripped, precipitated as oxalate and heated to give scandium oxide, a white powder. The world made about 80 tonnes of it in 2025."
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "The oxide is converted to fluoride and reduced with calcium to metal, which is dissolved into aluminium as a master alloy with 2% scandium. Oxide is also blended into zirconia to make fuel-cell electrolyte.",
+      "india": "CSIR-NML is researching aluminium-scandium alloys."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "A fraction of a per cent of scandium makes aluminium far stronger and lets it be welded without losing strength, for aircraft and spacecraft. Scandia-stabilised zirconia is the electrolyte in solid-oxide fuel cells that power data centres and backup systems.",
+      "india": "Aerospace and defence alloy users."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "None to speak of: too little is in use, and it is thinly spread through alloys."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Scandium",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-scandium.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

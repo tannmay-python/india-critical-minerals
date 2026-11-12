@@ -1,0 +1,125 @@
+{
+  "mineral": "Molybdenum",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "text": "Molybdenum occurs as molybdenite (MoS₂), a soft grey sulphide, in the same porphyry deposits that hold most of the world's copper. A few mines dig it for its own sake; much of the rest is a by-product of copper mining.",
+      "in": [
+        "Often mined with copper"
+      ],
+      "shares": {
+        "caption": "World reserves",
+        "rows": [
+          [
+            "China",
+            46
+          ],
+          [
+            "United States",
+            21
+          ],
+          [
+            "Chile",
+            15
+          ],
+          [
+            "Russia",
+            6
+          ],
+          [
+            "Peru",
+            6
+          ]
+        ]
+      }
+    },
+    {
+      "id": "mine",
+      "band": "upstream",
+      "title": "Mine and float",
+      "form": {
+        "name": "Molybdenite concentrate",
+        "label": "over 50% molybdenum",
+        "content": 55
+      },
+      "text": "Ore is mined from open pits and floated. At copper mines the first float carries copper and molybdenum together; a second float then sinks the copper and lifts the molybdenite on its own.",
+      "shares": {
+        "caption": "Mine output, 2025",
+        "rows": [
+          [
+            "China",
+            37
+          ],
+          [
+            "Chile",
+            16
+          ],
+          [
+            "United States",
+            15
+          ],
+          [
+            "Peru",
+            15
+          ],
+          [
+            "Mexico",
+            7
+          ]
+        ]
+      },
+      "india": "No mine output; depends on imports."
+    },
+    {
+      "id": "roast",
+      "band": "process",
+      "title": "Roast",
+      "form": {
+        "name": "Technical oxide",
+        "label": "about 57% molybdenum",
+        "content": 57
+      },
+      "text": "The concentrate is roasted in air at about 600°C in a multi-level furnace. Sulphur burns off and leaves technical molybdenum oxide, the form in which most molybdenum is traded.",
+      "chem": "2MoS₂ + 7O₂ → 2MoO₃ + 4SO₂",
+      "out": [
+        "Rhenium, caught from the roaster gas",
+        "Sulphur dioxide, captured as sulphuric acid"
+      ]
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "Most oxide is added straight to steel furnaces as briquettes, or first reduced with iron into ferromolybdenum. A smaller share is purified into chemicals: catalysts, lubricants and pure metal powder.",
+      "india": "Imports oxide and ferromolybdenum."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Molybdenum makes steel stronger and harder at high temperature and helps stainless steel resist corrosion. Oil refineries use it in the catalysts that strip sulphur from fuel.",
+      "india": "Steel and about 249 Mt a year of oil refining create the demand."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Molybdenum returns inside alloy and stainless steel scrap. Spent refinery catalysts are a separate, rich source and are processed for their molybdenum, vanadium and nickel.",
+      "out": [
+        "Spent catalysts also yield vanadium and nickel"
+      ],
+      "india": "Rubamin recovers about 1,500 t/yr of molybdenum from spent catalysts."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Molybdenum",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-molybdenum.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

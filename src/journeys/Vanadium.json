@@ -1,0 +1,112 @@
+{
+  "mineral": "Vanadium",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Magnetite ore",
+        "label": "under 2% vanadium",
+        "content": 1
+      },
+      "text": "Vanadium is spread through certain iron ores, the titanium-bearing magnetites of China, Russia and South Africa, where it makes up less than 2% of the rock. It also occurs in oil, coal and uranium sandstone.",
+      "shares": {
+        "caption": "World reserves",
+        "rows": [
+          [
+            "Australia",
+            47
+          ],
+          [
+            "China",
+            27
+          ],
+          [
+            "Russia",
+            23
+          ],
+          [
+            "South Africa",
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "mine",
+      "band": "upstream",
+      "title": "Mine with iron",
+      "form": {
+        "name": "Vanadium slag",
+        "label": "10 to 25% vanadium pentoxide",
+        "content": 18
+      },
+      "text": "Most vanadium is a co-product of steel. The magnetite is mined as iron ore and smelted in a blast furnace; vanadium dissolves in the molten iron. Blowing oxygen through the iron then moves it into a slag, which is skimmed off.",
+      "shares": {
+        "caption": "Mine output, 2025",
+        "rows": [
+          [
+            "China",
+            75
+          ],
+          [
+            "Russia",
+            19
+          ],
+          [
+            "Brazil",
+            5
+          ]
+        ]
+      },
+      "india": "Steelworks produce some vanadium-bearing slag."
+    },
+    {
+      "id": "roast",
+      "band": "process",
+      "title": "Roast and leach",
+      "form": {
+        "name": "Vanadium pentoxide",
+        "label": "98% pure",
+        "content": 98
+      },
+      "text": "The slag is roasted with soda or salt at about 1,000°C, which turns vanadium into a form that dissolves in water. It is leached out, precipitated with ammonium salts and heated to give vanadium pentoxide flake.",
+      "alt": "A second supply comes from waste: oil-refinery residues, spent catalysts and power-station ash are leached the same way."
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "form": {
+        "name": "Ferrovanadium",
+        "label": "about 80% vanadium",
+        "content": 80
+      },
+      "text": "Most pentoxide is reduced with aluminium, in a reaction that supplies its own heat, to make ferrovanadium for steelmakers. Purer oxide is dissolved in sulphuric acid as battery electrolyte, or alloyed with aluminium for titanium alloys.",
+      "chem": "3V₂O₅ + 10Al → 6V + 5Al₂O₃"
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "More than 90% goes into steel. A fraction of a per cent makes reinforcing bar and structural steel much stronger. Vanadium catalysts make sulphuric acid, and vanadium flow batteries store grid power for hours.",
+      "india": "By-products from steel slag and petroleum ash meet 20 to 30% of consumption; the rest is imported."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Vanadium returns in alloy-steel scrap. Spent refinery catalysts are processed for vanadium, molybdenum and nickel. Flow-battery electrolyte does not wear out and can be reused."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Vanadium",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-vanadium.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

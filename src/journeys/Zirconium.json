@@ -1,0 +1,119 @@
+{
+  "mineral": "Zirconium",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Zircon",
+        "label": "about 66% zirconium dioxide",
+        "content": 66
+      },
+      "text": "Zirconium is mined as zircon (zirconium silicate), a hard, heavy grain found in the same beach and dune sands as the titanium minerals. Zircon always carries a little hafnium, zirconium's chemical twin: about one part to fifty.",
+      "in": [
+        "Mined with titanium minerals"
+      ],
+      "shares": {
+        "caption": "World reserves",
+        "rows": [
+          [
+            "Australia",
+            79
+          ],
+          [
+            "South Africa",
+            8
+          ],
+          [
+            "Indonesia",
+            5
+          ]
+        ]
+      }
+    },
+    {
+      "id": "mine",
+      "band": "upstream",
+      "title": "Mine and sort",
+      "text": "Zircon is a co-product of mineral-sands mining. Spirals separate the heavy grains from quartz; magnets and electrostatic plates then split zircon from ilmenite, rutile and monazite.",
+      "shares": {
+        "caption": "Zircon output, 2025",
+        "rows": [
+          [
+            "Australia",
+            33
+          ],
+          [
+            "South Africa",
+            23
+          ],
+          [
+            "Mozambique",
+            13
+          ],
+          [
+            "United States",
+            8
+          ],
+          [
+            "China",
+            8
+          ]
+        ]
+      },
+      "india": "IREL and KMML recover zircon from beach sands, but India imports most of what it uses (about 95,000 t in 2021-22)."
+    },
+    {
+      "id": "mill",
+      "band": "make",
+      "title": "Mill",
+      "text": "Most zircon is used as the mineral, with no chemistry at all: ground to a fine white flour that makes ceramic tiles and sanitaryware opaque, or used as sand for foundry moulds and furnace linings."
+    },
+    {
+      "id": "crack",
+      "band": "process",
+      "title": "Crack",
+      "text": "For chemicals and metal, zircon must be broken open: fused with caustic soda, or reacted with chlorine and coke. This gives zirconium oxychloride and tetrachloride, the starting points for zirconia and zirconium chemicals.",
+      "chem": "ZrSiO₄ + 4Cl₂ + 4C → ZrCl₄ + SiCl₄ + 4CO"
+    },
+    {
+      "id": "separate",
+      "band": "process",
+      "title": "Separate hafnium",
+      "text": "Reactor fuel tubes must let neutrons pass. Zirconium does; hafnium absorbs them. So nuclear-grade zirconium has the hafnium stripped out by solvent extraction, down to a few parts in ten thousand, in France, the United States, Russia and China.",
+      "out": [
+        "Hafnium, the only source of it"
+      ],
+      "india": "The Nuclear Fuel Complex runs the full chain: about 1,140 t of nuclear-grade oxide in 2021-22."
+    },
+    {
+      "id": "metal",
+      "band": "make",
+      "title": "Make metal",
+      "form": {
+        "name": "Zirconium sponge",
+        "label": "99.5% zirconium",
+        "content": 99.5
+      },
+      "text": "Purified tetrachloride is reduced with molten magnesium into zirconium sponge, as titanium is. The sponge is melted and alloyed with a little tin, iron and chromium into Zircaloy, then drawn into thin-walled tubes.",
+      "india": "NFC makes Zircaloy tubes for India's reactors."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Ceramics take the most zircon, then foundries and refractories. Zirconia goes into dental crowns, oxygen sensors and thermal coatings. The metal clads nuclear fuel and lines chemical vessels.",
+      "india": "The ceramics industry and the Department of Atomic Energy's reactors."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Zirconium and Hafnium",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-zirconium-hafnium.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

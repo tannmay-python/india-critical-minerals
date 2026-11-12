@@ -1,0 +1,108 @@
+{
+  "mineral": "Osmium",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Ore",
+        "label": "a few grams in every tonne",
+        "content": 0.0005
+      },
+      "text": "The six platinum-group metals occur together. Most lie in a few thin layers of the Bushveld Complex in South Africa, an ancient body of once-molten rock, with more in Zimbabwe's Great Dyke. In Russia and Canada they come as a by-product of nickel and copper sulphide ore. Osmium is a trace even within this group.",
+      "shares": {
+        "caption": "World reserves, all six metals",
+        "rows": [
+          [
+            "South Africa",
+            83
+          ],
+          [
+            "Russia",
+            14
+          ],
+          [
+            "Zimbabwe",
+            2
+          ],
+          [
+            "United States",
+            1
+          ]
+        ]
+      },
+      "india": "No mine production."
+    },
+    {
+      "id": "mine",
+      "band": "upstream",
+      "title": "Mine",
+      "text": "The South African reefs are about a metre thick and are followed more than a kilometre underground. Miners drill and blast the narrow seam and haul the rock to the shaft. It is deep, hot and labour-intensive work.",
+      "shares": {
+        "caption": "Mine output",
+        "rows": [
+          [
+            "South Africa (more than)",
+            85
+          ]
+        ]
+      }
+    },
+    {
+      "id": "concentrate",
+      "band": "upstream",
+      "title": "Concentrate",
+      "text": "The ore is milled to powder and floated. The platinum-group metals follow the nickel and copper sulphide grains into a concentrate that is a small fraction of the rock mined."
+    },
+    {
+      "id": "smelt",
+      "band": "process",
+      "title": "Smelt",
+      "text": "An electric furnace melts the concentrate. Silicates leave as slag and the metals collect in a matte of nickel, copper and iron sulphide. A converter burns off the iron. The nickel and copper are then leached away for sale, leaving a residue rich in precious metals.",
+      "out": [
+        "Nickel, copper and cobalt"
+      ]
+    },
+    {
+      "id": "refine",
+      "band": "process",
+      "title": "Refine",
+      "form": {
+        "name": "Osmium powder",
+        "label": "99.9% pure or better",
+        "content": 99.9
+      },
+      "text": "The residue is dissolved in hydrochloric acid and chlorine. One by one the metals are pulled out by solvent extraction, precipitation and distillation, in a refinery where material can spend weeks or months. Osmium is the rarest of the six in commerce. It is distilled off as osmium tetroxide, a volatile and poisonous oxide, and captured."
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "Osmium is sold as powder or as the tetroxide. A little is alloyed with other platinum-group metals into very hard tips and pivots."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "The world uses about a tonne a year or less. Osmium tetroxide stains tissue for electron microscopes and is a catalyst in making some drugs. Hard osmium alloys tip fountain pens and instrument bearings.",
+      "india": "All imported, in very small quantities for laboratories and industry."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "The quantities are too small for organised recycling; laboratories return some tetroxide for reprocessing.",
+      "india": "Hindustan Platinum and other refiners recover platinum-group metals from spent catalysts. A Rs 1,500 crore recycling scheme (2025) covers catalytic converters."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Platinum-Group Metals",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-platinum-group.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

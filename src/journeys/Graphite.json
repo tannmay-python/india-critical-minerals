@@ -1,0 +1,125 @@
+{
+  "mineral": "Graphite",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Ore",
+        "label": "often 5 to 15% carbon",
+        "content": 10
+      },
+      "text": "Natural graphite is carbon that heat and pressure have turned into flat, stacked sheets. It occurs as flakes scattered through metamorphic rock such as schist and gneiss. The flake size and the carbon content decide what a deposit is worth.",
+      "shares": {
+        "caption": "World reserves",
+        "rows": [
+          [
+            "China",
+            32
+          ],
+          [
+            "Brazil",
+            24
+          ],
+          [
+            "Madagascar",
+            9
+          ],
+          [
+            "Mozambique",
+            8
+          ],
+          [
+            "Tanzania",
+            6
+          ],
+          [
+            "India",
+            3
+          ]
+        ]
+      },
+      "india": "8.6 Mt of reserves, 3% of the world."
+    },
+    {
+      "id": "mine",
+      "band": "upstream",
+      "title": "Mine and float",
+      "form": {
+        "name": "Flake concentrate",
+        "label": "about 95% carbon",
+        "content": 95
+      },
+      "text": "The rock is soft and is mined from open pits. It is crushed gently, so the flakes are not broken, and floated: graphite repels water and rises with the froth. Several rounds of grinding and flotation give a flake concentrate.",
+      "shares": {
+        "caption": "Mine output, 2025",
+        "rows": [
+          [
+            "China",
+            78
+          ],
+          [
+            "Madagascar",
+            4
+          ],
+          [
+            "Tanzania",
+            4
+          ],
+          [
+            "Brazil",
+            4
+          ],
+          [
+            "Mozambique",
+            3
+          ]
+        ]
+      },
+      "india": "17,000 tonnes in 2025, about 1% of the world."
+    },
+    {
+      "id": "shape",
+      "band": "process",
+      "title": "Shape and purify",
+      "form": {
+        "name": "Spherical graphite",
+        "label": "99.95% carbon",
+        "content": 99.95
+      },
+      "text": "For batteries, flake is milled into rounded particles the size of fine dust, which pack tightly. Half or more of the flake is lost as fines. The spheres are purified with acid or extreme heat, then coated with a thin layer of carbon.",
+      "alt": "Synthetic graphite takes another road: petroleum coke is baked at about 3,000°C until it turns to graphite.",
+      "india": "HEG and Graphite India graphitise coke for furnace electrodes."
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "Coated spherical graphite is the anode material: mixed into a slurry, spread on copper foil and dried, it becomes the negative electrode of a lithium-ion cell. China makes over 90% of anode material.",
+      "india": "TACC (20,000 t/yr) and Epsilon (100,000 t/yr planned) are building anode plants."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Every lithium-ion cell has a graphite anode, and it is the heaviest single material in the cell. Outside batteries, graphite lines steel furnaces as refractory brick, conducts current as electrodes, and lubricates.",
+      "india": "HEG (100,000 t) and Graphite India (80,000 t) make electrodes, mostly for export."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Little battery graphite is recovered today: recyclers chase the cathode metals and the anode is burnt or lost. Recovering it from black mass is being piloted."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Graphite (Natural)",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-graphite.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

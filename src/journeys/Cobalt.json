@@ -1,0 +1,121 @@
+{
+  "mineral": "Cobalt",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "text": "Cobalt is almost always a passenger. In the Central African Copperbelt it sits in the same sedimentary beds as copper. In Indonesia, the Philippines and Cuba it comes with nickel in laterite, the red soil left by tropical weathering. Elsewhere it rides with nickel sulphides.",
+      "shares": {
+        "caption": "World reserves",
+        "rows": [
+          [
+            "DR Congo",
+            50
+          ],
+          [
+            "Australia",
+            14
+          ],
+          [
+            "Russia",
+            7
+          ],
+          [
+            "Indonesia",
+            6
+          ],
+          [
+            "Cuba",
+            4
+          ]
+        ]
+      },
+      "india": "None on land. India holds seabed exploration contracts for nodules that carry 0.14% cobalt."
+    },
+    {
+      "id": "mine",
+      "band": "upstream",
+      "title": "Mine",
+      "text": "Copper-cobalt ore is dug from large open pits in DR Congo, and by hand in small diggings beside them. Nickel laterite is strip-mined from the surface. How much cobalt reaches the market depends on how much copper and nickel are mined.",
+      "in": [
+        "Mined with copper and nickel"
+      ],
+      "shares": {
+        "caption": "Mine output, 2025",
+        "rows": [
+          [
+            "DR Congo",
+            74
+          ],
+          [
+            "Indonesia",
+            14
+          ],
+          [
+            "Russia",
+            2
+          ]
+        ]
+      }
+    },
+    {
+      "id": "leach",
+      "band": "process",
+      "title": "Leach",
+      "form": {
+        "name": "Cobalt hydroxide",
+        "label": "about 30% cobalt",
+        "content": 30
+      },
+      "text": "Congolese ore is dissolved in sulphuric acid. Copper is taken out first by solvent extraction, then cobalt is precipitated with magnesia as a pink hydroxide cake. In Indonesia, laterite is leached under pressure and gives a mixed nickel-cobalt hydroxide.",
+      "out": [
+        "Copper cathode, from the same solution"
+      ]
+    },
+    {
+      "id": "refine",
+      "band": "process",
+      "title": "Refine",
+      "form": {
+        "name": "Cobalt metal",
+        "label": "99.8% cobalt",
+        "content": 99.8
+      },
+      "text": "The hydroxide ships mostly to China. It is dissolved again, and solvent extraction separates cobalt from nickel, manganese and the last copper. The clean solution is crystallised as cobalt sulphate for batteries or plated as metal for alloys.",
+      "india": "Nicomet and Rubamin refine imported feed and scrap, about 2,060 t/yr together."
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "Sulphate is co-precipitated with nickel and manganese into precursor, then fired with lithium into NMC cathode powder. Metal is melted into superalloys or milled with tungsten carbide as the binder in cutting tools. China makes more than 95% of battery precursor.",
+      "india": "No precursor plant at scale."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Batteries for vehicles and electronics take the largest share worldwide. Jet-engine superalloys, carbide cutting tools, magnets and catalysts take most of the rest.",
+      "india": "Imports cobalt chemicals and alloys."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Cobalt is worth recovering. Superalloy scrap is remelted, carbide tools are reprocessed, and spent batteries are leached as black mass to give back cobalt, nickel and lithium.",
+      "out": [
+        "Black mass also yields lithium and nickel"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Cobalt",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-cobalt.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

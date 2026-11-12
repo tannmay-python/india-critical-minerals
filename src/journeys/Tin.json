@@ -1,0 +1,120 @@
+{
+  "mineral": "Tin",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "text": "Tin's ore is cassiterite, a dense brown oxide that forms in veins around granite. Rivers have washed much of it out and laid it down in gravels, along a belt from Myanmar through Thailand and Malaysia to the Indonesian islands, and off their coasts.",
+      "shares": {
+        "caption": "World reserves, of the quantified total",
+        "rows": [
+          [
+            "Indonesia",
+            23
+          ],
+          [
+            "China",
+            20
+          ],
+          [
+            "Myanmar",
+            12
+          ],
+          [
+            "Brazil",
+            12
+          ],
+          [
+            "Australia",
+            10
+          ]
+        ]
+      },
+      "india": "Token quantities from small placer deposits."
+    },
+    {
+      "id": "mine",
+      "band": "upstream",
+      "title": "Mine",
+      "text": "Gravel deposits are worked with dredges and water jets, on land and on the sea bed, often by small operators. Hard-rock veins in China, Peru and Bolivia are mined underground.",
+      "shares": {
+        "caption": "Mine output, 2025",
+        "rows": [
+          [
+            "China",
+            24
+          ],
+          [
+            "Indonesia",
+            21
+          ],
+          [
+            "Peru",
+            11
+          ],
+          [
+            "Brazil",
+            10
+          ],
+          [
+            "DR Congo",
+            9
+          ]
+        ]
+      }
+    },
+    {
+      "id": "concentrate",
+      "band": "upstream",
+      "title": "Concentrate",
+      "form": {
+        "name": "Cassiterite concentrate",
+        "label": "60 to 75% tin",
+        "content": 70
+      },
+      "text": "Cassiterite is about seven times as dense as water, so it is separated by gravity: jigs and shaking tables wash the lighter sand away."
+    },
+    {
+      "id": "smelt",
+      "band": "process",
+      "title": "Smelt and refine",
+      "form": {
+        "name": "Refined tin",
+        "label": "99.9% tin",
+        "content": 99.9
+      },
+      "text": "The concentrate is melted with carbon in a furnace, which strips the oxygen and leaves crude tin. Tin melts at 232°C, so it is refined by melting it gently off its impurities, and by electrolysis for the purest grades.",
+      "chem": "SnO₂ + 2C → Sn + 2CO",
+      "india": "Domestic output, mostly from recycling, meets 10 to 20% of consumption."
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "Tin is alloyed into solder wire and paste, plated onto steel sheet to make tinplate, and reacted into organic tin chemicals. It is cast with copper into bronze."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Solder holds every circuit board together and is tin's largest use worldwide. Tinplate makes food cans, tin chemicals stabilise PVC, and tin is alloyed into the lead grids of batteries.",
+      "india": "Electronics, tinplate and chemical makers; more than 80% is imported."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Solder dross and factory scrap are remelted, tin is stripped from tinplate scrap, and it returns in recycled bronze and lead alloys. Recycled metal is a large part of supply."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Tin",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-tin.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}

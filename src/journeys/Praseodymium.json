@@ -1,0 +1,120 @@
+{
+  "mineral": "Praseodymium",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": {
+        "name": "Praseodymium in bastnäsite",
+        "label": "about 4% of the rare earths",
+        "content": 4
+      },
+      "text": "The seventeen rare earths always occur together, never alone. The light ones, praseodymium among them, come mainly from bastnäsite, mined in hard rock at Bayan Obo in China and Mountain Pass in California, and from monazite, a heavy grain in beach sands. Praseodymium sits next to neodymium and is hard to part from it.",
+      "shares": {
+        "caption": "World reserves, all rare earths",
+        "rows": [
+          [
+            "China",
+            59
+          ],
+          [
+            "Brazil",
+            15
+          ],
+          [
+            "Australia",
+            8
+          ],
+          [
+            "Russia",
+            5
+          ],
+          [
+            "Vietnam",
+            5
+          ]
+        ]
+      },
+      "india": "Monazite in the beach sands of Kerala, Tamil Nadu, Odisha and Andhra Pradesh. It is rich in the light rare earths and poor in the heavy ones."
+    },
+    {
+      "id": "mine",
+      "band": "upstream",
+      "title": "Mine",
+      "text": "Bastnäsite is mined from open pits, crushed and floated to a concentrate of about 60% rare-earth oxide. Monazite is sorted out of dredged beach sand with magnets and electrostatic plates, alongside ilmenite and zircon.",
+      "shares": {
+        "caption": "Mine output, all rare earths, 2025",
+        "rows": [
+          [
+            "China",
+            69
+          ],
+          [
+            "United States",
+            13
+          ],
+          [
+            "Australia",
+            7
+          ],
+          [
+            "Myanmar",
+            6
+          ]
+        ]
+      },
+      "india": "2,900 tonnes of rare-earth oxide in 2025, 0.7% of the world, all from monazite in beach sands worked by IREL."
+    },
+    {
+      "id": "crack",
+      "band": "process",
+      "title": "Crack",
+      "text": "The concentrate is broken down with hot acid or caustic soda so the rare earths dissolve. Monazite also releases thorium and a little uranium, which are radioactive and must be removed and stored. What is left is a mixed rare-earth chloride or carbonate: all the elements still together.",
+      "out": [
+        "Thorium and uranium, from monazite"
+      ]
+    },
+    {
+      "id": "separate",
+      "band": "process",
+      "title": "Separate",
+      "form": {
+        "name": "Praseodymium oxide",
+        "label": "99.9% pure",
+        "content": 99.9
+      },
+      "text": "This is the hard part. Neighbouring rare earths behave almost identically, so the solution is run through hundreds of solvent-extraction stages, each shifting the balance slightly, until praseodymium comes out on its own as an oxide. China does about 91% of the world's separation.",
+      "india": "Separated with neodymium at IREL and at Toyotsu in Visakhapatnam."
+    },
+    {
+      "id": "make",
+      "band": "make",
+      "title": "Make",
+      "text": "Praseodymium is usually not separated from neodymium at all: the pair is sold as NdPr oxide and reduced together to NdPr metal by molten-salt electrolysis. The metal is alloyed with iron and boron and sintered into magnets.",
+      "india": "As for neodymium: a small metal plant at Bhopal and a magnet scheme under way."
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "Almost all of it goes into NdFeB magnets, where it stands in for part of the neodymium. Small amounts colour glass and ceramics yellow-green and strengthen magnesium alloys for aircraft.",
+      "india": "As for neodymium."
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Grinding dust and offcuts from magnet factories are reprocessed. Magnets in old motors, drives and turbines are rarely recovered yet: they are small, glued in and scattered across many products."
+    }
+  ],
+  "sources": [
+    {
+      "title": "USGS, Mineral Commodity Summaries 2026: Rare Earths",
+      "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-rare-earths.pdf"
+    },
+    {
+      "title": "Takshashila, India Critical Minerals: scores, project records and capability notes (2026)"
+    }
+  ]
+}
