@@ -62,20 +62,22 @@ export function PeriodicTable({ lens, step, score }: Props) {
   const sub = core.subscores[score];
   const removed = useMemo(() => new Set(core.ptSteps.slice(0, step + 1).map((s) => s.removes).filter(Boolean) as string[]), [core, step]);
 
-  const cell = width ? (width - GAP * 17) / 18 : 0;
-  const pitch = cell + GAP;
   const narrow = width > 0 && width < 720;
+  // on a phone the grouped tiles get twice the room; the periodic layout always needs its 18 columns
+  const cols = lens === "groups" && narrow ? 9 : 18;
+  const cell = width ? (width - GAP * (cols - 1)) / cols : 0;
+  const pitch = cell + GAP;
 
   // ---- where each tile sits ------------------------------------------------------------------
   const groupOrder = [1, 2, 3, 4, 5, 6, 0];
   const labelCols = narrow ? 0 : 6; // columns reserved for the group's name and tagline
-  const perRow = 18 - labelCols;
+  const perRow = (narrow ? 9 : 18) - labelCols;
   const groupRows = useMemo(() => {
     let y = 0;
     return groupOrder.map((id) => {
       const members = core.membersOf(id);
       const rows = Math.max(1, Math.ceil(members.length / perRow));
-      const top = y + (narrow ? 0.62 : 0);
+      const top = y + (narrow ? 0.7 : 0);
       y = top + rows + 0.42;
       return { id, members, top, rows };
     });
@@ -169,7 +171,7 @@ export function PeriodicTable({ lens, step, score }: Props) {
         return (
           <a key={g.id} className="pt-group" href={href(`/groups/${g.id}`)}
             style={narrow
-              ? { transform: `translate(0px, ${(g.top - 0.62) * pitch}px)`, width: "100%" }
+              ? { transform: `translate(0px, ${(g.top - 0.7) * pitch}px)`, width: "100%" }
               : { transform: `translate(0px, ${g.top * pitch}px)`, width: labelCols * pitch - 20, minHeight: cell }}>
             <span className="pt-group-name"><i className="swatch" style={{ "--c": groupColor(g.id) } as CSSProperties} />{def.name}</span>
             {!narrow && def.tagline && <span className="pt-group-tag">{def.tagline}</span>}
