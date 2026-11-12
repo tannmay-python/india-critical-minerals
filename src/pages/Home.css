@@ -12,11 +12,11 @@
 .hero-chart figcaption { display: flex; flex-direction: column; gap: 2px; margin-bottom: 10px; }
 .hero-chart figcaption strong { font-size: var(--text-base); font-weight: 680; color: var(--plum); }
 .hero-chart figcaption span { font-size: var(--text-sm); color: var(--ink-2); }
-.lists-chart .axis { font-family: var(--font-mono); font-size: 10px; fill: var(--muted); }
-.lists-chart .end { font-size: 12px; fill: var(--ink-2); }
-.lists-chart .end.india { fill: var(--ink); font-weight: 680; }
-.lists-chart .end-n { font-variant-numeric: tabular-nums; font-weight: 680; fill: var(--ink); }
+.lists-chart .axis { font-size: 10px; fill: #9a7040; }
+.lists-chart .grid { stroke: rgba(98, 13, 60, 0.06); }
 .lists-chart circle:focus-visible { outline: none; stroke: var(--ink); stroke-width: 2; }
+.lists-key { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 14px; margin-top: 8px; font-size: 11px; color: #6b4020; }
+.lists-key li { display: flex; align-items: center; gap: 5px; }
 
 .table-section { padding-top: clamp(28px, 4vw, 48px); border-top: 1px solid var(--rule); }
 .lens-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; }

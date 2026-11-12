@@ -1,6 +1,7 @@
 // Hash routing: every view is linkable and the built site works on static hosting.
 //
 //   #/                         minerals (home)
+//   #/explorer                 all 51 minerals as cards: filter, sort, pick one
 //   #/mineral/<Name>           one mineral
 //   #/compare?m=A,B,C          side by side
 //   #/groups                   the six groups        #/groups/<id>
@@ -22,7 +23,8 @@ export interface Route {
 /** Rewrites of the hash formats used by the three source sites. */
 function legacy(raw: string): string {
   // dashboard: #overview #explorer #methodology #groups #mineral/<Name>
-  if (raw === "overview" || raw === "explorer" || raw === "") return "/";
+  if (raw === "overview" || raw === "") return "/";
+  if (raw === "explorer") return "/explorer";
   if (raw === "methodology") return "/method";
   if (raw === "groups") return "/groups";
   if (raw.startsWith("mineral/")) return "/" + raw;

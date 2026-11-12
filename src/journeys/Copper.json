@@ -1,0 +1,86 @@
+{
+  "mineral": "Copper",
+  "steps": [
+    {
+      "id": "found",
+      "band": "upstream",
+      "title": "In the ground",
+      "form": { "name": "Ore", "label": "under 1% copper", "content": 0.8 },
+      "text": "Most copper sits in porphyry deposits: vast, low-grade bodies of copper-iron sulphide (chalcopyrite, CuFeS₂) strung along the Andes and the Pacific rim. Sediment-hosted beds, such as the Central African Copperbelt, come second. The two types supply about 80% of the world's copper.",
+      "shares": { "caption": "World reserves", "rows": [["Chile", 18], ["Australia", 10], ["Peru", 9], ["DR Congo", 8], ["Russia", 8]] },
+      "india": "0.2% of world reserves. Half the ore is in Rajasthan (Khetri), then Madhya Pradesh (Malanjkhand) and Jharkhand (Singhbhum).",
+      "refs": [1, 2, 3]
+    },
+    {
+      "id": "mine",
+      "band": "upstream",
+      "title": "Mine",
+      "text": "Open pits are the main method: rock is drilled, blasted and hauled out by truck. Deeper ore bodies are worked underground. The ore is so lean that more than a hundred tonnes of it are dug for every tonne of copper.",
+      "shares": { "caption": "Mine output, 2025", "rows": [["Chile", 23], ["DR Congo", 14], ["Peru", 12], ["China", 8]] },
+      "india": "23,000 tonnes in 2025, 0.1% of the world. Hindustan Copper works four underground mines and one open pit; its ore averages 0.77% copper.",
+      "refs": [1, 2, 3]
+    },
+    {
+      "id": "concentrate",
+      "band": "upstream",
+      "title": "Concentrate",
+      "form": { "name": "Concentrate", "label": "about 28% copper", "content": 28 },
+      "text": "At the mine, ore is crushed and ground to powder, then stirred with water, air and reagents. Copper sulphide grains cling to the bubbles and float off as froth; the waste rock sinks and goes to tailings. The dried concentrate is what ships to smelters.",
+      "alt": "Oxide ores take another road. Acid leaching, solvent extraction and electrowinning turn them straight into cathode: about 22% of mined copper.",
+      "india": "Smelters here run mostly on imported concentrate. Concentrate from Indian mines averages 23% copper.",
+      "refs": [2, 3, 4]
+    },
+    {
+      "id": "smelt",
+      "band": "process",
+      "title": "Smelt",
+      "form": { "name": "Blister copper", "label": "about 99% copper", "content": 99 },
+      "text": "A furnace burns the concentrate in oxygen-enriched air. Iron leaves as slag and sulphur as gas, giving a molten matte of 50 to 70% copper. A converter then blows air through the matte until only blister copper is left.",
+      "chem": "Cu₂S + O₂ → 2Cu + SO₂",
+      "out": ["Sulphur dioxide, captured as sulphuric acid", "Iron silicate slag"],
+      "shares": { "caption": "Smelter output, 2025", "rows": [["Asia", 72], ["Europe", 14], ["Americas", 9], ["Africa", 3], ["Oceania", 2]] },
+      "refs": [2, 4]
+    },
+    {
+      "id": "refine",
+      "band": "process",
+      "title": "Refine",
+      "form": { "name": "Cathode", "label": "99.99% copper", "content": 99.99 },
+      "text": "Blister is fire-refined and cast into anodes, which hang in a bath of acid. Electric current dissolves each anode and plates its copper onto a cathode sheet. Whatever is not copper stays behind, and the valuable part sinks to the cell floor as slime.",
+      "shares": { "caption": "Refined output, 2025", "rows": [["China", 48], ["DR Congo", 10], ["Chile", 6], ["Japan", 5]] },
+      "out": ["Anode slime: gold, silver, selenium, tellurium, platinum-group metals"],
+      "india": "620,000 tonnes in 2025, 2% of the world.",
+      "refs": [1, 2, 4]
+    },
+    {
+      "id": "shape",
+      "band": "make",
+      "title": "Shape",
+      "text": "Cathode is melted and cast into the shapes factories buy. Wire rod takes nearly two-thirds. The rest becomes tube, sheet, bar and foil, or is alloyed with zinc into brass and with tin into bronze.",
+      "shares": { "caption": "First use, 2025", "rows": [["Wire", 63], ["Tube", 12], ["Plate, sheet, strip", 11], ["Rods and bars", 9], ["Foil", 5]] },
+      "refs": [2]
+    },
+    {
+      "id": "use",
+      "band": "demand",
+      "title": "Use",
+      "text": "No metal except silver conducts electricity better, so copper ends up wherever power moves: wiring and plumbing in buildings, grid cables and transformers, motors, electronics and vehicles.",
+      "shares": { "caption": "End use, 2025", "rows": [["Buildings", 25], ["Consumer goods, cooling, electronics", 22], ["Power and telecom networks", 18], ["Transport", 15], ["Industrial equipment", 11], ["Other", 9]] },
+      "refs": [2]
+    },
+    {
+      "id": "recycle",
+      "band": "recycle",
+      "title": "Recycle",
+      "text": "Copper can be melted and reused without losing quality. Clean scrap goes straight back to the mills that make rod and tube; mixed scrap returns through the smelter and refinery.",
+      "shares": { "caption": "Share of copper use, 2025", "rows": [["From scrap", 34]] },
+      "refs": [2]
+    }
+  ],
+  "sources": [
+    { "title": "USGS, Mineral Commodity Summaries 2026: Copper", "url": "https://pubs.usgs.gov/periodicals/mcs2026/mcs2026-copper.pdf" },
+    { "title": "ICSG, The World Copper Factbook 2026", "url": "https://icsg.org/copper-factbook/" },
+    { "title": "Indian Bureau of Mines, Indian Minerals Yearbook 2022: Copper", "url": "https://ibm.gov.in/writereaddata/files/1715685346664347e2b0816Copper_2022.pdf" },
+    { "title": "Schlesinger and others, Extractive Metallurgy of Copper, 6th edition (Elsevier, 2021)" }
+  ]
+}

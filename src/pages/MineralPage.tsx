@@ -1,13 +1,15 @@
-import { Fragment, useMemo, useState, type CSSProperties, type ReactNode } from "react";
+import { Fragment, useEffect, useMemo, useState, type CSSProperties, type ReactNode } from "react";
 import { useCore, useData } from "../data/store";
 import type { Capability, Mineral, MineralDetail, Project, ScoreDetail, VectorDef } from "../data/types";
 import { CHAIN_COLUMNS, Chain } from "../components/Chain";
+import { Journey } from "../components/Journey";
+import { useJourney } from "../journeys";
 import { Mark } from "../components/ProjectMark";
 import { Radar } from "../components/Radar";
 import { fixLinks } from "../content/groups";
 import { groupColor, inkOn } from "../lib/colors";
 import { fmtRange } from "../lib/format";
-import { href, mineralHref } from "../lib/router";
+import { go, href, mineralHref } from "../lib/router";
 import "./MineralPage.css";
 
 const GROUP_RANK = { active: 0, pipeline: 1, inactive: 2 } as const;
@@ -19,13 +21,29 @@ export function MineralPage({ name }: { name: string }) {
   const detail = useData<MineralDetail>(mineral ? `minerals/${mineral.name}.json` : null);
   const allProjects = useData<Project[]>("projects.json");
   const capability = useData<Capability>(mineral?.capability ? "capability.json" : null);
+  const journey = useJourney(mineral?.name);
 
   const projects = useMemo(() => {
     if (!mineral || !allProjects) return [];
     return allProjects.filter((p) => p.tagged.includes(mineral.name) && p.confidence !== "low");
   }, [mineral, allProjects]);
 
-  if (!mineral) return <main className="wrap not-found"><h1>No such mineral</h1><p><a href={href("/")}>All 51 minerals</a></p></main>;
+  // step through the minerals in alphabetical order, by the links in the bar or the arrow keys
+  const order = useMemo(() => [...core.minerals].sort((a, b) => a.name.localeCompare(b.name)), [core.minerals]);
+  const at = mineral ? order.findIndex((m) => m.name === mineral.name) : -1;
+  const prev = at >= 0 ? order[(at - 1 + order.length) % order.length] : null;
+  const next = at >= 0 ? order[(at + 1) % order.length] : null;
+  useEffect(() => {
+    const onKey = (ev: KeyboardEvent) => {
+      if (ev.metaKey || ev.ctrlKey || ev.altKey || ev.shiftKey || (ev.target as HTMLElement).closest("input, select, textarea, [contenteditable]")) return;
+      if (ev.key === "ArrowLeft" && prev) go(`/mineral/${encodeURIComponent(prev.name)}`);
+      if (ev.key === "ArrowRight" && next) go(`/mineral/${encodeURIComponent(next.name)}`);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [prev, next]);
+
+  if (!mineral) return <main className="wrap not-found"><h1>No such mineral</h1><p><a href={href("/explorer")}>All 51 minerals</a></p></main>;
 
   const group = core.group.get(mineral.group)!;
   const color = groupColor(mineral.group);
@@ -46,6 +64,11 @@ export function MineralPage({ name }: { name: string }) {
 
   return (
     <main className="mineral-page">
+      <nav className="wrap mp-step" aria-label="Minerals">
+        <a href={href("/explorer")}>All minerals</a>
+        {prev && <a className="prev" href={mineralHref(prev.name)} rel="prev">{prev.name}</a>}
+        {next && <a className="next" href={mineralHref(next.name)} rel="next">{next.name}</a>}
+      </nav>
       <header className="wrap mp-head">
         <span className="mp-tile" style={{ background: color, color: inkOn(color) }}><small className="num">{mineral.z}</small>{mineral.symbol}</span>
         <div>
@@ -54,7 +77,7 @@ export function MineralPage({ name }: { name: string }) {
         </div>
         <a className="pill mp-compare" href={href("/compare", { m: mineral.name })}>Compare</a>
       </header>
-      {mineral.capability && <p className="wrap mp-lead">{mineral.capability.nextMove}</p>}
+      {mineral.capability && <div className="wrap"><p className="mp-lead">{mineral.capability.nextMove}</p></div>}
 
       <section className="wrap mp-scores" aria-label="Scores">
         <figure className="mp-radar">
@@ -72,6 +95,7 @@ export function MineralPage({ name }: { name: string }) {
 
       <section className="wrap mp-section">
         <h2>Value chain</h2>
+        {journey && <Journey journey={journey} color={color} />}
         <Chain mineral={mineral} stages={cap?.stages ?? null} projects={projects} />
 
         {projects.length > 0 && (

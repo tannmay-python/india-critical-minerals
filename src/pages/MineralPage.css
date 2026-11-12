@@ -1,7 +1,13 @@
 .mineral-page { padding-bottom: 96px; }
 .not-found { padding-top: 80px; }
 
-.mp-head { display: flex; align-items: center; gap: 22px; padding-top: clamp(32px, 5vw, 60px); padding-bottom: 8px; }
+.mp-step { display: flex; align-items: center; gap: 22px; padding-top: 18px; font-size: var(--text-sm); font-weight: 600; }
+.mp-step a { text-decoration: none; color: var(--ink-2); display: inline-flex; align-items: center; gap: 8px; }
+.mp-step a:hover { color: var(--plum); }
+.mp-step .prev { margin-left: auto; }
+.mp-step a:first-child::before, .mp-step .prev::before, .mp-step .next::after { content: ""; width: 7px; height: 7px; border-left: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); }
+.mp-step .next::after { transform: rotate(-135deg); }
+.mp-head { display: flex; align-items: center; gap: 22px; padding-top: clamp(20px, 3vw, 36px); padding-bottom: 8px; }
 .mp-tile { position: relative; flex: none; width: 92px; height: 92px; border-radius: var(--radius); display: flex; align-items: center; justify-content: center; font-size: 2.3rem; font-weight: 700; letter-spacing: -0.02em; }
 .mp-tile small { position: absolute; left: 9px; top: 7px; font-size: 0.72rem; font-weight: 500; opacity: 0.75; letter-spacing: 0; }
 .mp-head h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); }

@@ -13,6 +13,7 @@ import { TechnologyPage } from "./pages/TechnologyPage";
 import { GroupsPage } from "./pages/GroupsPage";
 import { MethodPage } from "./pages/MethodPage";
 import { ComparePage } from "./pages/ComparePage";
+import { ExplorerPage } from "./pages/ExplorerPage";
 import { Footer } from "./components/Footer";
 import "./App.css";
 
@@ -36,7 +37,7 @@ function Routes() {
   // a new page starts at its top; changes of query within a page keep their place
   useEffect(() => { if (!(section === "groups" && route.path[1])) window.scrollTo(0, 0); }, [page]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
-    const name: Record<string, string> = { projects: "Projects", project: "Project", capabilities: "Capabilities", capability: "Capability", technology: "Technology", method: "Method", groups: "The six groups", compare: "Compare" };
+    const name: Record<string, string> = { projects: "Projects", project: "Project", capabilities: "Capabilities", capability: "Capability", technology: "Technology", method: "Method", groups: "The six groups", compare: "Compare", explorer: "Explorer" };
     const part = section === "mineral" ? decodeURIComponent(route.path[1] ?? "") : name[section];
     document.title = part ? `${part} · India Critical Minerals` : "India Critical Minerals";
   }, [section, route.path]);
@@ -48,6 +49,7 @@ function Routes() {
     case "capabilities": return <CapabilitiesPage />;
     case "method": return <MethodPage />;
     case "compare": return <ComparePage />;
+    case "explorer": return <ExplorerPage />;
     case "capability": return <CapabilityPage slug={route.path[1] ?? ""} />;
     case "technology": return <TechnologyPage slug={route.path[1] ?? ""} />;
     default: return <Home />;

@@ -1,0 +1,60 @@
+.journey { --gap: 30px; --cols: 4; --arrow: #c2a85e; margin-bottom: clamp(36px, 4vw, 56px); }
+.jr-flow { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: 0 var(--gap); }
+
+.jr-step { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 14px 16px 16px; background: var(--surface); border: 1px solid var(--rule); border-top: 3px solid var(--band); border-radius: var(--radius-sm); min-width: 0; }
+.jr-step header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; min-height: 64px; }
+.jr-step h3 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 500; letter-spacing: -0.01em; line-height: 1.1; }
+.jr-form { display: flex; flex-direction: column; margin-top: 6px; font-size: var(--text-sm); line-height: 1.3; color: var(--ink-2); }
+.jr-form b { font-weight: 650; color: var(--ink); }
+.jr-text { font-size: 0.92rem; line-height: 1.5; color: var(--ink); }
+.jr-chem { font-size: var(--text-sm); font-weight: 620; letter-spacing: 0.01em; color: var(--ink); background: var(--surface-2); border-radius: var(--radius-sm); padding: 6px 9px; align-self: flex-start; }
+.jr-alt, .jr-out { position: relative; padding-left: 20px; font-size: var(--text-sm); line-height: 1.45; color: var(--ink-2); }
+.jr-alt::before, .jr-out::before { content: ""; position: absolute; left: 2px; top: 0.3em; width: 9px; height: 7px; border-left: 1.5px solid var(--band); border-bottom: 1.5px solid var(--band); border-bottom-left-radius: 3px; }
+.jr-alt::after, .jr-out::after { content: ""; position: absolute; left: 9px; top: calc(0.3em + 4px); width: 5px; height: 5px; border-top: 1.5px solid var(--band); border-right: 1.5px solid var(--band); transform: rotate(45deg); }
+.jr-out a { font-weight: 600; }
+
+/* a hundred cells: of a hundred parts, this many are the element */
+.jr-waffle { flex: none; display: grid; grid-template-columns: repeat(10, 5px); gap: 1px; }
+.jr-waffle i { width: 5px; height: 5px; background: var(--rule); }
+.jr-waffle i.on { background: var(--el); }
+
+.jr-shares { display: grid; grid-template-columns: auto minmax(40px, 1fr) auto; gap: 4px 10px; align-items: center; margin-top: auto; padding-top: 10px; border-top: 1px solid var(--rule); font-size: var(--text-sm); line-height: 1.3; }
+.jr-shares figcaption { grid-column: 1 / -1; color: var(--muted); margin-bottom: 2px; }
+.jr-shares > div { display: contents; }
+.jr-shares span:first-child { max-width: 15ch; }
+.jr-shares i { height: 6px; border-radius: 3px; background: var(--surface-3); overflow: hidden; }
+.jr-shares b { display: block; height: 100%; border-radius: 3px; background: var(--band); }
+.jr-shares .num { text-align: right; font-weight: 620; }
+.jr-india { font-size: var(--text-sm); line-height: 1.45; color: var(--ink-2); padding-top: 10px; border-top: 1px solid var(--rule); }
+.jr-shares + .jr-india { margin-top: 0; }
+.jr-step > .jr-india:not(.jr-shares + .jr-india) { margin-top: auto; }
+.jr-india b { color: var(--plum); font-weight: 680; margin-right: 7px; }
+
+/* arrows: each box points at the next one in its row */
+.jr-step:not(:last-child)::after { content: ""; position: absolute; left: 100%; top: 26px; width: calc(var(--gap) - 6px); margin-left: 2px; height: 1.5px; background: var(--arrow); }
+.jr-step:not(:last-child)::before { content: ""; position: absolute; left: calc(100% + var(--gap) - 12px); top: 22px; width: 8px; height: 8px; border-top: 1.5px solid var(--arrow); border-right: 1.5px solid var(--arrow); transform: rotate(45deg); z-index: 1; }
+/* ...and at the end of a row the line runs back under the boxes to the start of the next row */
+.jr-turn { grid-column: 1 / -1; position: relative; height: 40px; --c: calc((100% - (var(--cols) - 1) * var(--gap)) / (2 * var(--cols))); display: none; }
+.jr-turn.four { display: block; }
+.jr-turn::before { content: ""; position: absolute; left: var(--c); right: var(--c); top: 0; height: 50%; border-right: 1.5px solid var(--arrow); border-bottom: 1.5px solid var(--arrow); border-bottom-right-radius: 8px; }
+.jr-turn::after { content: ""; position: absolute; left: var(--c); top: 50%; height: calc(50% - 3px); border-left: 1.5px solid var(--arrow); margin-top: -1.5px; }
+.jr-turn i { position: absolute; left: calc(var(--c) - 4px); bottom: 3px; width: 8px; height: 8px; border-right: 1.5px solid var(--arrow); border-bottom: 1.5px solid var(--arrow); transform: rotate(45deg); }
+.journey .jr-turn.four ~ .jr-step:last-child::after, .journey .jr-turn.four ~ .jr-step:last-child::before { display: none; }
+/* the box before a turn has no arrow to its right */
+.jr-step:has(+ .jr-turn.four)::after, .jr-step:has(+ .jr-turn.four)::before { display: none; }
+
+.jr-sources { display: flex; flex-wrap: wrap; gap: 2px 18px; margin-top: 14px; font-size: var(--text-sm); color: var(--muted); }
+.jr-sources a { color: var(--ink-2); }
+
+@media (max-width: 1080px) {
+  .journey { --cols: 2; }
+  .jr-turn { display: block; }
+  .jr-step:has(+ .jr-turn)::after, .jr-step:has(+ .jr-turn)::before { display: none; }
+}
+@media (max-width: 640px) {
+  .journey { --cols: 1; }
+  .jr-flow { gap: 26px 0; }
+  .jr-turn, .jr-turn.four { display: none; }
+  .jr-step:not(:last-child)::after { display: block; left: 28px; top: 100%; width: 1.5px; height: 20px; margin: 2px 0 0; }
+  .jr-step:not(:last-child)::before { display: block; left: 24.5px; top: calc(100% + 14px); transform: rotate(135deg); }
+}
