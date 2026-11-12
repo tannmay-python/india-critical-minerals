@@ -46,6 +46,8 @@ export function Home() {
         <p className="byline">
           {AUTHORS.map((a, i) => <span key={a.name}>{i ? " and " : ""}<a href={a.url} target="_blank" rel="noopener">{a.name}</a></span>)}
         </p>
+      </section>
+      <section className="wrap hero-rest">
         <div className="hero-body">
           <div className="prose">{INTRO.map((p, i) => <p key={i} dangerouslySetInnerHTML={{ __html: p }} />)}</div>
           <figure className="hero-chart">
@@ -91,7 +93,7 @@ export function Home() {
           )}
           {lens === "lists" && <Scale title="National lists that name the element, of five (US, EU, China, Russia, India)" stops={[1, 2, 3, 4, 5]} colors={SEQ5} />}
           {lens === "score" && (
-            <Scale title={sub.sub ? `${vec.name}: ${sub.name.toLowerCase()}. ${sub.bands ? "" : sub.note ?? ""}` : vec.what}
+            <Scale title={sub.bands ? vec.what : sub.note ?? vec.what}
               stops={sub.max === 5 ? [1, 2, 3, 4, 5] : [0, sub.max]} colors={sub.max === 5 ? SEQ5 : [SEQ5[0], SEQ5[4]]}
               low={sub.bands?.[0].label} high={sub.bands?.[sub.bands.length - 1].label} />
           )}

@@ -16,7 +16,7 @@ export function GroupMatrix() {
           <tr>
             <th />
             {groups.map((g) => (
-              <th key={g.id} scope="col"><a href={href(`/groups/${g.id}`)}><i className="swatch" style={{ "--c": groupColor(g.id) } as CSSProperties} />{g.name}</a></th>
+              <th key={g.id} scope="col"><a href={href(`/groups/${g.id}`)}><i className="swatch" style={{ "--c": groupColor(g.id) } as CSSProperties} /><span><b className="num">Group {g.id}</b> {g.name}</span></a></th>
             ))}
           </tr>
         </thead>

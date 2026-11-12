@@ -33,7 +33,11 @@ a { color: var(--plum); text-decoration-color: var(--plum-line); text-underline-
 a:hover { text-decoration-color: currentColor; }
 button, input, select, textarea { font: inherit; color: inherit; }
 button { cursor: pointer; background: none; border: 0; padding: 0; }
-:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 2px; }
+:focus-visible { outline: 2px solid var(--plum); outline-offset: 2px; border-radius: 2px; }
+.site-header :focus-visible { outline-color: var(--marigold); }
+.skip-link { position: absolute; left: 12px; top: -60px; z-index: 100; padding: 10px 14px; background: var(--ink); color: #fff; border-radius: var(--radius); text-decoration: none; }
+.skip-link:focus { top: 10px; }
+input[type="search"]::-webkit-search-cancel-button { appearance: none; }
 img, svg, canvas { display: block; max-width: 100%; }
 strong { font-weight: 650; }
 table { border-collapse: collapse; }
@@ -78,5 +82,6 @@ a.chip:hover { border-color: var(--plum); }
   box-shadow: var(--shadow-pop); padding: 10px 12px; font-size: var(--text-sm); line-height: 1.45; color: var(--ink-2);
 }
 .tip strong { display: block; color: var(--ink); font-size: var(--text-base); font-weight: 650; }
-.tip .tip-row { display: flex; justify-content: space-between; gap: 16px; }
+.tip > span { display: block; }
+.tip > .tip-row { display: flex; justify-content: space-between; gap: 16px; }
 .tip .tip-row b { color: var(--ink); font-weight: 650; font-variant-numeric: tabular-nums; }

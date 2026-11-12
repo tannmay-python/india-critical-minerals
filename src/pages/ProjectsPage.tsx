@@ -71,7 +71,7 @@ export function ProjectsPage() {
   const inYears = (p: Project) => (f.from === null && f.to === null) || (p.year !== null && (f.from === null || p.year >= f.from) && (f.to === null || p.year <= f.to));
   const pass = (p: Project, skip?: Skip) =>
     inView(p) && confirmed(p) &&
-    (skip === "stages" || !f.stages.size || p.kind === "demand" || p.stages.some((s) => f.stages.has(s))) &&
+    (skip === "stages" || !f.stages.size || p.kind === "demand" || f.stages.has(p.stage)) &&
     (skip === "groups" || f.groups.has(p.group)) &&
     (skip === "mineral" || mineralMatch(p, f.mineral)) &&
     (skip === "state" || !f.state || regionOf(p) === f.state) &&
@@ -92,6 +92,7 @@ export function ProjectsPage() {
     if (!light) return;
     const patch: Record<string, string | null> = {};
     if (light.abroad !== f.abroad) { patch.view = light.abroad ? "abroad" : null; patch.state = null; patch.stage = null; patch.show = null; }
+    if (light.kind !== "block" && show === "auctions") patch.show = null;
     if (light.kind === "demand" && !f.demand) patch.demand = "1";
     if (light.confidence === "low" && !f.unconfirmed) patch.unconfirmed = "1";
     if (!Object.keys(patch).length && !pass(light)) Object.assign(patch, { stage: null, status: null, mineral: null, state: null, scheme: null, from: null, to: null });
@@ -106,26 +107,28 @@ export function ProjectsPage() {
   });
 
   // ---- panel contents --------------------------------------------------------------------------
-  const stagesPresent = core.stages.filter((s) => s.id !== "Cells & Devices" && base.some((p) => p.stages.includes(s.id)));
+  const stagesPresent = core.stages.filter((s) => s.id !== "Cells & Devices" && base.some((p) => p.kind !== "demand" && p.stage === s.id));
+  const stageLabel = (id: string) => (id === "R&D" ? "Research" : id);
   const mineralNames = [...new Set(base.flatMap((p) => p.minerals))].sort();
   const families = (["REE", "PGE"] as const).filter((fam) => base.some((p) => mineralMatch(p, `family:${fam}`)));
   const regions = [...new Set(base.map(regionOf).filter(Boolean))].sort();
   const schemeIds = [...new Set(base.flatMap((p) => p.schemes))];
   const schemeName = (id: string) => schemes?.find((s) => s.id === id)?.name ?? id;
   const years = [...new Set([...base.map((p) => p.year), f.from, f.to].filter((y): y is number => y !== null))].sort((a, b) => a - b);
-  const nAbroad = (all ?? []).filter((p) => p.abroad && confirmed(p) && p.kind !== "demand").length;
+  const nAbroad = (all ?? []).filter((p) => p.abroad && confirmed(p) && p.kind !== "demand" && mineralMatch(p, f.mineral)).length;
   const nDemand = (all ?? []).filter((p) => p.kind === "demand" && confirmed(p)).length;
   const hasLow = (all ?? []).some((p) => p.confidence === "low");
   const labels = f.abroad ? STATUS_LABEL_ABROAD : STATUS_LABEL;
   const opt = (v: string, label: string, n: number, cur: string) => <option key={v} value={v} disabled={n === 0 && v !== cur}>{label}{n ? ` (${n})` : ""}</option>;
   const [panelOpen, setPanelOpen] = useState(false);
+  const blocks = shown.filter((p) => p.kind === "block").length;
 
   return (
     <main className={`projects show-${show}${entity ? " has-drawer" : ""}`}>
       <aside className={`panel${panelOpen ? " open" : ""}`} aria-label="Filters">
-        {f.abroad && <a className="back-link" href={href("/projects")}>India</a>}
+        {f.abroad && <a className="back-link" href={href("/projects", { mineral: f.mineral })}>India</a>}
         <div className="panel-head">
-          <p className="count"><strong>{shown.length}</strong>{filtered ? ` of ${base.length}` : ""} {f.abroad ? "assets abroad" : "sites"}</p>
+          <p className="count"><strong>{show === "auctions" ? blocks : shown.length}</strong>{filtered && show !== "auctions" ? ` of ${base.length}` : ""} {f.abroad ? "projects abroad" : show === "auctions" ? "auction blocks" : "projects"}</p>
           {filtered && <button type="button" className="link" onClick={reset}>Reset</button>}
         </div>
 
@@ -139,7 +142,7 @@ export function ProjectsPage() {
           <ul className="band-key">
             {core.bands.filter((b) => shown.some((p) => p.band === b.id)).map((b) => <li key={b.id}><i className="swatch" style={{ "--c": b.color } as CSSProperties} />{b.label}</li>)}
           </ul>
-        ) : (
+        ) : show === "auctions" ? null : (
           <div className="bands" role="group" aria-label="Stage">
             {core.bands.map((b) => {
               const chips = stagesPresent.filter((s) => core.stageBand[s.id] === b.id);
@@ -150,11 +153,11 @@ export function ProjectsPage() {
                   <div className="stage-chips">
                     {chips.map((s) => {
                       const on = f.stages.has(s.id);
-                      const n = count("stages", (p) => p.kind !== "demand" && p.stages.includes(s.id));
+                      const n = count("stages", (p) => p.kind !== "demand" && p.stage === s.id);
                       return (
                         <button key={s.id} type="button" className={`stage-chip${on ? " on" : ""}`} aria-pressed={on}
                           onClick={() => { const next = new Set(f.stages); on ? next.delete(s.id) : next.add(s.id); set({ stage: [...next] }); }}>
-                          {s.id}<span className="num">{n}</span>
+                          {stageLabel(s.id)}<span className="num">{n}</span>
                         </button>
                       );
                     })}
@@ -181,7 +184,7 @@ export function ProjectsPage() {
           )}
         </div>
 
-        {!f.abroad && (
+        {(
           <div className="selects">
             <select aria-label="Mineral" value={f.mineral} onChange={(ev) => set({ mineral: ev.target.value })}>
               <option value="">All minerals</option>
@@ -189,8 +192,8 @@ export function ProjectsPage() {
               {mineralNames.map((m) => opt(m, m, count("mineral", (p) => p.minerals.includes(m)), f.mineral))}
             </select>
             {f.mineral && core.mineral.has(f.mineral) && <a className="mineral-link" href={href(`/mineral/${encodeURIComponent(f.mineral)}`)}>{f.mineral}: scores and value chain</a>}
-            <select aria-label="State" value={f.state} onChange={(ev) => set({ state: ev.target.value })}>
-              <option value="">All states</option>
+            <select aria-label={f.abroad ? "Country" : "State"} value={f.state} onChange={(ev) => set({ state: ev.target.value })}>
+              <option value="">{f.abroad ? "All countries" : "All states"}</option>
               {regions.map((r) => opt(r, r, count("state", (p) => regionOf(p) === r), f.state))}
             </select>
             {schemeIds.length > 0 && (
@@ -216,7 +219,7 @@ export function ProjectsPage() {
         {!f.abroad && (
           <div className="checks">
             <label className="check"><input type="checkbox" checked={f.demand} onChange={(ev) => set({ demand: ev.target.checked })} />Cell plants and gallium fabs<span className="num">{nDemand}</span></label>
-            {hasLow && <label className="check"><input type="checkbox" checked={f.unconfirmed} onChange={(ev) => set({ unconfirmed: ev.target.checked })} />Unconfirmed records</label>}
+            {hasLow && <label className="check"><input type="checkbox" checked={f.unconfirmed} onChange={(ev) => set({ unconfirmed: ev.target.checked })} />Unconfirmed</label>}
           </div>
         )}
 
@@ -239,13 +242,18 @@ export function ProjectsPage() {
             ))}
           </div>
         ) : (
-          <a className="abroad-link" href={href("/projects", { view: "abroad" })}>Indian assets abroad<span className="num">{nAbroad}</span></a>
+          <a className="abroad-link" href={href("/projects", { view: "abroad", mineral: f.mineral })}>Indian projects abroad<span className="num">{nAbroad}</span></a>
         )}
         <p className="panel-foot">Updated {fmtDate(core.meta.sources.map.date)} · <a href={href("/method")}>Method and data</a></p>
       </aside>
       <button type="button" className="panel-toggle" aria-expanded={panelOpen} onClick={() => setPanelOpen(!panelOpen)}>Filters<span className="num">{shown.length}</span></button>
 
       <div className="stage-area">
+        {!f.abroad && (
+          <div className="pills show-pills on-stage" role="group" aria-label="Arrangement">
+            {SHOWS.map((s) => <button key={s.id} type="button" className="pill" aria-pressed={s.id === show} onClick={() => set({ show: s.id === "map" ? null : s.id })}>{s.label}</button>)}
+          </div>
+        )}
         {show === "map" && all && <MapCanvas projects={shown} selected={selected} fly={fly} abroad={f.abroad} onPick={(id) => pick(id)} drawerOpen={Boolean(entity)} />}
         {show === "chain" && <ChainBoard projects={shown} selected={selected} onPick={(id) => pick(id)} />}
         {show === "time" && <TimeBoard projects={shown} selected={selected} onPick={(id) => pick(id)} />}

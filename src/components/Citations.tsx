@@ -26,7 +26,7 @@ export function SourcesList({ cite }: { cite: Citations }) {
       {cite.list.map((s, i) => (
         <li key={s.id} id={`src-${i + 1}`}>
           {s.url ? <a href={s.url} target="_blank" rel="noopener">{s.title}</a> : s.title}
-          <span className="muted">{[s.type, s.published].filter(Boolean).join(" · ")}</span>
+          {s.published && <span className="muted">{s.published}</span>}
         </li>
       ))}
     </ol>

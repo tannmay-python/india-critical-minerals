@@ -86,7 +86,8 @@ export function trancheShort(t: string): string {
 
 export function place(e: Entity): string {
   const l = e.location;
-  const parts = [l.village_or_town, l.district, l.state].filter(Boolean) as string[];
+  // a part with no letters outside brackets, such as "(s)", is a placeholder in the source and is skipped
+  const parts = ([l.village_or_town, l.district, l.state].filter(Boolean) as string[]).filter((x) => /[A-Za-z]/.test(x.replace(/\([^)]*\)/g, "")));
   if (!parts.length) return l.country ?? "";
   if (l.country && l.country !== "India") parts.push(l.country);
   return [...new Set(parts)].join(", ");

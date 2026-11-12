@@ -1,6 +1,7 @@
 .home { padding-bottom: 96px; }
 
-.hero { padding-top: clamp(40px, 6vw, 80px); padding-bottom: clamp(36px, 5vw, 64px); }
+.hero { padding-top: clamp(40px, 6vw, 80px); }
+.hero-rest { padding-bottom: clamp(36px, 5vw, 64px); }
 .hero h1 { max-width: 16ch; padding-left: 22px; border-left: 3px solid var(--marigold); text-wrap: balance; }
 .byline { margin: 22px 0 26px; font-size: var(--text-sm); color: var(--muted); }
 .byline a { font-weight: 620; text-decoration: none; }
@@ -49,6 +50,9 @@
 .swatch.sq { border-radius: 2px; }
 
 @media (max-width: 900px) {
+  .home { display: flex; flex-direction: column; }
+  .table-section { order: 2; border-top: 0; padding-top: 4px; }
+  .hero-rest { order: 3; padding-top: 36px; }
   .hero-body { grid-template-columns: 1fr; }
   .lens-note { min-height: 0; }
 }

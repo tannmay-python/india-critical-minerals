@@ -1,5 +1,6 @@
 // One capability India could build: what it is, which minerals it serves, who outside China has
 // done it and at what cost, what India starts from, and what is missing.
+import { useEffect } from "react";
 import { useData } from "../data/store";
 import type { Capability } from "../data/types";
 import { href, mineralHref } from "../lib/router";
@@ -10,6 +11,7 @@ export function CapabilityPage({ slug }: { slug: string }) {
   const cap = useData<Capability>("capability.json");
   const s = cap?.strategies.find((x) => x.slug === slug);
   const cite = useCitations(cap, s?.sources ?? []);
+  useEffect(() => { if (s?.name) document.title = `${s?.name} · India Critical Minerals`; }, [s?.name]);
   if (!cap) return <main className="wrap cap" />;
   if (!s) return <main className="wrap cap"><h1>No such capability</h1><p><a href={href("/capabilities")}>All capabilities</a></p></main>;
   const minerals = s.minerals.map((id) => cap.minerals.find((m) => m.id === id)).filter(Boolean);

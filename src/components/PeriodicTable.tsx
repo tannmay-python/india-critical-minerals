@@ -111,7 +111,7 @@ export function PeriodicTable({ lens, step, score }: Props) {
       if (m) {
         const p = groupPos.get(m.name)!;
         x = p.x; y = p.y; fill = groupColor(m.group); ink = inkOn(fill);
-      } else visible = false;
+      } else { visible = false; x = 0; y = 0; }
     } else if (!m) {
       faint = true;
     } else if (lens === "score") {
@@ -148,9 +148,10 @@ export function PeriodicTable({ lens, step, score }: Props) {
     if (lens === "lists") rows.push(["National lists naming it", `${m.lists} of 5`]);
     if (lens === "score") rows.push([sub.name, `${m.s[sub.i]} / ${sub.max}`]);
     if (lens === "projects") {
-      if (!m.projects.total) rows.push(["Projects mapped", "none"]);
+      if (!m.projects.total) rows.push(["Projects that name it", "none"]);
       for (const b of core.bands) if (m.projects.byBand[b.id]) rows.push([b.label, m.projects.byBand[b.id]!]);
-      if (m.projects.demand) rows.push(["Demand anchors", m.projects.demand]);
+      if (m.projects.demand) rows.push(["Cell plants and fabs", m.projects.demand]);
+      if (m.projects.shared) rows.push([m.projects.family === "PGE" ? "Platinum-group projects naming no element" : "Rare-earth projects naming no element", m.projects.shared]);
     }
     if (lens === "capability" && m.capability) rows.push(["Time to output", m.capability.time.replace("-", "–")], ["Ease for India", m.capability.ease]);
     return (

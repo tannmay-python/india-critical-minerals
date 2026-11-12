@@ -1,7 +1,7 @@
 // The same project marks as the map, arranged to answer other questions: where along the chain
 // they sit, when each first became public, and how each auction tranche turned out.
 // One mark is one record (or, on the auction board, one offering of a block).
-import { useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { useCore } from "../data/store";
 import type { Project, StatusGroup } from "../data/types";
 import { Mark } from "../components/ProjectMark";
@@ -22,7 +22,7 @@ function useMark(onPick: (id: string) => void, selected: string | null) {
     return (
       <button key={key} type="button" className={`unit${p.id === selected ? " selected" : ""}${extra?.className ? ` ${extra.className}` : ""}`}
         aria-label={`${p.name}: ${extra?.note ?? p.status}`} aria-pressed={p.id === selected}
-        onClick={() => onPick(p.id)}
+        onClick={() => { tip.hide(); onPick(p.id); }}
         onPointerEnter={(ev) => { tip.show(content, ev.currentTarget); extra?.onEnter?.(); }}
         onPointerLeave={() => { tip.hide(); extra?.onLeave?.(); }}
         onFocus={(ev) => tip.show(content, ev.currentTarget)} onBlur={tip.hide}>
@@ -81,11 +81,13 @@ export function TimeBoard({ projects, selected, onPick }: BoardProps) {
     }));
   }, [projects]);
   const undated = projects.filter((p) => p.year === null).length;
+  const scroller = useRef<HTMLDivElement>(null);
+  useEffect(() => { const el = scroller.current; if (el) el.scrollLeft = el.scrollWidth; }, []);
   return (
-    <div className="board time-board">
+    <div className="board time-board" ref={scroller}>
       <div className="time-plot">
         {bins.map((b) => (
-          <div key={b.label} className={`time-col${b.wide ? " wide" : ""}`}>
+          <div key={b.label} className={`time-col${b.wide ? " wide" : ""}${b.label === "2015" ? " first-year" : ""}`}>
             <span className="time-n num">{b.list.length || ""}</span>
             <div className="time-stack">{b.list.map((p) => mark(p, p.id, { note: `${p.stage} · ${p.status} · first public ${p.year}` }))}</div>
             <span className="time-label num">{b.label}</span>
@@ -130,6 +132,12 @@ export function AuctionBoard({ projects, selected, onPick }: BoardProps) {
   if (!sections.length) return <p className="board-note">No auction blocks match these filters.</p>;
   return (
     <div className="board auction-board">
+      <ul className="auction-key">
+        <li><Mark kind="block" band="upstream" group="active" size={12} />Preferred bidder declared</li>
+        <li><Mark kind="block" band="upstream" group="pipeline" size={12} />Offered, result awaited</li>
+        <li><Mark kind="block" band="upstream" group="inactive" size={12} />Annulled or no bids</li>
+        <li className="muted">Counts are blocks with a preferred bidder, of blocks offered</li>
+      </ul>
       {sections.map((s) => (
         <section key={s.title}>
           <h3>{s.title}</h3>
@@ -137,7 +145,7 @@ export function AuctionBoard({ projects, selected, onPick }: BoardProps) {
             {s.rows.map((r) => (
               <li key={r.id}>
                 <span className="a-name">{rowName(r.id)}</span>
-                <span className="a-date muted num">{fmtMonth(r.date)}</span>
+                <span className="a-date muted num">{rowName(r.id) === fmtMonth(r.date) ? "" : fmtMonth(r.date)}</span>
                 <span className="a-units">
                   {r.list.map((o, n) => mark(o.p, `${o.p.id}|${r.id}|${n}`, {
                     group: OUTCOME_GROUP[o.o] ?? "pipeline",

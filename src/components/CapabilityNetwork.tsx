@@ -65,7 +65,8 @@ export function CapabilityNetwork({ cap }: { cap: Capability }) {
 
   const compact = width > 0 && width < 900;
   if (compact) return <div ref={ref} />; // the lists below carry the same links on small screens
-  const x0 = Math.min(300, width * 0.26), x1 = width * 0.47, x2 = width - Math.min(190, width * 0.17);
+  const LW = Math.min(280, width * 0.24); // room for a capability's name, right-aligned against its bar
+  const x0 = Math.min(250, width * 0.2), x1 = width * 0.6, x2 = width - Math.min(180, width * 0.16);
   const bar = 6;
   const linkOn = (a: string, b: string) => !lit || (lit.has(a) && lit.has(b) && (hot === a || hot === b || layout.get(hot!)?.kind !== "strategy"));
 
@@ -92,7 +93,7 @@ export function CapabilityNetwork({ cap }: { cap: Capability }) {
         <>
           <svg width={width} height={H} aria-hidden="true">
             {model.chemToStrategy.map(([k, s]) => (
-              <path key={k + s} d={curve(x0 + bar, ksOut.get(`${k}|${s}`)!, x1, ksIn.get(`${s}|${k}`)!)} className={`cn-link ks${linkOn(k, s) ? "" : " off"}${lit && linkOn(k, s) ? " on" : ""}`} />
+              <path key={k + s} d={curve(x0 + bar, ksOut.get(`${k}|${s}`)!, x1 - LW - 18, ksIn.get(`${s}|${k}`)!) + ` H${x1 - LW - 10}`} className={`cn-link ks${linkOn(k, s) ? "" : " off"}${lit && linkOn(k, s) ? " on" : ""}`} />
             ))}
             {model.strategyToMineral.map(([s, m]) => (
               <path key={s + m} d={curve(x1 + bar, smOut.get(`${s}|${m}`)!, x2, smIn.get(`${m}|${s}`)!)} className={`cn-link sm${linkOn(s, m) ? "" : " off"}${lit && linkOn(s, m) ? " on" : ""}`} style={{ stroke: groupColor(mineralGroup.get(m)!) }} />
@@ -104,7 +105,7 @@ export function CapabilityNetwork({ cap }: { cap: Capability }) {
           </svg>
           {[...layout.values()].map((n) => {
             const style: CSSProperties = n.kind === "chem" ? { right: width - x0 + 12, top: n.y, width: x0 - 12 }
-              : n.kind === "strategy" ? { left: x1 + bar + 10, top: n.y, width: Math.max(150, x2 - x1 - bar - 70) }
+              : n.kind === "strategy" ? { left: x1 - LW - 6, top: n.y, width: LW - 6 }
                 : { left: x2 + bar + 10, top: n.y };
             return (
               <a key={n.id} href={n.link} className={`cn-node cn-${n.kind}${lit && !lit.has(n.id) ? " off" : ""}${hot === n.id ? " hot" : ""}`} style={style} {...hover(n.id)}>
@@ -113,9 +114,9 @@ export function CapabilityNetwork({ cap }: { cap: Capability }) {
             );
           })}
           <div className="cn-heads" aria-hidden="true">
-            <span style={{ right: width - x0 + 12 }} className="left">Chemistry India already has</span>
-            <span style={{ left: x1 }}>Capabilities to build</span>
-            <span style={{ left: x2 }}>Minerals served</span>
+            <span style={{ right: width - x0 + 12 }}>Chemistry India has</span>
+            <span style={{ right: width - x1 + 12 }}>Capability</span>
+            <span style={{ left: x2 }}>Mineral</span>
           </div>
           <ul className="cn-key">
             {[...new Set(model.minerals.map((m) => m.group))].map((g) => <li key={g}><i className="swatch" style={{ "--c": groupColor(g) } as CSSProperties} />{core.group.get(g)?.name}</li>)}

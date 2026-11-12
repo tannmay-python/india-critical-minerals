@@ -2,10 +2,10 @@
 // was itself modelled on the facility pages of the India Semiconductor Tracker: what it is, the
 // facts an investor asks about, the first promise against delivery, a dated timeline, every source.
 // Rows appear only where the data has a sourced value.
-import { type CSSProperties, type ReactNode } from "react";
+import { useEffect, type CSSProperties, type ReactNode } from "react";
 import { useData } from "../data/store";
 import type { Entity, Project } from "../data/types";
-import { MineralChips, SourceList, TIER, seeAlsoLabel } from "../components/ProjectDrawer";
+import { MineralChips, SourceList, seeAlsoLabel } from "../components/ProjectDrawer";
 import { BAND_COLOR } from "../lib/colors";
 import { concessionLabel, fmtDate, fmtInvestment, fmtNum, fmtQuantity, place, trancheLabel } from "../lib/format";
 import { href } from "../lib/router";
@@ -29,6 +29,8 @@ const plural = (m: number) => `${m} month${m === 1 ? "" : "s"}`;
 export function ProjectPage({ id }: { id: string }) {
   const details = useData<Record<string, Entity>>("project-details.json");
   const all = useData<Project[]>("projects.json");
+  const title = details?.[id]?.name;
+  useEffect(() => { if (title) document.title = `${title} · India Critical Minerals`; }, [title]);
   if (!details || !all) return <main className="wrap record" />;
   const e = details[id];
   const light = all.find((p) => p.id === id);
@@ -83,6 +85,9 @@ export function ProjectPage({ id }: { id: string }) {
   if (first && !taken.has(first) && !items.some((i) => i.date < first)) items.push({ date: first, event: "First public record", source: supporting("first_public") });
   items.sort((a, b) => a.date.localeCompare(b.date));
   const history = e.auction?.history ?? [];
+  // an auction block's dated events are its auction history; show a timeline only if it adds something
+  const auctionDates = new Set(history.flatMap((h) => [h.nit_date, h.outcome_date]).filter(Boolean));
+  const showTimeline = items.length > 0 && !(history.length > 0 && items.every((i) => auctionDates.has(i.date)));
   const related = e.related.map((rid) => details[rid]).filter(Boolean);
   const issue = `${ISSUES}?title=${encodeURIComponent(`Correction: ${e.name}`)}&body=${encodeURIComponent(`Record: ${e.id}\n\nWhat should change, with a source:\n`)}`;
 
@@ -119,7 +124,7 @@ export function ProjectPage({ id }: { id: string }) {
           </>
         )}
 
-        {items.length > 0 && (
+        {showTimeline && (
           <>
             <h2>Timeline</h2>
             <ol className="timeline">
@@ -128,7 +133,7 @@ export function ProjectPage({ id }: { id: string }) {
                   <time className="num">{fmtDate(i.date)}</time>
                   <div>
                     <p>{i.event}</p>
-                    {i.source && <a className="muted" href={i.source.url} target="_blank" rel="noopener"><span className={`tier tier-${i.source.tier}`}>{TIER[i.source.tier] ?? ""}</span>{i.source.publisher || i.source.title}</a>}
+                    {i.source && <a className="muted" href={i.source.url} target="_blank" rel="noopener">{i.source.publisher || i.source.title}</a>}
                   </div>
                 </li>
               ))}
@@ -170,7 +175,7 @@ function Promise({ e }: { e: Entity }) {
   const points = [
     { label: "First promised", date: p.due, kind: "due" },
     ...(p.now ? [{ label: p.state === "delivered" ? "Revised to" : "Now due", date: p.now, kind: "now" }] : []),
-    ...(p.done ? [{ label: p.restart ? "Restarted" : "Delivered", date: p.done, kind: "done" }] : []),
+    ...(p.done ? [{ label: p.restart ? "Restarted" : "Delivered", date: p.done, kind: "done" }] : [{ label: "Today", date: new Date().toISOString().slice(0, 10), kind: "today" }]),
   ];
   const times = points.map((x) => t(x.date));
   const lo = Math.min(...times), hi = Math.max(...times);
@@ -188,7 +193,6 @@ function Promise({ e }: { e: Entity }) {
             </span>
           ))}
         </div>
-        {!p.done && <p className="muted promise-open">{p.restart ? "Not yet restarted" : "Not yet delivered"}</p>}
       </div>
       <p className="muted record-note">"First promised" is the earliest dated target found in the sources, which may itself be a revision.</p>
     </>

@@ -2,7 +2,7 @@ import { useEffect, type CSSProperties } from "react";
 import { useCore } from "../data/store";
 import { GroupMatrix } from "../components/GroupMatrix";
 import { Radar } from "../components/Radar";
-import { GROUPS_INTRO, PROFILE_NOTE, PROFILE_TEXT, WHY_DISTINCT, fixLinks } from "../content/groups";
+import { GROUPS_INTRO, PROFILE_TEXT, WHY_DISTINCT, fixLinks } from "../content/groups";
 import { groupColor, inkOn } from "../lib/colors";
 import { href, mineralHref } from "../lib/router";
 import "./GroupsPage.css";
@@ -10,7 +10,9 @@ import "./GroupsPage.css";
 export function GroupsPage({ focus }: { focus?: string }) {
   const core = useCore();
   useEffect(() => {
-    if (focus) document.getElementById(`group-${focus}`)?.scrollIntoView({ block: "start" });
+    if (!focus) return;
+    const id = requestAnimationFrame(() => document.getElementById(`group-${focus}`)?.scrollIntoView({ block: "start" }));
+    return () => cancelAnimationFrame(id);
   }, [focus]);
   const ordered = [...core.groups].sort((a, b) => (a.id === 0 ? 1 : b.id === 0 ? -1 : a.id - b.id));
   return (
@@ -29,7 +31,7 @@ export function GroupsPage({ focus }: { focus?: string }) {
         return (
           <section className="gp-group" id={`group-${g.id}`} key={g.id}>
             <div className="gp-head">
-              <h2><i className="swatch" style={{ "--c": color } as CSSProperties} />{g.name}</h2>
+              <h2><i className="swatch" style={{ "--c": color } as CSSProperties} />{g.name}{g.id !== 0 && <small className="num">Group {g.id}</small>}</h2>
               {g.tagline && <p className="gp-tagline">{g.tagline}</p>}
             </div>
             <div className="gp-body">
@@ -55,7 +57,7 @@ export function GroupsPage({ focus }: { focus?: string }) {
 
       <section className="gp-section">
         <h2>Average profile by group</h2>
-        <p className="gp-text">{PROFILE_TEXT} {PROFILE_NOTE}</p>
+        <p className="gp-text">{PROFILE_TEXT.split(". ").filter((_, i) => i !== 1).join(". ")}</p>
         <GroupMatrix />
       </section>
 

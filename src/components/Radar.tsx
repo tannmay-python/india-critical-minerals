@@ -18,7 +18,7 @@ interface Props {
 
 export function Radar({ vectors, series, size = 320, labels = true }: Props) {
   const pad = labels ? 118 : 4;
-  const w = size + pad * 2, h = size + (labels ? 84 : 8);
+  const w = size + pad * 2, h = size + (labels ? 104 : 8);
   const cx = w / 2, cy = h / 2, r = size / 2;
   const n = vectors.length;
   const at = (i: number, t: number): [number, number] => {

@@ -54,6 +54,7 @@
 .abroad-list small { display: block; color: var(--muted); font-size: var(--text-sm); }
 .panel-foot { margin-top: auto; padding-top: 12px; font-size: var(--text-sm); color: var(--muted); }
 .panel-toggle { display: none; }
+.show-pills.on-stage { display: none; }
 
 /* ---- stage ---- */
 .stage-area { position: relative; min-width: 0; overflow: auto; background: var(--page); }
@@ -84,4 +85,8 @@
   .map-key { display: flex; flex-wrap: wrap; gap: 4px 12px; position: absolute; left: 10px; top: 10px; right: 10px; z-index: 2; padding: 6px 10px; border-radius: var(--radius); background: rgba(255, 255, 255, 0.92); border: 1px solid var(--rule); font-size: 12px; color: var(--ink-2); }
   .map-key li { display: inline-flex; align-items: center; gap: 6px; }
   .projects .drawer { top: auto; left: 0; right: 0; bottom: 0; width: auto; max-height: 62dvh; border-radius: 14px 14px 0 0; z-index: 8; }
+  .show-pills.on-stage { display: grid; position: sticky; top: 0; left: 0; z-index: 4; padding: 8px 10px; background: var(--page); border-bottom: 1px solid var(--rule); }
+  .show-map .show-pills.on-stage { position: absolute; right: 0; background: rgba(255, 251, 226, 0.94); }
+  .show-map .map-key { top: 58px; }
+  .board { padding-bottom: 96px; }
 }

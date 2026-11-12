@@ -35,6 +35,7 @@
 .promise-point { position: absolute; top: -7px; display: flex; flex-direction: column; gap: 1px; white-space: nowrap; }
 .promise-point i { width: 12px; height: 12px; border-radius: 50%; margin-left: -6px; margin-bottom: 8px; background: var(--surface); box-shadow: inset 0 0 0 2px var(--ink-2); }
 .promise-point.done i { background: var(--tone); box-shadow: none; }
+.promise-point.today i { border-radius: 0; width: 2px; height: 16px; margin: -2px 0 6px -1px; background: var(--ink); box-shadow: none; }
 .promise-point b { margin-left: -6px; font-weight: 650; }
 .promise-point small { margin-left: -6px; color: var(--muted); font-size: var(--text-sm); }
 .promise-point:last-child:not(:first-child) { transform: translateX(-100%); align-items: flex-end; }

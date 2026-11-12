@@ -9,7 +9,7 @@ import { KIND_LABEL, Mark, STATUS_LABEL, STATUS_LABEL_ABROAD } from "./ProjectMa
 import { useTip } from "./Tip";
 import "./Chain.css";
 
-const COLUMNS: { id: string; label: string; band: Project["band"]; aux?: boolean }[] = [
+export const CHAIN_COLUMNS: { id: string; label: string; band: Project["band"]; aux?: boolean }[] = [
   { id: "mine", label: "Mine", band: "upstream" },
   { id: "refine", label: "Refine", band: "process" },
   { id: "make", label: "Make", band: "make" },
@@ -17,6 +17,7 @@ const COLUMNS: { id: string; label: string; band: Project["band"]; aux?: boolean
   { id: "recycle", label: "Recycle", band: "recycle", aux: true },
   { id: "research", label: "Research", band: "research", aux: true },
 ];
+const COLUMNS = CHAIN_COLUMNS;
 const RANK = { active: 0, pipeline: 1, inactive: 2 } as const;
 
 export function Chain({ mineral, stages, projects }: { mineral: Mineral; stages: ChainStage[] | null; projects: Project[] }) {
@@ -29,6 +30,20 @@ export function Chain({ mineral, stages, projects }: { mineral: Mineral; stages:
     .sort((a, b) => RANK[a.group] - RANK[b.group] || Number(a.kind === "block") - Number(b.kind === "block") || a.name.localeCompare(b.name));
   const kinds = [...new Set(projects.map((p) => p.kind))];
   const groups = (["active", "pipeline", "inactive"] as const).filter((g) => projects.some((p) => p.group === g));
+
+  // Nothing to place on the chain: say how concentrated mining and refining are, and stop.
+  if (!stages && projects.length === 0) {
+    return (
+      <dl className="chain-bare">
+        {(["mine", "refine"] as const).map((id) => (
+          <div key={id}>
+            <dt>{id === "mine" ? "Mining" : "Refining"}</dt>
+            <dd><span className="pips" aria-hidden="true">{[1, 2, 3, 4, 5].map((n) => <i key={n} className={n <= concentration[id] ? "on" : ""} />)}</span>{bands[concentration[id] - 1]?.label}</dd>
+          </div>
+        ))}
+      </dl>
+    );
+  }
 
   return (
     <div className={`chain${stages ? " with-text" : ""}`}>
@@ -63,6 +78,7 @@ export function Chain({ mineral, stages, projects }: { mineral: Mineral; stages:
               <div key={c.id} className={`chain-cell marks${c.aux ? " aux" : ""}${i === 4 ? " aux-first" : ""}`}>
                 {list.map((p) => (
                   <a key={p.id} href={href(`/project/${p.id}`)} aria-label={`${p.name}: ${p.status}`}
+                    onClick={tip.hide}
                     onPointerEnter={(ev) => tip.show(<><strong>{p.name}</strong><span>{p.stage} · {p.status}</span><span>{[p.state, p.abroad ? p.country : null].filter(Boolean).join(", ")}</span></>, ev.currentTarget)}
                     onPointerLeave={tip.hide} onFocus={(ev) => tip.show(<><strong>{p.name}</strong><span>{p.stage} · {p.status}</span></>, ev.currentTarget)} onBlur={tip.hide}>
                     <Mark kind={p.kind} band={p.band} group={p.group} size={13} />

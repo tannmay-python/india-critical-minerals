@@ -182,8 +182,16 @@ async function main() {
     };
   });
 
+  // A record tagged only "Rare earths (unspecified)" or "PGEs (unspecified)" answers to every member of the
+  // family on the map's own filter. On a mineral's page and in the table it is counted apart, so that
+  // an element shows only the projects that name it.
   const projectsByMineral = new Map();
-  for (const p of projects) for (const m of p.minerals) (projectsByMineral.get(m) ?? projectsByMineral.set(m, []).get(m)).push(p);
+  for (const p of projects) for (const m of p.tagged) if (!umbrellas.has(m)) (projectsByMineral.get(m) ?? projectsByMineral.set(m, []).get(m)).push(p);
+  const sharedByMineral = new Map();
+  for (const [umbrella, members] of umbrellas) {
+    const list = projects.filter((p) => p.tagged.includes(umbrella));
+    for (const m of members) sharedByMineral.set(m, { label: umbrella, family: mapMinerals.find((x) => x.name === m)?.family ?? null, ids: list.filter((p) => !p.tagged.includes(m)).map((p) => p.id) });
+  }
 
   // ---- per-mineral core rows ---------------------------------------------------------------
   const minerals = scored.map((m) => {
@@ -204,7 +212,7 @@ async function main() {
       group: groupOf[name],
       lists: ptLists[el.symbol] ?? 0,
       v, s,
-      projects: { total: sites.length, demand: mine.length - sites.length, abroad: sites.filter((p) => p.abroad).length, byBand: count(sites, 'band'), byGroup: count(sites, 'group'), byStage },
+      projects: { total: sites.length, demand: mine.length - sites.length, abroad: sites.filter((p) => p.abroad).length, byBand: count(sites, 'band'), byGroup: count(sites, 'group'), byStage, shared: sharedByMineral.get(name)?.ids.length ?? 0, family: sharedByMineral.get(name)?.family ?? null },
       capability: c ? {
         id: c.id, step: c.value_chain_step, nextMove: c.next_move, has: c.what_india_has, kinds: c.kinds,
         complexity: c.complexity, ease: c.ease, time: c.time_to_output, confidence: c.confidence,
@@ -266,6 +274,7 @@ async function main() {
         estimates: (cap.meta.estimates ?? []).filter((x) => x.mineral === c.id),
       } : null,
       projects: (projectsByMineral.get(m.mineral) ?? []).map((p) => p.id),
+      shared: sharedByMineral.get(m.mineral) ?? null,
     };
     detailBytes += await writeJSON(`minerals/${m.mineral}.json`, detail);
   }
@@ -276,6 +285,8 @@ async function main() {
     ...projects.map((p) => ({ t: 'project', id: p.id, n: p.name, x: [p.operator, p.state, p.country].filter(Boolean).join(' · ') })),
     ...cap.strategies.map((s) => ({ t: 'capability', id: s.slug, n: s.name, x: s.what })),
     ...cap.chemistry.map((k) => ({ t: 'technology', id: k.slug, n: k.name, x: k.carries_over_to })),
+    ...groups.map((g) => ({ t: 'group', id: String(g.id), n: g.name, x: g.tagline ?? '' })),
+    ...(await readJSON(path.join(mapData, 'schemes.json'))).filter((sc) => projects.some((p) => p.schemes.includes(sc.id))).map((sc) => ({ t: 'scheme', id: sc.id, n: sc.name, x: sc.ministry ?? '' })),
   ];
 
   // ---- write -------------------------------------------------------------------------------

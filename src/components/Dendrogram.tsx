@@ -39,7 +39,7 @@ export function Dendrogram() {
     return () => io.disconnect();
   }, [ref]);
 
-  const H = 460, m = { top: 14, right: 12, bottom: 96, left: 40 };
+  const H = 480, m = { top: 22, right: 12, bottom: 96, left: 52 };
   const w = Math.max(width, 720);
   const x = (i: number) => m.left + (i / (d.n - 1)) * (w - m.left - m.right);
   const y = (h: number) => H - m.bottom - (h / d.maxHeight) * (H - m.top - m.bottom);
@@ -51,6 +51,7 @@ export function Dendrogram() {
     <div ref={ref} className="dendro">
       {width > 0 && (
         <svg width={w} height={H} role="img" aria-label="Clustering tree of the 51 minerals">
+          <text transform={`translate(13,${(H - m.bottom + m.top) / 2}) rotate(-90)`} textAnchor="middle" className="dendro-axis">Dissimilarity (Ward linkage distance)</text>
           {ticks.map((t) => (
             <g key={t}>
               <line x1={m.left - 6} x2={w - m.right} y1={y(t)} y2={y(t)} stroke="var(--rule)" />

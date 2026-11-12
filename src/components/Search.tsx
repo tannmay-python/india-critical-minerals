@@ -5,12 +5,14 @@ import { useData } from "../data/store";
 import type { SearchItem } from "../data/types";
 import { go, href } from "../lib/router";
 
-const KIND: Record<SearchItem["t"], string> = { mineral: "Mineral", project: "Project", capability: "Capability", technology: "Technology" };
+const KIND: Record<SearchItem["t"], string> = { mineral: "Mineral", project: "Project", capability: "Capability", technology: "Technology", group: "Group", scheme: "Scheme" };
 const target = (it: SearchItem): [string, Record<string, string>?] =>
   it.t === "mineral" ? [`/mineral/${encodeURIComponent(it.id)}`]
     : it.t === "project" ? ["/projects", { id: it.id }]
       : it.t === "capability" ? [`/capability/${it.id}`]
-        : [`/technology/${it.id}`];
+        : it.t === "group" ? [`/groups/${it.id}`]
+          : it.t === "scheme" ? ["/projects", { scheme: it.id }]
+            : [`/technology/${it.id}`];
 
 export function Search() {
   const [q, setQ] = useState("");
@@ -18,14 +20,19 @@ export function Search() {
   const [cursor, setCursor] = useState(0);
   const input = useRef<HTMLInputElement>(null);
   const items = useData<SearchItem[]>(active || q ? "search.json" : null);
-  const fuse = useMemo(() => (items ? new Fuse(items, { keys: [{ name: "n", weight: 3 }, { name: "x", weight: 1 }], threshold: 0.34, ignoreLocation: true, minMatchCharLength: 2 }) : null), [items]);
+  const fuse = useMemo(() => (items ? new Fuse(items, { keys: [{ name: "n", weight: 3 }, { name: "x", weight: 1 }], threshold: 0.2, ignoreLocation: true, minMatchCharLength: 3 }) : null), [items]);
   const results = useMemo(() => {
-    if (!fuse || q.trim().length < 2) return [];
-    const order = { mineral: 0, capability: 1, technology: 2, project: 3 } as const;
-    return fuse.search(q.trim(), { limit: 24 })
-      .sort((a, b) => (a.score! - b.score! > 0.08 || b.score! - a.score! > 0.08 ? a.score! - b.score! : order[a.item.t] - order[b.item.t]))
-      .slice(0, 12).map((r) => r.item);
-  }, [fuse, q]);
+    const needle = q.trim().toLowerCase();
+    if (!items || !fuse || needle.length < 2) return [];
+    const order = { mineral: 0, group: 1, capability: 2, technology: 3, scheme: 4, project: 5 } as const;
+    const rank = (a: SearchItem, b: SearchItem) => order[a.t] - order[b.t] || a.n.localeCompare(b.n);
+    // names that start with the query, then names or details that contain it, then near misses
+    const starts = items.filter((it) => it.n.toLowerCase().startsWith(needle) || it.x.toLowerCase() === needle).sort(rank);
+    const has = items.filter((it) => !starts.includes(it) && (it.n.toLowerCase().includes(needle) || it.x.toLowerCase().includes(needle))).sort(rank);
+    const exact = [...starts, ...has];
+    const fuzzy = exact.length >= 6 ? [] : fuse.search(needle, { limit: 12 }).map((r) => r.item).filter((it) => !exact.includes(it));
+    return [...exact, ...fuzzy].slice(0, 12);
+  }, [items, fuse, q]);
 
   useEffect(() => {
     const onKey = (ev: KeyboardEvent) => {

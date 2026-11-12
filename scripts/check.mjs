@@ -70,8 +70,9 @@ async function dataParity() {
   check('project status, group and coordinates identical to the map', entities.every((e) => { const p = projects.find((x) => x.id === e.id); return p && p.status === e.status && p.group === e.status_group && p.lat === e.lat && p.lon === e.lon; }));
   const names = new Set(core.minerals.map((m) => m.name));
   check('every mineral a project answers to is one of the 51', projects.every((p) => p.minerals.every((m) => names.has(m))));
-  const perMineral = (name) => projects.filter((p) => p.minerals.includes(name) && p.kind !== 'demand').length;
-  check('per-mineral project counts agree with the project list', core.minerals.every((m) => m.projects.total === perMineral(m.name)));
+  const perMineral = (name) => projects.filter((p) => p.tagged.includes(name) && p.kind !== 'demand').length;
+  check('per-mineral project counts agree with the project list (records that name the mineral)', core.minerals.every((m) => m.projects.total === perMineral(m.name)));
+  check('every mineral tag on a project is one of the 51 or a family tag (14 records carry no mineral tag)', projects.every((p) => p.tagged.every((t) => names.has(t) || /unspecified/.test(t))));
   const tr = await json(path.join(ROOT, 'public/data/tranches.json'));
   const offers = (id, outcome) => projects.reduce((n, p) => n + p.tranches.filter((t) => t.t === id && (!outcome || t.o === outcome)).length, 0);
   const trBad = tr.filter((t) => offers(t.id) !== t.offered || offers(t.id, 'Preferred bidder') !== t.auctioned);

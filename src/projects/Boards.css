@@ -31,9 +31,15 @@
 .time-col + .time-col .time-label { box-shadow: none; position: relative; }
 .time-col + .time-col .time-label::before { content: ""; position: absolute; left: -8px; top: -2px; width: 8px; height: 2px; background: var(--ink); }
 
+/* a gap marks where the axis changes from decades to single years */
+.time-col.first-year { margin-left: 26px; }
+.time-col.first-year .time-label::before { display: none; }
+
 /* auctions */
+.auction-key { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: var(--text-sm); color: var(--ink-2); margin-bottom: -12px; }
+.auction-key li { display: flex; align-items: center; gap: 7px; }
 .auction-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 36px clamp(28px, 4vw, 64px); align-items: start; }
-.auction-board section:first-child { grid-column: 1 / -1; }
+.auction-board section:first-of-type { grid-column: 1 / -1; }
 .auction-board li { display: grid; grid-template-columns: minmax(96px, 150px) 78px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--rule); }
 .a-name { font-weight: 600; line-height: 1.25; }
 .a-date { font-size: var(--text-sm); }

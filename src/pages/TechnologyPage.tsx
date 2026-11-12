@@ -1,5 +1,6 @@
 // A technology guide: one kind of chemistry India already runs, how it works, who does it, which
 // minerals it carries over to, and a proposed way to extend it. Every block cites its sources.
+import { useEffect } from "react";
 import { useData } from "../data/store";
 import type { Capability, GuideBlock } from "../data/types";
 import { href, mineralHref } from "../lib/router";
@@ -13,6 +14,7 @@ export function TechnologyPage({ slug }: { slug: string }) {
   const k = cap?.chemistry.find((x) => x.slug === slug);
   const g = k?.guide;
   const cite = useCitations(cap, [...(g?.source_ids ?? []), ...(k?.sources ?? [])]);
+  useEffect(() => { if (k?.name) document.title = `${k?.name} · India Critical Minerals`; }, [k?.name]);
   if (!cap) return <main className="wrap cap" />;
   if (!k || !g) return <main className="wrap cap"><h1>No such technology</h1><p><a href={href("/capabilities")}>All capabilities</a></p></main>;
   const mineral = (id: string) => cap.minerals.find((m) => m.id === id);

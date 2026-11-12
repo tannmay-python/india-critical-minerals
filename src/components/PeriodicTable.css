@@ -17,7 +17,7 @@
 .pt-z { position: absolute; left: 5px; top: 4px; font-size: clamp(0.5rem, calc(var(--cell) * 0.15), 0.66rem); opacity: 0.62; line-height: 1; }
 
 /* India's projects: five slots along the chain, filled where India has a project */
-.pt-chain { position: absolute; left: 50%; bottom: 12%; transform: translateX(-50%); display: grid; grid-template-columns: repeat(5, var(--slot)); gap: 2px; --slot: clamp(4px, calc(var(--cell) * 0.135), 10px); height: var(--slot); }
+.pt-chain { position: absolute; left: 12%; right: 12%; bottom: 12%; display: grid; grid-template-columns: repeat(5, 1fr); gap: clamp(1px, calc(var(--cell) * 0.03), 2px); height: clamp(3px, calc(var(--cell) * 0.135), 10px); }
 .pt-chain i { border-radius: 1.5px; }
 .pt-chain i.empty { box-shadow: inset 0 0 0 1px var(--rule-strong); }
 .pt-projects .pt-sym { transform: translateY(-18%); }

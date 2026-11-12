@@ -19,6 +19,7 @@ import "./App.css";
 export function App() {
   return (
     <TipProvider>
+      <a className="skip-link" href="#main" onClick={(ev) => { ev.preventDefault(); document.querySelector("main")?.scrollIntoView(); (document.querySelector("main h1, main h2") as HTMLElement | null)?.focus?.(); }}>Skip to content</a>
       <Header />
       <CoreProvider fallback={(failed) => <p className="wrap load-note">{failed ? "The data could not be loaded. Reload the page to try again." : ""}</p>}>
         <Routes />
@@ -33,7 +34,7 @@ function Routes() {
   const section = route.path[0] ?? "";
   const page = section === "groups" ? "groups" : route.path.join("/");
   // a new page starts at its top; changes of query within a page keep their place
-  useEffect(() => { window.scrollTo(0, 0); }, [page]);
+  useEffect(() => { if (!(section === "groups" && route.path[1])) window.scrollTo(0, 0); }, [page]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     const name: Record<string, string> = { projects: "Projects", project: "Project", capabilities: "Capabilities", capability: "Capability", technology: "Technology", method: "Method", groups: "The six groups", compare: "Compare" };
     const part = section === "mineral" ? decodeURIComponent(route.path[1] ?? "") : name[section];

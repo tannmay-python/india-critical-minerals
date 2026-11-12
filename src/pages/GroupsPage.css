@@ -10,6 +10,7 @@
 .gp-head { padding-bottom: 16px; border-bottom: 2px solid var(--ink); }
 .gp-head h2 { display: flex; align-items: baseline; gap: 14px; font-size: clamp(1.7rem, 3.2vw, 2.4rem); }
 .gp-head .swatch { width: 14px; height: 14px; }
+.gp-head h2 small { margin-left: auto; font-family: var(--font-sans); font-size: var(--text-sm); font-weight: 520; letter-spacing: 0; color: var(--muted); white-space: nowrap; }
 .gp-tagline { margin-top: 6px; padding-left: 28px; font-size: var(--text-lg); color: var(--ink-2); }
 .gp-body { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); padding-top: 24px; align-items: start; }
 .gp-body h3 { margin: 26px 0 10px; }
@@ -17,8 +18,8 @@
 .gp-policy li::before { content: ""; position: absolute; left: 2px; top: 19px; width: 8px; height: 2px; background: var(--marigold); }
 .gp-side { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
 .gp-side .radar { width: 100%; height: auto; max-width: 420px; }
-.gp-members { display: grid; grid-template-columns: repeat(auto-fill, 52px); gap: 4px; width: 100%; }
-.gp-members a { display: flex; align-items: center; justify-content: center; height: 52px; border-radius: var(--radius-sm); font-weight: 700; text-decoration: none; }
+.gp-members { display: grid; grid-template-columns: repeat(9, minmax(0, 48px)); gap: 4px; width: 100%; }
+.gp-members a { display: flex; align-items: center; justify-content: center; aspect-ratio: 1; border-radius: var(--radius-sm); font-weight: 700; text-decoration: none; }
 .gp-members a:hover { box-shadow: 0 0 0 2px var(--page), 0 0 0 4px var(--ink); }
 
 .gp-section { margin-top: clamp(56px, 7vw, 96px); }

@@ -23,7 +23,11 @@ function luminance(hex: string): number {
   return 0.2126 * lin((n >> 16) & 255) + 0.7152 * lin((n >> 8) & 255) + 0.0722 * lin(n & 255);
 }
 /** Ink for text set inside a colour fill: white or near-black, whichever reads. */
-export const inkOn = (fill: string): string => (luminance(toHex(fill)) > 0.42 ? INK : "#ffffff");
+export const inkOn = (fill: string): string => {
+  const l = luminance(toHex(fill));
+  // whichever of near-black and white has the higher contrast with the fill
+  return (l + 0.05) / (luminance(INK) + 0.05) >= 1.05 / (l + 0.05) ? INK : "#ffffff";
+};
 
 function toHex(color: string): string {
   if (color.startsWith("#")) return color;

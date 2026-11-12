@@ -41,6 +41,8 @@ export interface Mineral {
   projects: {
     total: number; demand: number; abroad: number;
     byBand: Partial<Record<Band, number>>; byGroup: Partial<Record<StatusGroup, number>>; byStage: Record<string, number>;
+    /** records tagged to the whole family (rare earths, platinum group) without naming this element */
+    shared: number; family: "REE" | "PGE" | null;
   };
   capability: CapabilityLight | null;
 }
@@ -188,6 +190,7 @@ export interface MineralDetail {
     estimates: { mineral: string; text: string }[];
   }) | null;
   projects: string[];
+  shared: { label: string; family: "REE" | "PGE" | null; ids: string[] } | null;
 }
 
-export interface SearchItem { t: "mineral" | "project" | "capability" | "technology"; id: string; n: string; x: string }
+export interface SearchItem { t: "mineral" | "project" | "capability" | "technology" | "group" | "scheme"; id: string; n: string; x: string }

@@ -9,3 +9,4 @@
 .gm tbody th small { color: var(--muted); font-size: var(--text-xs); }
 .gm td { text-align: right; font-size: 0.94rem; color: var(--ink-2); }
 .gm td.lead { font-weight: 750; }
+.gm thead b { display: block; font-weight: 420; color: var(--muted); font-size: var(--text-xs); }
