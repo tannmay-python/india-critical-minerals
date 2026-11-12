@@ -1,0 +1,90 @@
+/* shared: the row of stage names used by the stepper and the world map */
+.jv-track { display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); position: relative; margin-bottom: 26px; }
+.jv-track::before { content: ""; position: absolute; left: calc(50% / var(--n)); right: calc(50% / var(--n)); top: 8px; height: 2px; background: var(--rule-strong); }
+.jv-track button { position: relative; display: flex; flex-direction: column; align-items: center; gap: 10px; width: 100%; padding: 0 4px; text-align: center; font-size: var(--text-sm); line-height: 1.25; color: var(--ink-2); }
+.jv-track i { width: 18px; height: 18px; border-radius: 50%; background: var(--page); border: 2px solid var(--band); transition: transform 160ms var(--ease), background 160ms var(--ease); }
+.jv-track button.done i { background: var(--band); }
+.jv-track button[aria-current] { color: var(--ink); font-weight: 680; }
+.jv-track button[aria-current] i { background: var(--band); transform: scale(1.35); box-shadow: 0 0 0 4px var(--page); }
+.jv-track button:hover span { color: var(--plum); }
+
+.jv-body h3 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 500; letter-spacing: -0.01em; line-height: 1.1; margin-bottom: 12px; }
+.jv-body { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.jv-text { font-size: 1.06rem; line-height: 1.55; max-width: 58ch; }
+.jv-body .jr-india { max-width: 58ch; font-size: 0.92rem; }
+.jv-side .jr-shares { margin-top: 0; padding-top: 0; border-top: 0; }
+.jv-form { display: flex; align-items: center; gap: 12px; font-size: var(--text-sm); color: var(--ink-2); line-height: 1.3; }
+.jv-form > span:not(.jr-waffle) { display: flex; flex-direction: column; }
+.jv-form b { color: var(--ink); font-weight: 650; }
+
+.jv-nav { display: flex; justify-content: space-between; margin-top: 18px; font-size: var(--text-sm); font-weight: 600; }
+.jv-nav button { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-2); }
+.jv-nav button:hover { color: var(--plum); }
+.jv-nav .prev::before, .jv-nav .next::after { content: ""; width: 7px; height: 7px; border-left: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); }
+.jv-nav .next::after { transform: rotate(-135deg); }
+
+/* ── one stage at a time ── */
+.jv-stage { display: grid; grid-template-columns: 236px minmax(0, 1fr) minmax(220px, 300px); gap: clamp(24px, 4vw, 56px); align-items: start; padding: 26px 28px; background: var(--surface); border: 1px solid var(--rule); border-top: 3px solid var(--band); border-radius: var(--radius-sm); min-height: 330px; transition: border-color 200ms var(--ease); }
+.jv-stage.no-form { grid-template-columns: minmax(0, 1fr) minmax(220px, 300px); }
+.jv-big { display: flex; flex-direction: column; gap: 12px; }
+.jv-big .jr-waffle { grid-template-columns: repeat(10, 1fr); gap: 2px; width: 100%; }
+.jv-big .jr-waffle i { width: auto; height: auto; aspect-ratio: 1; transition: background 260ms var(--ease); transition-delay: calc(var(--k) * 5ms); }
+.jv-big figcaption { display: flex; flex-direction: column; font-size: var(--text-sm); line-height: 1.35; color: var(--ink-2); }
+.jv-big figcaption b { font-size: var(--text-base); color: var(--ink); font-weight: 650; }
+
+/* ── the route as a line ── */
+.jv-map { position: relative; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); padding-top: 34px; }
+.jv-stop { position: relative; display: grid; grid-template-rows: 44px 22px auto; justify-items: center; align-content: start; gap: 8px; padding: 0 6px 6px; text-align: center; }
+.jv-name { align-self: end; font-family: var(--font-display); font-size: 1.12rem; line-height: 1.1; letter-spacing: -0.01em; }
+.jv-stop[aria-current] .jv-name { color: var(--plum); font-weight: 600; }
+/* the line: each stop draws the stretch to the next one, in the next stage's colour */
+.jv-stop::before { content: ""; position: absolute; left: 50%; width: 100%; top: 60px; height: 6px; border-radius: 3px; background: linear-gradient(90deg, var(--band), var(--next)); }
+.jv-stop:nth-child(1 of .jv-stop)::after { display: none; }
+.jv-stop:last-of-type::before { display: none; }
+.jv-dot { position: relative; z-index: 1; width: 22px; height: 22px; border-radius: 50%; background: var(--surface); border: 5px solid var(--band); transition: transform 160ms var(--ease); }
+.jv-stop:hover .jv-dot { transform: scale(1.15); }
+.jv-stop[aria-current] .jv-dot { background: var(--band); box-shadow: 0 0 0 3px var(--page), 0 0 0 5px var(--band); }
+.jv-grade { display: flex; flex-direction: column; font-size: var(--text-xs); line-height: 1.3; color: var(--ink-2); }
+.jv-grade b { color: var(--ink); font-weight: 650; font-size: var(--text-sm); }
+/* scrap going back: an arc over the line from the recycling stop to where processing starts */
+.jv-loop { position: absolute; top: 4px; height: 22px; left: calc((var(--a) + 0.5) * 100% / var(--n)); width: calc((var(--b) - var(--a)) * 100% / var(--n)); border: 2px dashed var(--band-recycle); border-bottom: 0; border-radius: 14px 14px 0 0; }
+.jv-loop::after { content: ""; position: absolute; left: -6px; bottom: -3px; width: 8px; height: 8px; border-right: 2px solid var(--band-recycle); border-bottom: 2px solid var(--band-recycle); transform: rotate(45deg); }
+.jv-branches { grid-row: 2; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 0 8px; }
+.jv-branches p { position: relative; margin-top: 16px; padding: 5px 9px; font-size: var(--text-xs); line-height: 1.3; text-align: center; color: var(--ink-2); border: 1px solid var(--rule-strong); border-radius: 999px; background: var(--surface); max-width: 100%; }
+.jv-branches p + p { margin-top: 0; }
+.jv-branches p:first-child::before { content: ""; position: absolute; left: 50%; top: -17px; height: 16px; border-left: 2px solid var(--band); }
+.jv-branches p.alt { border-style: dashed; }
+.jv-branches p.alt:first-child::before { border-left-style: dashed; }
+.jv-branches p.in { border-color: var(--band); }
+.jv-branches a { font-weight: 650; }
+.jv-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 320px); gap: clamp(24px, 4vw, 56px); margin-top: 24px; padding: 22px 26px; background: var(--surface); border: 1px solid var(--rule); border-left: 4px solid var(--band); border-radius: var(--radius-sm); }
+.jv-card .jv-side { display: flex; flex-direction: column; gap: 16px; }
+
+/* ── who holds each stage ── */
+.jv-globe { display: grid; grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.5fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
+.jv-atlas svg { display: block; }
+.jv-atlas path { fill: var(--surface-3); stroke: var(--page); stroke-width: 0.5; transition: fill 420ms var(--ease), fill-opacity 420ms var(--ease); }
+.jv-atlas path.india { stroke: var(--plum); stroke-width: 1.2; }
+.jv-atlas text { font-size: 12px; font-weight: 700; fill: var(--ink); paint-order: stroke; stroke: var(--page); stroke-width: 3px; pointer-events: none; }
+.jv-atlas text.strong { fill: #fff; stroke: rgba(26, 8, 4, 0.5); stroke-width: 2.5px; }
+.jv-atlas figcaption { display: flex; flex-direction: column; gap: 4px; margin-top: 8px; font-size: var(--text-sm); color: var(--ink-2); }
+.jv-atlas figcaption b { color: var(--ink); font-weight: 650; }
+.jv-atlas .jr-shares { max-width: 360px; margin-top: 6px; padding-top: 0; border-top: 0; }
+
+.jv-switch { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+.jv-switch h2 { margin: 0; }
+
+@media (max-width: 900px) {
+  .jv-track { grid-template-columns: 1fr; gap: 2px; margin-bottom: 16px; }
+  .jv-track::before { display: none; }
+  .jv-track button { flex-direction: row; text-align: left; padding: 5px 0; }
+  .jv-stage, .jv-stage.no-form, .jv-card, .jv-globe { grid-template-columns: 1fr; padding-inline: 16px; }
+  .jv-globe { padding-inline: 0; }
+  .jv-big { max-width: 200px; }
+  .jv-map { grid-template-columns: 1fr; padding-top: 0; }
+  .jv-stop { grid-template-rows: auto; grid-template-columns: 22px 1fr; justify-items: start; text-align: left; align-items: center; padding: 8px 0; }
+  .jv-stop .jv-dot { grid-row: 1; grid-column: 1; }
+  .jv-stop .jv-name { grid-column: 2; align-self: center; }
+  .jv-stop .jv-grade { grid-column: 2; }
+  .jv-stop::before, .jv-loop, .jv-branches { display: none; }
+}

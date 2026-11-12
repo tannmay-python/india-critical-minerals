@@ -8,17 +8,41 @@ import { BAND_COLOR } from "../lib/colors";
 import { mineralHref } from "../lib/router";
 import "./Journey.css";
 
-export function Journey({ journey, color }: { journey: JourneyData; color: string }) {
+/** Minerals on this site that are named in a line become links to their pages. */
+export function useLinked(self: string): (text: string) => ReactNode {
   const core = useCore();
-  /** Minerals on this site that are named in a by-product line become links to their pages. */
-  const linked = (text: string): ReactNode => {
-    const names = core.minerals.map((m) => m.name).filter((n) => n !== journey.mineral);
+  return (text) => {
+    const names = core.minerals.map((m) => m.name).filter((n) => n !== self);
     const parts = text.split(new RegExp(`\\b(${names.join("|")})\\b(?!-)`, "i"));
     return parts.map((part, i) => {
       const hit = i % 2 === 1 ? names.find((n) => n.toLowerCase() === part.toLowerCase()) : undefined;
       return hit ? <a key={i} href={mineralHref(hit)}>{part}</a> : <Fragment key={i}>{part}</Fragment>;
     });
   };
+}
+
+/** The reaction and the side lines of a step: what joins, the other road, what leaves. */
+export function StepNotes({ step, linked }: { step: JourneyStep; linked: (t: string) => ReactNode }) {
+  return (
+    <>
+      {step.chem && <p className="jr-chem">{step.chem}</p>}
+      {step.in?.map((o) => <p className="jr-in" key={o}>{linked(o)}</p>)}
+      {step.alt && <p className="jr-alt">{step.alt}</p>}
+      {step.out?.map((o) => <p className="jr-out" key={o}>{linked(o)}</p>)}
+    </>
+  );
+}
+
+export function Sources({ journey }: { journey: JourneyData }) {
+  return (
+    <p className="jr-sources">
+      {journey.sources.map((s, i) => <span key={i}>{s.url ? <a href={s.url} target="_blank" rel="noopener">{s.title}</a> : s.title}</span>)}
+    </p>
+  );
+}
+
+export function Journey({ journey, color }: { journey: JourneyData; color: string }) {
+  const linked = useLinked(journey.mineral);
   return (
     <div className="journey" style={{ "--el": color } as CSSProperties}>
       <ol className="jr-flow">
@@ -33,10 +57,7 @@ export function Journey({ journey, color }: { journey: JourneyData; color: strin
                 {s.form && <Waffle value={s.form.content} label={`${s.form.name}: ${s.form.label}`} />}
               </header>
               <p className="jr-text">{s.text}</p>
-              {s.chem && <p className="jr-chem">{s.chem}</p>}
-              {s.in?.map((o) => <p className="jr-in" key={o}>{linked(o)}</p>)}
-              {s.alt && <p className="jr-alt">{s.alt}</p>}
-              {s.out?.map((o) => <p className="jr-out" key={o}>{linked(o)}</p>)}
+              <StepNotes step={s} linked={linked} />
               {s.shares && <Shares step={s} />}
               {s.india && <p className="jr-india"><b>India</b>{s.india}</p>}
             </li>
@@ -45,15 +66,13 @@ export function Journey({ journey, color }: { journey: JourneyData; color: strin
           </Fragment>
         ))}
       </ol>
-      <p className="jr-sources">
-        {journey.sources.map((s, i) => <span key={i}>{s.url ? <a href={s.url} target="_blank" rel="noopener">{s.title}</a> : s.title}</span>)}
-      </p>
+      <Sources journey={journey} />
     </div>
   );
 }
 
 /** A hundred cells, filled from the bottom: of a hundred parts, this many are the element. */
-function Waffle({ value, label }: { value: number; label: string }) {
+export function Waffle({ value, label }: { value: number; label: string }) {
   // under a tenth of one per cent, not even one cell is filled: the grid stays empty on purpose
   const filled = value < 0.1 ? 0 : Math.max(1, Math.min(100, Math.round(value)));
   return (
@@ -61,13 +80,13 @@ function Waffle({ value, label }: { value: number; label: string }) {
       {Array.from({ length: 100 }, (_, k) => {
         const row = Math.floor(k / 10), col = k % 10;
         const fromBottom = (9 - row) * 10 + col;
-        return <i key={k} className={fromBottom < filled ? "on" : ""} />;
+        return <i key={k} className={fromBottom < filled ? "on" : ""} style={{ "--k": fromBottom } as CSSProperties} />;
       })}
     </span>
   );
 }
 
-function Shares({ step }: { step: JourneyStep }) {
+export function Shares({ step }: { step: JourneyStep }) {
   const { caption, rows } = step.shares!;
   const max = Math.max(...rows.map((r) => r[1]));
   return (
