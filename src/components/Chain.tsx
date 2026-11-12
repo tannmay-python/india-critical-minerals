@@ -31,16 +31,20 @@ export function Chain({ mineral, stages, projects }: { mineral: Mineral; stages:
   const kinds = [...new Set(projects.map((p) => p.kind))];
   const groups = (["active", "pipeline", "inactive"] as const).filter((g) => projects.some((p) => p.group === g));
 
+  // Recycle and Research hold only project marks, so they are drawn only when a project sits in them.
+  const columns = COLUMNS.filter((c) => !c.aux || projects.some((p) => p.band === c.band));
+  const firstAux = columns.findIndex((c) => c.aux);
+
   // Nothing to place on the chain: draw nothing. The journey above and the supplier-concentration
   // score already say how concentrated mining and refining are.
   if (!stages && projects.length === 0) return null;
 
   return (
     <div className={`chain${stages ? " with-text" : ""}`}>
-      <div className="chain-grid" style={{ "--cols": COLUMNS.length } as CSSProperties}>
+      <div className="chain-grid" style={{ "--cols": columns.length } as CSSProperties}>
         <div className="chain-corner" />
-        {COLUMNS.map((c, i) => (
-          <div key={c.id} className={`chain-head${c.aux ? " aux" : ""}${i === 4 ? " aux-first" : ""}`}>
+        {columns.map((c, i) => (
+          <div key={c.id} className={`chain-head${c.aux ? " aux" : ""}${i === firstAux ? " aux-first" : ""}`}>
             <span className="chain-stage">{c.label}</span>
             {concentration[c.id] !== undefined && (
               <span className="chain-conc" title={`${c.id === "mine" ? "Mining" : "Refining"} concentration ${concentration[c.id]} of 5`}>
@@ -54,18 +58,19 @@ export function Chain({ mineral, stages, projects }: { mineral: Mineral; stages:
         {stages && (["world", "india"] as const).map((who) => (
           <div className="chain-row" key={who}>
             <div className="chain-label">{who === "world" ? "World" : "India"}</div>
-            {COLUMNS.map((c, i) => (
-              <div key={c.id} className={`chain-cell ${who}${c.aux ? " aux" : ""}${i === 4 ? " aux-first" : ""}`}>{stage(c.id)?.[who] ?? ""}</div>
+            {columns.map((c, i) => (
+              <div key={c.id} className={`chain-cell ${who}${c.aux ? " aux" : ""}${i === firstAux ? " aux-first" : ""}`}>{stage(c.id)?.[who] ?? ""}</div>
             ))}
           </div>
         ))}
 
-        <div className="chain-row">
+        {/* no projects, no row: an empty band under the table says nothing */}
+        {projects.length > 0 && <div className="chain-row">
           <div className="chain-label">{stages ? "Projects" : ""}</div>
-          {COLUMNS.map((c, i) => {
+          {columns.map((c, i) => {
             const list = inColumn(c.band);
             return (
-              <div key={c.id} className={`chain-cell marks${c.aux ? " aux" : ""}${i === 4 ? " aux-first" : ""}`}>
+              <div key={c.id} className={`chain-cell marks${c.aux ? " aux" : ""}${i === firstAux ? " aux-first" : ""}`}>
                 {list.map((p) => (
                   <a key={p.id} href={href(`/project/${p.id}`)} aria-label={`${p.name}: ${p.status}`}
                     onClick={tip.hide}
@@ -78,7 +83,7 @@ export function Chain({ mineral, stages, projects }: { mineral: Mineral; stages:
               </div>
             );
           })}
-        </div>
+        </div>}
       </div>
 
       {projects.length > 0 && (
