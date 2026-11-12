@@ -78,7 +78,22 @@ async function dataParity() {
   const trBad = tr.filter((t) => offers(t.id) !== t.offered || offers(t.id, 'Preferred bidder') !== t.auctioned);
   check('auction board counts equal the tranche table (offered and auctioned)', trBad.length === 0, trBad.map((t) => `${t.id} board ${offers(t.id, 'Preferred bidder')}/${offers(t.id)} table ${t.auctioned}/${t.offered}`).join('; '));
 
-  check('26 capability minerals, 18 strategies, 10 guides', cap.minerals.length === capSrc.minerals.length && cap.strategies.length === capSrc.strategies.length && cap.chemistry.length === capSrc.chemistry.length && cap.chemistry.every((k) => k.guide));
+  const own = cap.minerals.filter((m) => !m.supplement), extra = cap.minerals.filter((m) => m.supplement);
+  check('26 capability minerals from the workbook, 18 strategies, 10 guides', own.length === capSrc.minerals.length && cap.strategies.length === capSrc.strategies.length && cap.chemistry.length === capSrc.chemistry.length && cap.chemistry.every((k) => k.guide));
+  {
+    const ids = new Set(cap.sources.map((x) => x.id));
+    const levels = new Set(['Easy', 'Moderate', 'Hard']), times = new Set(['0-3 yrs', '3-7 yrs', '7+ yrs']), conf = new Set(['High', 'Medium', 'Low']);
+    const bad = [];
+    for (const m of extra) {
+      if (capSrc.minerals.some((x) => x.id === m.id)) bad.push(`${m.name}: already in the workbook`);
+      if (m.stages.length !== 4 || m.stages.some((st) => !st.world || !st.india)) bad.push(`${m.name}: needs four complete stages`);
+      if (!levels.has(m.ease) || !times.has(m.time_to_output) || !conf.has(m.confidence)) bad.push(`${m.name}: scale value outside the map's vocabulary`);
+      if (!m.sources.length || m.sources.some((x) => !ids.has(x))) bad.push(`${m.name}: a source id does not resolve`);
+      if (m.complexity !== core.minerals.find((x) => x.name === m.name)?.v.extraction_refining) bad.push(`${m.name}: complexity differs from the dashboard score`);
+      if (/\u2014/.test(JSON.stringify(m))) bad.push(`${m.name}: em dash`);
+    }
+    check(`capability supplement: ${extra.length} minerals, so that all ${core.minerals.length} are covered, each well formed and sourced`, bad.length === 0 && own.length + extra.length === core.minerals.length, bad.join(' | '));
+  }
   check('capability text identical to the workbook export', capSrc.minerals.every((m) => { const b = cap.minerals.find((x) => x.id === m.id); return b && b.next_move === m.next_move && b.what_india_has === m.what_india_has && JSON.stringify(b.stages) === JSON.stringify(m.stages); }));
   check('capability groups agree with the dashboard', cap.minerals.every((m) => groups[m.name] === m.group));
 }

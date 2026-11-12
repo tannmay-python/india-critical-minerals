@@ -29,6 +29,8 @@ export interface CapabilityLight {
   id: string; step: string; nextMove: string; has: string; kinds: string[];
   complexity: number; ease: string; time: string; confidence: string;
   strategies: string[]; chemistry: string[];
+  /** true for the 25 minerals written for this site, outside the owner's capability map */
+  supplement?: boolean;
 }
 
 export interface Mineral {
@@ -170,6 +172,8 @@ export interface CapMineral {
   next_move: string; next_move_stage: string; value_chain_step: string; what_india_has: string; kinds: string[];
   complexity: number; ease: string; cost: string; time_to_output: string; confidence: string;
   stages: ChainStage[]; strategies: string[]; chemistry: string[]; sources: string[];
+  /** true for the 25 minerals written for this site (content/capability-supplement.json), outside the owner's map */
+  supplement?: boolean;
 }
 export interface Capability {
   meta: Record<string, unknown> & { stages: { id: string; short: string; label: string }[]; notes: { title: string; text: string }[]; scales: Record<string, string> };

@@ -1,4 +1,4 @@
-// What could come first: the 26 minerals with a pathway, placed by how hard the next capability is
+// What could come first: every mineral with a capability pathway, placed by how hard the next capability is
 // for India and how long it takes to reach meaningful output. Top left is the place to start.
 import type { CSSProperties } from "react";
 import { useCore } from "../data/store";

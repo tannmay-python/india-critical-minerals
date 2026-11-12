@@ -126,6 +126,22 @@ async function main() {
 
   // ---- capability map ----------------------------------------------------------------------
   const cap = await readJSON(path.join(CAP, 'dist/capability_map.json'));
+  // The owner's map covers 26 minerals (groups 1, 2 and 5). The other 25 are in a supplement written
+  // for this site on 12 Nov 2026 (content/capability-supplement.json): same fields, kept apart from the
+  // workbook and marked `supplement` so that the two can always be told apart.
+  const supplement = await readJSON(path.join(ROOT, 'content/capability-supplement.json')).catch(() => null);
+  if (supplement) {
+    const knownSources = new Set(cap.sources.map((s) => s.id));
+    for (const src of supplement.sources) if (!knownSources.has(src.id)) cap.sources.push({ ...src, used_by: [], supplement: true });
+    for (const m of supplement.minerals) {
+      if (cap.minerals.some((x) => x.id === m.id)) continue;
+      cap.minerals.push({ ...m, supplement: true });
+      for (const sid of m.strategies) { const st = cap.strategies.find((x) => x.id === sid); if (st && !st.minerals.includes(m.id)) st.minerals.push(m.id); }
+      for (const kid of m.chemistry) { const k = cap.chemistry.find((x) => x.id === kid); if (k && !k.minerals.includes(m.id)) k.minerals.push(m.id); }
+      for (const sid of m.sources) { const src = cap.sources.find((x) => x.id === sid); if (src) (src.used_by ??= []).push({ kind: 'mineral', id: m.id }); }
+    }
+    cap.meta.supplement = supplement.meta;
+  }
   const capByName = new Map(cap.minerals.map((m) => [m.name, m]));
 
   // ---- project map -------------------------------------------------------------------------
@@ -216,7 +232,7 @@ async function main() {
       capability: c ? {
         id: c.id, step: c.value_chain_step, nextMove: c.next_move, has: c.what_india_has, kinds: c.kinds,
         complexity: c.complexity, ease: c.ease, time: c.time_to_output, confidence: c.confidence,
-        strategies: c.strategies, chemistry: c.chemistry,
+        strategies: c.strategies, chemistry: c.chemistry, supplement: Boolean(c.supplement),
       } : null,
     };
   });
@@ -268,7 +284,7 @@ async function main() {
         chemistryList: c.chemistry.map((id) => chemistryById.get(id)).filter(Boolean).map((k) => ({
           id: k.id, slug: k.slug, name: k.name, who: k.who, carries_over_to: k.carries_over_to, fit: k.fit,
           summary: k.guide?.summary ?? null,
-          links: (k.guide?.mineral_links ?? []).filter((l) => (l.minerals ?? []).includes(c.id)),
+          links: [...(k.guide?.mineral_links ?? []).filter((l) => (l.minerals ?? []).includes(c.id)), ...(c.chemistry_how?.[k.id] ? [{ minerals: [c.id], how: c.chemistry_how[k.id] }] : [])],
         })),
         sourceList: (c.sources ?? []).map((id) => capSource.get(id)).filter(Boolean).map(({ id, title, url, type, published }) => ({ id, title, url, type, published: published ?? null })),
         estimates: (cap.meta.estimates ?? []).filter((x) => x.mineral === c.id),

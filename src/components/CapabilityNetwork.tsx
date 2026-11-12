@@ -24,9 +24,11 @@ export function CapabilityNetwork({ cap }: { cap: Capability }) {
     const strategyToMineral = strategies.flatMap((s) => s.minerals.map((m) => [s.id, m] as const));
     const bary = (ids: string[]) => (ids.length ? ids.reduce((a, s) => a + (sIndex.get(s) ?? 0), 0) / ids.length : 99);
     const chems = [...cap.chemistry].sort((a, b) => bary(a.guide?.related_strategies ?? []) - bary(b.guide?.related_strategies ?? []));
-    const groupIds = [...new Set(cap.minerals.map((m) => m.group))];
-    const groupBary = new Map(groupIds.map((g) => [g, bary(cap.minerals.filter((m) => m.group === g).flatMap((m) => m.strategies))]));
-    const minerals = [...cap.minerals].sort((a, b) => groupBary.get(a.group)! - groupBary.get(b.group)! || bary(a.strategies) - bary(b.strategies));
+    // only minerals that some capability serves: a name with no line to it would say nothing
+    const served = cap.minerals.filter((m) => m.strategies.length > 0);
+    const groupIds = [...new Set(served.map((m) => m.group))];
+    const groupBary = new Map(groupIds.map((g) => [g, bary(served.filter((m) => m.group === g).flatMap((m) => m.strategies))]));
+    const minerals = [...served].sort((a, b) => groupBary.get(a.group)! - groupBary.get(b.group)! || bary(a.strategies) - bary(b.strategies));
     return { strategies, chems, minerals, chemToStrategy, strategyToMineral };
   }, [cap]);
 

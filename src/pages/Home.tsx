@@ -102,7 +102,7 @@ export function Home() {
               {core.bands.map((b) => <li key={b.id}><i className="swatch sq" style={{ "--c": BAND_COLOR[b.id] } as CSSProperties} />{b.label}</li>)}
             </ul>
           )}
-          {lens === "capability" && <Scale title="Time to meaningful output, for the 26 minerals with a capability pathway" stops={["0–3 yrs", "3–7 yrs", "7+ yrs"]} colors={[SEQ5[4], SEQ5[2], SEQ5[1]]} />}
+          {lens === "capability" && <Scale title="Time to meaningful output on the capability pathway" stops={["0–3 yrs", "3–7 yrs", "7+ yrs"]} colors={[SEQ5[4], SEQ5[2], SEQ5[1]]} />}
           {lens === "groups" && <span className="sr-only">{core.groups.map((g) => g.name).join(", ")}</span>}
         </div>
 
