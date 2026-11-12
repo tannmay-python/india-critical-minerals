@@ -1,63 +1,88 @@
-.journey { --gap: 30px; --cols: 4; --arrow: #c2a85e; margin-bottom: clamp(36px, 4vw, 56px); }
-.jr-flow { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: 0 var(--gap); }
+.journey { margin-bottom: clamp(36px, 4vw, 56px); }
 
-.jr-step { position: relative; display: flex; flex-direction: column; gap: 10px; padding: 14px 16px 16px; background: var(--surface); border: 1px solid var(--rule); border-top: 3px solid var(--band); border-radius: var(--radius-sm); min-width: 0; }
-.jr-step header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; min-height: 64px; }
-.jr-step h3 { font-family: var(--font-display); font-size: var(--text-xl); font-weight: 500; letter-spacing: -0.01em; line-height: 1.1; }
-.jr-form { display: flex; flex-direction: column; margin-top: 6px; font-size: var(--text-sm); line-height: 1.3; color: var(--ink-2); }
-.jr-form b { font-weight: 650; color: var(--ink); }
-.jr-text { font-size: 0.92rem; line-height: 1.5; color: var(--ink); }
-.jr-chem { font-size: var(--text-sm); font-weight: 620; letter-spacing: 0.01em; color: var(--ink); background: var(--surface-2); border-radius: var(--radius-sm); padding: 6px 9px; align-self: flex-start; }
-.jr-alt, .jr-out, .jr-in { position: relative; padding-left: 20px; font-size: var(--text-sm); line-height: 1.45; color: var(--ink-2); }
+/* ── the line ── */
+.jr-map { position: relative; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); padding-top: 34px; }
+.jr-stop { position: relative; display: grid; grid-template-rows: 44px 22px auto; justify-items: center; align-content: start; gap: 8px; padding: 0 6px 6px; text-align: center; }
+.jr-name { align-self: end; font-family: var(--font-display); font-size: 1.12rem; line-height: 1.1; letter-spacing: -0.01em; transition: color 140ms var(--ease); }
+.jr-stop:hover .jr-name, .jr-stop[aria-current] .jr-name { color: var(--plum); }
+.jr-stop[aria-current] .jr-name { font-weight: 600; }
+/* each stop draws the stretch to the next one, shading into the next stage's colour */
+.jr-stop::before { content: ""; position: absolute; left: 50%; width: 100%; top: 60px; height: 6px; border-radius: 3px; background: linear-gradient(90deg, var(--band), var(--next)); }
+.jr-stop:last-of-type::before { display: none; }
+.jr-dot { position: relative; z-index: 1; width: 22px; height: 22px; border-radius: 50%; background: var(--surface); border: 5px solid var(--band); transition: transform 160ms var(--ease); }
+.jr-stop:hover .jr-dot { transform: scale(1.15); }
+.jr-stop[aria-current] .jr-dot { background: var(--band); box-shadow: 0 0 0 3px var(--page), 0 0 0 5px var(--band); }
+.jr-stop:focus-visible { outline: none; }
+.jr-stop:focus-visible .jr-dot { box-shadow: 0 0 0 3px var(--page), 0 0 0 6px var(--focus); }
+.jr-grade { display: flex; flex-direction: column; font-size: var(--text-xs); line-height: 1.3; color: var(--ink-2); }
+.jr-grade b { color: var(--ink); font-weight: 650; font-size: var(--text-sm); }
+
+/* scrap going back: an arc over the line from the recycling stop to where processing starts */
+.jr-loop { position: absolute; top: 4px; height: 22px; left: calc((var(--a) + 0.5) * 100% / var(--n)); width: calc((var(--b) - var(--a)) * 100% / var(--n)); border: 2px dashed var(--band-recycle); border-bottom: 0; border-radius: 14px 14px 0 0; }
+.jr-loop::after { content: ""; position: absolute; left: -6px; bottom: -3px; width: 8px; height: 8px; border-right: 2px solid var(--band-recycle); border-bottom: 2px solid var(--band-recycle); transform: rotate(45deg); }
+
+/* what joins or leaves at a stop */
+.jr-tags { grid-row: 2; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 0 8px; }
+.jr-tags p { position: relative; padding: 5px 10px; font-size: var(--text-xs); line-height: 1.3; text-align: center; color: var(--ink-2); border: 1px solid var(--rule-strong); border-radius: 14px; background: var(--surface); max-width: 100%; }
+.jr-tags p:first-child { margin-top: 16px; }
+.jr-tags p:first-child::before { content: ""; position: absolute; left: 50%; top: -17px; height: 16px; border-left: 2px solid var(--band); }
+.jr-tags p.alt { border-style: dashed; }
+.jr-tags p.alt:first-child::before { border-left-style: dashed; }
+.jr-tags p.in { border-color: var(--band); }
+.jr-tags a { font-weight: 650; }
+
+/* ── the chosen stop ── */
+.jr-stage { grid-column: 1 / -1; grid-row: 3; display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 320px); gap: 8px clamp(24px, 4vw, 56px); margin-top: 24px; padding: 22px 26px 14px; background: var(--surface); border: 1px solid var(--rule); border-left: 4px solid var(--band); border-radius: var(--radius-sm); transition: border-color 200ms var(--ease); }
+.jr-body { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.jr-body h3 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 500; letter-spacing: -0.01em; line-height: 1.1; }
+.jr-text { font-size: 1.06rem; line-height: 1.55; max-width: 58ch; }
+.jr-chem { align-self: flex-start; font-size: var(--text-sm); font-weight: 620; letter-spacing: 0.01em; background: var(--surface-2); border-radius: var(--radius-sm); padding: 6px 9px; }
+.jr-alt, .jr-out, .jr-in { position: relative; padding-left: 20px; font-size: var(--text-sm); line-height: 1.45; color: var(--ink-2); max-width: 62ch; }
 .jr-alt::before, .jr-out::before { content: ""; position: absolute; left: 2px; top: 0.3em; width: 9px; height: 7px; border-left: 1.5px solid var(--band); border-bottom: 1.5px solid var(--band); border-bottom-left-radius: 3px; }
 .jr-alt::after, .jr-out::after { content: ""; position: absolute; left: 9px; top: calc(0.3em + 4px); width: 5px; height: 5px; border-top: 1.5px solid var(--band); border-right: 1.5px solid var(--band); transform: rotate(45deg); }
-.jr-out a, .jr-in a { font-weight: 600; }
-/* what joins the chain: an arrow coming in */
 .jr-in::before { content: ""; position: absolute; left: 1px; top: calc(0.72em - 0.75px); width: 11px; height: 1.5px; background: var(--band); }
 .jr-in::after { content: ""; position: absolute; left: 7px; top: calc(0.72em - 3.25px); width: 5px; height: 5px; border-top: 1.5px solid var(--band); border-right: 1.5px solid var(--band); transform: rotate(45deg); }
+.jr-out a, .jr-in a { font-weight: 600; }
+/* on a wide screen the tags under the line already say what joins and leaves */
+.jr-body .jr-in, .jr-body .jr-out { display: none; }
+.jr-india { max-width: 62ch; font-size: 0.92rem; line-height: 1.45; color: var(--ink-2); padding-top: 12px; border-top: 1px solid var(--rule); }
+.jr-india b { color: var(--plum); font-weight: 680; margin-right: 7px; }
 
+.jr-side { display: flex; flex-direction: column; gap: 16px; }
+.jr-form { display: flex; align-items: center; gap: 12px; font-size: var(--text-sm); color: var(--ink-2); line-height: 1.3; }
+.jr-form > span:not(.jr-waffle) { display: flex; flex-direction: column; }
+.jr-form b { color: var(--ink); font-weight: 650; }
 /* a hundred cells: of a hundred parts, this many are the element */
-.jr-waffle { flex: none; display: grid; grid-template-columns: repeat(10, 5px); gap: 1px; }
-.jr-waffle i { width: 5px; height: 5px; background: var(--rule); }
+.jr-waffle { flex: none; display: grid; grid-template-columns: repeat(10, 7px); gap: 1px; }
+.jr-waffle i { width: 7px; height: 7px; background: var(--rule); transition: background 240ms var(--ease); transition-delay: calc(var(--k) * 4ms); }
 .jr-waffle i.on { background: var(--el); }
-
-.jr-shares { display: grid; grid-template-columns: auto minmax(40px, 1fr) auto; gap: 4px 10px; align-items: center; margin-top: auto; padding-top: 10px; border-top: 1px solid var(--rule); font-size: var(--text-sm); line-height: 1.3; }
+.jr-shares { display: grid; grid-template-columns: auto minmax(40px, 1fr) auto; gap: 4px 10px; align-items: center; font-size: var(--text-sm); line-height: 1.3; }
 .jr-shares figcaption { grid-column: 1 / -1; color: var(--muted); margin-bottom: 2px; }
 .jr-shares > div { display: contents; }
 .jr-shares span:first-child { max-width: 15ch; }
 .jr-shares i { height: 6px; border-radius: 3px; background: var(--surface-3); overflow: hidden; }
-.jr-shares b { display: block; height: 100%; border-radius: 3px; background: var(--band); }
+.jr-shares b { display: block; height: 100%; border-radius: 3px; background: var(--band); transition: width 300ms var(--ease); }
 .jr-shares .num { text-align: right; font-weight: 620; }
-.jr-india { font-size: var(--text-sm); line-height: 1.45; color: var(--ink-2); padding-top: 10px; border-top: 1px solid var(--rule); }
-.jr-shares + .jr-india { margin-top: 0; }
-.jr-step > .jr-india:not(.jr-shares + .jr-india) { margin-top: auto; }
-.jr-india b { color: var(--plum); font-weight: 680; margin-right: 7px; }
 
-/* arrows: each box points at the next one in its row */
-.jr-step:not(:last-child)::after { content: ""; position: absolute; left: 100%; top: 26px; width: calc(var(--gap) - 6px); margin-left: 2px; height: 1.5px; background: var(--arrow); }
-.jr-step:not(:last-child)::before { content: ""; position: absolute; left: calc(100% + var(--gap) - 12px); top: 22px; width: 8px; height: 8px; border-top: 1.5px solid var(--arrow); border-right: 1.5px solid var(--arrow); transform: rotate(45deg); z-index: 1; }
-/* ...and at the end of a row the line runs back under the boxes to the start of the next row */
-.jr-turn { grid-column: 1 / -1; position: relative; height: 40px; --c: calc((100% - (var(--cols) - 1) * var(--gap)) / (2 * var(--cols))); display: none; }
-.jr-turn.four { display: block; }
-.jr-turn::before { content: ""; position: absolute; left: var(--c); right: var(--c); top: 0; height: 50%; border-right: 1.5px solid var(--arrow); border-bottom: 1.5px solid var(--arrow); border-bottom-right-radius: 8px; }
-.jr-turn::after { content: ""; position: absolute; left: var(--c); top: 50%; height: calc(50% - 3px); border-left: 1.5px solid var(--arrow); margin-top: -1.5px; }
-.jr-turn i { position: absolute; left: calc(var(--c) - 4px); bottom: 3px; width: 8px; height: 8px; border-right: 1.5px solid var(--arrow); border-bottom: 1.5px solid var(--arrow); transform: rotate(45deg); }
-.journey .jr-turn.four ~ .jr-step:last-child::after, .journey .jr-turn.four ~ .jr-step:last-child::before { display: none; }
-/* the box before a turn has no arrow to its right */
-.jr-step:has(+ .jr-turn.four)::after, .jr-step:has(+ .jr-turn.four)::before { display: none; }
+.jr-nav { grid-column: 1 / -1; display: flex; justify-content: space-between; margin-top: 10px; padding-top: 12px; border-top: 1px solid var(--rule); font-size: var(--text-sm); font-weight: 600; }
+.jr-nav button { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-2); }
+.jr-nav button:hover { color: var(--plum); }
+.jr-nav .prev::before, .jr-nav .next::after { content: ""; width: 7px; height: 7px; border-left: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); }
+.jr-nav .next::after { transform: rotate(-135deg); }
 
 .jr-sources { display: flex; flex-wrap: wrap; gap: 2px 18px; margin-top: 14px; font-size: var(--text-sm); color: var(--muted); }
 .jr-sources a { color: var(--ink-2); }
 
-@media (max-width: 1080px) {
-  .journey { --cols: 2; }
-  .jr-turn { display: block; }
-  .jr-step:has(+ .jr-turn)::after, .jr-step:has(+ .jr-turn)::before { display: none; }
-}
-@media (max-width: 640px) {
-  .journey { --cols: 1; }
-  .jr-flow { gap: 26px 0; }
-  .jr-turn, .jr-turn.four { display: none; }
-  .jr-step:not(:last-child)::after { display: block; left: 28px; top: 100%; width: 1.5px; height: 20px; margin: 2px 0 0; }
-  .jr-step:not(:last-child)::before { display: block; left: 24.5px; top: calc(100% + 14px); transform: rotate(135deg); }
+/* narrow screens: the line runs down the page and the chosen stop opens in place */
+@media (max-width: 900px) {
+  .jr-map { display: flex; flex-direction: column; padding-top: 0; }
+  .jr-loop, .jr-tags { display: none; }
+  .jr-stop { grid-template-rows: auto; grid-template-columns: 22px minmax(0, 1fr); justify-items: start; align-items: center; gap: 2px 14px; padding: 9px 0; text-align: left; }
+  .jr-dot { grid-row: 1 / span 2; grid-column: 1; }
+  .jr-name { grid-column: 2; align-self: center; }
+  .jr-grade { grid-column: 2; flex-direction: row; gap: 6px; flex-wrap: wrap; }
+  .jr-stop::before { left: 8px; top: 50%; width: 6px; height: 100%; background: linear-gradient(180deg, var(--band), var(--next)); }
+  .jr-stage { grid-template-columns: 1fr; margin: 4px 0 10px; padding: 16px 16px 10px; }
+  .jr-body .jr-in, .jr-body .jr-out { display: block; }
+  .jr-body h3 { display: none; }
 }

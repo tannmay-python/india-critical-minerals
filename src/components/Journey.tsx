@@ -1,92 +1,98 @@
-// The mineral's journey as a flow chart: one box per stage, in order, from the deposit to the
-// finished product and back through scrap. The square of a hundred cells in a box shows how much
-// of the material is the element itself at that point, so the climb from ore to metal can be seen.
-import { Fragment, type CSSProperties, type ReactNode } from "react";
+// A mineral's journey drawn as a route line: one stop per stage, from the deposit to the finished
+// product. The line takes each stage's colour; what joins or leaves the chain hangs off its stop,
+// and a dashed arc shows scrap going back in. Choosing a stop opens what happens there.
+import { Fragment, useEffect, useState, type CSSProperties, type ReactNode } from "react";
 import { useCore } from "../data/store";
 import type { Journey as JourneyData, JourneyStep } from "../journeys";
 import { BAND_COLOR } from "../lib/colors";
 import { mineralHref } from "../lib/router";
 import "./Journey.css";
 
-/** Minerals on this site that are named in a line become links to their pages. */
-export function useLinked(self: string): (text: string) => ReactNode {
+export function Journey({ journey, color }: { journey: JourneyData; color: string }) {
   const core = useCore();
-  return (text) => {
-    const names = core.minerals.map((m) => m.name).filter((n) => n !== self);
+  const [chosen, setChosen] = useState(0);
+  useEffect(() => setChosen(0), [journey.mineral]);
+  const steps = journey.steps;
+  const at = Math.min(chosen, steps.length - 1);
+  const step = steps[at];
+
+  /** Minerals on this site that are named in a line become links to their pages. */
+  const linked = (text: string): ReactNode => {
+    const names = core.minerals.map((m) => m.name).filter((n) => n !== journey.mineral);
     const parts = text.split(new RegExp(`\\b(${names.join("|")})\\b(?!-)`, "i"));
     return parts.map((part, i) => {
       const hit = i % 2 === 1 ? names.find((n) => n.toLowerCase() === part.toLowerCase()) : undefined;
       return hit ? <a key={i} href={mineralHref(hit)}>{part}</a> : <Fragment key={i}>{part}</Fragment>;
     });
   };
-}
 
-/** The reaction and the side lines of a step: what joins, the other road, what leaves. */
-export function StepNotes({ step, linked }: { step: JourneyStep; linked: (t: string) => ReactNode }) {
-  return (
-    <>
-      {step.chem && <p className="jr-chem">{step.chem}</p>}
-      {step.in?.map((o) => <p className="jr-in" key={o}>{linked(o)}</p>)}
-      {step.alt && <p className="jr-alt">{step.alt}</p>}
-      {step.out?.map((o) => <p className="jr-out" key={o}>{linked(o)}</p>)}
-    </>
-  );
-}
+  // scrap comes back in where processing starts
+  const back = steps.findIndex((s) => s.band === "recycle");
+  const reentry = steps.findIndex((s) => s.band === "process" || s.band === "make");
+  const loop = back > 0 && reentry >= 0 && reentry < back ? { from: reentry, to: back } : null;
+  const prev = steps[at - 1], next = steps[at + 1];
 
-export function Sources({ journey }: { journey: JourneyData }) {
   return (
-    <p className="jr-sources">
-      {journey.sources.map((s, i) => <span key={i}>{s.url ? <a href={s.url} target="_blank" rel="noopener">{s.title}</a> : s.title}</span>)}
-    </p>
-  );
-}
-
-export function Journey({ journey, color }: { journey: JourneyData; color: string }) {
-  const linked = useLinked(journey.mineral);
-  return (
-    <div className="journey" style={{ "--el": color } as CSSProperties}>
-      <ol className="jr-flow">
-        {journey.steps.map((s, i) => (
-          <Fragment key={s.id}>
-            <li className="jr-step" style={{ "--band": BAND_COLOR[s.band] } as CSSProperties}>
-              <header>
-                <div>
-                  <h3>{s.title}</h3>
-                  {s.form && <p className="jr-form"><b>{s.form.name}</b><span>{s.form.label}</span></p>}
-                </div>
-                {s.form && <Waffle value={s.form.content} label={`${s.form.name}: ${s.form.label}`} />}
-              </header>
-              <p className="jr-text">{s.text}</p>
-              <StepNotes step={s} linked={linked} />
-              {s.shares && <Shares step={s} />}
-              {s.india && <p className="jr-india"><b>India</b>{s.india}</p>}
-            </li>
-            {/* where a row of the chart ends, the line turns back to the start of the next */}
-            {i % 2 === 1 && i < journey.steps.length - 1 && <li className={`jr-turn${i % 4 === 3 ? " four" : ""}`} aria-hidden="true"><i /></li>}
-          </Fragment>
+    <div className="journey" style={{ "--el": color, "--n": steps.length } as CSSProperties}>
+      <div className="jr-map">
+        {loop && <i className="jr-loop" aria-hidden="true" style={{ "--a": loop.from, "--b": loop.to } as CSSProperties} />}
+        {steps.map((s, i) => (
+          <button type="button" key={s.id} className="jr-stop" aria-current={i === at ? "step" : undefined} aria-controls="journey-stage" onClick={() => setChosen(i)}
+            style={{ "--band": BAND_COLOR[s.band], "--next": BAND_COLOR[(steps[i + 1] ?? s).band], order: i * 2 } as CSSProperties}>
+            <span className="jr-name">{s.title}</span>
+            <i className="jr-dot" aria-hidden="true" />
+            {s.form && <span className="jr-grade"><b>{s.form.name}</b>{s.form.label}</span>}
+          </button>
         ))}
-      </ol>
-      <Sources journey={journey} />
+        {steps.map((s, i) => (s.in || s.alt || s.out) && (
+          <div className="jr-tags" key={s.id} style={{ gridColumn: i + 1, "--band": BAND_COLOR[s.band] } as CSSProperties}>
+            {s.in?.map((o) => <p className="in" key={o}>{linked(o)}</p>)}
+            {s.alt && <p className="alt">{s.alt.split(/[.:]/)[0]}</p>}
+            {s.out?.map((o) => <p className="out" key={o}>{linked(o)}</p>)}
+          </div>
+        ))}
+        <section id="journey-stage" className="jr-stage" aria-live="polite" style={{ "--band": BAND_COLOR[step.band], order: at * 2 + 1 } as CSSProperties}>
+          <div className="jr-body">
+            <h3>{step.title}</h3>
+            <p className="jr-text">{step.text}</p>
+            {step.chem && <p className="jr-chem">{step.chem}</p>}
+            {step.in?.map((o) => <p className="jr-in" key={o}>{linked(o)}</p>)}
+            {step.alt && <p className="jr-alt">{step.alt}</p>}
+            {step.out?.map((o) => <p className="jr-out" key={o}>{linked(o)}</p>)}
+            {step.india && <p className="jr-india"><b>India</b>{step.india}</p>}
+          </div>
+          <div className="jr-side">
+            {step.form && <p className="jr-form"><Waffle value={step.form.content} label={`${step.form.name}: ${step.form.label}`} /><span><b>{step.form.name}</b>{step.form.label}</span></p>}
+            {step.shares && <Shares step={step} />}
+          </div>
+          <p className="jr-nav">
+            {prev ? <button type="button" className="prev" onClick={() => setChosen(at - 1)}>{prev.title}</button> : <span />}
+            {next && <button type="button" className="next" onClick={() => setChosen(at + 1)}>{next.title}</button>}
+          </p>
+        </section>
+      </div>
+      <p className="jr-sources">
+        {journey.sources.map((s, i) => <span key={i}>{s.url ? <a href={s.url} target="_blank" rel="noopener">{s.title}</a> : s.title}</span>)}
+      </p>
     </div>
   );
 }
 
 /** A hundred cells, filled from the bottom: of a hundred parts, this many are the element. */
-export function Waffle({ value, label }: { value: number; label: string }) {
+function Waffle({ value, label }: { value: number; label: string }) {
   // under a tenth of one per cent, not even one cell is filled: the grid stays empty on purpose
   const filled = value < 0.1 ? 0 : Math.max(1, Math.min(100, Math.round(value)));
   return (
     <span className="jr-waffle" role="img" aria-label={label}>
       {Array.from({ length: 100 }, (_, k) => {
-        const row = Math.floor(k / 10), col = k % 10;
-        const fromBottom = (9 - row) * 10 + col;
+        const fromBottom = (9 - Math.floor(k / 10)) * 10 + (k % 10);
         return <i key={k} className={fromBottom < filled ? "on" : ""} style={{ "--k": fromBottom } as CSSProperties} />;
       })}
     </span>
   );
 }
 
-export function Shares({ step }: { step: JourneyStep }) {
+function Shares({ step }: { step: JourneyStep }) {
   const { caption, rows } = step.shares!;
   const max = Math.max(...rows.map((r) => r[1]));
   return (

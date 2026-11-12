@@ -3,7 +3,6 @@ import { useCore, useData } from "../data/store";
 import type { Capability, Mineral, MineralDetail, Project, ScoreDetail, VectorDef } from "../data/types";
 import { CHAIN_COLUMNS, Chain } from "../components/Chain";
 import { Journey } from "../components/Journey";
-import { JourneyLine, JourneyStepper, JourneyWorld } from "../components/JourneyViews";
 import { useJourney } from "../journeys";
 import { Mark } from "../components/ProjectMark";
 import { Radar } from "../components/Radar";
@@ -13,7 +12,6 @@ import { fmtRange } from "../lib/format";
 import { go, href, mineralHref } from "../lib/router";
 import "./MineralPage.css";
 
-const JOURNEY_VIEWS = [{ id: "steps", label: "Step by step" }, { id: "line", label: "Route line" }, { id: "world", label: "World map" }, { id: "boxes", label: "Boxes" }];
 const GROUP_RANK = { active: 0, pipeline: 1, inactive: 2 } as const;
 const PER_STAGE = 4;
 
@@ -24,8 +22,6 @@ export function MineralPage({ name }: { name: string }) {
   const allProjects = useData<Project[]>("projects.json");
   const capability = useData<Capability>(mineral?.capability ? "capability.json" : null);
   const journey = useJourney(mineral?.name);
-  const [view, setView] = useState<string>(() => { try { return localStorage.getItem("journeyView") ?? "steps"; } catch { return "steps"; } });
-  const pickView = (id: string) => { setView(id); try { localStorage.setItem("journeyView", id); } catch { /* private window */ } };
 
   const projects = useMemo(() => {
     if (!mineral || !allProjects) return [];
@@ -98,19 +94,8 @@ export function MineralPage({ name }: { name: string }) {
       </section>
 
       <section className="wrap mp-section">
-        {/* four ways of showing the journey, side by side while the owner chooses one */}
-        <div className="jv-switch">
-          <h2>Value chain</h2>
-          {journey && (
-            <div className="pills" role="group" aria-label="How the journey is shown">
-              {JOURNEY_VIEWS.map((v) => <button type="button" key={v.id} className="pill" aria-pressed={view === v.id} onClick={() => pickView(v.id)}>{v.label}</button>)}
-            </div>
-          )}
-        </div>
-        {journey && view === "boxes" && <Journey journey={journey} color={color} />}
-        {journey && view === "steps" && <JourneyStepper journey={journey} color={color} />}
-        {journey && view === "line" && <JourneyLine journey={journey} color={color} />}
-        {journey && view === "world" && <JourneyWorld journey={journey} color={color} />}
+        <h2>Value chain</h2>
+        {journey && <Journey journey={journey} color={color} />}
         <Chain mineral={mineral} stages={cap?.stages ?? null} projects={projects} />
 
         {projects.length > 0 && (
