@@ -1,6 +1,7 @@
 // A mineral's journey drawn as a route line: one stop per stage, from the deposit to the finished
-// product. The line takes each stage's colour; what joins or leaves the chain hangs off its stop,
-// and a dashed arc shows scrap going back in. Choosing a stop opens what happens there.
+// product. The line carries only the stage names and takes each stage's colour; a dashed arc shows
+// scrap going back in. Everything else (the material, what joins, what leaves) is in the card that
+// opens for the chosen stop, so that no label appears under some stops and not others.
 import { Fragment, useEffect, useState, type CSSProperties, type ReactNode } from "react";
 import { useCore } from "../data/store";
 import type { Journey as JourneyData, JourneyStep } from "../journeys";
@@ -20,9 +21,13 @@ export function Journey({ journey, color }: { journey: JourneyData; color: strin
   const linked = (text: string): ReactNode => {
     const names = core.minerals.map((m) => m.name).filter((n) => n !== journey.mineral);
     const parts = text.split(new RegExp(`\\b(${names.join("|")})\\b(?!-)`, "i"));
+    const seen = new Set<string>();
     return parts.map((part, i) => {
       const hit = i % 2 === 1 ? names.find((n) => n.toLowerCase() === part.toLowerCase()) : undefined;
-      return hit ? <a key={i} href={mineralHref(hit)}>{part}</a> : <Fragment key={i}>{part}</Fragment>;
+      // each mineral is linked once, where it is first named
+      if (!hit || seen.has(hit)) return <Fragment key={i}>{part}</Fragment>;
+      seen.add(hit);
+      return <a key={i} href={mineralHref(hit)}>{part}</a>;
     });
   };
 
@@ -41,22 +46,13 @@ export function Journey({ journey, color }: { journey: JourneyData; color: strin
             style={{ "--band": BAND_COLOR[s.band], "--next": BAND_COLOR[(steps[i + 1] ?? s).band], order: i * 2 } as CSSProperties}>
             <span className="jr-name">{s.title}</span>
             <i className="jr-dot" aria-hidden="true" />
-            {s.form && <span className="jr-grade"><b>{s.form.name}</b>{s.form.label}</span>}
           </button>
-        ))}
-        {steps.map((s, i) => (s.in || s.alt || s.out) && (
-          <div className="jr-tags" key={s.id} style={{ gridColumn: i + 1, "--band": BAND_COLOR[s.band] } as CSSProperties}>
-            {s.in?.map((o) => <p className="in" key={o}>{linked(o)}</p>)}
-            {s.alt && <p className="alt">{s.alt.split(/[.:]/)[0]}</p>}
-            {s.out?.map((o) => <p className="out" key={o}>{linked(o)}</p>)}
-          </div>
         ))}
         <section id="journey-stage" className="jr-stage" aria-live="polite" style={{ "--band": BAND_COLOR[step.band], order: at * 2 + 1 } as CSSProperties}>
           <div className="jr-body">
             <h3>{step.title}</h3>
-            <p className="jr-text">{step.text}</p>
+            <p className="jr-text">{linked(step.text)}</p>
             {step.chem && <p className="jr-chem">{step.chem}</p>}
-            {step.in?.map((o) => <p className="jr-in" key={o}>{linked(o)}</p>)}
             {step.alt && <p className="jr-alt">{step.alt}</p>}
             {step.out?.map((o) => <p className="jr-out" key={o}>{linked(o)}</p>)}
             {step.india && <p className="jr-india"><b>India</b>{step.india}</p>}
