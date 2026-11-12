@@ -6,7 +6,6 @@ import { Journey } from "../components/Journey";
 import { useJourney } from "../journeys";
 import { Mark } from "../components/ProjectMark";
 import { Radar } from "../components/Radar";
-import { fixLinks } from "../content/groups";
 import { groupColor, inkOn } from "../lib/colors";
 import { fmtRange } from "../lib/format";
 import { go, href, mineralHref } from "../lib/router";
@@ -162,22 +161,6 @@ export function MineralPage({ name }: { name: string }) {
           )}
         </section>
       )}
-
-      <section className="wrap mp-section mp-group-advice">
-        <h2>{group.id === 0 ? group.name : `${group.name}: what India should do`}</h2>
-        <div className="mp-advice-grid">
-          <div>
-            {group.policy.length > 0
-              ? <ul className="mp-policy">{group.policy.map((p, i) => <li key={i}>{p}</li>)}</ul>
-              : <div className="prose">{(group.body ?? "").split(/\n\s*\n/).map((p, i) => <p key={i} dangerouslySetInnerHTML={{ __html: fixLinks(p) }} />)}</div>}
-          </div>
-          {peers.length > 1 && (
-            <div className="mp-peers">
-              {peers.map((m) => <a key={m.name} href={mineralHref(m.name)} title={m.name} aria-current={m.name === mineral.name ? "page" : undefined} style={{ background: color, color: inkOn(color) }}>{m.symbol}</a>)}
-            </div>
-          )}
-        </div>
-      </section>
 
       {cap && cap.sourceList.length > 0 && (
         <section className="wrap mp-section mp-sources">

@@ -77,20 +77,11 @@
 .mp-links a:hover { text-decoration: underline; }
 .mp-links p { margin-top: 4px; font-size: 0.94rem; color: var(--ink-2); }
 
-.mp-advice-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 64px); align-items: start; }
-.mp-policy { border-top: 2px solid var(--ink); }
-.mp-policy li { position: relative; padding: 11px 0 11px 22px; border-bottom: 1px solid var(--rule); max-width: 78ch; }
-.mp-policy li::before { content: ""; position: absolute; left: 2px; top: 22px; width: 8px; height: 2px; background: var(--marigold); }
-.mp-peers { display: grid; grid-template-columns: repeat(auto-fill, 46px); gap: 4px; }
-.mp-peers a { display: flex; align-items: center; justify-content: center; height: 46px; border-radius: var(--radius-sm); font-weight: 700; text-decoration: none; opacity: 0.55; }
-.mp-peers a:hover, .mp-peers a[aria-current="page"] { opacity: 1; }
-.mp-peers a[aria-current="page"] { box-shadow: 0 0 0 2px var(--page), 0 0 0 4px var(--ink); }
-
 .mp-sources ol { list-style: decimal; padding-left: 1.4em; columns: 2; column-gap: 48px; font-size: var(--text-sm); color: var(--ink-2); }
 .mp-sources li { padding: 3px 0; break-inside: avoid; }
 
 @media (max-width: 900px) {
-  .mp-scores, .mp-build-grid, .mp-advice-grid { grid-template-columns: 1fr; }
+  .mp-scores, .mp-build-grid { grid-template-columns: 1fr; }
   .mp-radar { position: static; }
   .mp-tile { width: 68px; height: 68px; font-size: 1.7rem; }
   .mp-compare { display: none; }
