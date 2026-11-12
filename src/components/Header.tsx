@@ -4,8 +4,9 @@ import { Search } from "./Search";
 import "./Header.css";
 
 const NAV = [
-  { label: "Overview", path: "/", match: ["", "groups"] },
+  { label: "Overview", path: "/", match: [""] },
   { label: "Explorer", path: "/explorer", match: ["explorer", "mineral", "compare"] },
+  { label: "Groups", path: "/groups", match: ["groups"] },
   { label: "Projects", path: "/projects", match: ["projects", "project"] },
   { label: "Capabilities", path: "/capabilities", match: ["capabilities", "capability", "technology"] },
   { label: "Method", path: "/method", match: ["method"] },
