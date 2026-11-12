@@ -83,7 +83,8 @@
       "id": "recycle",
       "band": "recycle",
       "title": "Recycle",
-      "text": "Sputtering puts only about a third of a target onto the glass. The rest, the spent target and the coating on the chamber walls, is collected and refined again, mostly in Japan, South Korea and China. Indium in old screens is rarely recovered."
+      "text": "Sputtering puts only about a third of a target onto the glass. The rest, the spent target and the coating on the chamber walls, is collected and refined again, mostly in Japan, South Korea and China. Indium in old screens is rarely recovered.",
+      "india": "CSIR-NML has a laboratory process that recovers indium from scrap LCD panels."
     }
   ],
   "sources": [

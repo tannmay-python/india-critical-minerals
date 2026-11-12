@@ -2,7 +2,7 @@
  "meta": {
   "title": "Capability notes for the 25 minerals outside the owner's capability map",
   "prepared": "2026-11-12",
-  "method": "Same fields and scales as the capability map. World lines from USGS Mineral Commodity Summaries 2026; India lines from the Indian Minerals Yearbook 2023, company filings and the owner's dashboard and project map; each figure was read in the cited source. Complexity is the dashboard's extraction and refining score.",
+  "method": "Same fields and scales as the capability map. World lines from USGS Mineral Commodity Summaries 2026; India lines from the Indian Minerals Yearbook, Department of Atomic Energy and DRDO publications, company filings and the owner's dashboard and project map; each figure was read in the cited source. Complexity is the dashboard's extraction and refining score.",
   "status": "Drafted by Claude for the owner's review; not part of the workbook."
  },
  "minerals": [
@@ -15,7 +15,7 @@
    "next_move": "Turn Hindustan Zinc's by-product stream into metal and trioxide at scale; tie up concentrate for the smelters India already runs.",
    "next_move_stage": "refine",
    "value_chain_step": "Antimony smelting and trioxide",
-   "what_india_has": "Smelters that run on imported ore and concentrate (6,460 t in 2022-23) and export metal; Hindustan Zinc, which recovers antimony from smelter dust and slag as a by-product.",
+   "what_india_has": "Smelters that run on imported ore and concentrate (6,460 t in 2022-23) and export metal; Hindustan Zinc, which recovers antimony from smelter dust and slag as a by-product; high-purity antimony and antimony trioxide at the Nuclear Fuel Complex.",
    "kinds": [
     "Existing plant",
     "By-product stream"
@@ -41,7 +41,7 @@
     {
      "stage": "make",
      "world": "Antimony trioxide for flame retardants; antimonial lead for batteries.",
-     "india": "Exported 22,852 t of antimonial lead and 1,590 t of antimony alloys and scrap in 2022-23.",
+     "india": "Exported 22,852 t of antimonial lead and 1,590 t of antimony alloys and scrap in 2022-23; the Nuclear Fuel Complex makes high-purity antimony.",
      "india_level": 1
     },
     {
@@ -58,6 +58,7 @@
     "usgs_sb",
     "imyb23",
     "hzl_ir26",
+    "nfc",
     "perpetua",
     "icm_dash"
    ]
@@ -71,20 +72,21 @@
    "next_move": "Recover bismuth where lead and zinc are already smelted; Hindustan Zinc says it is building that capability.",
    "next_move_stage": "refine",
    "value_chain_step": "Bismuth recovery from lead refining",
-   "what_india_has": "A lead-zinc smelting base at Hindustan Zinc, which is developing in-house extraction of bismuth and other minor metals from smelter waste; no production today.",
+   "what_india_has": "Bismuth occurs in Hindustan Zinc's Rajpura-Dariba lead-zinc deposit, and the company is developing in-house extraction of bismuth and other minor metals from smelter waste. The Nuclear Fuel Complex makes high-purity bismuth in small lots. No commercial production.",
    "kinds": [
-    "By-product stream"
+    "By-product stream",
+    "Research know-how"
    ],
    "complexity": 2,
    "ease": "Moderate",
    "cost": "No public figure found.",
    "time_to_output": "3-7 yrs",
-   "confidence": "Low",
+   "confidence": "Medium",
    "stages": [
     {
      "stage": "mine",
      "world": "A by-product of lead and tungsten ores; USGS gives no mine table.",
-     "india": "Present in Hindustan Zinc's smelter waste and tailings; not recovered.",
+     "india": "Present in the Rajpura-Dariba lead-zinc deposit in Rajasthan; not recovered.",
      "india_level": 1
     },
     {
@@ -96,8 +98,8 @@
     {
      "stage": "make",
      "world": "Bismuth chemicals for medicines and pigments; low-melting alloys.",
-     "india": "None reported; metal and compounds are imported.",
-     "india_level": 0
+     "india": "The Nuclear Fuel Complex makes bismuth of over 99.99% purity for electronics; no commercial output.",
+     "india_level": 1
     },
     {
      "stage": "use",
@@ -111,7 +113,9 @@
    "chemistry_how": {},
    "sources": [
     "usgs_bi",
+    "ibm_mo21",
     "hzl_ir26",
+    "nfc",
     "icm_dash"
    ]
   },
@@ -121,10 +125,10 @@
    "symbol": "Cd",
    "group": 6,
    "dashboard_url": "https://indiacriticalminerals.com/#mineral/Cadmium",
-   "next_move": "Bring Hindustan Zinc's existing cadmium circuits back into reported production, then add high-purity refining for solar and nuclear use.",
+   "next_move": "Scale the cadmium recovery that Hindustan Zinc and Runaya restarted in FY2026, then add high-purity refining for solar and nuclear use.",
    "next_move_stage": "refine",
    "value_chain_step": "Cadmium recovery at zinc smelters",
-   "what_india_has": "913 t/yr of installed recovery capacity at zinc smelters (Chanderiya 468, Debari 250; Vizag and Binani suspended). No output reported since 47 t in 2017-18.",
+   "what_india_has": "913 t/yr of installed recovery capacity at zinc smelters (Chanderiya 468, Debari 250; Vizag and Binani suspended). Hindustan Zinc made cadmium products again in FY2026 by refining purification cake with Runaya, which is adding cadmium capacity in Rajasthan.",
    "kinds": [
     "Existing plant",
     "By-product stream"
@@ -144,14 +148,14 @@
     {
      "stage": "refine",
      "world": "China 9,500 of 23,000 t (2025); South Korea 4,300 t; Japan and Canada 1,300 t each.",
-     "india": "913 t/yr installed, 99.95% purity at Chanderiya; Hindustan Zinc is testing extraction of more cadmium from smelter streams.",
+     "india": "913 t/yr installed, 99.95% purity at Chanderiya. No output was reported after 47 t in 2017-18, until cadmium products were made again in FY2026.",
      "india_level": 1
     },
     {
      "stage": "make",
      "world": "Nickel-cadmium batteries; cadmium telluride; pigments.",
-     "india": "None at scale. Hindustan Zinc plans R&D on high-purity cadmium.",
-     "india_level": 0
+     "india": "The Nuclear Fuel Complex makes high-purity cadmium; Hindustan Zinc plans R&D on it.",
+     "india_level": 1
     },
     {
      "stage": "use",
@@ -166,7 +170,10 @@
    "sources": [
     "usgs_cd",
     "imyb23",
+    "hzl_stories26",
+    "runaya",
     "hzl_ir26",
+    "nfc",
     "fs",
     "icm_dash"
    ]
@@ -177,41 +184,42 @@
    "symbol": "Ge",
    "group": 6,
    "dashboard_url": "https://indiacriticalminerals.com/#mineral/Germanium",
-   "next_move": "Measure germanium in Hindustan Zinc's concentrates and residues, then add a recovery circuit at one smelter.",
+   "next_move": "Recover germanium at Hindustan Zinc's planned tailings plant, and scale DRDO's germanium crystal growth for infrared optics.",
    "next_move_stage": "refine",
    "value_chain_step": "Germanium recovery from zinc residues",
-   "what_india_has": "Large zinc smelters with no germanium circuit. Hindustan Zinc is mapping minor and critical metals across its mines and smelters.",
+   "what_india_has": "Hindustan Zinc's 10 Mt/yr tailings reprocessing plant at Rampura Agucha (approved 2025) is meant to recover zinc and critical minerals including germanium; DRDO's Solid State Physics Laboratory grows optical-grade germanium crystals and lens blanks.",
    "kinds": [
-    "By-product stream"
+    "By-product stream",
+    "Research know-how"
    ],
    "complexity": 3,
    "ease": "Moderate",
-   "cost": "No public figure found.",
+   "cost": "Hindustan Zinc's tailings plant, which targets several metals, is budgeted at up to Rs 3,823 crore.",
    "time_to_output": "3-7 yrs",
-   "confidence": "Low",
+   "confidence": "Medium",
    "stages": [
     {
      "stage": "mine",
-     "world": "A by-product of zinc ores.",
-     "india": "Hindustan Zinc mines zinc at scale; no published germanium grades were found.",
+     "world": "A by-product of zinc ores; also found in lignite coal.",
+     "india": "Hindustan Zinc mines zinc at scale; no germanium grades are published for its ores.",
      "india_level": 0
     },
     {
      "stage": "refine",
      "world": "China is the leading producer; also Belgium, Canada, Germany, Russia and the US. USGS gives no tonnages.",
-     "india": "No recovery circuit at any zinc smelter.",
-     "india_level": 0
+     "india": "None yet. Hindustan Zinc's tailings plant is to recover critical minerals including germanium.",
+     "india_level": 1
     },
     {
      "stage": "make",
-     "world": "Germanium tetrachloride for fibre; lenses and wafers.",
-     "india": "None.",
-     "india_level": 0
+     "world": "Germanium tetrachloride for fibre; crystals, lenses and wafers.",
+     "india": "DRDO's laboratory grows germanium single crystals of 100 mm and more and makes lens blanks; crystals are otherwise imported.",
+     "india_level": 1
     },
     {
      "stage": "use",
      "world": "Fibre optics, infrared optics, satellite solar cells.",
-     "india": "Defence optics, fibre and space demand, all imported.",
+     "india": "Defence infrared optics, fibre and space; mostly imported.",
      "india_level": 1
     }
    ],
@@ -220,7 +228,11 @@
    "chemistry_how": {},
    "sources": [
     "usgs_ge",
+    "usgs_ge20",
+    "hzl_tail",
+    "hzl_tail_ge",
     "hzl_ir26",
+    "drdo_ge",
     "icm_dash"
    ]
   },
@@ -230,28 +242,29 @@
    "symbol": "Re",
    "group": 6,
    "dashboard_url": "https://indiacriticalminerals.com/#mineral/Rhenium",
-   "next_move": "Start from scrap: recover rhenium from spent reforming catalysts and superalloy scrap, since India has no molybdenum roaster.",
+   "next_move": "Capture the rhenium that arrives in imported concentrates, put at 1.5 to 2 t a year, and recover it from spent reforming catalysts and superalloy scrap.",
    "next_move_stage": "refine",
-   "value_chain_step": "Rhenium recycling from catalysts and superalloys",
-   "what_india_has": "No primary route (IBM records no production). Hindustan Platinum treats spent catalysts, but the metals it reports recovering do not include rhenium.",
+   "value_chain_step": "Rhenium from copper smelting and scrap",
+   "what_india_has": "No recovery (IBM records no production). A 2023 study estimates that the concentrates India processes carry 1.5 to 2 t of recoverable rhenium a year, none of it captured. Hindustan Platinum treats spent catalysts, but the metals it reports recovering do not include rhenium.",
    "kinds": [
+    "By-product stream",
     "Recycling"
    ],
    "complexity": 3,
    "ease": "Moderate",
-   "cost": "No public figure found.",
+   "cost": "No public plant figure found. USGS reports that recyclers need rhenium above US$3,000 a kilogram to cover processing costs.",
    "time_to_output": "3-7 yrs",
-   "confidence": "Low",
+   "confidence": "Medium",
    "stages": [
     {
      "stage": "mine",
      "world": "A by-product of molybdenum from copper mines: Chile 30 of 81 t (2025), China 20 t, Poland 10 t, US 9.8 t.",
-     "india": "None: no copper-molybdenum mine.",
-     "india_level": 0
+     "india": "None mined. Imported concentrates carry an estimated 1.5 to 2 t of recoverable rhenium a year.",
+     "india_level": 1
     },
     {
      "stage": "refine",
-     "world": "Caught from molybdenum roaster gas as ammonium perrhenate; scrap and spent catalysts are a second source.",
+     "world": "Caught from roaster and smelter gases as ammonium perrhenate. Scrap adds 20 to 25 t a year, led by the US and Germany.",
      "india": "None.",
      "india_level": 0
     },
@@ -273,12 +286,14 @@
     "k08"
    ],
    "chemistry_how": {
-    "k08": "Spent platinum-rhenium reforming catalysts from refineries are the nearest feed; Indian recyclers treat spent catalysts but report no rhenium recovery."
+    "k08": "Spent platinum-rhenium reforming catalysts from refineries are the nearest scrap feed; Indian recyclers treat spent catalysts but report no rhenium recovery."
    },
    "sources": [
     "usgs_re",
+    "re_study",
     "imyb23",
     "hpl",
+    "hppl_news",
     "icm_dash"
    ]
   },
@@ -311,7 +326,7 @@
     {
      "stage": "refine",
      "world": "China 2,000 of 3,800 t (2025); Japan 640 t; Russia 320 t.",
-     "india": "88 t in 2024 and 90 t in 2025 (USGS); Kutch Copper lists 150 t/yr.",
+     "india": "88 t in 2024 and 90 t in 2025 (USGS). Hindalco refines selenium to over 99% at Dahej; Kutch Copper lists 150 t/yr.",
      "india_level": 1
     },
     {
@@ -323,7 +338,7 @@
     {
      "stage": "use",
      "world": "Glass, manganese electrolysis, alloys, feed additives, thin-film solar.",
-     "india": "Imported 387 t and exported 184 t in 2022-23.",
+     "india": "India imports most of its selenium: 387 t in 2022-23, against exports of 184 t.",
      "india_level": 2
     }
    ],
@@ -346,19 +361,19 @@
    "symbol": "Sr",
    "group": 6,
    "dashboard_url": "https://indiacriticalminerals.com/#mineral/Strontium",
-   "next_move": "Secure celestite supply for the carbonate plant India now has, then move into ferrite magnets and nitrate.",
+   "next_move": "Win customer approvals and fill the new carbonate plant, lock in celestite supply, then move into ferrite magnets.",
    "next_move_stage": "refine",
    "value_chain_step": "Strontium carbonate conversion",
-   "what_india_has": "Vishnu Chemicals' strontium carbonate plant at Visakhapatnam (company bought in 2024): close to 10,000 t/yr, about half in use in mid-2026. The ore is imported.",
+   "what_india_has": "Vishnu Chemicals, the first maker of strontium carbonate in India: a plant at Visakhapatnam with about 10,000 t/yr of operating capacity, expandable to 17,000, commercialised in 2025. Celestite ore is imported, now free of customs duty.",
    "kinds": [
     "Existing plant",
     "Specialty chemicals"
    ],
    "complexity": 2,
    "ease": "Easy",
-   "cost": "Vishnu bought the plant's company at an enterprise value of Rs 52 crore in 2024.",
+   "cost": "About Rs 110 crore in all: the Rs 52 crore acquisition in 2024 plus later capital spending.",
    "time_to_output": "0-3 yrs",
-   "confidence": "Medium",
+   "confidence": "High",
    "stages": [
     {
      "stage": "mine",
@@ -369,19 +384,19 @@
     {
      "stage": "refine",
      "world": "Celestite is converted to strontium carbonate; processing is concentrated in China and Germany.",
-     "india": "Vishnu Chemicals, Visakhapatnam.",
+     "india": "Vishnu Chemicals, Visakhapatnam: about 10,000 t/yr, running at 20 to 25% in early 2026, against Indian demand of about 4,000 t/yr.",
      "india_level": 2
     },
     {
      "stage": "make",
      "world": "Strontium ferrite magnets; strontium nitrate.",
-     "india": "Carbonate is sold mainly to flexible-magnet makers.",
+     "india": "Regular sales, mainly to magnet makers, were expected from early FY27 once customers approved the product.",
      "india_level": 1
     },
     {
      "stage": "use",
      "world": "Ferrite magnets, pyrotechnics, drilling fluids, aluminium casting.",
-     "india": "Magnet makers are the main buyers.",
+     "india": "Demand of about 4,000 t/yr, until now imported, mostly from Mexico and Belgium.",
      "india_level": 1
     }
    ],
@@ -390,6 +405,8 @@
    "chemistry_how": {},
    "sources": [
     "usgs_sr",
+    "vishnu_q3",
+    "care_vishnu",
     "vishnu_nse",
     "icm_dash"
    ]
@@ -403,7 +420,7 @@
    "next_move": "Publish and scale Hindalco's copper telluride recovery at Dahej, add a circuit at Kutch Copper, and refine to 5N for cadmium telluride.",
    "next_move_stage": "refine",
    "value_chain_step": "Tellurium from copper anode slime",
-   "what_india_has": "Hindalco's process at Dahej recovers tellurium from slime leachate as copper telluride (no volumes published); Kutch Copper's slime; First Solar's 3.3 GW plant as a buyer.",
+   "what_india_has": "Hindalco's process at Dahej recovers tellurium from slime leachate as copper telluride (no volumes published); Kutch Copper's slime; high-purity tellurium at the Nuclear Fuel Complex; First Solar's 3.3 GW plant as a buyer.",
    "kinds": [
     "By-product stream",
     "Research know-how",
@@ -424,19 +441,19 @@
     {
      "stage": "refine",
      "world": "China 800 of 1,000 t (2025); Russia 67 t; Japan 61 t; Sweden 48 t.",
-     "india": "Copper telluride at Hindalco Dahej; no refined tellurium reported. Hindustan Copper last reported tellurium in 2004-05.",
+     "india": "Copper telluride at Hindalco Dahej. USGS says India may refine some tellurium but has no figures; Hindustan Copper last reported it in 2004-05.",
      "india_level": 1
     },
     {
      "stage": "make",
      "world": "5N to 7N tellurium; cadmium telluride.",
-     "india": "None.",
-     "india_level": 0
+     "india": "The Nuclear Fuel Complex makes high-purity tellurium in small lots; none is made into cadmium telluride.",
+     "india_level": 1
     },
     {
      "stage": "use",
      "world": "Cadmium telluride solar, thermoelectrics, free-machining alloys.",
-     "india": "First Solar's 3.3 GW plant in Tamil Nadu; 2 t imported in 2022-23.",
+     "india": "First Solar's 3.3 GW plant in Tamil Nadu, which also recovers tellurium from scrap modules; 2 t imported in 2022-23.",
      "india_level": 2
     }
    ],
@@ -458,6 +475,8 @@
     "hind_pm",
     "rio_te",
     "fs",
+    "fs_rw",
+    "nfc",
     "te_pat",
     "immt"
    ]
@@ -491,19 +510,19 @@
     {
      "stage": "refine",
      "world": "Smelting is simple and widespread.",
-     "india": "Precious Minerals and Smelting, Jagdalpur: 17,160 kg of tin metal in 2022-23.",
+     "india": "Precious Minerals and Smelting, a joint venture with the state mineral corporation, at Jagdalpur: 17,160 kg of tin metal in 2022-23.",
      "india_level": 1
     },
     {
      "stage": "make",
      "world": "Solder, tinplate, tin chemicals.",
-     "india": "Made from imported metal.",
+     "india": "Tinplate (The Tin Plate Company of India, Jamshedpur) and solder, made from imported metal.",
      "india_level": 2
     },
     {
      "stage": "use",
      "world": "Electronics solder, food cans, PVC stabilisers.",
-     "india": "Imported 13,792 t of tin and alloys in 2022-23.",
+     "india": "Solder is now the largest use, then tinplate; 13,792 t of tin and alloys were imported in 2022-23.",
      "india_level": 2
     }
    ],
@@ -513,6 +532,7 @@
    "sources": [
     "usgs_sn",
     "imyb23",
+    "ibm_sn22",
     "icm_map"
    ]
   },
@@ -522,36 +542,37 @@
    "symbol": "Be",
    "group": 3,
    "dashboard_url": "https://indiacriticalminerals.com/#mineral/Beryllium",
-   "next_move": "Keep the strategic chain inside the atomic-energy establishment; for industry, start with beryllium-copper alloy made from imported master alloy.",
+   "next_move": "Keep the strategic chain at BARC and draw on the beryl stockpile; for industry, start with beryllium-copper alloy made from imported master alloy.",
    "next_move_stage": "make",
    "value_chain_step": "Beryllium metal and beryllium-copper",
-   "what_india_has": "The Bhabha Atomic Research Centre's beryllium plant, which has made metal and components since 1982; beryl deposits whose export is banned. No commercial production (IBM).",
+   "what_india_has": "BARC's beryllium plant at Vashi, Navi Mumbai, at work since 1982; 4,250 t of beryl stockpiled by the Atomic Minerals Directorate; beryl deposits in five states. Beryllium is a prescribed substance under the Atomic Energy Act, and there is no commercial production.",
    "kinds": [
+    "Existing plant",
     "Research know-how",
     "Raw material"
    ],
    "complexity": 4,
    "ease": "Hard",
-   "cost": "No verified plant figure. The US funded a new primary beryllium plant under its Defense Production Act, starting with a US$9 m design contract in 2005.",
+   "cost": "No verified plant figure. The US plant built under the Defense Production Act, designed from 2005 under a US$9 m contract, makes 160,000 lb (about 73 t) of high-purity beryllium a year.",
    "time_to_output": "7+ yrs",
-   "confidence": "Low",
+   "confidence": "Medium",
    "stages": [
     {
      "stage": "mine",
      "world": "US 230 of 430 t (2025), from Utah; Brazil 80 t; China 77 t.",
-     "india": "No production (IBM). Beryl occurs in pegmatites.",
-     "india_level": 0
+     "india": "No commercial production (IBM). Indian beryl holds about 12% beryllium oxide; 4,250 t is stockpiled from prospecting, and export has been banned since independence.",
+     "india_level": 1
     },
     {
      "stage": "refine",
      "world": "Ore to beryllium hydroxide; one US company handles 50 to 70% of the world's processing.",
-     "india": "None commercial.",
-     "india_level": 0
+     "india": "BARC extracts beryllium from beryl at Vashi.",
+     "india_level": 1
     },
     {
      "stage": "make",
      "world": "Metal, oxide and beryllium-copper master alloy.",
-     "india": "BARC makes metal and components for strategic programmes.",
+     "india": "BARC makes beryllium metal parts such as X-ray windows and rods by powder metallurgy.",
      "india_level": 1
     },
     {
@@ -566,7 +587,10 @@
    "chemistry_how": {},
    "sources": [
     "usgs_be",
+    "barc_be",
+    "pib_amd26",
     "imyb23",
+    "wpafb_be",
     "azom_be",
     "icm_dash"
    ]
@@ -636,12 +660,14 @@
    "symbol": "In",
    "group": 3,
    "dashboard_url": "https://indiacriticalminerals.com/#mineral/Indium",
-   "next_move": "Test Hindustan Zinc's smelter residues for indium and add a recovery circuit if the grades allow.",
+   "next_move": "Assay Hindustan Zinc's residues for indium, and pilot CSIR-NML's recovery of indium from scrap display panels.",
    "next_move_stage": "refine",
-   "value_chain_step": "Indium recovery from zinc residues",
-   "what_india_has": "Large zinc smelters with no indium circuit (IBM records no production). Hindustan Zinc is mapping minor and critical metals across its mines and smelters.",
+   "value_chain_step": "Indium recovery from zinc residues and scrap",
+   "what_india_has": "Large zinc smelters with no indium circuit (IBM records no production). CSIR-NML has a laboratory process that recovers about 97% of the indium from scrap LCD panels; the Nuclear Fuel Complex developed high-purity indium and passed the technology to industry.",
    "kinds": [
-    "By-product stream"
+    "By-product stream",
+    "Research know-how",
+    "Recycling"
    ],
    "complexity": 3,
    "ease": "Moderate",
@@ -651,21 +677,21 @@
    "stages": [
     {
      "stage": "mine",
-     "world": "A by-product of zinc.",
-     "india": "Hindustan Zinc mines zinc at scale; no published indium grades were found.",
+     "world": "A by-product of zinc; zinc deposits hold under 1 to 100 parts per million.",
+     "india": "Hindustan Zinc mines zinc at scale; no indium grades are published for its ores.",
      "india_level": 0
     },
     {
      "stage": "refine",
      "world": "China 760 of 1,100 t (2025); South Korea 180 t, where Korea Zinc makes about 150 t a year; Japan 65 t.",
-     "india": "None.",
-     "india_level": 0
+     "india": "None (IBM). CSIR-NML's process for scrap LCD panels awaits a pilot trial.",
+     "india_level": 1
     },
     {
      "stage": "make",
      "world": "Indium tin oxide sputtering targets; indium phosphide.",
-     "india": "None.",
-     "india_level": 0
+     "india": "The Nuclear Fuel Complex developed high-purity indium technology; no commercial output.",
+     "india_level": 1
     },
     {
      "stage": "use",
@@ -680,6 +706,8 @@
    "sources": [
     "usgs_in",
     "imyb23",
+    "nml_in",
+    "nfc",
     "hzl_ir26",
     "kz_in"
    ]
@@ -693,7 +721,7 @@
    "next_move": "Grow recycling: secure spent catalysts and scrapped converters for Indian refiners, and assess the Boula-Nuasahi deposit.",
    "next_move_stage": "refine",
    "value_chain_step": "PGM refining and recycling",
-   "what_india_has": "Hindustan Platinum refines platinum, palladium, rhodium, ruthenium and iridium from spent catalysts and says it is at peak production; Ravindra Heraeus recycles catalysts at Udaipur; a Rs 1,500 crore recycling scheme covers catalytic converters. Resources of 20.92 t of platinum-group metals, 67% in Odisha.",
+   "what_india_has": "Hindustan Platinum (founded 1961) refines platinum, palladium, rhodium, ruthenium and iridium from spent catalysts and says it is at peak production; Ravindra Heraeus recycles catalysts at Udaipur; Johnson Matthey (Manesar) and BASF (Chennai) coat autocatalysts in India; a Rs 1,500 crore recycling scheme covers catalytic converters. Resources of 20.92 t of platinum-group metals, 67% in Odisha.",
    "kinds": [
     "Existing plant",
     "Recycling"
@@ -719,8 +747,8 @@
     {
      "stage": "make",
      "world": "Autocatalysts, chemical catalysts, alloys.",
-     "india": "Hindustan Platinum also manufactures precious-metal products.",
-     "india_level": 1
+     "india": "Johnson Matthey (Manesar, 25 million autocatalysts made by 2014) and BASF (Chennai) coat autocatalysts with imported metal.",
+     "india_level": 2
     },
     {
      "stage": "use",
@@ -743,6 +771,8 @@
     "imyb23",
     "hpl",
     "hppl_news",
+    "jm_in",
+    "basf_in",
     "recyc",
     "icm_map"
    ]
@@ -756,7 +786,7 @@
    "next_move": "Grow recycling: secure spent catalysts and scrapped converters for Indian refiners, and assess the Boula-Nuasahi deposit.",
    "next_move_stage": "refine",
    "value_chain_step": "PGM refining and recycling",
-   "what_india_has": "Hindustan Platinum refines platinum, palladium, rhodium, ruthenium and iridium from spent catalysts and says it is at peak production; Ravindra Heraeus recycles catalysts at Udaipur; a Rs 1,500 crore recycling scheme covers catalytic converters. Resources of 20.92 t of platinum-group metals, 67% in Odisha.",
+   "what_india_has": "Hindustan Platinum (founded 1961) refines platinum, palladium, rhodium, ruthenium and iridium from spent catalysts and says it is at peak production; Ravindra Heraeus recycles catalysts at Udaipur; Johnson Matthey (Manesar) and BASF (Chennai) coat autocatalysts in India; a Rs 1,500 crore recycling scheme covers catalytic converters. Resources of 20.92 t of platinum-group metals, 67% in Odisha.",
    "kinds": [
     "Existing plant",
     "Recycling"
@@ -782,8 +812,8 @@
     {
      "stage": "make",
      "world": "Autocatalysts, chemical catalysts, alloys.",
-     "india": "Hindustan Platinum also manufactures precious-metal products.",
-     "india_level": 1
+     "india": "Johnson Matthey (Manesar, 25 million autocatalysts made by 2014) and BASF (Chennai) coat autocatalysts with imported metal.",
+     "india_level": 2
     },
     {
      "stage": "use",
@@ -806,6 +836,8 @@
     "imyb23",
     "hpl",
     "hppl_news",
+    "jm_in",
+    "basf_in",
     "recyc",
     "icm_map"
    ]
@@ -819,7 +851,7 @@
    "next_move": "Grow recycling: secure spent catalysts and scrapped converters for Indian refiners, and assess the Boula-Nuasahi deposit.",
    "next_move_stage": "refine",
    "value_chain_step": "PGM refining and recycling",
-   "what_india_has": "Hindustan Platinum refines platinum, palladium, rhodium, ruthenium and iridium from spent catalysts and says it is at peak production; Ravindra Heraeus recycles catalysts at Udaipur; a Rs 1,500 crore recycling scheme covers catalytic converters. Resources of 20.92 t of platinum-group metals, 67% in Odisha.",
+   "what_india_has": "Hindustan Platinum (founded 1961) refines platinum, palladium, rhodium, ruthenium and iridium from spent catalysts and says it is at peak production; Ravindra Heraeus recycles catalysts at Udaipur; Johnson Matthey (Manesar) and BASF (Chennai) coat autocatalysts in India; a Rs 1,500 crore recycling scheme covers catalytic converters. Resources of 20.92 t of platinum-group metals, 67% in Odisha.",
    "kinds": [
     "Existing plant",
     "Recycling"
@@ -845,8 +877,8 @@
     {
      "stage": "make",
      "world": "Autocatalysts, chemical catalysts, alloys.",
-     "india": "Hindustan Platinum also manufactures precious-metal products.",
-     "india_level": 1
+     "india": "Johnson Matthey (Manesar, 25 million autocatalysts made by 2014) and BASF (Chennai) coat autocatalysts with imported metal.",
+     "india_level": 2
     },
     {
      "stage": "use",
@@ -869,6 +901,8 @@
     "imyb23",
     "hpl",
     "hppl_news",
+    "jm_in",
+    "basf_in",
     "recyc",
     "icm_map"
    ]
@@ -882,7 +916,7 @@
    "next_move": "Grow recycling: secure spent catalysts and scrapped converters for Indian refiners, and assess the Boula-Nuasahi deposit.",
    "next_move_stage": "refine",
    "value_chain_step": "PGM refining and recycling",
-   "what_india_has": "Hindustan Platinum refines platinum, palladium, rhodium, ruthenium and iridium from spent catalysts and says it is at peak production; Ravindra Heraeus recycles catalysts at Udaipur; a Rs 1,500 crore recycling scheme covers catalytic converters. Resources of 20.92 t of platinum-group metals, 67% in Odisha.",
+   "what_india_has": "Hindustan Platinum (founded 1961) refines platinum, palladium, rhodium, ruthenium and iridium from spent catalysts and says it is at peak production; Ravindra Heraeus recycles catalysts at Udaipur; Johnson Matthey (Manesar) and BASF (Chennai) coat autocatalysts in India; a Rs 1,500 crore recycling scheme covers catalytic converters. Resources of 20.92 t of platinum-group metals, 67% in Odisha.",
    "kinds": [
     "Existing plant",
     "Recycling"
@@ -932,6 +966,8 @@
     "imyb23",
     "hpl",
     "hppl_news",
+    "jm_in",
+    "basf_in",
     "recyc",
     "icm_map"
    ]
@@ -945,7 +981,7 @@
    "next_move": "Recycle iridium from catalysts and crucibles now, and from electrolysers as green hydrogen scales.",
    "next_move_stage": "refine",
    "value_chain_step": "PGM refining and recycling",
-   "what_india_has": "Hindustan Platinum refines platinum, palladium, rhodium, ruthenium and iridium from spent catalysts and says it is at peak production; Ravindra Heraeus recycles catalysts at Udaipur; a Rs 1,500 crore recycling scheme covers catalytic converters. Resources of 20.92 t of platinum-group metals, 67% in Odisha.",
+   "what_india_has": "Hindustan Platinum (founded 1961) refines platinum, palladium, rhodium, ruthenium and iridium from spent catalysts and says it is at peak production; Ravindra Heraeus recycles catalysts at Udaipur; Johnson Matthey (Manesar) and BASF (Chennai) coat autocatalysts in India; a Rs 1,500 crore recycling scheme covers catalytic converters. Resources of 20.92 t of platinum-group metals, 67% in Odisha.",
    "kinds": [
     "Existing plant",
     "Recycling"
@@ -995,6 +1031,8 @@
     "imyb23",
     "hpl",
     "hppl_news",
+    "jm_in",
+    "basf_in",
     "recyc",
     "icm_map"
    ]
@@ -1005,36 +1043,37 @@
    "symbol": "Ta",
    "group": 3,
    "dashboard_url": "https://indiacriticalminerals.com/#mineral/Tantalum",
-   "next_move": "Build on the space programme's columbite-tantalite processing at the Nuclear Fuel Complex, and recover tantalum from capacitor scrap.",
+   "next_move": "Scale the Nuclear Fuel Complex's tantalum line on stockpiled and imported concentrate, and recover tantalum from capacitor scrap.",
    "next_move_stage": "refine",
-   "value_chain_step": "Tantalum-niobium separation",
-   "what_india_has": "VSSC's niobium facility at NFC Hyderabad processes columbite-tantalite by solvent extraction, at 3 t/yr of niobium thermit; NFC's special-materials plant. No ore production (IBM).",
+   "value_chain_step": "Tantalum-niobium separation and tantalum metal",
+   "what_india_has": "The Nuclear Fuel Complex makes tantalum pentoxide and tantalum metal and developed capacitor-grade powder and anodes; VSSC's niobium facility there processes columbite-tantalite by solvent extraction; the Atomic Minerals Directorate holds 149 t of columbite-tantalite. No commercial mining (IBM).",
    "kinds": [
+    "Existing plant",
     "Research know-how",
-    "Existing plant"
+    "Raw material"
    ],
    "complexity": 4,
-   "ease": "Hard",
+   "ease": "Moderate",
    "cost": "No public figure found.",
    "time_to_output": "3-7 yrs",
-   "confidence": "Medium",
+   "confidence": "High",
    "stages": [
     {
      "stage": "mine",
      "world": "DR Congo 1,300 of 2,500 t (2025); Rwanda 400 t; Nigeria 390 t; Brazil 190 t.",
-     "india": "None (IBM). A tantalum exploration block in Maharashtra was annulled.",
-     "india_level": 0
+     "india": "No commercial production (IBM). 149 t of columbite-tantalite is stockpiled from prospecting; a tantalum exploration block in Maharashtra was annulled.",
+     "india_level": 1
     },
     {
      "stage": "refine",
      "world": "Acid digestion and solvent extraction to part tantalum from niobium; China is the largest processor, with about 43%.",
-     "india": "Solvent extraction of tantalum and niobium at the VSSC facility in NFC, at small scale.",
+     "india": "Solvent extraction of tantalum and niobium at the Nuclear Fuel Complex, at small scale.",
      "india_level": 1
     },
     {
      "stage": "make",
      "world": "Capacitor powder, sputtering targets, mill products.",
-     "india": "NFC supplies special materials to strategic programmes.",
+     "india": "NFC makes tantalum pentoxide and tantalum metal, and passed capacitor-grade powder and anode technology to industry.",
      "india_level": 1
     },
     {
@@ -1049,9 +1088,10 @@
    "chemistry_how": {},
    "sources": [
     "usgs_ta",
-    "imyb23",
-    "isro_nb",
     "nfc",
+    "isro_nb",
+    "pib_amd26",
+    "imyb23",
     "icm_map",
     "icm_dash"
    ]
@@ -1065,7 +1105,7 @@
    "next_move": "Use the surplus: make polishing powder and catalyst-grade ceria in India from IREL and Toyotsu oxide.",
    "next_move_stage": "make",
    "value_chain_step": "Cerium oxide products",
-   "what_india_has": "IREL separates cerium at Aluva and is India's only monazite processor; Toyotsu in Visakhapatnam separates lanthanum, cerium, praseodymium and neodymium. IBM lists cerium among the rare earths India has in surplus.",
+   "what_india_has": "IREL separates cerium oxide of over 99% purity at Aluva and is India's only monazite processor; Toyotsu refines cerium at Visakhapatnam. IBM lists cerium among the rare earths India has in surplus, and IREL calls the home market for its rare-earth products almost non-existent.",
    "kinds": [
     "Existing plant",
     "Specialty chemicals"
@@ -1074,7 +1114,7 @@
    "ease": "Easy",
    "cost": "No public figure found.",
    "time_to_output": "0-3 yrs",
-   "confidence": "Medium",
+   "confidence": "High",
    "stages": [
     {
      "stage": "mine",
@@ -1085,19 +1125,19 @@
     {
      "stage": "refine",
      "world": "China does about 91% of rare-earth separation.",
-     "india": "IREL and Toyotsu separate cerium; India refined 2,000 t of rare-earth oxide against 5,000 t of capacity (IBM).",
+     "india": "IREL (Aluva) and Toyotsu (Visakhapatnam) separate cerium; India refined 2,000 t of rare-earth oxide against 5,000 t of capacity (IBM).",
      "india_level": 2
     },
     {
      "stage": "make",
      "world": "Polishing powder, catalyst washcoat, glass additives, mischmetal.",
-     "india": "IREL sells cerium oxide.",
+     "india": "IREL's Bhopal park has a mini-plant that demonstrates cerium metal.",
      "india_level": 1
     },
     {
      "stage": "use",
      "world": "Glass polishing, catalytic converters, refinery catalysts.",
-     "india": "IBM says capacity to consume the light rare earths is being built.",
+     "india": "Little home demand yet; much rare-earth output is exported. IBM says capacity to consume the light rare earths is being built.",
      "india_level": 1
     }
    ],
@@ -1110,7 +1150,9 @@
     "usgs_ree",
     "imyb23",
     "irel",
+    "irel_bhopal",
     "trei",
+    "ob_irel",
     "ibm_ree"
    ]
   },
@@ -1123,7 +1165,7 @@
    "next_move": "Turn surplus lanthanum into cracking-catalyst additives for India's refineries.",
    "next_move_stage": "make",
    "value_chain_step": "Lanthanum compounds for catalysts",
-   "what_india_has": "IREL separates lanthanum at Aluva; Toyotsu in Visakhapatnam separates lanthanum, cerium, praseodymium and neodymium. IBM lists lanthanum among the rare earths India has in surplus.",
+   "what_india_has": "IREL separates lanthanum oxide of over 99% purity at Aluva; Toyotsu refines lanthanum at Visakhapatnam. IBM lists lanthanum among the rare earths India has in surplus, and IREL calls the home market for its rare-earth products almost non-existent.",
    "kinds": [
     "Existing plant",
     "Specialty chemicals"
@@ -1132,7 +1174,7 @@
    "ease": "Easy",
    "cost": "No public figure found.",
    "time_to_output": "0-3 yrs",
-   "confidence": "Medium",
+   "confidence": "High",
    "stages": [
     {
      "stage": "mine",
@@ -1143,19 +1185,19 @@
     {
      "stage": "refine",
      "world": "China does about 91% of rare-earth separation.",
-     "india": "IREL and Toyotsu separate lanthanum.",
+     "india": "IREL (Aluva) and Toyotsu (Visakhapatnam) separate lanthanum.",
      "india_level": 2
     },
     {
      "stage": "make",
      "world": "Cracking catalysts, nickel-metal-hydride alloys, optical glass.",
-     "india": "IREL sells lanthanum oxide.",
+     "india": "IREL's Bhopal park has a mini-plant that demonstrates lanthanum metal.",
      "india_level": 1
     },
     {
      "stage": "use",
      "world": "Oil refining, hybrid-car batteries, camera lenses.",
-     "india": "IBM says capacity to consume the light rare earths is being built.",
+     "india": "Little home demand yet; much rare-earth output is exported. IBM says capacity to consume the light rare earths is being built.",
      "india_level": 1
     }
    ],
@@ -1168,7 +1210,9 @@
     "usgs_ree",
     "imyb23",
     "irel",
+    "irel_bhopal",
     "trei",
+    "ob_irel",
     "ibm_ree"
    ]
   },
@@ -1181,7 +1225,7 @@
    "next_move": "No large move: demand has shrunk as LEDs replaced fluorescent lamps. Keep small-scale separation at IREL.",
    "next_move_stage": "refine",
    "value_chain_step": "Europium oxide separation",
-   "what_india_has": "IREL lists europium oxide among its products. IBM notes that europium is not present in Indian deposits in extractable quantity.",
+   "what_india_has": "IREL lists europium oxide of over 99% purity among its Aluva products. IBM notes that europium is not present in Indian deposits in extractable quantity.",
    "kinds": [
     "Existing plant"
    ],
@@ -1200,7 +1244,7 @@
     {
      "stage": "refine",
      "world": "China does about 91% of rare-earth separation.",
-     "india": "Small quantities at IREL.",
+     "india": "Small quantities at IREL, Aluva.",
      "india_level": 1
     },
     {
@@ -1225,7 +1269,6 @@
     "usgs_ree",
     "imyb23",
     "irel",
-    "trei",
     "ibm_ree",
     "icm_dash"
    ]
@@ -1236,37 +1279,37 @@
    "symbol": "Nb",
    "group": 4,
    "dashboard_url": "https://indiacriticalminerals.com/#mineral/Niobium",
-   "next_move": "Prove up the Rajasthan niobium and rare-earth blocks, and scale the space programme's niobium line.",
+   "next_move": "Prove up the niobium found with rare earths in Gujarat and Rajasthan, and scale the Nuclear Fuel Complex's niobium line.",
    "next_move_stage": "mine",
    "value_chain_step": "Niobium mining and ferroniobium",
-   "what_india_has": "Auctioned blocks in Rajasthan that carry niobium; VSSC's 3 t/yr niobium thermit facility at NFC Hyderabad; steelmakers that import about 5,000 t of ferroniobium a year.",
+   "what_india_has": "142,200 t of niobium oxide in hard-rock rare-earth deposits of Gujarat and Rajasthan (Atomic Minerals Directorate); auctioned blocks in Rajasthan; the Nuclear Fuel Complex makes reactor-grade and superconductor-grade niobium, and VSSC's 3 t/yr niobium thermit facility there serves the space programme.",
    "kinds": [
     "Raw material",
-    "Research know-how",
+    "Existing plant",
     "Demand anchor"
    ],
    "complexity": 2,
    "ease": "Hard",
    "cost": "A new mine and plant is large: NioCorp's Elk Creek project in Nebraska is put at about US$1.85 bn.",
    "time_to_output": "7+ yrs",
-   "confidence": "Medium",
+   "confidence": "High",
    "stages": [
     {
      "stage": "mine",
      "world": "Brazil 104,000 of 112,000 t (2025); Canada 6,000 t.",
-     "india": "No production (IBM). The Bhatikhera and Southeast of Gugrot blocks in Rajasthan have preferred bidders.",
+     "india": "No production (IBM). 142,200 t of niobium oxide established in Gujarat and Rajasthan; the Bhatikhera and Southeast of Gugrot blocks have preferred bidders.",
      "india_level": 0
     },
     {
      "stage": "refine",
      "world": "Pyrochlore concentrate is reduced with aluminium to ferroniobium beside the mine.",
-     "india": "None at scale. The VSSC facility at NFC separates niobium from columbite-tantalite.",
+     "india": "Small-scale separation from columbite-tantalite at the Nuclear Fuel Complex.",
      "india_level": 1
     },
     {
      "stage": "make",
      "world": "Mostly ferroniobium for steel; niobium alloys and superconducting wire.",
-     "india": "Niobium thermit for satellite-thruster alloys, 3 t/yr.",
+     "india": "NFC makes reactor-grade niobium for zirconium alloys and high-purity niobium for superconductors; niobium thermit, 3 t/yr, for satellite thrusters. No ferroniobium.",
      "india_level": 1
     },
     {
@@ -1281,8 +1324,10 @@
    "chemistry_how": {},
    "sources": [
     "usgs_nb",
-    "imyb23",
+    "pib_amd26",
+    "nfc",
     "isro_nb",
+    "imyb23",
     "niocorp",
     "icm_map"
    ]
@@ -1365,7 +1410,7 @@
     {
      "stage": "mine",
      "world": "China 82,000 of 110,000 t (2025); Russia 21,000 t; Brazil and South Africa about 5,000 t each.",
-     "india": "None. Resources of 24.63 Mt of ore holding 64,594 t of V2O5; graphite-vanadium blocks auctioned in Arunachal Pradesh and Madhya Pradesh.",
+     "india": "None. Resources of 24.63 Mt of ore holding 64,594 t of V2O5 (IBM), and 81,300 t of vanadium oxide with hard-rock rare earths (Atomic Minerals Directorate); graphite-vanadium blocks auctioned in Arunachal Pradesh and Madhya Pradesh.",
      "india_level": 0
     },
     {
@@ -1397,6 +1442,7 @@
    "sources": [
     "usgs_v",
     "imyb23",
+    "pib_amd26",
     "vflow",
     "ntpc_vrfb",
     "icm_map"
@@ -1411,7 +1457,7 @@
    "next_move": "None warranted. If a need arose, production would sit with the atomic-energy establishment's reactors and hot cells.",
    "next_move_stage": null,
    "value_chain_step": "Reactor isotope production",
-   "what_india_has": "No production. The only relevant base is reactor and radiochemistry work at the Bhabha Atomic Research Centre, which makes medical isotopes.",
+   "what_india_has": "No production. BARC developed promethium-147 sources for a coating-thickness gauge at the Nuclear Fuel Complex in 2009, and its reactors and radiochemistry laboratories make medical isotopes.",
    "kinds": [
     "Research know-how"
    ],
@@ -1435,15 +1481,15 @@
     },
     {
      "stage": "make",
-     "world": "Promethium-147 oxide and sealed sources.",
-     "india": "None.",
-     "india_level": 0
+     "world": "Promethium-147 salts and sealed sources.",
+     "india": "BARC has fabricated promethium-147 sources (2009).",
+     "india_level": 1
     },
     {
      "stage": "use",
      "world": "Nuclear batteries, thickness gauges, luminous paint.",
-     "india": "No recorded use.",
-     "india_level": 0
+     "india": "A coating-thickness gauge at the Nuclear Fuel Complex.",
+     "india_level": 1
     }
    ],
    "strategies": [],
@@ -1451,6 +1497,7 @@
    "chemistry_how": {},
    "sources": [
     "ornl_pm",
+    "barc_pm",
     "icm_dash"
    ]
   }
@@ -1629,6 +1676,132 @@
    "title": "US DOE Office of Science, 2025: an advance for promethium production",
    "url": "https://science.osti.gov/Isotope-Research-Development-and-Production/Science-Highlights/2025/3a",
    "type": "Government"
+  },
+  {
+   "id": "barc_be",
+   "title": "BARC Newsletter, 2023: beryllium, its uses and safety (beryllium plant at Vashi since 1982)",
+   "url": "https://www.barc.gov.in/barc_nl/2023/2023030414.pdf",
+   "type": "Research and public sector"
+  },
+  {
+   "id": "pib_amd26",
+   "title": "PIB, 29 Jan 2026 (Department of Atomic Energy): Parliament answer on domestic exploration and availability of critical minerals",
+   "url": "https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=2220193&reg=3&lang=2",
+   "type": "Government"
+  },
+  {
+   "id": "wpafb_be",
+   "title": "Wright-Patterson AFB, 17 Sep 2013: Defense Production Act project establishes a domestic source for beryllium",
+   "url": "https://www.wpafb.af.mil/News/Article-Display/Article/819343/defense-production-act-title-iii-project-establishes-domestic-source-for-beryll/",
+   "type": "Government"
+  },
+  {
+   "id": "usgs_ge20",
+   "title": "USGS, Minerals Yearbook 2020: Germanium",
+   "url": "https://pubs.usgs.gov/myb/vol1/2020/myb1-2020-germanium.pdf",
+   "type": "USGS"
+  },
+  {
+   "id": "drdo_ge",
+   "title": "DRDO, technology-transfer note, 12 Mar 2025: germanium single crystal growth for infrared optics (SSPL)",
+   "url": "https://drdo.gov.in/drdo/sites/default/files/tot/GermaniumSCGfIO12032025.pdf",
+   "type": "Research and public sector"
+  },
+  {
+   "id": "hzl_tail",
+   "title": "Outlook Business (PTI), 19 Aug 2025: Hindustan Zinc board approves 10 Mt/yr tailings reprocessing plant worth Rs 3,823 crore",
+   "url": "https://www.outlookbusiness.com/amp/story/corporate/hindustan-zinc-gets-board-nod-for-10-mtpa-tailings-reprocessing-plant-worth-3823-cr",
+   "type": "Press and analysts"
+  },
+  {
+   "id": "hzl_tail_ge",
+   "title": "Chemical Industry Digest, 2026: Hindustan Zinc plans tailings facility to recover zinc and critical minerals, including germanium",
+   "url": "https://chemindigest.com/hindustan-zinc-planning-10-mtpa-tailings-facility-to-recover-zinc-and-critical-minerals/",
+   "type": "Press and analysts"
+  },
+  {
+   "id": "hzl_stories26",
+   "title": "Hindustan Zinc, Integrated Annual Report FY2025-26: circular economy (cadmium with Runaya)",
+   "url": "https://integratedreport.hzlindia.com/annual-integrated-report-fy-2025-26/stories-that-shape-hzl-2-0/stories-that-shape-hzl-2-0.html",
+   "type": "Companies"
+  },
+  {
+   "id": "runaya",
+   "title": "Energetica India, 15 May 2026: Runaya expands critical metals output with cobalt, cadmium and copper capacities",
+   "url": "https://www.energetica-india.net/news/runaya-metsource-expands-critical-metals-output-with-new-cobalt-cadmium-copper-capacities",
+   "type": "Press and analysts"
+  },
+  {
+   "id": "ibm_mo21",
+   "title": "IBM, Indian Minerals Yearbook 2021: Molybdenum",
+   "url": "https://ibm.gov.in/writereaddata/files/16821553596443a75f5ed4aMolybdenum_2021.pdf",
+   "type": "Government"
+  },
+  {
+   "id": "re_study",
+   "title": "Brainard and others, Mineral Economics, 2023: the availability of primary rhenium as a by-product of copper and molybdenum mining",
+   "url": "https://link.springer.com/article/10.1007/s13563-023-00392-0",
+   "type": "Research and public sector"
+  },
+  {
+   "id": "nml_in",
+   "title": "Rani and others (CSIR-NML), Minerals, 2025: hydrometallurgical recovery of indium from scrap LCD panels",
+   "url": "https://www.mdpi.com/2075-163X/15/10/1084",
+   "type": "Research and public sector"
+  },
+  {
+   "id": "jm_in",
+   "title": "Johnson Matthey, 28 Oct 2014: 25 millionth autocatalyst made at Manesar",
+   "url": "https://matthey.com/news/2014/uk-business-secretary-receives-johnson-matthey-indias-25-millionth-autocatalyst",
+   "type": "Companies"
+  },
+  {
+   "id": "basf_in",
+   "title": "BASF, 2 Mar 2017: mobile emissions catalysts capacity doubled at Chennai",
+   "url": "https://www.basf.com/in/en/media/news-releases/asia-pacific/2017/03/catalysts-expansion",
+   "type": "Companies"
+  },
+  {
+   "id": "barc_pm",
+   "title": "BARC, Founder's Day address, 30 Oct 2009: promethium-147 sources developed for the Nuclear Fuel Complex",
+   "url": "https://www.barc.gov.in/presentations/fddir09.pdf",
+   "type": "Research and public sector"
+  },
+  {
+   "id": "vishnu_q3",
+   "title": "Vishnu Chemicals, Q3 FY26 earnings-call transcript (BSE filing, 9 Feb 2026): strontium carbonate capacity and demand",
+   "url": "https://www.bseindia.com/xml-data/corpfiling/AttachHis/c4c275bc-94cc-4be1-857d-16fda6c5dea0.pdf",
+   "type": "Companies"
+  },
+  {
+   "id": "care_vishnu",
+   "title": "CARE Ratings, Nov 2025: Vishnu Chemicals (Vishnu Strontium commercialised in Q2 FY26)",
+   "url": "https://www.careratings.com/upload/CompanyFiles/PR/202511141122_Vishnu_Chemicals_Limited.pdf",
+   "type": "Press and analysts"
+  },
+  {
+   "id": "ibm_sn22",
+   "title": "IBM, Indian Minerals Yearbook 2022: Tin",
+   "url": "https://ibm.gov.in/writereaddata/files/170989614565eaf1d199b48Tin_2022.pdf",
+   "type": "Government"
+  },
+  {
+   "id": "ob_irel",
+   "title": "Outlook Business: why India's lone rare-earth miner IREL is not helping domestic automakers (quotes IREL's annual report)",
+   "url": "https://www.outlookbusiness.com/explainers/why-indias-lone-rare-earth-miner-irel-isnt-helping-domestic-automakers",
+   "type": "Press and analysts"
+  },
+  {
+   "id": "irel_bhopal",
+   "title": "IREL, Rare Earth and Titanium Theme Park, Bhopal",
+   "url": "https://www.irel.co.in/rare-earth-theme-park-bhopal",
+   "type": "Research and public sector"
+  },
+  {
+   "id": "fs_rw",
+   "title": "Renewable Watch, 1 Jul 2025: First Solar's Indian plant and its module recycling",
+   "url": "https://renewablewatch.in/2025/07/01/first-solar-enabling-resiliency-and-reliability-in-indias-solar-supply-chain/",
+   "type": "Press and analysts"
   }
  ]
 }

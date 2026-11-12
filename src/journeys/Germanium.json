@@ -20,7 +20,7 @@
       "band": "upstream",
       "title": "Ride with zinc",
       "text": "Zinc ore is mined and floated to a concentrate, which goes to a zinc smelter. Germanium ends up in the residues left when the zinc is leached out. In China, germanium-rich lignite is burnt and the germanium collected from the fly ash.",
-      "india": "No Indian zinc smelter runs a germanium recovery circuit."
+      "india": "No Indian zinc smelter runs a germanium circuit. Hindustan Zinc's planned tailings plant is to recover germanium among other metals."
     },
     {
       "id": "extract",
@@ -50,7 +50,7 @@
       "band": "make",
       "title": "Make",
       "text": "The tetrachloride itself goes to fibre makers, who add it to the glass core of optical fibre. The dioxide becomes a catalyst for PET plastic. The metal is grown into crystals and cut into lenses, windows and wafers.",
-      "india": "None."
+      "india": "DRDO grows germanium crystals and makes lens blanks for infrared optics; most crystals are imported."
     },
     {
       "id": "use",

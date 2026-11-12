@@ -6,7 +6,7 @@
       "band": "upstream",
       "title": "In the ground",
       "text": "Tantalum's main ore is columbite-tantalite, known in Central Africa as coltan, found in pegmatites and in the gravels weathered from them. It is also a by-product of lithium mining in Australia and of tin smelting.",
-      "india": "No known workable deposits."
+      "india": "No deposit is worked commercially. The Atomic Minerals Directorate holds 149 t of columbite-tantalite from prospecting."
     },
     {
       "id": "mine",
@@ -76,7 +76,7 @@
       "band": "make",
       "title": "Make",
       "text": "Powder is pressed around a tantalum wire and sintered into a porous pellet with a huge surface area: the anode of a capacitor. Tantalum is also made into sputtering targets, sheet and tube.",
-      "india": "None."
+      "india": "The Nuclear Fuel Complex makes tantalum pentoxide and tantalum metal in small quantities."
     },
     {
       "id": "use",

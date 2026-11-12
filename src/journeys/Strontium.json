@@ -51,7 +51,7 @@
       },
       "text": "Celestite does not dissolve, so it is roasted with coal in a rotating kiln at about 1,100°C. This turns it into strontium sulphide, which does. The sulphide is leached with water and treated with carbon dioxide or soda ash, and strontium carbonate settles out.",
       "chem": "SrSO₄ + 2C → SrS + 2CO₂",
-      "india": "Vishnu Chemicals has close to 10,000 tonnes a year of carbonate capacity, about half of it in use in mid-2026, running on imported ore."
+      "india": "Vishnu Chemicals, the first maker in India, has about 10,000 tonnes a year of carbonate capacity at Visakhapatnam, running on imported ore."
     },
     {
       "id": "make",
@@ -64,7 +64,8 @@
       "id": "use",
       "band": "demand",
       "title": "Use",
-      "text": "Ferrite magnets are the cheap, everyday magnets in small motors, loudspeakers and fridge seals. Strontium nitrate burns brilliant red in fireworks and signal flares. Ground celestite weights the drilling mud in oil wells, and a trace of strontium refines aluminium castings."
+      "text": "Ferrite magnets are the cheap, everyday magnets in small motors, loudspeakers and fridge seals. Strontium nitrate burns brilliant red in fireworks and signal flares. Ground celestite weights the drilling mud in oil wells, and a trace of strontium refines aluminium castings.",
+      "india": "Demand of about 4,000 tonnes a year, until now imported."
     }
   ],
   "sources": [

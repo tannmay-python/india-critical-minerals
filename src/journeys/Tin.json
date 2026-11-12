@@ -31,7 +31,7 @@
           ]
         ]
       },
-      "india": "Token quantities from small placer deposits."
+      "india": "Resources hold about 104,000 t of tin, 64% of the ore in Haryana; mining is in Chhattisgarh."
     },
     {
       "id": "mine",
@@ -62,7 +62,8 @@
             9
           ]
         ]
-      }
+      },
+      "india": "About 45 t of concentrate in 2022-23, all from Dantewada, Chhattisgarh."
     },
     {
       "id": "concentrate",
@@ -86,7 +87,7 @@
       },
       "text": "The concentrate is melted with carbon in a furnace, which strips the oxygen and leaves crude tin. Tin melts at 232°C, so it is refined by melting it gently off its impurities, and by electrolysis for the purest grades.",
       "chem": "SnO₂ + 2C → Sn + 2CO",
-      "india": "Domestic output, mostly from recycling, meets 10 to 20% of consumption."
+      "india": "One smelter, at Jagdalpur, made 17 t of tin metal in 2022-23."
     },
     {
       "id": "make",
@@ -99,7 +100,7 @@
       "band": "demand",
       "title": "Use",
       "text": "Solder holds every circuit board together and is tin's largest use worldwide. Tinplate makes food cans, tin chemicals stabilise PVC, and tin is alloyed into the lead grids of batteries.",
-      "india": "Electronics, tinplate and chemical makers; more than 80% is imported."
+      "india": "Solder and tinplate makers; 13,792 t of tin and alloys were imported in 2022-23."
     },
     {
       "id": "recycle",

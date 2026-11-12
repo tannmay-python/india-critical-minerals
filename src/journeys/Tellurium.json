@@ -73,7 +73,7 @@
       "band": "make",
       "title": "Make",
       "text": "High-purity tellurium is reacted with cadmium to make cadmium telluride powder, which is evaporated onto glass as the light-absorbing layer of a thin-film solar panel. With bismuth it makes bismuth telluride for thermoelectric coolers.",
-      "india": "None."
+      "india": "The Nuclear Fuel Complex makes high-purity tellurium in small lots; no cadmium telluride is made from Indian tellurium."
     },
     {
       "id": "use",
@@ -86,7 +86,8 @@
       "id": "recycle",
       "band": "recycle",
       "title": "Recycle",
-      "text": "Solar-panel makers take back old panels and recover the tellurium and cadmium from the film. Other uses scatter it too thinly to collect."
+      "text": "Solar-panel makers take back old panels and recover the tellurium and cadmium from the film. Other uses scatter it too thinly to collect.",
+      "india": "First Solar's Tamil Nadu plant recovers tellurium and cadmium from scrap modules."
     }
   ],
   "sources": [

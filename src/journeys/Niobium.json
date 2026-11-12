@@ -28,7 +28,7 @@
           ]
         ]
       },
-      "india": "Niobium, rare-earth and zirconium blocks in Rajasthan were tendered in 2025."
+      "india": "142,200 t of niobium oxide has been established with rare earths in Gujarat and Rajasthan; blocks in Rajasthan have been auctioned."
     },
     {
       "id": "mine",
@@ -76,7 +76,8 @@
       },
       "text": "The concentrate is mixed with aluminium powder and iron and ignited. The aluminium takes the oxygen, and the reaction's own heat melts the product into ferroniobium. About nine-tenths of all niobium is sold in this form, made beside the mine.",
       "chem": "3Nb₂O₅ + 10Al → 6Nb + 5Al₂O₃",
-      "alt": "A small share is purified to oxide and metal, for superalloys and for the niobium-titanium wire in superconducting magnets."
+      "alt": "A small share is purified to oxide and metal, for superalloys and for the niobium-titanium wire in superconducting magnets.",
+      "india": "The Nuclear Fuel Complex makes reactor-grade and superconductor-grade niobium in small quantities. No ferroniobium is made."
     },
     {
       "id": "use",

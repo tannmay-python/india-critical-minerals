@@ -15,7 +15,7 @@
       "band": "upstream",
       "title": "Ride with lead",
       "text": "Lead ore is mined, floated and smelted to crude lead bullion. The bismuth dissolves in the molten lead and stays there. At tungsten mines in China it is floated off as a separate concentrate.",
-      "india": "No extraction or refining."
+      "india": "Bismuth occurs in the Rajpura-Dariba lead-zinc deposit in Rajasthan; none is recovered. Hindustan Zinc is developing extraction from smelter waste."
     },
     {
       "id": "extract",
@@ -59,7 +59,8 @@
       "id": "make",
       "band": "make",
       "title": "Make",
-      "text": "Much of the metal is dissolved in nitric acid and made into bismuth chemicals: salts for medicines, pearly pigments for cosmetics, yellow pigments for paint. The rest is cast into low-melting alloys."
+      "text": "Much of the metal is dissolved in nitric acid and made into bismuth chemicals: salts for medicines, pearly pigments for cosmetics, yellow pigments for paint. The rest is cast into low-melting alloys.",
+      "india": "The Nuclear Fuel Complex makes high-purity bismuth in small lots."
     },
     {
       "id": "use",
