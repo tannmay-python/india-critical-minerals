@@ -1,0 +1,4 @@
+.site-footer { border-top: 1px solid var(--rule); background: var(--surface-2); font-size: var(--text-sm); color: var(--ink-2); }
+.site-footer .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; padding-top: 22px; padding-bottom: 22px; }
+.site-footer a { font-weight: 600; text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }

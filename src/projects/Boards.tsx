@@ -139,7 +139,7 @@ export function AuctionBoard({ projects, selected, onPick }: BoardProps) {
                 <span className="a-name">{rowName(r.id)}</span>
                 <span className="a-date muted num">{fmtMonth(r.date)}</span>
                 <span className="a-units">
-                  {r.list.map((o) => mark(o.p, o.p.id + r.id, {
+                  {r.list.map((o, n) => mark(o.p, `${o.p.id}|${r.id}|${n}`, {
                     group: OUTCOME_GROUP[o.o] ?? "pipeline",
                     note: `${o.o}${o.p.tranches.length > 1 ? ` · offered ${o.p.tranches.length} times` : ""}`,
                     className: hot && hot === o.p.id ? "same" : hot ? "dim" : "",

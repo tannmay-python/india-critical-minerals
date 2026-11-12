@@ -241,7 +241,7 @@ export function ProjectsPage() {
         ) : (
           <a className="abroad-link" href={href("/projects", { view: "abroad" })}>Indian assets abroad<span className="num">{nAbroad}</span></a>
         )}
-        <p className="panel-foot">Updated {fmtDate(core.meta.mapBuilt.slice(0, 10))} · <a href={href("/method")}>Method and data</a></p>
+        <p className="panel-foot">Updated {fmtDate(core.meta.sources.map.date)} · <a href={href("/method")}>Method and data</a></p>
       </aside>
       <button type="button" className="panel-toggle" aria-expanded={panelOpen} onClick={() => setPanelOpen(!panelOpen)}>Filters<span className="num">{shown.length}</span></button>
 

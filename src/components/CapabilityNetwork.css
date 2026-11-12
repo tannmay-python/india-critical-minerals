@@ -1,4 +1,4 @@
-.capnet { position: relative; margin-top: 44px; }
+.capnet { position: relative; margin-top: 92px; }
 .capnet svg { position: absolute; left: 0; top: 0; overflow: visible; }
 .cn-link { fill: none; stroke: var(--rule-strong); stroke-width: 1.5; opacity: 0.9; transition: opacity 160ms var(--ease), stroke-width 160ms var(--ease); }
 .cn-link.sm { opacity: 0.55; }

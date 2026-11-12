@@ -10,8 +10,8 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --port 5191 --strictPort --host 127.0.0.1",
     "typecheck": "tsc --noEmit",
-    "test": "vitest run",
-    "lint:copy": "node scripts/lint-copy.mjs"
+    "check": "node scripts/check.mjs",
+    "visit": "NODE_PATH=../_work/tools/node_modules node scripts/visit-all.cjs"
   },
   "dependencies": {
     "@fontsource-variable/hanken-grotesk": "^5.3.0",

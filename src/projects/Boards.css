@@ -12,7 +12,8 @@
 .tens { display: grid; grid-template-columns: repeat(10, 13px); grid-auto-rows: 13px; gap: 4px; }
 
 /* along the chain */
-.chain-board { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 28px clamp(20px, 2.4vw, 40px); align-items: start; }
+.chain-board { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(176px, 1fr); gap: 28px clamp(18px, 2vw, 36px); align-items: start; overflow-x: auto; }
+.chain-board h3 { min-height: 3.1em; align-items: flex-end; flex-wrap: wrap; row-gap: 0; }
 .chain-board .board-group:first-of-type h4 { margin-top: 14px; }
 .chain-board .board-group > .tens:first-child { margin-top: 14px; }
 
