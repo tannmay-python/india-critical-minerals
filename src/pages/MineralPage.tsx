@@ -120,12 +120,11 @@ export function MineralPage({ name }: { name: string }) {
             })}
           </div>
         )}
-        <p className="mp-more">
+        {(inIndia > 0 || abroad > 0 || shared > 0) && <p className="mp-more">
           {inIndia > 0 && <a href={href("/projects", { mineral: mineral.name })}>{inIndia} in India on the map</a>}
           {abroad > 0 && <a href={href("/projects", { view: "abroad", mineral: mineral.name })}>{abroad} abroad</a>}
           {shared > 0 && <a href={href("/projects", { mineral: `family:${mineral.projects.family}` })}>{shared} {familyName} projects that name no single element</a>}
-          {projects.length === 0 && shared === 0 && <span className="muted">No Indian project is recorded for {mineral.name.toLowerCase()}.</span>}
-        </p>
+        </p>}
       </section>
 
       {cap && (

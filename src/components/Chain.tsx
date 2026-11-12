@@ -31,19 +31,9 @@ export function Chain({ mineral, stages, projects }: { mineral: Mineral; stages:
   const kinds = [...new Set(projects.map((p) => p.kind))];
   const groups = (["active", "pipeline", "inactive"] as const).filter((g) => projects.some((p) => p.group === g));
 
-  // Nothing to place on the chain: say how concentrated mining and refining are, and stop.
-  if (!stages && projects.length === 0) {
-    return (
-      <dl className="chain-bare">
-        {(["mine", "refine"] as const).map((id) => (
-          <div key={id}>
-            <dt>{id === "mine" ? "Mining" : "Refining"}</dt>
-            <dd><span className="pips" aria-hidden="true">{[1, 2, 3, 4, 5].map((n) => <i key={n} className={n <= concentration[id] ? "on" : ""} />)}</span>{bands[concentration[id] - 1]?.label}</dd>
-          </div>
-        ))}
-      </dl>
-    );
-  }
+  // Nothing to place on the chain: draw nothing. The journey above and the supplier-concentration
+  // score already say how concentrated mining and refining are.
+  if (!stages && projects.length === 0) return null;
 
   return (
     <div className={`chain${stages ? " with-text" : ""}`}>
