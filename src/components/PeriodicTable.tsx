@@ -1,28 +1,22 @@
-// The periodic table as the site's one overview. The same tiles answer different questions as the
-// lens changes: which elements India lists, how many national lists name each, which of six groups
-// each falls in, how each scores on any measure, where India has projects along the chain, and
-// which have a capability pathway. Under the groups lens the 51 tiles leave their periodic
-// positions and gather into the six groups.
+// The table shows India's list, how many national lists name each element, the six groups,
+// or where India has projects along the value chain. The groups view rearranges the tiles.
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { useCore } from "../data/store";
 import type { Band, ElementRow, Mineral } from "../data/types";
-import { BAND_COLOR, groupColor, inkOn, SEQ5, sequential } from "../lib/colors";
+import { BAND_COLOR, groupColor, inkOn, SEQ5 } from "../lib/colors";
 import { href, mineralHref } from "../lib/router";
 import { useTip } from "./Tip";
 import "./PeriodicTable.css";
 
-export type Lens = "india" | "lists" | "groups" | "score" | "projects" | "capability";
+export type Lens = "india" | "lists" | "groups" | "projects";
 export const LENSES: { id: Lens; label: string }[] = [
   { id: "india", label: "India's list" },
   { id: "lists", label: "The world's lists" },
   { id: "groups", label: "Six groups" },
-  { id: "score", label: "Scores" },
   { id: "projects", label: "India's projects" },
-  { id: "capability", label: "What to build" },
 ];
 
 const BANDS: Band[] = ["upstream", "process", "make", "recycle", "research"];
-const TIME_STEPS = ["0-3 yrs", "3-7 yrs", "7+ yrs"];
 const CATEGORY_NAME: Record<string, string> = { syn: "Synthetic", rad: "Radioactive, no commercial supply", gas: "Atmospheric gas", hhe: "Not mined as an ore", com: "Mined, not on India's list" };
 const GAP = 4;
 
@@ -30,8 +24,6 @@ interface Props {
   lens: Lens;
   /** India's-list lens: which step of the reduction is shown (0 to 5). */
   step: number;
-  /** Scores lens: index into core.subscores. */
-  score: number;
 }
 
 interface Tile {
@@ -41,7 +33,7 @@ interface Tile {
   glyph?: ReactNode;
 }
 
-export function PeriodicTable({ lens, step, score }: Props) {
+export function PeriodicTable({ lens, step }: Props) {
   const core = useCore();
   const tip = useTip();
   const box = useRef<HTMLDivElement>(null);
@@ -59,7 +51,6 @@ export function PeriodicTable({ lens, step, score }: Props) {
     return new Map(core.elements.map((el) => [el[0], core.mineral.get(alias[el[2]] ?? el[2])]));
   }, [core]);
 
-  const sub = core.subscores[score];
   const removed = useMemo(() => new Set(core.ptSteps.slice(0, step + 1).map((s) => s.removes).filter(Boolean) as string[]), [core, step]);
 
   const narrow = width > 0 && width < 720;
@@ -114,11 +105,7 @@ export function PeriodicTable({ lens, step, score }: Props) {
       } else { visible = false; x = 0; y = 0; }
     } else if (!m) {
       faint = true;
-    } else if (lens === "score") {
-      const v = m.s[sub.i];
-      fill = sequential(0.08 + 0.92 * ((v - (sub.max === 5 ? 1 : 0)) / (sub.max - (sub.max === 5 ? 1 : 0))));
-      ink = inkOn(fill);
-    } else if (lens === "projects") {
+    } else {
       fill = "var(--surface)"; ink = "var(--ink)"; outline = true;
       if (!m.projects.total) { ink = "var(--muted)"; }
       glyph = (
@@ -129,11 +116,6 @@ export function PeriodicTable({ lens, step, score }: Props) {
           })}
         </span>
       );
-    } else if (lens === "capability") {
-      if (m.capability) {
-        const t = TIME_STEPS.indexOf(m.capability.time);
-        fill = [SEQ5[4], SEQ5[2], SEQ5[1]][t < 0 ? 1 : t]; ink = inkOn(fill);
-      } else { fill = "var(--surface)"; ink = "var(--muted)"; outline = true; }
     }
     return { key: String(z), el, mineral: m, x, y, visible, fill, ink, faint, outline, glyph };
   });
@@ -146,21 +128,17 @@ export function PeriodicTable({ lens, step, score }: Props) {
     const g = core.group.get(m.group)!;
     const rows: [string, string | number][] = [];
     if (lens === "lists") rows.push(["National lists naming it", `${m.lists} of 5`]);
-    if (lens === "score") rows.push([sub.name, `${m.s[sub.i]} / ${sub.max}`]);
     if (lens === "projects") {
       if (!m.projects.total) rows.push(["Projects that name it", "none"]);
       for (const b of core.bands) if (m.projects.byBand[b.id]) rows.push([b.label, m.projects.byBand[b.id]!]);
       if (m.projects.demand) rows.push(["Cell plants and fabs", m.projects.demand]);
       if (m.projects.shared) rows.push([m.projects.family === "PGE" ? "Platinum-group projects naming no element" : "Rare-earth projects naming no element", m.projects.shared]);
     }
-    if (lens === "capability" && m.capability) rows.push(["Time to output", m.capability.time.replace("-", "–")], ["Ease for India", m.capability.ease]);
     return (
       <>
         <strong>{m.name}</strong>
         <span className="tip-group"><i className="swatch" style={{ "--c": groupColor(m.group) } as CSSProperties} />{g.name}</span>
         {rows.map(([k, v]) => <span className="tip-row" key={k}><span>{k}</span><b>{v}</b></span>)}
-        {lens === "capability" && m.capability && <span className="tip-note">{m.capability.nextMove}</span>}
-        {lens === "capability" && !m.capability && <span className="tip-note">No pathway drawn for this group.</span>}
       </>
     );
   }
