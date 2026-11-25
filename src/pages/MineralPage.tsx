@@ -2,6 +2,7 @@ import { Fragment, useEffect, useMemo, useState, type CSSProperties, type ReactN
 import { useCore, useData } from "../data/store";
 import type { Capability, Mineral, MineralDetail, Project, ScoreDetail, VectorDef } from "../data/types";
 import { CHAIN_COLUMNS, Chain } from "../components/Chain";
+import { BUILD_VIEWS, BuildViews, type BuildView } from "../components/BuildViews";
 import { Journey } from "../components/Journey";
 import { useJourney } from "../journeys";
 import { Mark } from "../components/ProjectMark";
@@ -38,6 +39,15 @@ export function MineralPage({ name }: { name: string }) {
     }
     return list;
   }, [detail, journey]);
+
+  // temporary: which layout of What to build is showing, while they are compared
+  const [buildView, setBuildView] = useState<BuildView>(() => {
+    try { return (localStorage.getItem("buildView") as BuildView | null) ?? "check"; } catch { return "check"; }
+  });
+  const pickBuildView = (v: BuildView) => {
+    setBuildView(v);
+    try { localStorage.setItem("buildView", v); } catch { /* private window */ }
+  };
 
   // step through the minerals in alphabetical order, by the links in the bar or the arrow keys
   const order = useMemo(() => [...core.minerals].sort((a, b) => a.name.localeCompare(b.name)), [core.minerals]);
@@ -133,7 +143,14 @@ export function MineralPage({ name }: { name: string }) {
 
       {cap && (
         <section className="wrap mp-section mp-build">
-          <h2>What to build</h2>
+          <div className="wb-switch">
+            <h2>What to build</h2>
+            <div role="group" aria-label="Layouts to compare">
+              {BUILD_VIEWS.map((v) => <button type="button" key={v.id} className="pill" aria-pressed={buildView === v.id} onClick={() => pickBuildView(v.id)}>{v.label}</button>)}
+            </div>
+          </div>
+          {buildView !== "now" && <BuildViews view={buildView} cap={cap} mineral={mineral} cost={withCapabilityLinks(cap.cost)} />}
+          {buildView === "now" && <>
           <div className="mp-build-grid">
             <div className="mp-has">
               <h3>What India already has</h3>
@@ -164,6 +181,7 @@ export function MineralPage({ name }: { name: string }) {
               </ul>
             </div>
           )}
+          </>}
         </section>
       )}
 
