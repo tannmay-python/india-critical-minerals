@@ -1,6 +1,21 @@
 .groups-page { padding-top: clamp(36px, 5vw, 64px); padding-bottom: 96px; }
 .groups-page h1 { max-width: 18ch; padding-left: 22px; border-left: 3px solid var(--marigold); }
 .gp-intro { margin-top: 20px; max-width: 62ch; font-size: var(--text-lg); color: var(--ink-2); }
+/* the link to the full table, as on the dashboard */
+.gp-card { display: flex; align-items: center; gap: 16px; max-width: 560px; margin-top: 24px; padding: 14px 18px; border: 1px solid var(--rule-strong); border-radius: var(--radius-sm); background: var(--surface); color: var(--ink); text-decoration: none; transition: border-color 140ms var(--ease); }
+.gp-card svg { flex: none; color: var(--plum); }
+.gp-card > span { display: flex; flex-direction: column; gap: 2px; }
+.gp-card strong { font-weight: 650; }
+.gp-card > span > span { font-size: var(--text-sm); color: var(--ink-2); }
+.gp-card i { flex: none; margin-left: auto; width: 9px; height: 9px; border-top: 2px solid var(--plum); border-right: 2px solid var(--plum); transform: rotate(45deg); }
+.gp-card:hover { border-color: var(--plum); }
+.gp-card:hover strong { color: var(--plum); }
+.gp-back { padding-bottom: 18px; font-size: var(--text-sm); font-weight: 600; }
+.gp-back a { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-2); text-decoration: none; }
+.gp-back a:hover { color: var(--plum); }
+.gp-back a::before { content: ""; width: 7px; height: 7px; border-left: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); }
+.gp-matrix { margin-top: 28px; }
+
 /* the groups as rows that open one at a time */
 .gp-list { margin-top: 32px; border-top: 2px solid var(--ink); }
 .gp-group { border-bottom: 1px solid var(--rule); scroll-margin-top: calc(var(--header-h) + 12px); }

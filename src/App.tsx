@@ -11,6 +11,7 @@ import { CapabilitiesPage } from "./pages/CapabilitiesPage";
 import { CapabilityPage } from "./pages/CapabilityPage";
 import { TechnologyPage } from "./pages/TechnologyPage";
 import { GroupsPage } from "./pages/GroupsPage";
+import { GroupProfilePage } from "./pages/GroupProfilePage";
 import { MethodPage } from "./pages/MethodPage";
 import { ComparePage } from "./pages/ComparePage";
 import { ExplorerPage } from "./pages/ExplorerPage";
@@ -33,19 +34,20 @@ export function App() {
 function Routes() {
   const route = useRoute();
   const section = route.path[0] ?? "";
-  const page = section === "groups" ? "groups" : route.path.join("/");
+  const profile = section === "groups" && route.path[1] === "profile";
+  const page = section === "groups" && !profile ? "groups" : route.path.join("/");
   // a new page starts at its top; changes of query within a page keep their place
-  useEffect(() => { if (!(section === "groups" && route.path[1])) window.scrollTo(0, 0); }, [page]); // eslint-disable-line react-hooks/exhaustive-deps
+  useEffect(() => { if (!(section === "groups" && route.path[1] && !profile)) window.scrollTo(0, 0); }, [page]); // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     const name: Record<string, string> = { projects: "Projects", project: "Project", capabilities: "Capabilities", capability: "Capability", technology: "Technology", method: "Method", groups: "The six groups", compare: "Compare", explorer: "Explorer" };
-    const part = section === "mineral" ? decodeURIComponent(route.path[1] ?? "") : name[section];
+    const part = section === "mineral" ? decodeURIComponent(route.path[1] ?? "") : profile ? "Average profile by group" : name[section];
     document.title = part ? `${part} · India Critical Minerals` : "India Critical Minerals";
   }, [section, route.path]);
   switch (section) {
     case "mineral": return <MineralPage name={route.path[1] ?? ""} />;
     case "projects": return <ProjectsPage />;
     case "project": return <ProjectPage id={route.path[1] ?? ""} />;
-    case "groups": return <GroupsPage focus={route.path[1]} />;
+    case "groups": return profile ? <GroupProfilePage /> : <GroupsPage focus={route.path[1]} />;
     case "capabilities": return <CapabilitiesPage />;
     case "method": return <MethodPage />;
     case "compare": return <ComparePage />;

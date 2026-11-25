@@ -25,6 +25,7 @@ export const TREE_TEXT = {
 };
 
 export const PROFILE_TEXT = `This table gives each group's average score on all fourteen sub-scores. For each sub-score, we average the minerals in the group. The highest value in a row is shaded in that group's colour, so you can see which group leads on it.`;
+export const PROFILE_LINK = "The full table: mean of every sub-score across each group";
 export const PROFILE_NOTE = `These are averages, so they can fall between the 1-5 or 1-10 band scores. We never add them up.`;
 
 export const METHOD_INTRO = "We study India's 51 critical minerals across ten vectors. There is no single composite score.";

@@ -1,8 +1,7 @@
 import { useEffect, useState, type CSSProperties } from "react";
 import { useCore } from "../data/store";
-import { GroupMatrix } from "../components/GroupMatrix";
 import { Radar } from "../components/Radar";
-import { GROUPS_INTRO, PROFILE_TEXT, WHY_DISTINCT, fixLinks } from "../content/groups";
+import { GROUPS_INTRO, PROFILE_LINK, WHY_DISTINCT, fixLinks } from "../content/groups";
 import { groupColor, inkOn } from "../lib/colors";
 import { href, mineralHref } from "../lib/router";
 import "./GroupsPage.css";
@@ -33,6 +32,12 @@ export function GroupsPage({ focus }: { focus?: string }) {
     <main className="wrap groups-page">
       <h1>The six groups</h1>
       <p className="gp-intro">{GROUPS_INTRO}</p>
+      {/* the full table has its own page, as on the dashboard */}
+      <a className="gp-card" href={href("/groups/profile")}>
+        <svg viewBox="0 0 40 34" width="40" height="34" aria-hidden="true"><g fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><path d="M5 7h30M5 17h30M5 27h30" /><path d="M14 5v24M25 5v24" /></g></svg>
+        <span><strong>Average profile by group</strong><span>{PROFILE_LINK}</span></span>
+        <i aria-hidden="true" />
+      </a>
 
       <div className="gp-list">
       {ordered.map((g) => {
@@ -76,12 +81,6 @@ export function GroupsPage({ focus }: { focus?: string }) {
         );
       })}
       </div>
-
-      <section className="gp-section">
-        <h2>Average profile by group</h2>
-        <p className="gp-text">{PROFILE_TEXT.split(". ").filter((_, i) => i !== 1).join(". ")}</p>
-        <GroupMatrix />
-      </section>
 
       <section className="gp-section">
         <h2>Why the groups are distinct</h2>
