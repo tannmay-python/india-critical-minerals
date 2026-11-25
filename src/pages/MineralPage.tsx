@@ -46,8 +46,6 @@ export function MineralPage({ name }: { name: string }) {
 
   const group = core.group.get(mineral.group)!;
   const color = groupColor(mineral.group);
-  const peers = core.membersOf(mineral.group);
-  const mean = core.vectors.map((v) => peers.reduce((s, m) => s + m.v[v.key], 0) / peers.length / v.max);
   const cap = detail?.capability ?? null;
   const inIndia = projects.filter((p) => !p.abroad && p.kind !== "demand").length;
   const abroad = projects.filter((p) => p.abroad).length;
@@ -80,12 +78,8 @@ export function MineralPage({ name }: { name: string }) {
 
       <section className="wrap mp-scores" aria-label="Scores">
         <figure className="mp-radar">
-          <Radar vectors={core.vectors} series={[
-            ...(peers.length > 1 ? [{ label: `${group.name}, average`, color: "#b79f6b", values: mean }] : []),
-            { label: mineral.name, color, values: core.vectors.map((v) => mineral.v[v.key] / v.max), fill: true },
-          ]} />
+          <Radar vectors={core.vectors} series={[{ label: mineral.name, color, values: core.vectors.map((v) => mineral.v[v.key] / v.max), fill: true }]} />
           <figcaption>
-            {peers.length > 1 && <p className="mp-key"><span><i className="key-line" style={{ background: color }} />{mineral.name}</span><span><i className="key-line" style={{ background: "#b79f6b" }} />Group average</span></p>}
             <p>A higher score means the mineral matters more or its supply is more exposed.</p>
           </figcaption>
         </figure>

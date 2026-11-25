@@ -1,4 +1,4 @@
-// A mineral's ten scores as one shape, with its group's average drawn behind it for comparison.
+// A mineral's ten scores as one shape. The compare and method pages lay several minerals' shapes over one another.
 import type { CSSProperties } from "react";
 import type { VectorDef } from "../data/types";
 
