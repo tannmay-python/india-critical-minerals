@@ -3,6 +3,8 @@
 // scrap going back in. Everything else (the material, what joins, what leaves) is in the card that
 // opens for the chosen stop, so that no label appears under some stops and not others. Arrows at
 // either end step along the line; the chosen stop's name is filled in and the card points up at it.
+// India's position is in the table under the line and the sources are at the foot of the page, so
+// the "india" and "in" fields of a step stay in the data but are not drawn here.
 import { Fragment, useEffect, useRef, useState, type CSSProperties, type KeyboardEvent, type ReactNode } from "react";
 import { useCore } from "../data/store";
 import type { Journey as JourneyData, JourneyStep } from "../journeys";
@@ -86,7 +88,6 @@ export function Journey({ journey, color }: { journey: JourneyData; color: strin
             {step.chem && <p className="jr-chem">{step.chem}</p>}
             {step.alt && <p className="jr-alt">{step.alt}</p>}
             {step.out?.map((o) => <p className="jr-out" key={o}>{linked(o)}</p>)}
-            {step.india && <p className="jr-india"><b>India</b>{step.india}</p>}
           </div>
           <div className="jr-side">
             {step.form && <p className="jr-form"><Waffle value={step.form.content} label={`${step.form.name}: ${step.form.label}`} /><span><b>{step.form.name}</b>{step.form.label}</span></p>}
@@ -98,9 +99,6 @@ export function Journey({ journey, color }: { journey: JourneyData; color: strin
           </p>
         </section>
       </div>
-      <p className="jr-sources">
-        {journey.sources.map((s, i) => <span key={i}>{s.url ? <a href={s.url} target="_blank" rel="noopener">{s.title}</a> : s.title}</span>)}
-      </p>
     </div>
   );
 }

@@ -46,8 +46,6 @@
 .jr-alt::after, .jr-out::after { content: ""; position: absolute; left: 9px; top: calc(0.3em + 4px); width: 5px; height: 5px; border-top: 1.5px solid var(--band); border-right: 1.5px solid var(--band); transform: rotate(45deg); }
 .jr-out a { font-weight: 600; }
 .jr-text a { text-decoration-color: var(--plum-line); }
-.jr-india { max-width: 62ch; font-size: 0.92rem; line-height: 1.45; color: var(--ink-2); padding-top: 12px; border-top: 1px solid var(--rule); }
-.jr-india b { color: var(--plum); font-weight: 680; margin-right: 7px; }
 
 .jr-side { display: flex; flex-direction: column; gap: 16px; }
 .jr-form { display: flex; align-items: center; gap: 12px; font-size: var(--text-sm); color: var(--ink-2); line-height: 1.3; }
@@ -72,8 +70,6 @@
 .jr-nav .prev::before, .jr-nav .next::after { content: ""; width: 7px; height: 7px; border-left: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); }
 .jr-nav .next::after { transform: rotate(-135deg); }
 
-.jr-sources { display: flex; flex-wrap: wrap; gap: 2px 18px; margin-top: 14px; font-size: var(--text-sm); color: var(--muted); }
-.jr-sources a { color: var(--ink-2); }
 
 /* narrow screens: the line runs down the page and the chosen stop opens in place */
 @media (max-width: 900px) {

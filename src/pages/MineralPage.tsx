@@ -27,6 +27,18 @@ export function MineralPage({ name }: { name: string }) {
     return allProjects.filter((p) => p.tagged.includes(mineral.name) && p.confidence !== "low");
   }, [mineral, allProjects]);
 
+  // the value chain's sources join the list at the foot of the page; the site's own records need no citation on the site
+  const sources = useMemo(() => {
+    const key = (s: { title: string; url?: string }) => [s.title.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim(), (s.url ?? "").replace(/^https?:\/\//, "").replace(/\/+$/, "").toLowerCase()];
+    const list: { title: string; url?: string }[] = (detail?.capability?.sourceList ?? []).map((s) => ({ title: s.title, url: s.url || undefined }));
+    const seen = new Set(list.flatMap(key).filter(Boolean));
+    for (const s of journey?.sources ?? []) {
+      if (/^Takshashila, India Critical Minerals/.test(s.title) || key(s).some((k) => k && seen.has(k))) continue;
+      list.push(s);
+    }
+    return list;
+  }, [detail, journey]);
+
   // step through the minerals in alphabetical order, by the links in the bar or the arrow keys
   const order = useMemo(() => [...core.minerals].sort((a, b) => a.name.localeCompare(b.name)), [core.minerals]);
   const at = mineral ? order.findIndex((m) => m.name === mineral.name) : -1;
@@ -74,7 +86,6 @@ export function MineralPage({ name }: { name: string }) {
         </div>
         <a className="pill mp-compare" href={href("/compare", { m: mineral.name })}>Compare</a>
       </header>
-      {mineral.capability && <div className="wrap"><p className="mp-lead">{mineral.capability.nextMove}</p></div>}
 
       <section className="wrap mp-scores" aria-label="Scores">
         <figure className="mp-radar">
@@ -156,11 +167,11 @@ export function MineralPage({ name }: { name: string }) {
         </section>
       )}
 
-      {cap && cap.sourceList.length > 0 && (
+      {sources.length > 0 && (
         <section className="wrap mp-section mp-sources">
           <h2>Sources</h2>
           <ol>
-            {cap.sourceList.map((s) => <li key={s.id}>{s.url ? <a href={s.url} target="_blank" rel="noopener">{s.title}</a> : s.title}</li>)}
+            {sources.map((s) => <li key={s.title}>{s.url ? <a href={s.url} target="_blank" rel="noopener">{s.title}</a> : s.title}</li>)}
           </ol>
         </section>
       )}

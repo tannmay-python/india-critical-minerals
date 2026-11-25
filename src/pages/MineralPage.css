@@ -16,8 +16,6 @@
 .mp-group .swatch { transform: translateY(-1px); }
 .mp-group:hover b { color: var(--plum); }
 .mp-compare { margin-left: auto; text-decoration: none; }
-.mp-lead { font-family: var(--font-display); font-size: clamp(1.5rem, 2.6vw, 2.1rem); line-height: 1.18; letter-spacing: -0.015em; max-width: none; padding-top: 22px; }
-.mp-lead::before { content: ""; display: block; width: 56px; height: 3px; background: var(--marigold); margin-bottom: 16px; }
 
 .mp-scores { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr); gap: clamp(24px, 4vw, 64px); align-items: start; padding-top: clamp(24px, 3vw, 40px); }
 .mp-radar { position: sticky; top: calc(var(--header-h) + 20px); display: flex; flex-direction: column; align-items: center; }
