@@ -1,27 +1,23 @@
-// Method: how minerals are scored and grouped, what the project records cover, how the capability
-// entries are scaled, and who made this. The prose is the authors', carried over from the three
-// sources (see src/content).
+// How minerals are scored and grouped, what the project records cover, and who made this.
+// The prose is carried over from the original sources (see src/content).
 import { useState, type CSSProperties } from "react";
 import { useCore, useData } from "../data/store";
-import type { Capability } from "../data/types";
 import { Dendrogram } from "../components/Dendrogram";
 import { Mark } from "../components/ProjectMark";
 import { Radar } from "../components/Radar";
 import { GROUPING_METHOD, METHOD_INTRO, METHOD_NOTE, NO_COMPOSITE, NO_COMPOSITE_MINERALS, SCORE_SOURCES, TREE_TEXT } from "../content/groups";
 import { AUTHORS } from "../content/home";
-import { BAND_NOTE, BOUNDARY_NOTE, LAYERS, LEFT_OUT, PROJECTS_LEDE, SHAPE_KEY, STATUS_KEY, YEAR_NOTE } from "../content/projects";
+import { BAND_NOTE, BOUNDARY_NOTE, LAYERS, PROJECTS_LEDE, SHAPE_KEY, STATUS_KEY } from "../content/projects";
 import { groupColor } from "../lib/colors";
 import { fmtDate } from "../lib/format";
 import { href } from "../lib/router";
 import "./MethodPage.css";
 
-const SECTIONS = [["scoring", "Scoring"], ["grouping", "Grouping"], ["projects", "Projects"], ["capabilities", "Capabilities"], ["credits", "Credits and data"]] as const;
+const SECTIONS = [["scoring", "Scoring"], ["grouping", "Grouping"], ["projects", "Projects"], ["credits", "Credits and data"]] as const;
 const COMPARE_COLORS = ["#620d3c", "#f1a222", "#1d677f"];
-const SCALE_NOTES = ["Complexity", "Ease for India", "Time to output", "Confidence", "Kind of strength", "Costs", "Our estimates", "Context"];
 
 export function MethodPage() {
   const core = useCore();
-  const cap = useData<Capability>("capability.json");
   const agg = useData<{ by_layer: Record<string, number> }>("aggregates.json");
   const [open, setOpen] = useState<string | null>(null);
   const trio = NO_COMPOSITE_MINERALS.map((n) => core.mineral.get(n)!).filter(Boolean);
@@ -113,19 +109,6 @@ export function MethodPage() {
               {SHAPE_KEY.map((s) => <li key={s.kind}><Mark kind={s.kind} band="demand" group="active" size={12} /><span>{s.text}</span></li>)}
             </ul>
           </div>
-          <div className="prose"><p>{YEAR_NOTE}</p><p>{LEFT_OUT}</p></div>
-        </section>
-
-        <section id="capabilities">
-          <h2>How the capability entries are scaled</h2>
-          {cap && (
-            <>
-              <p className="method-text">{cap.meta.notes.find((n) => n.title === "About")?.text}</p>
-              <dl className="scales">
-                {SCALE_NOTES.map((t) => cap.meta.notes.find((n) => n.title === t)).filter(Boolean).map((n) => <div key={n!.title}><dt>{n!.title}</dt><dd>{n!.text.replace(" # numbers point to the Capabilities tab.", "").replace("the dashboard's extraction and refining scale", "the extraction and refining complexity scale")}</dd></div>)}
-              </dl>
-            </>
-          )}
         </section>
 
         <section id="credits">

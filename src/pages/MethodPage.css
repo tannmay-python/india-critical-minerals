@@ -56,11 +56,6 @@
 .keys li { display: flex; align-items: baseline; gap: 10px; padding: 5px 0; font-size: 0.95rem; }
 .keys .mark, .keys .swatch { flex: none; transform: translateY(1px); }
 
-.scales { border-top: 2px solid var(--ink); max-width: 980px; }
-.scales > div { display: grid; grid-template-columns: 190px minmax(0, 1fr); gap: 20px; padding: 12px 0; border-bottom: 1px solid var(--rule); }
-.scales dt { font-weight: 600; }
-.scales dd { color: var(--ink-2); }
-
 @media (max-width: 900px) {
   .method-blocks { grid-template-columns: 1fr; }
   .method { grid-template-columns: 1fr; }
@@ -69,5 +64,4 @@
   .no-composite { grid-template-columns: 1fr; }
   .vector > button { grid-template-columns: 1fr 14px; }
   .vector-what { grid-column: 1; }
-  .scales > div { grid-template-columns: 1fr; gap: 4px; }
 }
