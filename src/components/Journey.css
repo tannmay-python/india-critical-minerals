@@ -2,16 +2,20 @@
 
 /* ── the line ── */
 .jr-map { position: relative; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); padding-top: 34px; }
-.jr-stop { position: relative; display: grid; grid-template-rows: 44px 22px; justify-items: center; align-content: start; gap: 8px; padding: 0 6px 6px; text-align: center; }
-.jr-name { align-self: end; font-family: var(--font-display); font-size: 1.12rem; line-height: 1.1; letter-spacing: -0.01em; transition: color 140ms var(--ease); }
-.jr-stop:hover .jr-name, .jr-stop[aria-current] .jr-name { color: var(--plum); }
-.jr-stop[aria-current] .jr-name { font-weight: 600; }
+.jr-stop { position: relative; grid-row: 1; display: grid; grid-template-rows: 44px 22px; justify-items: center; align-content: start; gap: 8px; padding: 0 2px 6px; text-align: center; }
+/* every name has the same padding, so filling in the chosen one moves nothing */
+.jr-name { align-self: end; padding: 3px 8px 4px; border-radius: 14px; font-family: var(--font-display); font-size: 1.12rem; line-height: 1.1; letter-spacing: -0.01em; transition: color 140ms var(--ease), background-color 180ms var(--ease); }
+.jr-stop:not([aria-current]):hover .jr-name { color: var(--plum); }
+.jr-stop[aria-current] .jr-name { background: var(--plum); color: #fff; font-weight: 600; }
 /* each stop draws the stretch to the next one, shading into the next stage's colour */
 .jr-stop::before { content: ""; position: absolute; left: 50%; width: 100%; top: 60px; height: 6px; border-radius: 3px; background: linear-gradient(90deg, var(--band), var(--next)); }
-.jr-stop:last-of-type::before { display: none; }
+.jr-stop.end::before { display: none; }
 .jr-dot { position: relative; z-index: 1; width: 22px; height: 22px; border-radius: 50%; background: var(--surface); border: 5px solid var(--band); transition: transform 160ms var(--ease); }
 .jr-stop:hover .jr-dot { transform: scale(1.15); }
 .jr-stop[aria-current] .jr-dot { background: var(--band); box-shadow: 0 0 0 3px var(--page), 0 0 0 5px var(--band); }
+/* one ripple from the stop just reached */
+.jr-stop[aria-current] .jr-dot::after { content: ""; position: absolute; inset: -10px; border-radius: 50%; border: 2px solid var(--band); opacity: 0; animation: jr-ping 900ms var(--ease); }
+@keyframes jr-ping { from { transform: scale(0.9); opacity: 0.7; } to { transform: scale(2); opacity: 0; } }
 .jr-stop:focus-visible { outline: none; }
 .jr-stop:focus-visible .jr-dot { box-shadow: 0 0 0 3px var(--page), 0 0 0 6px var(--focus); }
 
@@ -19,8 +23,20 @@
 .jr-loop { position: absolute; top: 4px; height: 22px; left: calc((var(--a) + 0.5) * 100% / var(--n)); width: calc((var(--b) - var(--a)) * 100% / var(--n)); border: 2px dashed var(--band-recycle); border-bottom: 0; border-radius: 14px 14px 0 0; }
 .jr-loop::after { content: ""; position: absolute; left: -6px; bottom: -3px; width: 8px; height: 8px; border-right: 2px solid var(--band-recycle); border-bottom: 2px solid var(--band-recycle); transform: rotate(45deg); }
 
+/* step buttons, level with the stops and centred on the card's edges (top: line padding + name row + gap + half a dot - half a button) */
+.jr-arrow { position: absolute; z-index: 1; top: calc(34px + 44px + 8px + 11px - 18px); display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--rule); background: var(--surface); color: var(--ink-2); transition: color 140ms var(--ease), border-color 140ms var(--ease), opacity 140ms var(--ease); }
+.jr-arrow.prev { left: -18px; }
+.jr-arrow.next { right: -18px; }
+.jr-arrow::before { content: ""; width: 9px; height: 9px; border-left: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: translateX(2px) rotate(45deg); }
+.jr-arrow.next::before { transform: translateX(-2px) rotate(-135deg); }
+.jr-arrow:not([aria-disabled="true"]):hover { color: var(--plum); border-color: var(--plum); }
+.jr-arrow[aria-disabled="true"] { opacity: 0.35; cursor: default; }
+.jr-arrow:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
 /* ── the chosen stop ── */
-.jr-stage { grid-column: 1 / -1; grid-row: 2; display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 320px); gap: 8px clamp(24px, 4vw, 56px); margin-top: 24px; padding: 22px 26px 14px; background: var(--surface); border: 1px solid var(--rule); border-left: 4px solid var(--band); border-radius: var(--radius-sm); transition: border-color 200ms var(--ease); }
+.jr-stage { position: relative; grid-column: 1 / -1; grid-row: 2; display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, 320px); gap: 8px clamp(24px, 4vw, 56px); margin-top: 24px; padding: 22px 26px 14px; background: var(--surface); border: 1px solid var(--rule); border-top: 3px solid var(--band); border-radius: var(--radius-sm); transition: border-color 200ms var(--ease); }
+/* the card points up at its stop and slides along with it */
+.jr-stage::before { content: ""; position: absolute; top: -12px; left: calc((var(--at) + 0.5) * (100% + 2px) / var(--n) - 10px); width: 18px; height: 9px; background: var(--band); clip-path: polygon(50% 0, 100% 100%, 0 100%); transition: left 320ms var(--ease), background-color 200ms var(--ease); }
 .jr-body { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
 .jr-body h3 { font-family: var(--font-display); font-size: var(--text-2xl); font-weight: 500; letter-spacing: -0.01em; line-height: 1.1; }
 .jr-text { font-size: 1.06rem; line-height: 1.55; max-width: 58ch; }
@@ -49,7 +65,8 @@
 .jr-shares b { display: block; height: 100%; border-radius: 3px; background: var(--band); transition: width 300ms var(--ease); }
 .jr-shares .num { text-align: right; font-weight: 620; }
 
-.jr-nav { grid-column: 1 / -1; display: flex; justify-content: space-between; margin-top: 10px; padding-top: 12px; border-top: 1px solid var(--rule); font-size: var(--text-sm); font-weight: 600; }
+/* on wide screens the arrows by the line do this; on phones it sits at the foot of the card */
+.jr-nav { grid-column: 1 / -1; display: none; justify-content: space-between; margin-top: 10px; padding-top: 12px; border-top: 1px solid var(--rule); font-size: var(--text-sm); font-weight: 600; }
 .jr-nav button { display: inline-flex; align-items: center; gap: 8px; color: var(--ink-2); }
 .jr-nav button:hover { color: var(--plum); }
 .jr-nav .prev::before, .jr-nav .next::after { content: ""; width: 7px; height: 7px; border-left: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); }
@@ -61,11 +78,19 @@
 /* narrow screens: the line runs down the page and the chosen stop opens in place */
 @media (max-width: 900px) {
   .jr-map { display: flex; flex-direction: column; padding-top: 0; }
-  .jr-loop { display: none; }
-  .jr-stop { grid-template-rows: auto; grid-template-columns: 22px minmax(0, 1fr); justify-items: start; align-items: center; gap: 2px 14px; padding: 9px 0; text-align: left; }
-  .jr-dot { grid-column: 1; }
-  .jr-name { grid-column: 2; align-self: center; }
+  .jr-loop, .jr-arrow { display: none; }
+  .jr-stop { grid-template-rows: auto; grid-template-columns: 22px minmax(0, 1fr); justify-items: start; align-items: center; gap: 2px 6px; padding: 9px 0; text-align: left; }
+  /* both on the first row: the name comes first in the markup, so without a row the dot drops below it */
+  .jr-dot { grid-row: 1; grid-column: 1; }
+  .jr-name { grid-row: 1; grid-column: 2; align-self: center; }
   .jr-stop::before { left: 8px; top: 50%; width: 6px; height: 100%; background: linear-gradient(180deg, var(--band), var(--next)); }
-  .jr-stage { grid-template-columns: 1fr; margin: 4px 0 10px; padding: 16px 16px 10px; }
+  .jr-stage { grid-template-columns: 1fr; margin: 12px 0 10px; padding: 16px 16px 10px; }
+  .jr-stage::before { left: 1px; transition: none; }
+  .jr-nav { display: flex; }
   .jr-body h3 { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jr-stop[aria-current] .jr-dot::after { animation: none; }
+  .jr-stage::before { transition: none; }
 }

@@ -34,7 +34,7 @@ export function MineralPage({ name }: { name: string }) {
   const next = at >= 0 ? order[(at + 1) % order.length] : null;
   useEffect(() => {
     const onKey = (ev: KeyboardEvent) => {
-      if (ev.metaKey || ev.ctrlKey || ev.altKey || ev.shiftKey || (ev.target as HTMLElement).closest("input, select, textarea, [contenteditable]")) return;
+      if (ev.defaultPrevented || ev.metaKey || ev.ctrlKey || ev.altKey || ev.shiftKey || (ev.target as HTMLElement).closest("input, select, textarea, [contenteditable]")) return;
       if (ev.key === "ArrowLeft" && prev) go(`/mineral/${encodeURIComponent(prev.name)}`);
       if (ev.key === "ArrowRight" && next) go(`/mineral/${encodeURIComponent(next.name)}`);
     };

@@ -1,8 +1,9 @@
 // A mineral's journey drawn as a route line: one stop per stage, from the deposit to the finished
 // product. The line carries only the stage names and takes each stage's colour; a dashed arc shows
 // scrap going back in. Everything else (the material, what joins, what leaves) is in the card that
-// opens for the chosen stop, so that no label appears under some stops and not others.
-import { Fragment, useEffect, useState, type CSSProperties, type ReactNode } from "react";
+// opens for the chosen stop, so that no label appears under some stops and not others. Arrows at
+// either end step along the line; the chosen stop's name is filled in and the card points up at it.
+import { Fragment, useEffect, useRef, useState, type CSSProperties, type KeyboardEvent, type ReactNode } from "react";
 import { useCore } from "../data/store";
 import type { Journey as JourneyData, JourneyStep } from "../journeys";
 import { BAND_COLOR } from "../lib/colors";
@@ -16,6 +17,33 @@ export function Journey({ journey, color }: { journey: JourneyData; color: strin
   const steps = journey.steps;
   const at = Math.min(chosen, steps.length - 1);
   const step = steps[at];
+  const last = steps.length - 1;
+  const stops = useRef<(HTMLButtonElement | null)[]>([]);
+  const stage = useRef<HTMLElement>(null);
+  const moved = useRef(false);
+  const go = (i: number) => {
+    const to = Math.max(0, Math.min(last, i));
+    if (to === at) return;
+    moved.current = true;
+    setChosen(to);
+  };
+  // on phones the card opens under its stop, so keep it in view as the reader moves along
+  useEffect(() => {
+    if (!moved.current) return;
+    moved.current = false;
+    if (!matchMedia("(max-width: 900px)").matches) return;
+    stage.current?.scrollIntoView({ block: "nearest", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  }, [at]);
+  /** While the line has focus, the left and right keys move along it instead of changing the mineral. */
+  const onKey = (ev: KeyboardEvent<HTMLDivElement>) => {
+    const target = ev.target as HTMLElement;
+    if (ev.metaKey || ev.ctrlKey || ev.altKey || !target.closest(".jr-stop, .jr-arrow")) return;
+    const to = ({ ArrowLeft: at - 1, ArrowRight: at + 1, Home: 0, End: last } as Record<string, number | undefined>)[ev.key];
+    if (to === undefined) return;
+    ev.preventDefault();
+    go(to);
+    if (target.classList.contains("jr-stop")) stops.current[Math.max(0, Math.min(last, to))]?.focus();
+  };
 
   /** Minerals on this site that are named in a line become links to their pages. */
   const linked = (text: string): ReactNode => {
@@ -38,17 +66,20 @@ export function Journey({ journey, color }: { journey: JourneyData; color: strin
   const prev = steps[at - 1], next = steps[at + 1];
 
   return (
-    <div className="journey" style={{ "--el": color, "--n": steps.length } as CSSProperties}>
-      <div className="jr-map">
+    <div className="journey" style={{ "--el": color, "--n": steps.length, "--at": at } as CSSProperties}>
+      <div className="jr-map" onKeyDown={onKey}>
         {loop && <i className="jr-loop" aria-hidden="true" style={{ "--a": loop.from, "--b": loop.to } as CSSProperties} />}
+        <button type="button" className="jr-arrow prev" aria-label={prev ? `Back to ${prev.title}` : "Back"} title={prev?.title} aria-disabled={!prev} aria-controls="journey-stage" onClick={() => go(at - 1)} />
         {steps.map((s, i) => (
-          <button type="button" key={s.id} className="jr-stop" aria-current={i === at ? "step" : undefined} aria-controls="journey-stage" onClick={() => setChosen(i)}
+          <button type="button" key={s.id} ref={(el) => { stops.current[i] = el; }} className={i === last ? "jr-stop end" : "jr-stop"} aria-current={i === at ? "step" : undefined} aria-controls="journey-stage"
+            tabIndex={i === at ? 0 : -1} onClick={() => go(i)}
             style={{ "--band": BAND_COLOR[s.band], "--next": BAND_COLOR[(steps[i + 1] ?? s).band], order: i * 2 } as CSSProperties}>
             <span className="jr-name">{s.title}</span>
             <i className="jr-dot" aria-hidden="true" />
           </button>
         ))}
-        <section id="journey-stage" className="jr-stage" aria-live="polite" style={{ "--band": BAND_COLOR[step.band], order: at * 2 + 1 } as CSSProperties}>
+        <button type="button" className="jr-arrow next" aria-label={next ? `On to ${next.title}` : "On"} title={next?.title} aria-disabled={!next} aria-controls="journey-stage" onClick={() => go(at + 1)} />
+        <section id="journey-stage" ref={stage} className="jr-stage" aria-live="polite" style={{ "--band": BAND_COLOR[step.band], order: at * 2 + 1 } as CSSProperties}>
           <div className="jr-body">
             <h3>{step.title}</h3>
             <p className="jr-text">{linked(step.text)}</p>
@@ -62,8 +93,8 @@ export function Journey({ journey, color }: { journey: JourneyData; color: strin
             {step.shares && <Shares step={step} />}
           </div>
           <p className="jr-nav">
-            {prev ? <button type="button" className="prev" onClick={() => setChosen(at - 1)}>{prev.title}</button> : <span />}
-            {next && <button type="button" className="next" onClick={() => setChosen(at + 1)}>{next.title}</button>}
+            {prev ? <button type="button" className="prev" onClick={() => go(at - 1)}>{prev.title}</button> : <span />}
+            {next && <button type="button" className="next" onClick={() => go(at + 1)}>{next.title}</button>}
           </p>
         </section>
       </div>
