@@ -1,0 +1,36 @@
+/* What to build: where India stands, the span to cross, what to build */
+.wtb { display: grid; grid-template-columns: minmax(0, 1fr) 150px minmax(0, 1.1fr); align-items: stretch; }
+.wtb-has, .wtb-build { padding: 22px 24px; border: 1px solid var(--rule); border-radius: var(--radius-sm); }
+.wtb-has { background: var(--surface-2); }
+.wtb-build { background: var(--surface); border-top: 3px solid var(--band); }
+.wtb h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; line-height: 1.15; margin-bottom: 14px; }
+.wtb a { text-decoration-color: var(--plum-line); }
+
+.wtb-has ul { display: flex; flex-direction: column; gap: 9px; color: var(--ink-2); line-height: 1.45; }
+.wtb-has li { position: relative; padding-left: 17px; }
+.wtb-has li::before { content: ""; position: absolute; left: 0; top: 0.58em; width: 6px; height: 6px; border-radius: 50%; background: var(--plum); }
+
+.wtb-build ol { counter-reset: step; display: flex; flex-direction: column; gap: 12px; }
+.wtb-build li { counter-increment: step; position: relative; padding-left: 36px; font-size: 1.08rem; font-weight: 580; line-height: 1.4; }
+.wtb-build li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 25px; height: 25px; border-radius: 50%; background: var(--plum); color: #fff; font-size: 0.8rem; font-weight: 700; display: grid; place-items: center; }
+/* a build of one step needs no number */
+.wtb-build li:only-child { padding-left: 0; }
+.wtb-build li:only-child::before { display: none; }
+
+/* the arrow carries time to output above and difficulty below */
+.wtb-span { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; padding: 0 14px; text-align: center; font-size: var(--text-sm); color: var(--ink-2); }
+.wtb-span b { font-size: 1.05rem; font-weight: 680; color: var(--ink); }
+.wtb-span b, .wtb-span span { cursor: help; }
+.wtb-span i { position: relative; width: 100%; height: 3px; border-radius: 2px; background: var(--plum); }
+.wtb-span i::after { content: ""; position: absolute; right: 0; top: -5px; width: 11px; height: 11px; border-top: 3px solid var(--plum); border-right: 3px solid var(--plum); transform: rotate(45deg); }
+
+.wtb-on { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 26px; }
+.wtb-on > span { font-size: var(--text-sm); color: var(--muted); margin-right: 6px; }
+.wtb-on a { padding: 6px 13px; border-radius: 999px; border: 1px solid var(--rule-strong); background: var(--surface); font-size: var(--text-sm); font-weight: 560; color: var(--ink-2); text-decoration: none; transition: color 140ms var(--ease), border-color 140ms var(--ease); }
+.wtb-on a:hover { border-color: var(--plum); color: var(--plum); }
+.wtb-on a.tech { border-style: dashed; }
+
+@media (max-width: 900px) {
+  .wtb { grid-template-columns: 1fr; }
+  .wtb-span { padding: 14px 0; }
+}

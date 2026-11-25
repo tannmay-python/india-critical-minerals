@@ -1,14 +1,13 @@
-import { Fragment, useEffect, useMemo, useState, type CSSProperties, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { useCore, useData } from "../data/store";
-import type { Capability, Mineral, MineralDetail, Project, ScoreDetail, VectorDef } from "../data/types";
+import type { Mineral, MineralDetail, Project, ScoreDetail, VectorDef } from "../data/types";
 import { CHAIN_COLUMNS, Chain } from "../components/Chain";
-import { BUILD_VIEWS, BuildViews, type BuildView } from "../components/BuildViews";
 import { Journey } from "../components/Journey";
 import { useJourney } from "../journeys";
 import { Mark } from "../components/ProjectMark";
 import { Radar } from "../components/Radar";
+import { WhatToBuild } from "../components/WhatToBuild";
 import { groupColor, inkOn } from "../lib/colors";
-import { fmtRange } from "../lib/format";
 import { go, href, mineralHref } from "../lib/router";
 import "./MineralPage.css";
 
@@ -20,7 +19,6 @@ export function MineralPage({ name }: { name: string }) {
   const mineral = core.findMineral(name);
   const detail = useData<MineralDetail>(mineral ? `minerals/${mineral.name}.json` : null);
   const allProjects = useData<Project[]>("projects.json");
-  const capability = useData<Capability>(mineral?.capability ? "capability.json" : null);
   const journey = useJourney(mineral?.name);
 
   const projects = useMemo(() => {
@@ -39,15 +37,6 @@ export function MineralPage({ name }: { name: string }) {
     }
     return list;
   }, [detail, journey]);
-
-  // temporary: which layout of What to build is showing, while they are compared
-  const [buildView, setBuildView] = useState<BuildView>(() => {
-    try { return (localStorage.getItem("buildView") as BuildView | null) ?? "check"; } catch { return "check"; }
-  });
-  const pickBuildView = (v: BuildView) => {
-    setBuildView(v);
-    try { localStorage.setItem("buildView", v); } catch { /* private window */ }
-  };
 
   // step through the minerals in alphabetical order, by the links in the bar or the arrow keys
   const order = useMemo(() => [...core.minerals].sort((a, b) => a.name.localeCompare(b.name)), [core.minerals]);
@@ -74,12 +63,6 @@ export function MineralPage({ name }: { name: string }) {
   const shared = mineral.projects.shared;
   const familyName = mineral.projects.family === "PGE" ? "platinum-group" : "rare-earth";
 
-  /** "(#6)" in the cost text points at capability number 6; show it as a link by name. */
-  const withCapabilityLinks = (text: string): ReactNode => text.split(/\s*\(#(\d+)\)/).map((part, i) => {
-    if (i % 2 === 0) return <Fragment key={i}>{part}</Fragment>;
-    const s = capability?.strategies.find((x) => x.number === Number(part));
-    return s ? <Fragment key={i}> (<a href={href(`/capability/${s.slug}`)}>{s.name}</a>)</Fragment> : null;
-  });
 
   return (
     <main className="mineral-page">
@@ -142,46 +125,9 @@ export function MineralPage({ name }: { name: string }) {
       </section>
 
       {cap && (
-        <section className="wrap mp-section mp-build">
-          <div className="wb-switch">
-            <h2>What to build</h2>
-            <div role="group" aria-label="Layouts to compare">
-              {BUILD_VIEWS.map((v) => <button type="button" key={v.id} className="pill" aria-pressed={buildView === v.id} onClick={() => pickBuildView(v.id)}>{v.label}</button>)}
-            </div>
-          </div>
-          {buildView !== "now" && <BuildViews view={buildView} cap={cap} mineral={mineral} cost={withCapabilityLinks(cap.cost)} />}
-          {buildView === "now" && <>
-          <div className="mp-build-grid">
-            <div className="mp-has">
-              <h3>What India already has</h3>
-              <p>{cap.what_india_has}</p>
-            </div>
-            <dl className="mp-facts">
-              <div><dt>Capability</dt><dd>{cap.value_chain_step}</dd></div>
-              <div><dt>Complexity</dt><dd><span className="pips" aria-hidden="true">{[1, 2, 3, 4, 5].map((n) => <i key={n} className={n <= cap.complexity ? "on" : ""} />)}</span> {cap.complexity} of 5</dd></div>
-              <div><dt>Ease for India</dt><dd>{cap.ease}</dd></div>
-              <div><dt>Time to output</dt><dd>{fmtRange(cap.time_to_output)}</dd></div>
-              <div><dt>Confidence</dt><dd>{cap.confidence}</dd></div>
-              <div className="wide"><dt>Indicative cost</dt><dd><span>{withCapabilityLinks(cap.cost)}</span></dd></div>
-            </dl>
-          </div>
-
-          {(cap.strategyList.length > 0 || cap.chemistryList.length > 0) && (
-            <div className="mp-links">
-              <ul>
-                {cap.strategyList.map((s) => (
-                  <li key={s.id}><a href={href(`/capability/${s.slug}`)}>{s.name}</a><p>{s.what}</p></li>
-                ))}
-                {cap.chemistryList.map((k) => (
-                  <li key={k.id}>
-                    <a href={href(`/technology/${k.slug}`)}>{k.name}</a>
-                    <p>{(k.links[0] as { how?: string } | undefined)?.how ?? k.carries_over_to}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-          </>}
+        <section className="wrap mp-section">
+          <h2>What to build</h2>
+          <WhatToBuild cap={cap} mineral={mineral} />
         </section>
       )}
 
