@@ -1,4 +1,4 @@
-import { useEffect, type CSSProperties } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { useCore } from "../data/store";
 import { GroupMatrix } from "../components/GroupMatrix";
 import { Radar } from "../components/Radar";
@@ -9,31 +9,50 @@ import "./GroupsPage.css";
 
 export function GroupsPage({ focus }: { focus?: string }) {
   const core = useCore();
+  // one group open at a time; a link to /groups/<id> opens that one
+  const [open, setOpen] = useState<number | null>(focus ? Number(focus) : null);
   useEffect(() => {
     if (!focus) return;
+    setOpen(Number(focus));
     const id = requestAnimationFrame(() => document.getElementById(`group-${focus}`)?.scrollIntoView({ block: "start" }));
     return () => cancelAnimationFrame(id);
   }, [focus]);
+  const toggle = (id: number) => {
+    const next = open === id ? null : id;
+    setOpen(next);
+    if (next === null) return;
+    // when the open group above closes, keep the row that was clicked in view
+    requestAnimationFrame(() => {
+      const row = document.getElementById(`group-${id}`);
+      const header = document.querySelector(".site-header")?.getBoundingClientRect().height ?? 0;
+      if (row && row.getBoundingClientRect().top < header) row.scrollIntoView({ block: "start" });
+    });
+  };
   const ordered = [...core.groups].sort((a, b) => (a.id === 0 ? 1 : b.id === 0 ? -1 : a.id - b.id));
   return (
     <main className="wrap groups-page">
       <h1>The six groups</h1>
       <p className="gp-intro">{GROUPS_INTRO}</p>
 
-      <nav className="gp-nav" aria-label="Groups">
-        {ordered.map((g) => <a key={g.id} href={href(`/groups/${g.id}`)}><i className="swatch" style={{ "--c": groupColor(g.id) } as CSSProperties} />{g.name}<span className="num">{g.members.length}</span></a>)}
-      </nav>
-
+      <div className="gp-list">
       {ordered.map((g) => {
         const members = core.membersOf(g.id);
         const color = groupColor(g.id);
         const mean = core.vectors.map((v) => members.reduce((s, m) => s + m.v[v.key], 0) / members.length / v.max);
+        const isOpen = open === g.id;
         return (
-          <section className="gp-group" id={`group-${g.id}`} key={g.id}>
-            <div className="gp-head">
-              <h2><i className="swatch" style={{ "--c": color } as CSSProperties} />{g.name}{g.id !== 0 && <small className="num">Group {g.id}</small>}</h2>
-              {g.tagline && <p className="gp-tagline">{g.tagline}</p>}
-            </div>
+          <section className={`gp-group${isOpen ? " open" : ""}`} id={`group-${g.id}`} key={g.id}>
+            <h2 className="gp-row-h">
+              <button type="button" className="gp-row" aria-expanded={isOpen} aria-controls={`group-${g.id}-detail`} onClick={() => toggle(g.id)}>
+                <i className="swatch" style={{ "--c": color } as CSSProperties} />
+                <span className="gp-name">{g.name}</span>
+                <span className="gp-count num">{members.length}</span>
+                <i className="gp-caret" aria-hidden="true" />
+              </button>
+            </h2>
+            {isOpen && (
+            <div className="gp-detail" id={`group-${g.id}-detail`}>
+            {g.tagline && <p className="gp-tagline">{g.tagline}</p>}
             <div className="gp-body">
               <div className="prose">
                 {(g.body ?? "").split(/\n\s*\n/).map((p, i) => <p key={i} dangerouslySetInnerHTML={{ __html: fixLinks(p) }} />)}
@@ -51,9 +70,12 @@ export function GroupsPage({ focus }: { focus?: string }) {
                 {members.length > 1 && <Radar vectors={core.vectors} series={[{ label: `${g.name}, average`, color, values: mean, fill: true }]} size={230} />}
               </div>
             </div>
+            </div>
+            )}
           </section>
         );
       })}
+      </div>
 
       <section className="gp-section">
         <h2>Average profile by group</h2>

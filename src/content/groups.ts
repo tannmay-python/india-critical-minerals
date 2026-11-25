@@ -2,7 +2,7 @@
 // (sources/crit-minerals-dashboard: index.html and renderGroups() / renderCriteria() in app.js;
 // dendrogram.html; group-profiles.html). scripts/check-content.mjs compares it with those files.
 
-export const GROUPS_INTRO = "We have bucketed the minerals into six groupings based on common characteristics. While not perfect, we believe this is informative.";
+export const GROUPS_INTRO = "We have bucketed the minerals into six groupings based on common characteristics.";
 
 export const WHY_DISTINCT: string[] = [
   `The six groups are reasonably distinct on three grounds.`,
