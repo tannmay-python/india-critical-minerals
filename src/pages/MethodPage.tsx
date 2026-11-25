@@ -120,7 +120,7 @@ export function MethodPage() {
           <h2>How the capability entries are scaled</h2>
           {cap && (
             <>
-              <p className="method-text">{cap.meta.notes.find((n) => n.title === "About")?.text.replace("in dashboard groups 1, 2 and 5", "in groups 1, 2 and 5")}</p>
+              <p className="method-text">{cap.meta.notes.find((n) => n.title === "About")?.text}</p>
               <dl className="scales">
                 {SCALE_NOTES.map((t) => cap.meta.notes.find((n) => n.title === t)).filter(Boolean).map((n) => <div key={n!.title}><dt>{n!.title}</dt><dd>{n!.text.replace(" # numbers point to the Capabilities tab.", "").replace("the dashboard's extraction and refining scale", "the extraction and refining complexity scale")}</dd></div>)}
               </dl>

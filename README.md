@@ -1,6 +1,6 @@
 # India Critical Minerals (unified, local build)
 
-One site from three sources: the scoring dashboard (51 minerals, ten vectors, six groups), the project map (422 sourced records) and the capability map (26 minerals, 18 capabilities, 10 technology guides). Takshashila Institution. Not deployed; nothing here is pushed anywhere.
+One site from three sources: the scoring dashboard (51 minerals, ten vectors, six groups), the project map (429 sourced records) and the capability map (51 minerals, 18 capabilities, 10 technology guides). Takshashila Institution. Not deployed; nothing here is pushed anywhere.
 
 ## Run it
 

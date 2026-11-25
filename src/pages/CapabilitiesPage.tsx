@@ -12,9 +12,6 @@ export function CapabilitiesPage() {
   if (!cap) return <main className="wrap cap" />;
   const mineral = new Map(cap.minerals.map((m) => [m.id, m]));
   const strategies = [...cap.strategies].sort((a, b) => a.number - b.number);
-  const groupNames = cap.groups.map((g) => core.group.get(g.id)?.name ?? g.name);
-  /** minerals outside the owner's capability map, written for this site and not yet reviewed by him */
-  const added = cap.minerals.filter((m) => m.supplement);
   const pips = (complexity: string) => {
     const lo = Number(/\d/.exec(complexity)?.[0] ?? 0), hi = Number(/(\d)\D*$/.exec(complexity)?.[1] ?? lo);
     return <span className="pips" title={`Complexity ${complexity.replace("-", "–")} of 5`}>{[1, 2, 3, 4, 5].map((n) => <i key={n} className={n <= lo ? "on" : n <= hi ? "half" : ""} />)}</span>;
@@ -22,9 +19,7 @@ export function CapabilitiesPage() {
   return (
     <main className="wrap cap">
       <h1>Where India can build capability</h1>
-      {added.length === 0
-        ? <p className="cap-lede">Pathways are drawn for the {cap.minerals.length} minerals in three groups: {groupNames.slice(0, -1).join(", ")} and {groupNames[groupNames.length - 1]}.</p>
-        : <p className="cap-lede">Pathways are drawn for all {cap.minerals.length} minerals: {cap.minerals.length - added.length} from the capability map, and {added.length} added in November 2026 that await review.</p>}
+      <p className="cap-lede">Pathways are drawn for all {cap.minerals.length} minerals.</p>
 
       <section className="cap-section">
         <h2>What could come first</h2>
