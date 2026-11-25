@@ -1,18 +1,15 @@
 import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { useCore, useData } from "../data/store";
 import type { Mineral, MineralDetail, Project, ScoreDetail, VectorDef } from "../data/types";
-import { CHAIN_COLUMNS, Chain } from "../components/Chain";
 import { Journey } from "../components/Journey";
 import { useJourney } from "../journeys";
-import { Mark } from "../components/ProjectMark";
 import { Radar } from "../components/Radar";
+import { StageProjects } from "../components/StageProjects";
 import { WhatToBuild } from "../components/WhatToBuild";
 import { groupColor, inkOn } from "../lib/colors";
 import { go, href, mineralHref } from "../lib/router";
 import "./MineralPage.css";
 
-const GROUP_RANK = { active: 0, pipeline: 1, inactive: 2 } as const;
-const PER_STAGE = 4;
 
 export function MineralPage({ name }: { name: string }) {
   const core = useCore();
@@ -58,10 +55,6 @@ export function MineralPage({ name }: { name: string }) {
   const group = core.group.get(mineral.group)!;
   const color = groupColor(mineral.group);
   const cap = detail?.capability ?? null;
-  const inIndia = projects.filter((p) => !p.abroad && p.kind !== "demand").length;
-  const abroad = projects.filter((p) => p.abroad).length;
-  const shared = mineral.projects.shared;
-  const familyName = mineral.projects.family === "PGE" ? "platinum-group" : "rare-earth";
 
 
   return (
@@ -93,36 +86,14 @@ export function MineralPage({ name }: { name: string }) {
       <section className="wrap mp-section">
         <h2>Value chain</h2>
         {journey && <Journey journey={journey} color={color} />}
-        <Chain mineral={mineral} stages={cap?.stages ?? null} projects={projects} />
-
-        {projects.length > 0 && (
-          <div className="mp-stage-lists">
-            {CHAIN_COLUMNS.map((c) => {
-              const list = projects.filter((p) => p.band === c.band).sort((a, b) => GROUP_RANK[a.group] - GROUP_RANK[b.group] || Number(a.kind === "block") - Number(b.kind === "block") || a.name.localeCompare(b.name));
-              if (!list.length) return null;
-              return (
-                <div key={c.id}>
-                  <h3>{c.label}<span className="num">{list.length}</span></h3>
-                  <ul>
-                    {list.slice(0, PER_STAGE).map((p) => (
-                      <li key={p.id}>
-                        <Mark kind={p.kind} band={p.band} group={p.group} size={11} />
-                        <span><a href={href(`/project/${p.id}`)}>{p.name}</a><small>{p.status}{p.abroad && p.country ? ` · ${p.country}` : p.state ? ` · ${p.state}` : ""}</small></span>
-                      </li>
-                    ))}
-                  </ul>
-                  {list.length > PER_STAGE && <p className="mp-rest num">and {list.length - PER_STAGE} more</p>}
-                </div>
-              );
-            })}
-          </div>
-        )}
-        {(inIndia > 0 || abroad > 0 || shared > 0) && <p className="mp-more">
-          {inIndia > 0 && <a href={href("/projects", { mineral: mineral.name })}>{inIndia} in India on the map</a>}
-          {abroad > 0 && <a href={href("/projects", { view: "abroad", mineral: mineral.name })}>{abroad} abroad</a>}
-          {shared > 0 && <a href={href("/projects", { mineral: `family:${mineral.projects.family}` })}>{shared} {familyName} projects that name no single element</a>}
-        </p>}
       </section>
+
+      {projects.length > 0 && (
+        <section className="wrap mp-section">
+          <h2>Projects</h2>
+          <StageProjects projects={projects} />
+        </section>
+      )}
 
       {cap && (
         <section className="wrap mp-section">

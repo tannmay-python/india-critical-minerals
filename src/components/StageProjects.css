@@ -1,0 +1,19 @@
+/* Projects by stage: a bar in the stage's colour heads each column */
+.sp { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: 0 clamp(20px, 2.6vw, 36px); }
+.sp-stage h3 { display: flex; align-items: baseline; gap: 9px; padding-top: 14px; margin-bottom: 14px; border-top: 4px solid var(--band); font-family: var(--font-display); font-size: 1.25rem; font-weight: 500; line-height: 1.1; }
+.sp-stage h3 .num { font-family: var(--font-sans); font-size: var(--text-sm); font-weight: 600; color: var(--muted); }
+/* a stage with no project: a pale bar and a quiet name */
+.sp-stage.empty h3 { border-top-color: var(--rule); color: var(--muted); }
+
+.sp-stage ul { display: flex; flex-direction: column; gap: 12px; }
+.sp-stage li { display: grid; grid-template-columns: 12px minmax(0, 1fr); gap: 10px; font-size: 0.94rem; line-height: 1.35; }
+.sp-stage .mark { margin-top: 4px; }
+.sp-stage a { font-weight: 600; color: var(--ink); text-decoration: none; }
+.sp-stage a:hover { color: var(--plum); text-decoration: underline; text-decoration-color: var(--plum-line); }
+.sp-stage small { display: block; margin-top: 2px; font-size: var(--text-sm); color: var(--muted); }
+.sp-more { margin: 12px 0 0 22px; font-size: var(--text-sm); font-weight: 650; color: var(--plum); }
+.sp-more:hover { text-decoration: underline; }
+
+@media (max-width: 900px) {
+  .sp { grid-template-columns: 1fr; gap: 18px; }
+}
