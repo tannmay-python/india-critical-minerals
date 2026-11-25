@@ -3,7 +3,7 @@
 Owner: Tannmay Kumarr Baid (Takshashila Institution). This merges three of his sites into one. Read README.md for commands.
 
 ## Rules that do not bend
-- Local only until the owner says otherwise. Never push or deploy. `../sources/*` are read-only clones.
+- Local only until the owner says otherwise. Never push or deploy. `../sources/*` are clones of the owner's repos with pushing disabled. Change one only when the owner asks, and only through that repo's own process: the project map takes new records through its research pipeline (archived sources, excerpt-checked drafts, `validate.py`, `geocheck.py`), as on 25 Nov 2026 when he asked for missing facilities to be added "as regular points on the map". No supplement files for project records.
 - The research is the owner's: scores, reasons, project records and capability text are copied by `scripts/build-data.mjs`, never edited here. If something looks wrong, list it for him; do not fix it in the data.
 - Text is kept to the minimum: no eyebrow labels, kickers, helper captions or decorative uppercase labels (`npm run check` fails on them). Visualisation is where to be ambitious, provided it is useful.
 - The official India boundary handling in `src/projects/` must not change (see the project map's CLAUDE.md, section 5).
