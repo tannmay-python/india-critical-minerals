@@ -1,0 +1,93 @@
+/* Temporary: the layouts for the capabilities and the chemistry India has, to compare. */
+.cv-switch { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
+.cv-switch h2 { margin: 0; }
+.cv-switch > div { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* shared pieces */
+.cv-tiles { display: flex; flex-wrap: wrap; gap: 3px; }
+.cv-tile { display: inline-flex; align-items: center; justify-content: center; border-radius: var(--radius-sm); font-weight: 700; text-decoration: none; }
+.cv-tile.sm { width: 30px; height: 30px; font-size: 0.8rem; }
+.cv-tile.xs { width: 24px; height: 24px; font-size: 0.7rem; }
+a.cv-tile:hover { box-shadow: 0 0 0 2px var(--page), 0 0 0 3px var(--ink); }
+.cv-meter { display: inline-flex; gap: 2px; }
+.cv-meter i { width: 9px; height: 9px; border-radius: 2px; box-shadow: inset 0 0 0 1px var(--rule-strong); }
+.cv-meter i.on { background: var(--plum); box-shadow: none; }
+.cv-meter i.half { background: var(--plum); opacity: 0.4; box-shadow: none; }
+.cv-n { font-size: var(--text-sm); color: var(--muted); }
+
+/* ── 1. cards ── */
+.cv-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.cv-card { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 16px 18px 18px; background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius-sm); transition: border-color 140ms var(--ease); }
+.cv-card:hover { border-color: var(--plum); }
+.cv-card-top { display: flex; align-items: center; justify-content: space-between; }
+.cv-card-name { font-family: var(--font-display); font-size: 1.22rem; font-weight: 500; line-height: 1.2; color: var(--ink); text-decoration: none; }
+/* the whole card opens the capability; the mineral tiles stay clickable above it */
+.cv-card-name::after { content: ""; position: absolute; inset: 0; }
+.cv-card:hover .cv-card-name { color: var(--plum); }
+.cv-card-what { font-size: var(--text-sm); line-height: 1.45; color: var(--ink-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.cv-card .cv-tiles { position: relative; z-index: 1; margin-top: auto; padding-top: 6px; }
+.cv-cards.tech { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.cv-card.tech { padding: 14px 14px 16px; }
+.cv-card.tech .cv-card-name { font-size: 1.05rem; }
+
+/* ── 2. ladder: easiest to hardest on one complexity scale ── */
+.cv-ladder { border-top: 2px solid var(--ink); }
+.cv-rung { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr) minmax(0, 360px); gap: 22px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--rule); }
+.cv-rung.head { padding: 10px 0 8px; border-bottom-color: var(--rule-strong); }
+.cv-scale { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); font-size: 0.72rem; line-height: 1.2; color: var(--muted); }
+.cv-scale span { display: flex; flex-direction: column; gap: 2px; padding-left: 6px; border-left: 1px solid var(--rule); }
+.cv-scale b { font-size: var(--text-sm); color: var(--ink-2); }
+.cv-rung-name { font-weight: 620; color: var(--ink); text-decoration: none; line-height: 1.3; }
+.cv-rung-name:hover { color: var(--plum); text-decoration: underline; text-decoration-color: var(--plum-line); }
+.cv-track { position: relative; height: 22px; background: repeating-linear-gradient(90deg, var(--rule) 0 1px, transparent 1px 20%); }
+.cv-track i { position: absolute; top: 5px; height: 12px; border-radius: 6px; left: calc((var(--lo) - 1) * 20% + 4px); width: calc((var(--hi) - var(--lo) + 1) * 20% - 8px); background: var(--plum); }
+.cv-reach { border-top: 2px solid var(--ink); }
+.cv-reach-row { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr) minmax(0, 360px); gap: 22px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--rule); }
+.cv-reach-row a { font-weight: 620; color: var(--ink); text-decoration: none; line-height: 1.3; }
+.cv-reach-row a:hover { color: var(--plum); text-decoration: underline; text-decoration-color: var(--plum-line); }
+.cv-reach-bar { display: flex; align-items: center; gap: 8px; }
+.cv-reach-bar i { height: 12px; border-radius: 6px; background: var(--marigold); }
+.cv-reach-bar b { font-size: var(--text-sm); color: var(--ink-2); }
+.cv-fit { font-size: var(--text-sm); color: var(--ink-2); }
+
+/* ── 3. matrix: what each capability and chemistry reaches ── */
+.cv-matrix { display: grid; grid-template-columns: minmax(0, 290px) repeat(var(--cols), minmax(0, 1fr)); row-gap: 0; border-top: 2px solid var(--ink); padding-top: 10px; }
+.cv-col { justify-self: center; margin-bottom: 8px; }
+.cv-mrow { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; align-items: center; border-bottom: 1px solid var(--rule); }
+.cv-mrow:hover { background: var(--surface-2); }
+.cv-mlabel { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 7px 12px 7px 0; font-size: 0.92rem; line-height: 1.25; }
+.cv-mlabel a { font-weight: 600; color: var(--ink); text-decoration: none; }
+.cv-mlabel a:hover { color: var(--plum); text-decoration: underline; text-decoration-color: var(--plum-line); }
+.cv-cell { display: flex; justify-content: center; }
+.cv-cell i { width: 11px; height: 11px; border-radius: 50%; background: var(--c); }
+.cv-cell i.ring { background: transparent; box-shadow: inset 0 0 0 2px var(--c); }
+.cv-mgroup { grid-column: 1 / -1; margin: 22px 0 6px; font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; }
+.cv-mkey { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 12px; font-size: var(--text-sm); color: var(--ink-2); }
+.cv-mkey span { display: inline-flex; align-items: center; gap: 7px; }
+.cv-mkey i { width: 11px; height: 11px; border-radius: 50%; background: var(--ink-2); }
+.cv-mkey i.ring { background: transparent; box-shadow: inset 0 0 0 2px var(--ink-2); }
+
+/* ── 4. rows that open one at a time ── */
+.cv-rows { border-top: 2px solid var(--ink); }
+.cv-row { border-bottom: 1px solid var(--rule); }
+.cv-row-head { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto minmax(0, 380px) 24px; gap: 16px; align-items: center; width: 100%; padding: 12px 2px; text-align: left; color: var(--ink); }
+.cv-row-head.tech { grid-template-columns: minmax(0, 1fr) minmax(0, 420px) 24px; }
+.cv-row-head .cv-tiles { justify-content: flex-end; }
+.cv-row-name { font-family: var(--font-display); font-size: 1.18rem; font-weight: 500; line-height: 1.2; }
+.cv-row-head:hover .cv-row-name, .cv-row.open .cv-row-name { color: var(--plum); }
+.cv-caret { justify-self: end; width: 9px; height: 9px; margin-right: 6px; border-right: 2px solid var(--ink-2); border-bottom: 2px solid var(--ink-2); transform: translateY(-3px) rotate(45deg); transition: transform 180ms var(--ease); }
+.cv-row.open .cv-caret { transform: translateY(2px) rotate(-135deg); }
+.cv-row-body { padding: 2px 0 22px 46px; }
+.cv-row-head.tech + .cv-row-body { padding-left: 2px; }
+.cv-what { max-width: 70ch; color: var(--ink-2); margin-bottom: 14px; }
+.cv-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 36px; max-width: 980px; }
+.cv-facts dt { font-size: var(--text-sm); font-weight: 650; color: var(--muted); margin-bottom: 3px; }
+.cv-facts dd { font-size: 0.94rem; line-height: 1.45; }
+.cv-open { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; font-weight: 650; text-decoration: none; }
+.cv-open::after { content: ""; width: 7px; height: 7px; border-top: 1.5px solid currentColor; border-right: 1.5px solid currentColor; transform: rotate(45deg); }
+
+@media (max-width: 900px) {
+  .cv-cards, .cv-cards.tech { grid-template-columns: 1fr 1fr; }
+  .cv-rung, .cv-reach-row { grid-template-columns: 1fr; gap: 6px; }
+  .cv-matrix { overflow-x: auto; }
+}

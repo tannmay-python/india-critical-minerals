@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { useCore, useData } from "../data/store";
 import type { Capability } from "../data/types";
+import { CAP_VIEWS, CapViews, type CapView } from "../components/CapViews";
 import { CapabilityNetwork } from "../components/CapabilityNetwork";
 import { Horizons } from "../components/Horizons";
 import { fmtDate } from "../lib/format";
@@ -9,6 +11,14 @@ import "./CapabilityPages.css";
 export function CapabilitiesPage() {
   const core = useCore();
   const cap = useData<Capability>("capability.json");
+  // temporary: which layout of the two lists is showing, while they are compared
+  const [view, setView] = useState<CapView>(() => {
+    try { return (localStorage.getItem("capView") as CapView | null) ?? "cards"; } catch { return "cards"; }
+  });
+  const pickView = (v: CapView) => {
+    setView(v);
+    try { localStorage.setItem("capView", v); } catch { /* private window */ }
+  };
   if (!cap) return <main className="wrap cap" />;
   const mineral = new Map(cap.minerals.map((m) => [m.id, m]));
   const strategies = [...cap.strategies].sort((a, b) => a.number - b.number);
@@ -32,8 +42,14 @@ export function CapabilitiesPage() {
       </section>
 
       <section className="cap-section">
-        <h2>Capabilities to build</h2>
-        <ol className="cap-list">
+        <div className="cv-switch">
+          <h2>Capabilities to build</h2>
+          <div role="group" aria-label="Layouts to compare">
+            {CAP_VIEWS.map((v) => <button type="button" key={v.id} className="pill" aria-pressed={view === v.id} onClick={() => pickView(v.id)}>{v.label}</button>)}
+          </div>
+        </div>
+        {view !== "now" && <CapViews view={view} cap={cap} />}
+        {view === "now" && <ol className="cap-list">
           {strategies.map((s) => (
             <li key={s.id}>
               <span className="cap-n num">{s.number}</span>
@@ -47,10 +63,10 @@ export function CapabilitiesPage() {
               </div>
             </li>
           ))}
-        </ol>
+        </ol>}
       </section>
 
-      <section className="cap-section">
+      {view === "now" && <section className="cap-section">
         <h2>Chemistry India already has</h2>
         <ol className="cap-list">
           {cap.chemistry.map((k) => (
@@ -66,7 +82,7 @@ export function CapabilitiesPage() {
             </li>
           ))}
         </ol>
-      </section>
+      </section>}
       <p className="cap-foot muted">Capability research updated {fmtDate(core.meta.capabilityUpdated)}; technology guides checked {fmtDate(core.meta.capabilityResearch)}. <a href={href("/method")}>Method and sources</a></p>
     </main>
   );
