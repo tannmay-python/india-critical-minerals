@@ -1,0 +1,28 @@
+/* Capabilities and chemistry as cards; mineral tiles in group colours, as on the board above */
+.cc-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.cc-grid.small { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.cc-card { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 16px 18px 18px; background: var(--surface); border: 1px solid var(--rule); border-radius: var(--radius-sm); transition: border-color 140ms var(--ease); }
+.cc-card.small { padding: 14px 14px 16px; }
+.cc-card:hover { border-color: var(--plum); }
+.cc-top { display: flex; align-items: center; justify-content: space-between; }
+.cc-n { font-size: var(--text-sm); color: var(--muted); }
+.cc-name { font-family: var(--font-display); font-size: 1.22rem; font-weight: 500; line-height: 1.2; color: var(--ink); text-decoration: none; }
+.cc-card.small .cc-name { font-size: 1.05rem; }
+/* the whole card opens the capability or technology; the mineral tiles stay clickable above it */
+.cc-name::after { content: ""; position: absolute; inset: 0; }
+.cc-card:hover .cc-name { color: var(--plum); }
+.cc-what { font-size: var(--text-sm); line-height: 1.45; color: var(--ink-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+.cc-meter { display: inline-flex; gap: 2px; }
+.cc-meter i { width: 9px; height: 9px; border-radius: 2px; box-shadow: inset 0 0 0 1px var(--rule-strong); }
+.cc-meter i.on { background: var(--plum); box-shadow: none; }
+.cc-meter i.half { background: var(--plum); opacity: 0.4; box-shadow: none; }
+
+.cc-tiles { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 3px; margin-top: auto; padding-top: 6px; }
+.cc-tile { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: var(--radius-sm); font-size: 0.8rem; font-weight: 700; text-decoration: none; }
+.cc-tile.small { width: 24px; height: 24px; font-size: 0.7rem; }
+.cc-tile:hover { box-shadow: 0 0 0 2px var(--page), 0 0 0 3px var(--ink); }
+
+@media (max-width: 900px) {
+  .cc-grid, .cc-grid.small { grid-template-columns: 1fr 1fr; }
+}
