@@ -3,12 +3,12 @@
 Owner: Tannmay Kumarr Baid (Takshashila Institution). This merges three of his sites into one. Read README.md for commands.
 
 ## Rules that do not bend
-- Local only until the owner says otherwise. Never push or deploy. `../sources/*` are clones of the owner's repos with pushing disabled. Change one only when the owner asks, and only through that repo's own process: the project map takes new records through its research pipeline (archived sources, excerpt-checked drafts, `validate.py`, `geocheck.py`), as on 25 Nov 2026 when he asked for missing facilities to be added "as regular points on the map". No supplement files for project records.
+- Published on 25 Nov 2026 at the owner's request: public repo github.com/tannmay-python/india-critical-minerals, deployed to GitHub Pages by `.github/workflows/pages.yml` on every push to `main`. The data are generated locally (`npm run data`) and committed in `public/data/`; regenerate and commit them when a source changes. `../sources/*` are clones of the owner's repos with pushing disabled. Change one only when the owner asks, and only through that repo's own process: the project map takes new records through its research pipeline (archived sources, excerpt-checked drafts, `validate.py`, `geocheck.py`), as on 25 Nov 2026 when he asked for missing facilities to be added "as regular points on the map". No supplement files for project records.
 - The research is the owner's: scores, reasons, project records and capability text are copied by `scripts/build-data.mjs`, never edited here. If something looks wrong, list it for him; do not fix it in the data.
 - Text is kept to the minimum: no eyebrow labels, kickers, helper captions or decorative uppercase labels (`npm run check` fails on them). Visualisation is where to be ambitious, provided it is useful.
 - The official India boundary handling in `src/projects/` must not change (see the project map's CLAUDE.md, section 5).
 - No personal contact data; individual bidders stay "name withheld" as in the source.
-- The capability map was written as an internal document. Ask the owner before anything containing it is published.
+- The capability map's workbook calls it internal; on 25 Nov 2026 the owner asked for this site, capability content included, to be public.
 
 ## Design
 - Takshashila house style: plum #620d3c and marigold #f1a222 on cream #fffbe2; Newsreader headings, Hanken Grotesk text and figures, Space Mono for tiny tags only. Hairlines, not shadows. Tokens in `src/styles/tokens.css`, mirrored for canvas and SVG in `src/lib/colors.ts`.

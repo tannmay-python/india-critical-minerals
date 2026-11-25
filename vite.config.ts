@@ -9,7 +9,11 @@ export default defineConfig({
     target: "es2022",
     rollupOptions: {
       output: {
-        manualChunks: { maplibre: ["maplibre-gl"], d3: ["d3", "d3-sankey"] },
+        // Vite 8 takes a function here: the map library and d3 each get their own chunk
+        manualChunks(id: string) {
+          if (id.includes("/node_modules/maplibre-gl/")) return "maplibre";
+          if (/\/node_modules\/d3(-[a-z]+)?\//.test(id)) return "d3";
+        },
       },
     },
   },

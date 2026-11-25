@@ -1,16 +1,20 @@
-# India Critical Minerals (unified, local build)
+# India Critical Minerals
 
-One site from three sources: the scoring dashboard (51 minerals, ten vectors, six groups), the project map (429 sourced records) and the capability map (51 minerals, 18 capabilities, 10 technology guides). Takshashila Institution. Not deployed; nothing here is pushed anywhere.
+One site from three sources: the scoring dashboard (51 minerals, ten vectors, six groups), the project map (429 sourced records) and the capability map (51 minerals, 18 capabilities, 10 technology guides). Takshashila Institution.
+
+Live site: https://tannmay-python.github.io/india-critical-minerals/ (deployed by GitHub Actions on every push to `main`).
 
 ## Run it
 
 ```sh
 npm install
-npm run data     # reads ../sources/* and writes public/data (the sources are never modified)
+npm run data     # reads ../sources/* and writes public/data
 npm run dev      # http://127.0.0.1:5190
 ```
 
 `npm run data` needs the project map's own data build to have run once in `../sources/india-critical-minerals-map` (`python3 -m venv .venv && .venv/bin/pip install -r requirements.txt && .venv/bin/python -I scripts/build-data.py`).
+
+The generated `public/data/` is committed, so the site builds and deploys without the three source repositories. Run `npm run data` and commit the result whenever a source changes.
 
 ## Check it
 

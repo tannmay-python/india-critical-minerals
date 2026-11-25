@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "India Critical Minerals: scores, projects and capabilities in one site (Takshashila Institution). Local build; not deployed.",
+  "description": "India Critical Minerals: scores, projects and capabilities in one site (Takshashila Institution).",
   "scripts": {
     "data": "node scripts/build-data.mjs",
     "dev": "vite --port 5190 --strictPort --host 127.0.0.1",
